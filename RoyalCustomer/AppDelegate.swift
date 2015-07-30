@@ -10,6 +10,8 @@ import UIKit
 
 let account = Account()
 var items :[Item] = []
+// クリックされた商品
+var clickItem:Item?
 let api = API(baseURL: NSURL(string: "https://acani-chats.herokuapp.com"))
 
 @UIApplicationMain
