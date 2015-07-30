@@ -20,6 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private var myTabBarController: UITabBarController!
     
+    var _chat:Chat?
+    
     /*
     アプリケーション起動時に呼ばれるメソッド.
     */

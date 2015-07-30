@@ -68,6 +68,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
         title = chat.user.name
+        var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate._chat = chat
     }
     
     required init(coder aDecoder: NSCoder) {
