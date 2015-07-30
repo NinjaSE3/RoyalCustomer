@@ -88,13 +88,15 @@ class ItemListViewController: UIViewController {
     
     func navigationView(){
         // ナビゲーションの表示
+        var imgButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        imgButton.setImage(UIImage(named: "User1"), forState: UIControlState.Normal)
+        imgButton.addTarget(self.navigationController, action: Selector("onClickProfile:"), forControlEvents:  UIControlEvents.TouchUpInside)
+        var imgButtonItem = UIBarButtonItem(customView: imgButton)
+        self.navigationItem.leftBarButtonItem = imgButtonItem
         self.navigationItem.title = "くらさわさん"
     }
     
     func itemListView(){
-        
-        // あとで全商品に展開すること！！！
-        let gesture = UITapGestureRecognizer(target:self, action:"onClickItemImageView:")
         
         // 商品一覧を作成（今はべた書き）
         var borderColor = UIColor.blackColor().CGColor
@@ -113,7 +115,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView01.frame.height/2
         )
         itemImageView01.userInteractionEnabled = true
-        itemImageView01.addGestureRecognizer(gesture)
         
         // 02
         itemImageView02 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -128,7 +129,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView02.frame.height/2
         )
         itemImageView02.userInteractionEnabled = true
-        itemImageView02.addGestureRecognizer(gesture)
         
         // 03
         itemImageView03 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -143,7 +143,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView03.frame.height/2
         )
         itemImageView03.userInteractionEnabled = true
-        itemImageView03.addGestureRecognizer(gesture)
         
         // 04
         itemImageView04 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -158,7 +157,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView04.frame.height/2
         )
         itemImageView04.userInteractionEnabled = true
-        itemImageView04.addGestureRecognizer(gesture)
         
         // 05
         itemImageView05 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -173,7 +171,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView05.frame.height/2+itemImageView02.frame.height
         )
         itemImageView05.userInteractionEnabled = true
-        itemImageView05.addGestureRecognizer(gesture)
         
         // 06
         itemImageView06 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -188,7 +185,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView06.frame.height/2+itemImageView06.frame.height+itemImageView02.frame.height
         )
         itemImageView06.userInteractionEnabled = true
-        itemImageView06.addGestureRecognizer(gesture)
         
         // 07
         itemImageView07 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -203,7 +199,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView07.frame.height/2+itemImageView02.frame.height
         )
         itemImageView07.userInteractionEnabled = true
-        itemImageView07.addGestureRecognizer(gesture)
         
         // 08
         itemImageView08 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -218,7 +213,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView08.frame.height/2+itemImageView01.frame.height
         )
         itemImageView08.userInteractionEnabled = true
-        itemImageView08.addGestureRecognizer(gesture)
         
         // 09
         itemImageView09 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -233,7 +227,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView09.frame.height/2+itemImageView01.frame.height
         )
         itemImageView09.userInteractionEnabled = true
-        itemImageView09.addGestureRecognizer(gesture)
         
         // 10
         itemImageView10 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -248,7 +241,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView10.frame.height/2+itemImageView01.frame.height
         )
         itemImageView10.userInteractionEnabled = true
-        itemImageView10.addGestureRecognizer(gesture)
         
         // 11
         itemImageView11 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -263,7 +255,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView11.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height
         )
         itemImageView11.userInteractionEnabled = true
-        itemImageView11.addGestureRecognizer(gesture)
 
         // 12
         itemImageView12 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -278,7 +269,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView12.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height
         )
         itemImageView12.userInteractionEnabled = true
-        itemImageView12.addGestureRecognizer(gesture)
         
         // 13
         itemImageView13 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -293,7 +283,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView13.frame.height/2+itemImageView12.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
         )
         itemImageView13.userInteractionEnabled = true
-        itemImageView13.addGestureRecognizer(gesture)
         
         // 14
         itemImageView14 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -308,7 +297,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView14.frame.height/2+itemImageView01.frame.height
         )
         itemImageView14.userInteractionEnabled = true
-        itemImageView14.addGestureRecognizer(gesture)
         
         // 15
         itemImageView15 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -323,7 +311,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView15.frame.height/2+itemImageView01.frame.height
         )
         itemImageView15.userInteractionEnabled = true
-        itemImageView15.addGestureRecognizer(gesture)
         
         // 16
         itemImageView16 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -338,7 +325,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView16.frame.height/2+itemImageView15.frame.height+itemImageView01.frame.height
         )
         itemImageView16.userInteractionEnabled = true
-        itemImageView16.addGestureRecognizer(gesture)
         
         // 17
         itemImageView17 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -353,7 +339,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView17.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
         )
         itemImageView17.userInteractionEnabled = true
-        itemImageView17.addGestureRecognizer(gesture)
         
         // 18
         itemImageView18 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -368,7 +353,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView18.frame.height/2+itemImageView17.frame.height+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
         )
         itemImageView18.userInteractionEnabled = true
-        itemImageView18.addGestureRecognizer(gesture)
         
         // 19
         itemImageView19 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -383,7 +367,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView19.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
         )
         itemImageView19.userInteractionEnabled = true
-        itemImageView19.addGestureRecognizer(gesture)
         
         // 20
         itemImageView20 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
@@ -398,7 +381,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView20.frame.height/2+itemImageView14.frame.height+itemImageView01.frame.height
         )
         itemImageView20.userInteractionEnabled = true
-        itemImageView20.addGestureRecognizer(gesture)
         
         var pageHeight = itemImageView01.frame.height + itemImageView08.frame.height + itemImageView11.frame.height + itemImageView19.frame.height
         
@@ -415,7 +397,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView21.frame.height/2+pageHeight
         )
         itemImageView21.userInteractionEnabled = true
-        itemImageView21.addGestureRecognizer(gesture)
         
         // 22
         itemImageView22 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -430,7 +411,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView22.frame.height/2+pageHeight
         )
         itemImageView22.userInteractionEnabled = true
-        itemImageView22.addGestureRecognizer(gesture)
         
         // 23
         itemImageView23 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -445,7 +425,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView23.frame.height/2+pageHeight
         )
         itemImageView23.userInteractionEnabled = true
-        itemImageView23.addGestureRecognizer(gesture)
         
         // 24
         itemImageView24 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -460,7 +439,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView24.frame.height/2+pageHeight
         )
         itemImageView24.userInteractionEnabled = true
-        itemImageView24.addGestureRecognizer(gesture)
         
         // 25
         itemImageView25 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -475,7 +453,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView25.frame.height/2+itemImageView02.frame.height+pageHeight
         )
         itemImageView25.userInteractionEnabled = true
-        itemImageView25.addGestureRecognizer(gesture)
         
         // 26
         itemImageView26 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -490,7 +467,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView26.frame.height/2+itemImageView06.frame.height+itemImageView02.frame.height+pageHeight
         )
         itemImageView26.userInteractionEnabled = true
-        itemImageView26.addGestureRecognizer(gesture)
         
         // 27
         itemImageView27 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -505,7 +481,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView27.frame.height/2+itemImageView02.frame.height+pageHeight
         )
         itemImageView27.userInteractionEnabled = true
-        itemImageView27.addGestureRecognizer(gesture)
         
         // 28
         itemImageView28 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -520,7 +495,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView28.frame.height/2+itemImageView01.frame.height+pageHeight
         )
         itemImageView28.userInteractionEnabled = true
-        itemImageView28.addGestureRecognizer(gesture)
         
         // 29
         itemImageView29 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -535,7 +509,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView29.frame.height/2+itemImageView01.frame.height+pageHeight
         )
         itemImageView29.userInteractionEnabled = true
-        itemImageView29.addGestureRecognizer(gesture)
         
         // 30
         itemImageView30 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -550,7 +523,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView30.frame.height/2+itemImageView01.frame.height+pageHeight
         )
         itemImageView30.userInteractionEnabled = true
-        itemImageView30.addGestureRecognizer(gesture)
         
         // 31
         itemImageView31 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -565,7 +537,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView31.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView31.userInteractionEnabled = true
-        itemImageView31.addGestureRecognizer(gesture)
         
         // 32
         itemImageView32 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -580,7 +551,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView32.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView32.userInteractionEnabled = true
-        itemImageView32.addGestureRecognizer(gesture)
         
         // 33
         itemImageView33 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -595,7 +565,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView33.frame.height/2+itemImageView12.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView33.userInteractionEnabled = true
-        itemImageView33.addGestureRecognizer(gesture)
         
         // 34
         itemImageView34 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -610,7 +579,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView34.frame.height/2+itemImageView01.frame.height+pageHeight
         )
         itemImageView34.userInteractionEnabled = true
-        itemImageView34.addGestureRecognizer(gesture)
         
         // 35
         itemImageView35 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -625,7 +593,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView35.frame.height/2+itemImageView01.frame.height+pageHeight
         )
         itemImageView35.userInteractionEnabled = true
-        itemImageView35.addGestureRecognizer(gesture)
         
         // 36
         itemImageView36 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -640,7 +607,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView36.frame.height/2+itemImageView15.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView36.userInteractionEnabled = true
-        itemImageView36.addGestureRecognizer(gesture)
         
         // 37
         itemImageView37 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -655,7 +621,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView37.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView37.userInteractionEnabled = true
-        itemImageView37.addGestureRecognizer(gesture)
         
         // 38
         itemImageView38 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
@@ -670,7 +635,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView38.frame.height/2+itemImageView17.frame.height+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView38.userInteractionEnabled = true
-        itemImageView38.addGestureRecognizer(gesture)
         
         // 39
         itemImageView39 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
@@ -685,7 +649,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView39.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView39.userInteractionEnabled = true
-        itemImageView39.addGestureRecognizer(gesture)
         
         // 40
         itemImageView40 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
@@ -700,7 +663,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView40.frame.height/2+itemImageView14.frame.height+itemImageView01.frame.height+pageHeight
         )
         itemImageView40.userInteractionEnabled = true
-        itemImageView40.addGestureRecognizer(gesture)
         
         // スクロールview
         let scrView = MyScrollView()
@@ -714,6 +676,7 @@ class ItemListViewController: UIViewController {
             x: scrView.frame.width/2,
             y: scrView.frame.height/2
         )
+        let gesture = UITapGestureRecognizer(target:self, action:"onClickItemImageView:")
         scrView.addGestureRecognizer(gesture)
         self.view.addSubview(scrView)
         // 各イメージを追加
