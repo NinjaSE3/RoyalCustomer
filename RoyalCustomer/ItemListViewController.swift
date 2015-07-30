@@ -22,6 +22,8 @@ class Item {
 }
 
 class ItemListViewController: UIViewController {
+    // スクロールview
+    private var scrView = UIScrollView()
     // ステータスバー
     private var statusBar: UIButton!
     
@@ -74,7 +76,13 @@ class ItemListViewController: UIViewController {
         // Viewの背景色をGreenに設定する.
         self.view.backgroundColor = UIColor.greenColor()
         
+        self.statusBarView()
         self.itemListView()
+        /*
+        let itemList = itemList[indexPath.row]
+        let itemListViewController = ItemListViewController(itemList: itemList)
+        navigationController?.itemListViewController(itemListViewController, animated: true)
+        */
         
         // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
         self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 2)
@@ -96,7 +104,7 @@ class ItemListViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func itemListView(){
+    func statusBarView(){
         // ステータスバーの表示
         statusBar = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
         statusBar.setTitleColor(UIColor.blueColor(), forState: .Normal)
@@ -108,7 +116,9 @@ class ItemListViewController: UIViewController {
             x:self.view.bounds.width-statusBar.frame.width/2,
             y:statusBar.frame.height/2)
         self.view.addSubview(statusBar)
-
+    }
+    
+    func itemListView(){
         
         // 商品一覧を作成（今はべた書き）
         
@@ -516,8 +526,6 @@ class ItemListViewController: UIViewController {
             y: itemImageView40.frame.height/2+itemImageView14.frame.height+itemImageView01.frame.height+pageHeight
         )
         
-        // スクロールviewで表示
-        let scrView = UIScrollView()
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height+statusBar.frame.height)
         // 全体のサイズ
@@ -527,7 +535,7 @@ class ItemListViewController: UIViewController {
             x: scrView.frame.width/2,
             y: scrView.frame.height/2+statusBar.frame.height
         )
-        self.view.addSubview(scrView)
+        //self.view.addSubview(scrView)
         // 各イメージを追加
         scrView.addSubview(itemImageView01)
         scrView.addSubview(itemImageView02)
