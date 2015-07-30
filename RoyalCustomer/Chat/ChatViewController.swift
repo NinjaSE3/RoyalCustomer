@@ -286,6 +286,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.endUpdates()
         tableViewScrollToBottomAnimated(true)
         AudioServicesPlaySystemSound(messageSoundOutgoing)
+        self.receiveAction()
+    }
+    
+    //UIテストのための自動応答ダミー
+    func receiveAction(){
+        let lastSection = tableView.numberOfSections()
+        tableView.beginUpdates()
+        tableView.insertSections(NSIndexSet(index: lastSection), withRowAnimation: .Automatic)
+        tableView.insertRowsAtIndexPaths([
+            NSIndexPath(forRow: 0, inSection: lastSection),
+            NSIndexPath(forRow: 1, inSection: lastSection)
+            ], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+        tableViewScrollToBottomAnimated(true)
+        AudioServicesPlaySystemSound(messageSoundOutgoing)
     }
     
     func tableViewScrollToBottomAnimated(animated: Bool) {
