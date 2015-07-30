@@ -704,6 +704,7 @@ class ItemListViewController: UIViewController {
         
         // スクロールview
         let scrView = MyScrollView()
+        scrView.delaysContentTouches = false
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         // 全体のサイズ
@@ -713,6 +714,7 @@ class ItemListViewController: UIViewController {
             x: scrView.frame.width/2,
             y: scrView.frame.height/2
         )
+        scrView.addGestureRecognizer(gesture)
         self.view.addSubview(scrView)
         // 各イメージを追加
         scrView.addSubview(itemImageView01)
@@ -768,13 +770,8 @@ class ItemListViewController: UIViewController {
     // 商品クリック時に商品詳細画面に遷移する
     func onClickItemImageView(recognizer: UIGestureRecognizer) {
         println("test")
-        //let itemViewController: UIViewController = itemViewController()
-        //navigationController?.pushViewController(itemViewController, animated: true)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?){
-        //var itemViewController:ItemViewController = segue.destinationViewController as ItemViewController
-        //itemViewController.param = self.paramText.text
+        let itemViewController: UIViewController = ItemViewController()
+        navigationController?.pushViewController(itemViewController, animated: true)
     }
     
     // 通常のScrollViewではtouchesBeganが呼ばれないため拡張
