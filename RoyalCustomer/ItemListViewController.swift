@@ -8,19 +8,6 @@
 
 import UIKit
 
-class Item {
-    var itemid :String
-    var image  :String
-    var priority :Float
-    
-    // イニシャライザ
-    init(itemid: String, image: String, priority: Float) {
-        self.itemid = itemid
-        self.image = image
-        self.priority = priority
-    }
-}
-
 class ItemListViewController: UIViewController {
     // 商品リスト
     private var itemImageView01: UIImageView!
@@ -71,7 +58,7 @@ class ItemListViewController: UIViewController {
         // Viewの背景色をWhiteに設定する.
         self.view.backgroundColor = UIColor.whiteColor()
         
-        self.statusBarView()
+        self.navigationView()
         self.itemListView()
         /*
         let itemList = itemList[indexPath.row]
@@ -99,21 +86,9 @@ class ItemListViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    func statusBarView(){
+    func navigationView(){
         // ナビゲーションの表示
         self.navigationItem.title = "くらさわさん"
-        /*
-        statusBar = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
-        statusBar.setTitleColor(UIColor.blueColor(), forState: .Normal)
-        statusBar.layer.masksToBounds = true
-        statusBar.setTitle("くらさわさん", forState: .Normal)
-        statusBar.layer.cornerRadius = 10.0
-        statusBar.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left;
-        statusBar.layer.position = CGPoint(
-            x:self.view.bounds.width-statusBar.frame.width/2,
-            y:statusBar.frame.height/2)
-        self.view.addSubview(statusBar)
-*/
     }
     
     func itemListView(){
@@ -124,7 +99,7 @@ class ItemListViewController: UIViewController {
         
         // 01
         itemImageView01 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
-        let itemImage01 = UIImage(named: "img01.jpg")
+        let itemImage01 = UIImage(named: items[0].image)
         itemImageView01.image = itemImage01
         itemImageView01.layer.borderColor = borderColor
         itemImageView01.layer.borderWidth = borderWidth
@@ -136,7 +111,7 @@ class ItemListViewController: UIViewController {
         
         // 02
         itemImageView02 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage02 = UIImage(named: "img01.jpg")
+        let itemImage02 = UIImage(named: items[1].image)
         itemImageView02.image = itemImage02
         itemImageView02.layer.borderColor = borderColor
         itemImageView02.layer.borderWidth = borderWidth
@@ -148,7 +123,7 @@ class ItemListViewController: UIViewController {
         
         // 03
         itemImageView03 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage03 = UIImage(named: "img01.jpg")
+        let itemImage03 = UIImage(named: items[2].image)
         itemImageView03.image = itemImage03
         itemImageView03.layer.borderColor = borderColor
         itemImageView03.layer.borderWidth = borderWidth
@@ -160,7 +135,7 @@ class ItemListViewController: UIViewController {
         
         // 04
         itemImageView04 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage04 = UIImage(named: "img01.jpg")
+        let itemImage04 = UIImage(named: items[3].image)
         itemImageView04.image = itemImage04
         itemImageView04.layer.borderColor = borderColor
         itemImageView04.layer.borderWidth = borderWidth
@@ -172,7 +147,7 @@ class ItemListViewController: UIViewController {
         
         // 05
         itemImageView05 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage05 = UIImage(named: "img01.jpg")
+        let itemImage05 = UIImage(named: items[4].image)
         itemImageView05.image = itemImage05
         itemImageView05.layer.borderColor = borderColor
         itemImageView05.layer.borderWidth = borderWidth
@@ -184,7 +159,7 @@ class ItemListViewController: UIViewController {
         
         // 06
         itemImageView06 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage06 = UIImage(named: "img01.jpg")
+        let itemImage06 = UIImage(named: items[5].image)
         itemImageView06.image = itemImage06
         itemImageView06.layer.borderColor = borderColor
         itemImageView06.layer.borderWidth = borderWidth
@@ -196,7 +171,7 @@ class ItemListViewController: UIViewController {
         
         // 07
         itemImageView07 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage07 = UIImage(named: "img01.jpg")
+        let itemImage07 = UIImage(named: items[6].image)
         itemImageView07.image = itemImage07
         itemImageView07.layer.borderColor = borderColor
         itemImageView07.layer.borderWidth = borderWidth
@@ -208,7 +183,7 @@ class ItemListViewController: UIViewController {
         
         // 08
         itemImageView08 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage08 = UIImage(named: "img01.jpg")
+        let itemImage08 = UIImage(named: items[7].image)
         itemImageView08.image = itemImage08
         itemImageView08.layer.borderColor = borderColor
         itemImageView08.layer.borderWidth = borderWidth
@@ -220,7 +195,7 @@ class ItemListViewController: UIViewController {
         
         // 09
         itemImageView09 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage09 = UIImage(named: "img01.jpg")
+        let itemImage09 = UIImage(named: items[8].image)
         itemImageView09.image = itemImage09
         itemImageView09.layer.borderColor = borderColor
         itemImageView09.layer.borderWidth = borderWidth
@@ -232,7 +207,7 @@ class ItemListViewController: UIViewController {
         
         // 10
         itemImageView10 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage10 = UIImage(named: "img01.jpg")
+        let itemImage10 = UIImage(named: items[9].image)
         itemImageView10.image = itemImage10
         itemImageView10.layer.borderColor = borderColor
         itemImageView10.layer.borderWidth = borderWidth
@@ -244,7 +219,7 @@ class ItemListViewController: UIViewController {
         
         // 11
         itemImageView11 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage11 = UIImage(named: "img01.jpg")
+        let itemImage11 = UIImage(named: items[10].image)
         itemImageView11.image = itemImage11
         itemImageView11.layer.borderColor = borderColor
         itemImageView11.layer.borderWidth = borderWidth
@@ -256,7 +231,7 @@ class ItemListViewController: UIViewController {
 
         // 12
         itemImageView12 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage12 = UIImage(named: "img01.jpg")
+        let itemImage12 = UIImage(named: items[11].image)
         itemImageView12.image = itemImage12
         itemImageView12.layer.borderColor = borderColor
         itemImageView12.layer.borderWidth = borderWidth
@@ -268,7 +243,7 @@ class ItemListViewController: UIViewController {
         
         // 13
         itemImageView13 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage13 = UIImage(named: "img01.jpg")
+        let itemImage13 = UIImage(named: items[12].image)
         itemImageView13.image = itemImage13
         itemImageView13.layer.borderColor = borderColor
         itemImageView13.layer.borderWidth = borderWidth
@@ -280,7 +255,7 @@ class ItemListViewController: UIViewController {
         
         // 14
         itemImageView14 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage14 = UIImage(named: "img01.jpg")
+        let itemImage14 = UIImage(named: items[13].image)
         itemImageView14.image = itemImage14
         itemImageView14.layer.borderColor = borderColor
         itemImageView14.layer.borderWidth = borderWidth
@@ -292,7 +267,7 @@ class ItemListViewController: UIViewController {
         
         // 15
         itemImageView15 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage15 = UIImage(named: "img01.jpg")
+        let itemImage15 = UIImage(named: items[14].image)
         itemImageView15.image = itemImage15
         itemImageView15.layer.borderColor = borderColor
         itemImageView15.layer.borderWidth = borderWidth
@@ -304,7 +279,7 @@ class ItemListViewController: UIViewController {
         
         // 16
         itemImageView16 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage16 = UIImage(named: "img01.jpg")
+        let itemImage16 = UIImage(named: items[15].image)
         itemImageView16.image = itemImage16
         itemImageView16.layer.borderColor = borderColor
         itemImageView16.layer.borderWidth = borderWidth
@@ -316,7 +291,7 @@ class ItemListViewController: UIViewController {
         
         // 17
         itemImageView17 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage17 = UIImage(named: "img01.jpg")
+        let itemImage17 = UIImage(named: items[16].image)
         itemImageView17.image = itemImage17
         itemImageView17.layer.borderColor = borderColor
         itemImageView17.layer.borderWidth = borderWidth
@@ -328,7 +303,7 @@ class ItemListViewController: UIViewController {
         
         // 18
         itemImageView18 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage18 = UIImage(named: "img01.jpg")
+        let itemImage18 = UIImage(named: items[17].image)
         itemImageView18.image = itemImage18
         itemImageView18.layer.borderColor = borderColor
         itemImageView18.layer.borderWidth = borderWidth
@@ -340,7 +315,7 @@ class ItemListViewController: UIViewController {
         
         // 19
         itemImageView19 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage19 = UIImage(named: "img01.jpg")
+        let itemImage19 = UIImage(named: items[18].image)
         itemImageView19.image = itemImage19
         itemImageView19.layer.borderColor = borderColor
         itemImageView19.layer.borderWidth = borderWidth
@@ -352,7 +327,7 @@ class ItemListViewController: UIViewController {
         
         // 20
         itemImageView20 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
-        let itemImage20 = UIImage(named: "img01.jpg")
+        let itemImage20 = UIImage(named: items[19].image)
         itemImageView20.image = itemImage20
         itemImageView20.layer.borderColor = borderColor
         itemImageView20.layer.borderWidth = borderWidth
@@ -366,7 +341,7 @@ class ItemListViewController: UIViewController {
         
         // 21
         itemImageView21 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
-        let itemImage21 = UIImage(named: "img01.jpg")
+        let itemImage21 = UIImage(named: items[20].image)
         itemImageView21.image = itemImage21
         itemImageView21.layer.borderColor = borderColor
         itemImageView21.layer.borderWidth = borderWidth
@@ -378,7 +353,7 @@ class ItemListViewController: UIViewController {
         
         // 22
         itemImageView22 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage22 = UIImage(named: "img01.jpg")
+        let itemImage22 = UIImage(named: items[21].image)
         itemImageView22.image = itemImage22
         itemImageView22.layer.borderColor = borderColor
         itemImageView22.layer.borderWidth = borderWidth
@@ -390,7 +365,7 @@ class ItemListViewController: UIViewController {
         
         // 23
         itemImageView23 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage23 = UIImage(named: "img01.jpg")
+        let itemImage23 = UIImage(named: items[22].image)
         itemImageView23.image = itemImage23
         itemImageView23.layer.borderColor = borderColor
         itemImageView23.layer.borderWidth = borderWidth
@@ -402,7 +377,7 @@ class ItemListViewController: UIViewController {
         
         // 24
         itemImageView24 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage24 = UIImage(named: "img01.jpg")
+        let itemImage24 = UIImage(named: items[23].image)
         itemImageView24.image = itemImage24
         itemImageView24.layer.borderColor = borderColor
         itemImageView24.layer.borderWidth = borderWidth
@@ -414,7 +389,7 @@ class ItemListViewController: UIViewController {
         
         // 25
         itemImageView25 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage25 = UIImage(named: "img01.jpg")
+        let itemImage25 = UIImage(named: items[24].image)
         itemImageView25.image = itemImage25
         itemImageView25.layer.borderColor = borderColor
         itemImageView25.layer.borderWidth = borderWidth
@@ -426,7 +401,7 @@ class ItemListViewController: UIViewController {
         
         // 26
         itemImageView26 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage26 = UIImage(named: "img01.jpg")
+        let itemImage26 = UIImage(named: items[25].image)
         itemImageView26.image = itemImage26
         itemImageView26.layer.borderColor = borderColor
         itemImageView26.layer.borderWidth = borderWidth
@@ -438,7 +413,7 @@ class ItemListViewController: UIViewController {
         
         // 27
         itemImageView27 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage27 = UIImage(named: "img01.jpg")
+        let itemImage27 = UIImage(named: items[26].image)
         itemImageView27.image = itemImage27
         itemImageView27.layer.borderColor = borderColor
         itemImageView27.layer.borderWidth = borderWidth
@@ -450,7 +425,7 @@ class ItemListViewController: UIViewController {
         
         // 28
         itemImageView28 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage28 = UIImage(named: "img01.jpg")
+        let itemImage28 = UIImage(named: items[27].image)
         itemImageView28.image = itemImage28
         itemImageView28.layer.borderColor = borderColor
         itemImageView28.layer.borderWidth = borderWidth
@@ -462,7 +437,7 @@ class ItemListViewController: UIViewController {
         
         // 29
         itemImageView29 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage29 = UIImage(named: "img01.jpg")
+        let itemImage29 = UIImage(named: items[28].image)
         itemImageView29.image = itemImage29
         itemImageView29.layer.borderColor = borderColor
         itemImageView29.layer.borderWidth = borderWidth
@@ -474,7 +449,7 @@ class ItemListViewController: UIViewController {
         
         // 30
         itemImageView30 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage30 = UIImage(named: "img01.jpg")
+        let itemImage30 = UIImage(named: items[29].image)
         itemImageView30.image = itemImage30
         itemImageView30.layer.borderColor = borderColor
         itemImageView30.layer.borderWidth = borderWidth
@@ -486,7 +461,7 @@ class ItemListViewController: UIViewController {
         
         // 31
         itemImageView31 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage31 = UIImage(named: "img01.jpg")
+        let itemImage31 = UIImage(named: items[30].image)
         itemImageView31.image = itemImage31
         itemImageView31.layer.borderColor = borderColor
         itemImageView31.layer.borderWidth = borderWidth
@@ -498,7 +473,7 @@ class ItemListViewController: UIViewController {
         
         // 32
         itemImageView32 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage32 = UIImage(named: "img01.jpg")
+        let itemImage32 = UIImage(named: items[31].image)
         itemImageView32.image = itemImage32
         itemImageView32.layer.borderColor = borderColor
         itemImageView32.layer.borderWidth = borderWidth
@@ -510,7 +485,7 @@ class ItemListViewController: UIViewController {
         
         // 33
         itemImageView33 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage33 = UIImage(named: "img01.jpg")
+        let itemImage33 = UIImage(named: items[32].image)
         itemImageView33.image = itemImage33
         itemImageView33.layer.borderColor = borderColor
         itemImageView33.layer.borderWidth = borderWidth
@@ -522,7 +497,7 @@ class ItemListViewController: UIViewController {
         
         // 34
         itemImageView34 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage34 = UIImage(named: "img01.jpg")
+        let itemImage34 = UIImage(named: items[33].image)
         itemImageView34.image = itemImage34
         itemImageView34.layer.borderColor = borderColor
         itemImageView34.layer.borderWidth = borderWidth
@@ -534,7 +509,7 @@ class ItemListViewController: UIViewController {
         
         // 35
         itemImageView35 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage35 = UIImage(named: "img01.jpg")
+        let itemImage35 = UIImage(named: items[34].image)
         itemImageView35.image = itemImage35
         itemImageView35.layer.borderColor = borderColor
         itemImageView35.layer.borderWidth = borderWidth
@@ -546,7 +521,7 @@ class ItemListViewController: UIViewController {
         
         // 36
         itemImageView36 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage36 = UIImage(named: "img01.jpg")
+        let itemImage36 = UIImage(named: items[35].image)
         itemImageView36.image = itemImage36
         itemImageView36.layer.borderColor = borderColor
         itemImageView36.layer.borderWidth = borderWidth
@@ -558,7 +533,7 @@ class ItemListViewController: UIViewController {
         
         // 37
         itemImageView37 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage37 = UIImage(named: "img01.jpg")
+        let itemImage37 = UIImage(named: items[36].image)
         itemImageView37.image = itemImage37
         itemImageView37.layer.borderColor = borderColor
         itemImageView37.layer.borderWidth = borderWidth
@@ -570,7 +545,7 @@ class ItemListViewController: UIViewController {
         
         // 38
         itemImageView38 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
-        let itemImage38 = UIImage(named: "img01.jpg")
+        let itemImage38 = UIImage(named: items[37].image)
         itemImageView38.image = itemImage38
         itemImageView38.layer.borderColor = borderColor
         itemImageView38.layer.borderWidth = borderWidth
@@ -582,7 +557,7 @@ class ItemListViewController: UIViewController {
         
         // 39
         itemImageView39 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
-        let itemImage39 = UIImage(named: "img01.jpg")
+        let itemImage39 = UIImage(named: items[38].image)
         itemImageView39.image = itemImage39
         itemImageView39.layer.borderColor = borderColor
         itemImageView39.layer.borderWidth = borderWidth
@@ -594,7 +569,7 @@ class ItemListViewController: UIViewController {
         
         // 40
         itemImageView40 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
-        let itemImage40 = UIImage(named: "img01.jpg")
+        let itemImage40 = UIImage(named: items[39].image)
         itemImageView40.image = itemImage40
         itemImageView40.layer.borderColor = borderColor
         itemImageView40.layer.borderWidth = borderWidth
