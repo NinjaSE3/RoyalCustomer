@@ -65,26 +65,5 @@ class ChatsTableViewController: UITableViewController {
         presentViewController(navigationController, animated: true, completion: nil)
     }
     
-    //    //ナビゲーション生成
-    //    init() {
-    //        super.init(nibName: nil, bundle: nil)
-    //        // Viewの背景色をWhiteに設定する.
-    //        self.view.backgroundColor = UIColor.whiteColor()
-    //        //tabBarItemのアイコンをContactsに、タグを1と定義する.
-    //        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
-    //    }
-    //
-    //    //ナビゲーション生成
-    //    required init(coder aDecoder: NSCoder) {
-    //        super.init(coder: aDecoder)
-    //    }
-    //
-    //    //ナビゲーション生成
-    //    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-    //        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    //    }
-    
-    
-    
 }
 
