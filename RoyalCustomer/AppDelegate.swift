@@ -9,6 +9,7 @@
 import UIKit
 
 let account = Account()
+var items :[Item] = []
 let api = API(baseURL: NSURL(string: "https://acani-chats.herokuapp.com"))
 
 @UIApplicationMain
@@ -26,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        //商品作成
+        self.createItems()
         //アカウント取得
         self.continueAsGuestAction()
 
@@ -124,6 +127,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         account.phone = "2102390602"
         account.user = User(ID: 24, username: "guest", firstName: "Guest", lastName: "User")
         account.accessToken = "guest_access_token"
+    }
+    
+    //商品ハードコーディング
+    func createItems() {
+        items.append(Item(itemid:"000001",name:"商品1",image:"img01.jpg"))
+        items.append(Item(itemid:"000002",name:"商品2",image:"img01.jpg"))
+        items.append(Item(itemid:"000003",name:"商品3",image:"img01.jpg"))
+        items.append(Item(itemid:"000004",name:"商品4",image:"img01.jpg"))
+        items.append(Item(itemid:"000005",name:"商品5",image:"img01.jpg"))
+        items.append(Item(itemid:"000006",name:"商品6",image:"img01.jpg"))
+        items.append(Item(itemid:"000007",name:"商品7",image:"img01.jpg"))
+        items.append(Item(itemid:"000008",name:"商品8",image:"img01.jpg"))
+        items.append(Item(itemid:"000009",name:"商品9",image:"img01.jpg"))
+        items.append(Item(itemid:"000010",name:"商品10",image:"img01.jpg"))
+        items.append(Item(itemid:"000011",name:"商品11",image:"img01.jpg"))
+        items.append(Item(itemid:"000012",name:"商品12",image:"img01.jpg"))
+        items.append(Item(itemid:"000013",name:"商品13",image:"img01.jpg"))
+        items.append(Item(itemid:"000014",name:"商品14",image:"img01.jpg"))
+        items.append(Item(itemid:"000015",name:"商品15",image:"img01.jpg"))
+        items.append(Item(itemid:"000016",name:"商品16",image:"img01.jpg"))
+        items.append(Item(itemid:"000017",name:"商品17",image:"img01.jpg"))
+        items.append(Item(itemid:"000018",name:"商品18",image:"img01.jpg"))
+        items.append(Item(itemid:"000019",name:"商品19",image:"img01.jpg"))
+        items.append(Item(itemid:"000020",name:"商品20",image:"img01.jpg"))
+        items.append(Item(itemid:"000021",name:"商品21",image:"img01.jpg"))
+        items.append(Item(itemid:"000022",name:"商品22",image:"img01.jpg"))
+        items.append(Item(itemid:"000023",name:"商品23",image:"img01.jpg"))
+        items.append(Item(itemid:"000024",name:"商品24",image:"img01.jpg"))
+        items.append(Item(itemid:"000025",name:"商品25",image:"img01.jpg"))
+        items.append(Item(itemid:"000026",name:"商品26",image:"img01.jpg"))
+        items.append(Item(itemid:"000027",name:"商品27",image:"img01.jpg"))
+        items.append(Item(itemid:"000028",name:"商品28",image:"img01.jpg"))
+        items.append(Item(itemid:"000029",name:"商品29",image:"img01.jpg"))
+        items.append(Item(itemid:"000030",name:"商品30",image:"img01.jpg"))
+        items.append(Item(itemid:"000031",name:"商品31",image:"img01.jpg"))
+        items.append(Item(itemid:"000032",name:"商品32",image:"img01.jpg"))
+        items.append(Item(itemid:"000033",name:"商品33",image:"img01.jpg"))
+        items.append(Item(itemid:"000034",name:"商品34",image:"img01.jpg"))
+        items.append(Item(itemid:"000035",name:"商品35",image:"img01.jpg"))
+        items.append(Item(itemid:"000036",name:"商品36",image:"img01.jpg"))
+        items.append(Item(itemid:"000037",name:"商品37",image:"img01.jpg"))
+        items.append(Item(itemid:"000038",name:"商品38",image:"img01.jpg"))
+        items.append(Item(itemid:"000039",name:"商品39",image:"img01.jpg"))
+        items.append(Item(itemid:"000040",name:"商品40",image:"img01.jpg"))
+        
     }
 
 }

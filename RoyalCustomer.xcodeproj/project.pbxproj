@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DD1D4441B69E494009C591C /* img01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD1D4431B69E494009C591C /* img01.jpg */; };
+		0DD1D4461B6A998D009C591C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1D4451B6A998D009C591C /* Common.swift */; };
 		2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08996A1B69A7E400BD9798 /* AppDelegate.swift */; };
 		2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08996E1B69A7E400BD9798 /* Main.storyboard */; };
 		2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0899711B69A7E400BD9798 /* Images.xcassets */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		0DD1D4431B69E494009C591C /* img01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img01.jpg; sourceTree = "<group>"; };
+		0DD1D4451B6A998D009C591C /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		2D0899651B69A7E400BD9798 /* RoyalCustomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoyalCustomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0899691B69A7E400BD9798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D08996A1B69A7E400BD9798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 				2D0899681B69A7E400BD9798 /* Supporting Files */,
 				2D08998A1B69A87600BD9798 /* ItemListViewController.swift */,
 				0DD1D4431B69E494009C591C /* img01.jpg */,
+				0DD1D4451B6A998D009C591C /* Common.swift */,
 			);
 			path = RoyalCustomer;
 			sourceTree = "<group>";
@@ -394,6 +397,7 @@
 				2D14E7EA1B69DF230004C6B5 /* Chat.swift in Sources */,
 				2D14E7D61B69DEF90004C6B5 /* MessageBubbleTableViewCell.swift in Sources */,
 				2D14E7D51B69DEF90004C6B5 /* ChatViewController.swift in Sources */,
+				0DD1D4461B6A998D009C591C /* Common.swift in Sources */,
 				2D14E7EB1B69DF230004C6B5 /* Message.swift in Sources */,
 				2D14E7CF1B69DEED0004C6B5 /* ChatsTableViewController.swift in Sources */,
 				2D14E7E31B69DF0E0004C6B5 /* NetWorking.swift in Sources */,
