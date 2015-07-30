@@ -11,9 +11,13 @@ import UIKit
 let incomingTag = 0, outgoingTag = 1
 let bubbleTag = 8
 
+
 class MessageBubbleTableViewCell: UITableViewCell {
     let bubbleImageView: UIImageView
     let messageLabel: UILabel
+
+    //顔写真
+    let userPictureImageView: UserPictureImageView
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         bubbleImageView = UIImageView(image: bubbleImage.incoming, highlightedImage: bubbleImage.incomingHighlighed)
@@ -25,19 +29,29 @@ class MessageBubbleTableViewCell: UITableViewCell {
         messageLabel.numberOfLines = 0
         messageLabel.userInteractionEnabled = false   // #CopyMessage
         
+        //顔写真
+        userPictureImageView = UserPictureImageView(frame: CGRect(x: 8, y: (chatTableViewCellHeight-64)/2, width: 40, height: 40))
+        
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None
         
+        
         contentView.addSubview(bubbleImageView)
         bubbleImageView.addSubview(messageLabel)
+
+        //顔写真
+        let user = account.user
+        userPictureImageView.configureWithUser(user)
+        contentView.addSubview(userPictureImageView)
         
         bubbleImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         messageLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 10))
+        //バブルの開始位置
+        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 50))
         contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 4.5))
         bubbleImageView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Width, relatedBy: .Equal, toItem: messageLabel, attribute: .Width, multiplier: 1, constant: 30))
         contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: -4.5))
-        
+        //文字の開始位置
         bubbleImageView.addConstraint(NSLayoutConstraint(item: messageLabel, attribute: .CenterX, relatedBy: .Equal, toItem: bubbleImageView, attribute: .CenterX, multiplier: 1, constant: 3))
         bubbleImageView.addConstraint(NSLayoutConstraint(item: messageLabel, attribute: .CenterY, relatedBy: .Equal, toItem: bubbleImageView, attribute: .CenterY, multiplier: 1, constant: -0.5))
         messageLabel.preferredMaxLayoutWidth = 218
@@ -88,6 +102,7 @@ class MessageBubbleTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         bubbleImageView.highlighted = selected
     }
+    
 }
 
 let bubbleImage = bubbleImageMake()
@@ -119,3 +134,4 @@ func coloredImage(image: UIImage, red: CGFloat, green: CGFloat, blue: CGFloat, a
     UIGraphicsEndImageContext()
     return result
 }
+
