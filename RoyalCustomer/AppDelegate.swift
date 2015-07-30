@@ -37,13 +37,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         account.addObserver(self, forKeyPath: "accessToken", options: NSKeyValueObservingOptions(0), context: nil) // always
         
         // Tabに設定するViewControllerのインスタンスを生成.
-        let myFirstTab: UIViewController = ItemListViewController()
+        let itemListViewController: UIViewController = ItemListViewController()
         let chatsTableViewController: UIViewController = ChatsTableViewController()
         // UINavigationを設定
+        let itemListNavigationController = UINavigationController(rootViewController: itemListViewController)
         let chatsNavigationController = UINavigationController(rootViewController: chatsTableViewController)
         
         // タブを要素に持つArrayの.を作成する.
-        let myTabs = NSArray(objects: myFirstTab, chatsNavigationController)
+        let myTabs = NSArray(objects: itemListNavigationController, chatsNavigationController)
         
         // UITabControllerの作成する.
         myTabBarController = UITabBarController()
