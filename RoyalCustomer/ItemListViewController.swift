@@ -225,7 +225,7 @@ class ItemListViewController: UIViewController {
         itemImageView14 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
         let itemImage14 = UIImage(named: "img01.jpg")
         itemImageView14.image = itemImage14
-        itemImageView14.backgroundColor = UIColor.redColor()
+        itemImageView14.backgroundColor = UIColor.blueColor()
         itemImageView14.layer.position = CGPoint(
             x: itemImageView14.frame.width/2+itemImageView01.frame.width,
             y: itemImageView14.frame.height/2+itemImageView01.frame.height
@@ -233,7 +233,7 @@ class ItemListViewController: UIViewController {
         self.view.addSubview(itemImageView14)
         
         // 15
-        itemImageView15 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        itemImageView15 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
         let itemImage15 = UIImage(named: "img01.jpg")
         itemImageView15.image = itemImage15
         itemImageView15.backgroundColor = UIColor.redColor()
@@ -244,7 +244,7 @@ class ItemListViewController: UIViewController {
         self.view.addSubview(itemImageView15)
         
         // 16
-        itemImageView16 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        itemImageView16 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
         let itemImage16 = UIImage(named: "img01.jpg")
         itemImageView16.image = itemImage16
         itemImageView16.backgroundColor = UIColor.redColor()
@@ -255,7 +255,7 @@ class ItemListViewController: UIViewController {
         self.view.addSubview(itemImageView16)
         
         // 17
-        itemImageView17 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        itemImageView17 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
         let itemImage17 = UIImage(named: "img01.jpg")
         itemImageView17.image = itemImage17
         itemImageView17.backgroundColor = UIColor.redColor()
@@ -265,5 +265,37 @@ class ItemListViewController: UIViewController {
         )
         self.view.addSubview(itemImageView17)
         
+        // 18
+        itemImageView18 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage18 = UIImage(named: "img01.jpg")
+        itemImageView18.image = itemImage18
+        itemImageView18.backgroundColor = UIColor.redColor()
+        itemImageView18.layer.position = CGPoint(
+            x: itemImageView18.frame.width/2,
+            y: itemImageView18.frame.height/2+itemImageView17.frame.height+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView18)
+        
+        // 19
+        itemImageView19 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage19 = UIImage(named: "img01.jpg")
+        itemImageView19.image = itemImage19
+        itemImageView19.backgroundColor = UIColor.redColor()
+        itemImageView19.layer.position = CGPoint(
+            x: itemImageView19.frame.width/2+itemImageView17.frame.width,
+            y: itemImageView19.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView19)
+        
+        // 20
+        itemImageView20 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
+        let itemImage20 = UIImage(named: "img01.jpg")
+        itemImageView20.image = itemImage20
+        itemImageView20.backgroundColor = UIColor.redColor()
+        itemImageView20.layer.position = CGPoint(
+            x: itemImageView20.frame.width/2+itemImageView19.frame.width+itemImageView17.frame.width,
+            y: itemImageView20.frame.height/2+itemImageView14.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView20)
     }
 }
