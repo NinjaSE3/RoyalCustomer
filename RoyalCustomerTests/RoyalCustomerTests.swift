@@ -2,7 +2,7 @@
 //  RoyalCustomerTests.swift
 //  RoyalCustomerTests
 //
-//  Created by Takaaki on 2015/07/29.
+//  Created by NRI on 2015/07/29.
 //  Copyright (c) 2015年 NRI. All rights reserved.
 //
 

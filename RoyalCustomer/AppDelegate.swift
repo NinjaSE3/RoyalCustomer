@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  RoyalCustomer
 //
-//  Created by Takaaki on 2015/07/29.
+//  Created by NRI on 2015/07/29.
 //  Copyright (c) 2015年 NRI. All rights reserved.
 //
 
@@ -12,10 +12,33 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+    private var myTabBarController: UITabBarController!
+    
+    /*
+    アプリケーション起動時に呼ばれるメソッド.
+    */
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // Tabに設定するViewControllerのインスタンスを生成.
+        let myFirstTab: UIViewController = ItemListViewController()
+        let mySecondTab: UIViewController = MessageListViewController()
+        
+        // タブを要素に持つArrayの.を作成する.
+        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
+        
+        // UITabControllerの作成する.
+        myTabBarController = UITabBarController()
+        
+        // ViewControllerを設定する.
+        myTabBarController?.setViewControllers(myTabs as [AnyObject], animated: false)
+        
+        // RootViewControllerに設定する.
+        self.window!.rootViewController = myTabBarController
+        
+        self.window!.makeKeyAndVisible()
+        
         return true
     }
 
