@@ -40,7 +40,8 @@ class MessageBubbleTableViewCell: UITableViewCell {
         bubbleImageView.addSubview(messageLabel)
 
         //顔写真
-        let user = account.user
+        var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let user = appDelegate._chat!.user
         userPictureImageView.configureWithUser(user)
         contentView.addSubview(userPictureImageView)
         
@@ -76,6 +77,10 @@ class MessageBubbleTableViewCell: UITableViewCell {
                 messageLabel.textColor = UIColor.blackColor()
                 layoutAttribute = .Left
                 layoutConstant = 10
+
+                //顔写真　表示:false / 非表示:true
+                userPictureImageView.hidden = false
+
             } else { // outgoing
                 tag = outgoingTag
                 bubbleImageView.image = bubbleImage.outgoing
@@ -83,6 +88,9 @@ class MessageBubbleTableViewCell: UITableViewCell {
                 messageLabel.textColor = UIColor.whiteColor()
                 layoutAttribute = .Right
                 layoutConstant = -10
+
+                //顔写真　表示:false / 非表示:true
+                userPictureImageView.hidden = true
             }
             
             let layoutConstraint: NSLayoutConstraint = bubbleImageView.constraints()[1] as! NSLayoutConstraint // `messageLabel` CenterX
