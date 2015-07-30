@@ -23,6 +23,29 @@ class Item {
 
 class ItemListViewController: UIViewController {
     
+    // 商品リスト
+    private var itemImageView01: UIImageView!
+    private var itemImageView02: UIImageView!
+    private var itemImageView03: UIImageView!
+    private var itemImageView04: UIImageView!
+    private var itemImageView05: UIImageView!
+    private var itemImageView06: UIImageView!
+    private var itemImageView07: UIImageView!
+    private var itemImageView08: UIImageView!
+    private var itemImageView09: UIImageView!
+    private var itemImageView10: UIImageView!
+    private var itemImageView11: UIImageView!
+    private var itemImageView12: UIImageView!
+    private var itemImageView13: UIImageView!
+    private var itemImageView14: UIImageView!
+    private var itemImageView15: UIImageView!
+    private var itemImageView16: UIImageView!
+    private var itemImageView17: UIImageView!
+    private var itemImageView18: UIImageView!
+    private var itemImageView19: UIImageView!
+    private var itemImageView20: UIImageView!
+    
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         
@@ -52,46 +75,195 @@ class ItemListViewController: UIViewController {
     }
     
     func itemListView(){
-        // 商品リスト
-        let items = [
-            Item(itemid:"test001",image:"img001.jpg",priority:1),
-            Item(itemid:"test002",image:"img002.jpg",priority:1),
-            Item(itemid:"test003",image:"img003.jpg",priority:2),
-            Item(itemid:"test004",image:"img004.jpg",priority:2),
-            Item(itemid:"test005",image:"img005.jpg",priority:2),
-            Item(itemid:"test006",image:"img006.jpg",priority:2),
-            Item(itemid:"test007",image:"img007.jpg",priority:2),
-            Item(itemid:"test008",image:"img008.jpg",priority:3),
-            Item(itemid:"test009",image:"img009.jpg",priority:3),
-            Item(itemid:"test010",image:"img010.jpg",priority:3),
-            Item(itemid:"test011",image:"img011.jpg",priority:3),
-            Item(itemid:"test012",image:"img012.jpg",priority:3),
-            Item(itemid:"test013",image:"img013.jpg",priority:3),
-            Item(itemid:"test014",image:"img014.jpg",priority:3),
-            Item(itemid:"test015",image:"img015.jpg",priority:3),
-            Item(itemid:"test016",image:"img016.jpg",priority:3),
-            Item(itemid:"test017",image:"img017.jpg",priority:3),
-            Item(itemid:"test018",image:"img018.jpg",priority:3),
-            Item(itemid:"test019",image:"img019.jpg",priority:3),
-            Item(itemid:"test020",image:"img020.jpg",priority:3),
-        ]
         
-        for item in items{
-            println(item.image)
-        }
+        // 商品一覧を作成（今はべた書き）
+        // 01
+        itemImageView01 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
+        let itemImage01 = UIImage(named: "img01.jpg")
+        itemImageView01.image = itemImage01
         
-        // 重要度1の商品を描画
+        itemImageView01.backgroundColor = UIColor.redColor()
+        itemImageView01.layer.position = CGPoint(
+            x: itemImageView01.frame.width/2,
+            y: itemImageView01.frame.height/2
+        )
+        self.view.addSubview(itemImageView01)
         
+        // 02
+        itemImageView02 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage02 = UIImage(named: "img01.jpg")
+        itemImageView02.image = itemImage02
+        itemImageView02.backgroundColor = UIColor.redColor()
+        itemImageView02.layer.position = CGPoint(
+            x: itemImageView02.frame.width/2+itemImageView01.frame.width,
+            y: itemImageView02.frame.height/2
+        )
+        self.view.addSubview(itemImageView02)
         
-        // ボタンの生成.
-        let myButton = UIButton(frame: CGRect(x: 0, y: 0, width: 150, height: 40))
-        //myButton.backgroundColor = accentColor
-        myButton.layer.masksToBounds = true
-        myButton.setTitle("END", forState: .Normal)
-        myButton.layer.cornerRadius = 5.0
-        myButton.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height/2.4)
-        //myButton.addTarget(self, action: "onClickMyButton:", forControlEvents: .TouchUpInside)
-        self.view.addSubview(myButton)
+        // 03
+        itemImageView03 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage03 = UIImage(named: "img01.jpg")
+        itemImageView03.image = itemImage03
+        itemImageView03.backgroundColor = UIColor.redColor()
+        itemImageView03.layer.position = CGPoint(
+            x: itemImageView03.frame.width/2+itemImageView02.frame.width+itemImageView01.frame.width,
+            y: itemImageView03.frame.height/2
+        )
+        self.view.addSubview(itemImageView03)
+        
+        // 04
+        itemImageView04 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage04 = UIImage(named: "img01.jpg")
+        itemImageView04.image = itemImage04
+        itemImageView04.backgroundColor = UIColor.redColor()
+        itemImageView04.layer.position = CGPoint(
+            x: itemImageView04.frame.width/2+itemImageView03.frame.width+itemImageView02.frame.width+itemImageView01.frame.width,
+            y: itemImageView04.frame.height/2
+        )
+        self.view.addSubview(itemImageView04)
+        
+        // 05
+        itemImageView05 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage05 = UIImage(named: "img01.jpg")
+        itemImageView05.image = itemImage05
+        itemImageView05.backgroundColor = UIColor.redColor()
+        itemImageView05.layer.position = CGPoint(
+            x: itemImageView05.frame.width/2+itemImageView01.frame.width,
+            y: itemImageView05.frame.height/2+itemImageView02.frame.height
+        )
+        self.view.addSubview(itemImageView05)
+        
+        // 06
+        itemImageView06 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage06 = UIImage(named: "img01.jpg")
+        itemImageView06.image = itemImage06
+        itemImageView06.backgroundColor = UIColor.redColor()
+        itemImageView06.layer.position = CGPoint(
+            x: itemImageView06.frame.width/2+itemImageView01.frame.width,
+            y: itemImageView06.frame.height/2+itemImageView06.frame.height+itemImageView02.frame.height
+        )
+        self.view.addSubview(itemImageView06)
+        
+        // 07
+        itemImageView07 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage07 = UIImage(named: "img01.jpg")
+        itemImageView07.image = itemImage07
+        itemImageView07.backgroundColor = UIColor.redColor()
+        itemImageView07.layer.position = CGPoint(
+            x: itemImageView07.frame.width/2+itemImageView05.frame.width+itemImageView01.frame.width,
+            y: itemImageView07.frame.height/2+itemImageView02.frame.height
+        )
+        self.view.addSubview(itemImageView07)
+        
+        // 08
+        itemImageView08 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage08 = UIImage(named: "img01.jpg")
+        itemImageView08.image = itemImage08
+        itemImageView08.backgroundColor = UIColor.redColor()
+        itemImageView08.layer.position = CGPoint(
+            x: itemImageView08.frame.width/2,
+            y: itemImageView08.frame.height/2+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView08)
+        
+        // 09
+        itemImageView09 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage09 = UIImage(named: "img01.jpg")
+        itemImageView09.image = itemImage09
+        itemImageView09.backgroundColor = UIColor.redColor()
+        itemImageView09.layer.position = CGPoint(
+            x: itemImageView09.frame.width/2+itemImageView08.frame.width,
+            y: itemImageView09.frame.height/2+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView09)
+        
+        // 10
+        itemImageView10 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage10 = UIImage(named: "img01.jpg")
+        itemImageView10.image = itemImage10
+        itemImageView10.backgroundColor = UIColor.redColor()
+        itemImageView10.layer.position = CGPoint(
+            x: itemImageView10.frame.width/2+itemImageView08.frame.width+itemImageView09.frame.width,
+            y: itemImageView10.frame.height/2+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView10)
+        
+        // 11
+        itemImageView11 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage11 = UIImage(named: "img01.jpg")
+        itemImageView11.image = itemImage11
+        itemImageView11.backgroundColor = UIColor.redColor()
+        itemImageView11.layer.position = CGPoint(
+            x: itemImageView11.frame.width/2,
+            y: itemImageView11.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView11)
+        
+        // 12
+        itemImageView12 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage12 = UIImage(named: "img01.jpg")
+        itemImageView12.image = itemImage12
+        itemImageView12.backgroundColor = UIColor.redColor()
+        itemImageView12.layer.position = CGPoint(
+            x: itemImageView12.frame.width/2+itemImageView11.frame.width,
+            y: itemImageView12.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView12)
+        
+        // 13
+        itemImageView13 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/6,self.view.bounds.width/6))
+        let itemImage13 = UIImage(named: "img01.jpg")
+        itemImageView13.image = itemImage13
+        itemImageView13.backgroundColor = UIColor.redColor()
+        itemImageView13.layer.position = CGPoint(
+            x: itemImageView13.frame.width/2+itemImageView11.frame.width,
+            y: itemImageView13.frame.height/2+itemImageView12.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView13)
+        
+        // 14
+        itemImageView14 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage14 = UIImage(named: "img01.jpg")
+        itemImageView14.image = itemImage14
+        itemImageView14.backgroundColor = UIColor.redColor()
+        itemImageView14.layer.position = CGPoint(
+            x: itemImageView14.frame.width/2+itemImageView01.frame.width,
+            y: itemImageView14.frame.height/2+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView14)
+        
+        // 15
+        itemImageView15 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage15 = UIImage(named: "img01.jpg")
+        itemImageView15.image = itemImage15
+        itemImageView15.backgroundColor = UIColor.redColor()
+        itemImageView15.layer.position = CGPoint(
+            x: itemImageView15.frame.width/2+itemImageView14.frame.width+itemImageView01.frame.width,
+            y: itemImageView15.frame.height/2+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView15)
+        
+        // 16
+        itemImageView16 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage16 = UIImage(named: "img01.jpg")
+        itemImageView16.image = itemImage16
+        itemImageView16.backgroundColor = UIColor.redColor()
+        itemImageView16.layer.position = CGPoint(
+            x: itemImageView16.frame.width/2+itemImageView14.frame.width+itemImageView01.frame.width,
+            y: itemImageView16.frame.height/2+itemImageView15.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView16)
+        
+        // 17
+        itemImageView17 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/3,self.view.bounds.width/3))
+        let itemImage17 = UIImage(named: "img01.jpg")
+        itemImageView17.image = itemImage17
+        itemImageView17.backgroundColor = UIColor.redColor()
+        itemImageView17.layer.position = CGPoint(
+            x: itemImageView17.frame.width/2,
+            y: itemImageView17.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+        )
+        self.view.addSubview(itemImageView17)
+        
     }
-    
 }
