@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08996A1B69A7E400BD9798 /* AppDelegate.swift */; };
-		2D08996D1B69A7E400BD9798 /* MessageListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08996C1B69A7E400BD9798 /* MessageListViewController.swift */; };
 		2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08996E1B69A7E400BD9798 /* Main.storyboard */; };
 		2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0899711B69A7E400BD9798 /* Images.xcassets */; };
 		2D0899751B69A7E400BD9798 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D0899731B69A7E400BD9798 /* LaunchScreen.xib */; };
@@ -45,7 +44,6 @@
 		2D0899651B69A7E400BD9798 /* RoyalCustomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoyalCustomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0899691B69A7E400BD9798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D08996A1B69A7E400BD9798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D08996C1B69A7E400BD9798 /* MessageListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageListViewController.swift; sourceTree = "<group>"; };
 		2D08996F1B69A7E400BD9798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D0899711B69A7E400BD9798 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D0899741B69A7E400BD9798 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -121,7 +119,6 @@
 				2D14E7D11B69DEF90004C6B5 /* Chat */,
 				2D14E7CC1B69DEED0004C6B5 /* Chats */,
 				2D08996A1B69A7E400BD9798 /* AppDelegate.swift */,
-				2D08996C1B69A7E400BD9798 /* MessageListViewController.swift */,
 				2D08996E1B69A7E400BD9798 /* Main.storyboard */,
 				2D0899711B69A7E400BD9798 /* Images.xcassets */,
 				2D0899731B69A7E400BD9798 /* LaunchScreen.xib */,
@@ -382,7 +379,6 @@
 			files = (
 				2D14E7DB1B69DF050004C6B5 /* ComposeViewController.swift in Sources */,
 				2D14E7E91B69DF230004C6B5 /* Account.swift in Sources */,
-				2D08996D1B69A7E400BD9798 /* MessageListViewController.swift in Sources */,
 				2D14E7D71B69DEF90004C6B5 /* MessageSentDateTableViewCell.swift in Sources */,
 				2D14E7EC1B69DF230004C6B5 /* User.swift in Sources */,
 				2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */,
