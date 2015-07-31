@@ -32,6 +32,8 @@ class ItemViewController: UIViewController {
         let badgeHeight:    CGFloat = 50
         let badgeWidth:     CGFloat = 50
         let badgePosiY:     CGFloat = bLabelPosition + baf
+        let pLabelPosition: CGFloat = badgePosiY + badgeHeight + baf
+        let pGraphPosition: CGFloat = pLabelPosition
         
         // 表示する商品画像を設定　TODO:商品一覧から受け取ったURLを設定
         let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
@@ -39,7 +41,6 @@ class ItemViewController: UIViewController {
         
         //　表示するバッジ画像を設定　TODO:商品一覧から受け取ったURLを設定
         let badgeUrlStr: [String] = ["http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg","http://odagirist.net/icon/rank/1.png","http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg", "http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg"]
-        
         
         
         super.viewDidLoad()
@@ -84,6 +85,10 @@ class ItemViewController: UIViewController {
                 var badgeImageView = UIImageView(image:badgeImage)
                 badgeImageView.frame = CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth)
                 badgeImageView.userInteractionEnabled = true
+                
+                // タップを認識.
+                let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
+                badgeImageView.addGestureRecognizer(badgeImageTap)
                 self.view.addSubview(badgeImageView)
                 badgePosiX = badgePosiX + badgeWidth + bafBadge
             }
@@ -92,16 +97,18 @@ class ItemViewController: UIViewController {
         
         /* 購入情報の生成 */
         // 購入情報説明用ラベル表示
-        let pLabel: UILabel = UILabel(frame: CGRectMake(0,bLabelPosition,200,50))
+        let pLabel: UILabel = UILabel(frame: CGRectMake(0,pLabelPosition,200,50))
         pLabel.backgroundColor = UIColor.whiteColor()
         pLabel.text = pLabText
         pLabel.font = UIFont(name: "HiraKakuProN-W3", size: 16)
-        pLabel.layer.position = CGPoint(x: self.view.bounds.width/4,y: bLabelPosition)
+        pLabel.layer.position = CGPoint(x: self.view.bounds.width/4,y: pLabelPosition)
         pLabel.textAlignment = NSTextAlignment.Center
         self.view.addSubview(pLabel)
         
-        var barChart = PNBarChart(frame: CGRectMake(0, 400.0, 320.0, 200.0))
+        // 購入グラフ表示
+        var barChart = PNBarChart(frame: CGRectMake(0, pGraphPosition, 350.0, 250.0))
         barChart.backgroundColor = UIColor.clearColor()
+        
         //            barChart.yLabelFormatter = ({(yValue: CGFloat) -> NSString in
         //                var yValueParsed:CGFloat = yValue
         //                var labelText:NSString = NSString(format:"%1.f",yValueParsed)
@@ -114,8 +121,8 @@ class ItemViewController: UIViewController {
         
         
         barChart.labelMarginTop = 5.0
-        barChart.xLabels = ["SEP 1","SEP 2","SEP 3","SEP 4","SEP 5","SEP 6","SEP 7"]
-        barChart.yValues = [1,24,12,18,30,10,21]
+        barChart.xLabels = ["2月","3月","4月","5月","6月","7月"]
+        barChart.yValues = [1,24,12,18,30,10]
         barChart.strokeChart()
         
        // barChart.delegate = self
@@ -139,6 +146,13 @@ class ItemViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    /*
+    Badgeのタップイベント
+    */
+    internal func tapGesture(sender: UITapGestureRecognizer){
+        println("tapped")
     }
     
     
