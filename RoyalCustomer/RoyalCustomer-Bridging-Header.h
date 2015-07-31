@@ -9,6 +9,6 @@
 #ifndef RoyalCustomer_RoyalCustomer_Bridging_Header_h
 #define RoyalCustomer_RoyalCustomer_Bridging_Header_h
 
-#import "CorePlot-CocoaTouch.h"
+#import "PNChart.h"
 
 #endif
