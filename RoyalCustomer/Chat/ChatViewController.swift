@@ -14,6 +14,7 @@ let toolBarMinHeight: CGFloat = 44
 let textViewMaxHeight: (portrait: CGFloat, landscape: CGFloat) = (portrait: 272, landscape: 90)
 let messageSoundOutgoing: SystemSoundID = createMessageSoundOutgoing()
 
+
 class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextViewDelegate {
     let chat: Chat
     var tableView: UITableView!
@@ -21,6 +22,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var textView: UITextView!
     var sendButton: UIButton!
     var rotating = false
+    
+    // socket.io
+    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
+//    let socket = SocketIOClient(socketURL: "http://localhost:3000")
     
     override var inputAccessoryView: UIView! {
         get {
@@ -83,15 +88,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // socket.io
+        self.socket.connect()
+        self.addHandlers()
+
+
         chat.loadedMessages = [
             [
-                Message(incoming: true, text: "I really enjoyed programming with you! :-)", sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60)),
-                Message(incoming: false, text: "Thanks! Me too! :-)", sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2))
+                Message(incoming: true, text: "いつも買ってくれてありがとう！", sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60)),
+                Message(incoming: false, text: "こちらこそ！(^^)", sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2))
             ],
             [
-                Message(incoming: true, text: "Hey, would you like to spend some time together tonight and work on Acani?", sentDate: NSDate(timeIntervalSinceNow: -33)),
-                Message(incoming: false, text: "Sure, I'd love to. How's 6 PM?", sentDate: NSDate(timeIntervalSinceNow: -19)),
-                Message(incoming: true, text: "6 sounds good :-)", sentDate: NSDate())
+                Message(incoming: true, text: "新商品の開発のために、普段使ってくれている人の意見が聞きたいんだけど質問しても良いかな？", sentDate: NSDate(timeIntervalSinceNow: -33)),
+                Message(incoming: false, text: "5分くらいで済むならいいよ！", sentDate: NSDate(timeIntervalSinceNow: -19)),
+                Message(incoming: true, text: "ありがとう！", sentDate: NSDate()),
+                Message(incoming: true, text: "お弁当買う時に一緒に買う飲み物って何？", sentDate: NSDate())
             ]
         ]
         
@@ -118,6 +129,34 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // tableViewScrollToBottomAnimated(false) // doesn't work
     }
+    
+    
+    // socket.io
+    func addHandlers() {
+        println("addHandle")
+
+        self.socket.on("add user") {[weak self] data, ack in
+            println("add user")
+        }
+        self.socket.on("new message") {[weak self] data, ack in
+            println("new message")
+            println(data?[0]["message"] as! String!)
+            //socket.ioの返信描画
+            self!.receiveAction(data?[0]["message"] as! String!)
+        }
+        self.socket.on("typing") {[weak self] data, ack in
+            println("typing")
+        }
+        self.socket.on("stop typing") {[weak self] data, ack in
+            println("stop typing")
+        }
+        self.socket.on("disconnect") {[weak self] data, ack in
+            println("disconnect")
+        }
+        
+        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+    }
+    
     
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
@@ -272,6 +311,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         textView.becomeFirstResponder()
         
         chat.loadedMessages.append([Message(incoming: false, text: textView.text, sentDate: NSDate())])
+
+        // socket.io chatメッセージ送信
+        self.socket.emit("add user",chat.user.name)
+        self.socket.emit("new message",textView.text)
+
         textView.text = nil
         updateTextViewHeight()
         sendButton.enabled = false
@@ -286,11 +330,19 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.endUpdates()
         tableViewScrollToBottomAnimated(true)
         AudioServicesPlaySystemSound(messageSoundOutgoing)
-        self.receiveAction()
     }
     
-    //UIテストのための自動応答ダミー
-    func receiveAction(){
+    //socket.io chatの返信描画
+    func receiveAction(message:String){
+        // Autocomplete text before sending #hack
+        textView.resignFirstResponder()
+        textView.becomeFirstResponder()
+        
+        chat.loadedMessages.append([Message(incoming: true, text: message, sentDate: NSDate())])
+        textView.text = nil
+        updateTextViewHeight()
+        sendButton.enabled = false
+        
         let lastSection = tableView.numberOfSections()
         tableView.beginUpdates()
         tableView.insertSections(NSIndexSet(index: lastSection), withRowAnimation: .Automatic)

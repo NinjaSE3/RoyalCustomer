@@ -12,8 +12,8 @@ let account = Account()
 var items :[Item] = []
 // クリックされた商品
 var clickItem:Item?
-//let api = API(baseURL: NSURL(string: "https://acani-chats.herokuapp.com"))
-let api = API(baseURL: NSURL(string: "https://localhost:8080"))
+let api = API(baseURL: NSURL(string: "https://acani-chats.herokuapp.com"))
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
