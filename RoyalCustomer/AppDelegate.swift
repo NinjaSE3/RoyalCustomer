@@ -13,6 +13,9 @@ var items  :[Item] = []
 var awards :[Award] = []
 // クリックされた商品
 var clickItem:Item?
+// クリックされた認定
+var clickAward:Award?
+
 let api = API(baseURL: NSURL(string: "https://acani-chats.herokuapp.com"))
 
 

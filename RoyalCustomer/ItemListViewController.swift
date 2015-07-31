@@ -744,7 +744,8 @@ class ItemListViewController: UIViewController {
         )
         itemImageView40.userInteractionEnabled = true
         
-        // スクロールview
+        /* スクロールview */
+        // タッチイベントを即時取得
         scrView.delaysContentTouches = false
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
