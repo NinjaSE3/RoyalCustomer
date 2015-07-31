@@ -106,8 +106,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func continueAsGuest() {
         let minute: NSTimeInterval = 60, hour = minute * 60, day = hour * 24
         account.chats = [
-            Chat(user: User(ID: 1, username: "mattdipasquale", firstName: "Matt", lastName: "Di Pasquale"), lastMessageText: "Thatnks for checking out Chats! :-)", lastMessageSentDate: NSDate()),
-            Chat(user: User(ID: 2, username: "samihah", firstName: "Angel", lastName: "Rao"), lastMessageText: "6 sounds good :-)", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute)),
+            Chat(user: User(ID: 1, username: "CocaCola", firstName: "Coca", lastName: "Cola"), lastMessageText: "Thatnks for checking out Chats! :-)", lastMessageSentDate: NSDate()),
+            Chat(user: User(ID: 2, username: "SevenEleven", firstName: "Seven", lastName: "Eleven"), lastMessageText: "6 sounds good :-)", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute)),
             Chat(user: User(ID: 3, username: "walterstephanie", firstName: "Valentine", lastName: "Sanchez"), lastMessageText: "Haha", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*12)),
             Chat(user: User(ID: 23, username: "benlu", firstName: "Ben", lastName: "Lu"), lastMessageText: "I have no profile picture.", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*5)),
             Chat(user: User(ID: 4, username: "wake_gs", firstName: "Aghbalu", lastName: "Amghar"), lastMessageText: "Damn", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*13)),
