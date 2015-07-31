@@ -12,11 +12,15 @@ class Item {
     var itemid :String
     var name   :NSString
     var image  :String
+    var award1 :[Float]
+    var award2 :[Float]
     
     // イニシャライザ
-    init(itemid: String, name: NSString, image: String) {
+    init(itemid: String, name: NSString, image: String, award1: [Float], award2: [Float]) {
         self.itemid = itemid
         self.name   = name
         self.image  = image
+        self.award1 = award1
+        self.award2 = award2
     }
 }

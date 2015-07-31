@@ -28,6 +28,7 @@ class ItemViewController: UIViewController {
         let shohinWidth:    CGFloat  = 200
         let bLabelPosition: CGFloat = navBarHeight + shohinHeight + baf
         let bLabText:       String = "取得した認定バッジ"
+        let pLabText:       String = "あなたの購入履歴"
         let badgeHeight:    CGFloat = 50
         let badgeWidth:     CGFloat = 50
         let badgePosiY:     CGFloat = bLabelPosition + baf
@@ -82,6 +83,7 @@ class ItemViewController: UIViewController {
                 // UIImageViewの生成 TODO：表示位置の動的設定
                 var badgeImageView = UIImageView(image:badgeImage)
                 badgeImageView.frame = CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth)
+                badgeImageView.userInteractionEnabled = true
                 self.view.addSubview(badgeImageView)
                 badgePosiX = badgePosiX + badgeWidth + bafBadge
             }
@@ -89,6 +91,14 @@ class ItemViewController: UIViewController {
 
         
         /* 購入情報の生成 */
+        // 購入情報説明用ラベル表示
+        let pLabel: UILabel = UILabel(frame: CGRectMake(0,bLabelPosition,200,50))
+        pLabel.backgroundColor = UIColor.whiteColor()
+        pLabel.text = pLabText
+        pLabel.font = UIFont(name: "HiraKakuProN-W3", size: 16)
+        pLabel.layer.position = CGPoint(x: self.view.bounds.width/4,y: bLabelPosition)
+        pLabel.textAlignment = NSTextAlignment.Center
+        self.view.addSubview(pLabel)
         
         var barChart = PNBarChart(frame: CGRectMake(0, 400.0, 320.0, 200.0))
         barChart.backgroundColor = UIColor.clearColor()
@@ -130,5 +140,6 @@ class ItemViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
     
 }
