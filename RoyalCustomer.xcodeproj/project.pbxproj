@@ -13,6 +13,7 @@
 		00BBB4F41B6ADC63001DF752 /* CalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BBB4F31B6ADC63001DF752 /* CalenderView.swift */; };
 		0DD1D4441B69E494009C591C /* img01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0DD1D4431B69E494009C591C /* img01.jpg */; };
 		0DD1D4461B6A998D009C591C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1D4451B6A998D009C591C /* Common.swift */; };
+		0DD1D4481B6B286C009C591C /* AwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1D4471B6B286C009C591C /* AwardViewController.swift */; };
 		2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08996A1B69A7E400BD9798 /* AppDelegate.swift */; };
 		2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08996E1B69A7E400BD9798 /* Main.storyboard */; };
 		2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0899711B69A7E400BD9798 /* Images.xcassets */; };
@@ -54,6 +55,7 @@
 		00BBB4F31B6ADC63001DF752 /* CalenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalenderView.swift; sourceTree = "<group>"; };
 		0DD1D4431B69E494009C591C /* img01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img01.jpg; sourceTree = "<group>"; };
 		0DD1D4451B6A998D009C591C /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		0DD1D4471B6B286C009C591C /* AwardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardViewController.swift; sourceTree = "<group>"; };
 		2D0899651B69A7E400BD9798 /* RoyalCustomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoyalCustomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0899691B69A7E400BD9798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D08996A1B69A7E400BD9798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				0DD1D4451B6A998D009C591C /* Common.swift */,
 				0074DF341B6AABBD0091B7A6 /* RoyalCustomer-Bridging-Header.h */,
 				0074DF351B6AAC4A0091B7A6 /* ItemViewController.swift */,
+				0DD1D4471B6B286C009C591C /* AwardViewController.swift */,
 			);
 			path = RoyalCustomer;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				2D14E7DC1B69DF050004C6B5 /* UserTableViewCell.swift in Sources */,
 				2D14E7E21B69DF0E0004C6B5 /* ActivityOverlayView.swift in Sources */,
 				2D14E7D01B69DEED0004C6B5 /* ChatTableViewCell.swift in Sources */,
+				0DD1D4481B6B286C009C591C /* AwardViewController.swift in Sources */,
 				2D14E7EF1B69DF2A0004C6B5 /* UserPictureImageView.swift in Sources */,
 				2D08998B1B69A87600BD9798 /* ItemListViewController.swift in Sources */,
 				2D14E7EA1B69DF230004C6B5 /* Chat.swift in Sources */,
