@@ -13,6 +13,7 @@ class ItemViewController: UIViewController {
     // 変数定義
     private var shohinImageView: UIImageView!
     private var badgeImageView:  UIImageView!
+    private var pScrollView:     UIScrollView!
     
     // TestDate
     var items :[UInt] = [10,35,18, 20, 50, 5]
@@ -105,8 +106,22 @@ class ItemViewController: UIViewController {
         pLabel.textAlignment = NSTextAlignment.Center
         self.view.addSubview(pLabel)
         
+        // 購入グラフ&カレンダー表示用UIScrollView作成
+        pScrollView = UIScrollView(frame: self.view.bounds)
+        pScrollView.frame = CGRectMake(0, pGraphPosition, 350, 250)
+        pScrollView.backgroundColor = UIColor.clearColor()
+        println(self.view.bounds.height)
+        pScrollView.contentSize   = CGSizeMake(700, 250)
+       // pScrollView.contentOffset = CGPointMake(self.view.bounds.width , 0.0);
+        pScrollView.pagingEnabled = true
+        pScrollView.bounces = true
+        pScrollView.scrollEnabled = true
+        pScrollView.directionalLockEnabled = true
+        pScrollView.showsHorizontalScrollIndicator = true
+        pScrollView.showsVerticalScrollIndicator = false
+
         // 購入グラフ表示
-        var barChart = PNBarChart(frame: CGRectMake(0, pGraphPosition, 350.0, 250.0))
+        var barChart = PNBarChart(frame: CGRectMake(0, 0, 350.0, 250.0))
         barChart.backgroundColor = UIColor.clearColor()
         
         //            barChart.yLabelFormatter = ({(yValue: CGFloat) -> NSString in
@@ -126,18 +141,16 @@ class ItemViewController: UIViewController {
         barChart.strokeChart()
         
        // barChart.delegate = self
+       pScrollView.addSubview(barChart)
+
         
-        self.view.addSubview(barChart)
+       // カレンダー表示
+       var calenderView:CalenderView = CalenderView(frame: CGRectMake(350, 0, 350, 250))
+       pScrollView.addSubview(calenderView)
         
+       // 購入グラフ&カレンダーを　UIScrollViewにadd
+       self.view.addSubview(pScrollView)
     }
-        
-        // カレンダー表示
-//        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, 20,
-//            UIScreen.mainScreen().bounds.size.width, 500));
-//        self.view.addSubview(calenderView)
-        
-        // create graph
-        
         
     // navigationBarの高さ取得
     func navigationBarHeight(callFrom: UIViewController) -> CGFloat? {

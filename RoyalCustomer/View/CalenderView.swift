@@ -1,10 +1,9 @@
 //
 //  CalenderView.swift
-//  SwiftCalenderDemo
+//  RoyalCustomer
 //
-//  Created by kitano on 2014/12/05.
-//  Copyright (c) 2014年 OneWorld Inc. All rights reserved.
-//
+//  Created by Rio NISHIDA on 7/30/15.
+//  Copyright (c) 2015 NRI. All rights reserved.
 
 import UIKit
 
@@ -33,7 +32,7 @@ class CalenderView: UIView,UIScrollViewDelegate{
         
         scrollView = UIScrollView(frame: self.bounds)
         scrollView.backgroundColor = UIColor.clearColor()
-        scrollView.contentSize   = CGSizeMake(frame.size.width *  3.0,frame.size.height);
+        scrollView.contentSize   = CGSizeMake(frame.size.width,frame.size.height);
         scrollView.contentOffset = CGPointMake(frame.size.width , 0.0);
         scrollView.delegate = self;
         scrollView.pagingEnabled = true;

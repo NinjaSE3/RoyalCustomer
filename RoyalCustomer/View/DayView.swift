@@ -31,6 +31,17 @@ class DayView: UIView {
         }
         
         // TODO 当日ならハイライト
+        var dateFormatter:NSDateFormatter = NSDateFormatter();
+        dateFormatter.dateFormat = "yyyy/MM/dd";
+        var dateString:String = dateFormatter.stringFromDate(NSDate());
+        var dates:[String] = dateString.componentsSeparatedByString("/")
+        let currentYear  = dates[0].toInt()!
+        let currentMonth = dates[1].toInt()!
+        let currentDay   = dates[2].toInt()!
+        
+        if day == currentDay {
+            dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
+        }
         
         // TODO　購入ありならハイライト
         
