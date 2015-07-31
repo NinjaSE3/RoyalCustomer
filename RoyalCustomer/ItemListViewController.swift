@@ -812,8 +812,8 @@ class ItemListViewController: UIViewController {
         // 1
         if !items[0].award1.isEmpty {
             var award1Image01:UIImage!
-            
-            switch items[0].award1[0]{
+
+            switch awards[Int(items[0].award1[0])].level {
             case 1:
                 award1Image01 = UIImage(named: "Award1_1_icon")!
                 
@@ -842,7 +842,7 @@ class ItemListViewController: UIViewController {
         if !items[0].award2.isEmpty {
             var award2Image01:UIImage!
             
-            switch items[0].award2[0]{
+            switch awards[Int(items[0].award2[0])].level {
             case 1:
                 award2Image01 = UIImage(named: "Award2_1_icon")!
                 
@@ -873,7 +873,7 @@ class ItemListViewController: UIViewController {
         if !items[1].award1.isEmpty {
             var award1Image02:UIImage!
             
-            switch items[1].award1[0]{
+            switch awards[Int(items[1].award1[0])].level {
             case 1:
                 award1Image02 = UIImage(named: "Award1_1_icon")!
                 
@@ -902,7 +902,7 @@ class ItemListViewController: UIViewController {
         if !items[1].award2.isEmpty {
             var award2Image02:UIImage!
             
-            switch items[1].award2[0]{
+            switch awards[Int(items[1].award2[0])].level {
             case 1:
                 award2Image02 = UIImage(named: "Award2_1_icon")!
                 
@@ -933,7 +933,7 @@ class ItemListViewController: UIViewController {
         if !items[2].award1.isEmpty {
             var award1Image03:UIImage!
             
-            switch items[2].award1[0]{
+            switch awards[Int(items[2].award1[0])].level {
             case 1:
                 award1Image03 = UIImage(named: "Award1_1_icon")!
                 
@@ -962,7 +962,7 @@ class ItemListViewController: UIViewController {
         if !items[2].award2.isEmpty {
             var award2Image03:UIImage!
             
-            switch items[2].award2[0]{
+            switch awards[Int(items[2].award2[0])].level {
             case 1:
                 award2Image03 = UIImage(named: "Award2_1_icon")!
                 
@@ -993,7 +993,7 @@ class ItemListViewController: UIViewController {
         if !items[3].award1.isEmpty {
             var award1Image04:UIImage!
             
-            switch items[3].award1[0]{
+            switch awards[Int(items[3].award1[0])].level {
             case 1:
                 award1Image04 = UIImage(named: "Award1_1_icon")!
                 
@@ -1022,7 +1022,7 @@ class ItemListViewController: UIViewController {
         if !items[3].award2.isEmpty {
             var award2Image04:UIImage!
             
-            switch items[3].award2[0]{
+            switch awards[Int(items[3].award2[0])].level {
             case 1:
                 award2Image04 = UIImage(named: "Award2_1_icon")!
                 
@@ -1053,7 +1053,7 @@ class ItemListViewController: UIViewController {
         if !items[4].award1.isEmpty {
             var award1Image05:UIImage!
             
-            switch items[4].award1[0]{
+            switch awards[Int(items[4].award1[0])].level {
             case 1:
                 award1Image05 = UIImage(named: "Award1_1_icon")!
                 
@@ -1082,7 +1082,7 @@ class ItemListViewController: UIViewController {
         if !items[4].award2.isEmpty {
             var award2Image05:UIImage!
             
-            switch items[4].award2[0]{
+            switch awards[Int(items[4].award2[0])].level {
             case 1:
                 award2Image05 = UIImage(named: "Award2_1_icon")!
                 
@@ -1113,7 +1113,7 @@ class ItemListViewController: UIViewController {
         if !items[5].award1.isEmpty {
             var award1Image06:UIImage!
             
-            switch items[5].award1[0]{
+            switch awards[Int(items[5].award1[0])].level {
             case 1:
                 award1Image06 = UIImage(named: "Award1_1_icon")!
                 
@@ -1142,7 +1142,7 @@ class ItemListViewController: UIViewController {
         if !items[5].award2.isEmpty {
             var award2Image06:UIImage!
             
-            switch items[5].award2[0]{
+            switch awards[Int(items[5].award2[0])].level {
             case 1:
                 award2Image06 = UIImage(named: "Award2_1_icon")!
                 
@@ -1173,7 +1173,7 @@ class ItemListViewController: UIViewController {
         if !items[6].award1.isEmpty {
             var award1Image07:UIImage!
             
-            switch items[6].award1[0]{
+            switch awards[Int(items[6].award1[0])].level {
             case 1:
                 award1Image07 = UIImage(named: "Award1_1_icon")!
                 
@@ -1202,7 +1202,7 @@ class ItemListViewController: UIViewController {
         if !items[6].award2.isEmpty {
             var award2Image07:UIImage!
             
-            switch items[6].award2[0]{
+            switch awards[Int(items[6].award2[0])].level {
             case 1:
                 award2Image07 = UIImage(named: "Award2_1_icon")!
                 
@@ -1233,7 +1233,7 @@ class ItemListViewController: UIViewController {
         if !items[7].award1.isEmpty {
             var award1Image08:UIImage!
             
-            switch items[7].award1[0]{
+            switch awards[Int(items[7].award1[0])].level {
             case 1:
                 award1Image08 = UIImage(named: "Award1_1_icon")!
                 
@@ -1262,7 +1262,7 @@ class ItemListViewController: UIViewController {
         if !items[7].award2.isEmpty {
             var award2Image08:UIImage!
             
-            switch items[7].award2[0]{
+            switch awards[Int(items[7].award2[0])].level {
             case 1:
                 award2Image08 = UIImage(named: "Award2_1_icon")!
                 
@@ -1293,7 +1293,7 @@ class ItemListViewController: UIViewController {
         if !items[8].award1.isEmpty {
             var award1Image09:UIImage!
             
-            switch items[8].award1[0]{
+            switch awards[Int(items[8].award1[0])].level {
             case 1:
                 award1Image09 = UIImage(named: "Award1_1_icon")!
                 
@@ -1322,7 +1322,7 @@ class ItemListViewController: UIViewController {
         if !items[8].award2.isEmpty {
             var award2Image09:UIImage!
             
-            switch items[8].award2[0]{
+            switch awards[Int(items[8].award2[0])].level {
             case 1:
                 award2Image09 = UIImage(named: "Award2_1_icon")!
                 
@@ -1353,7 +1353,7 @@ class ItemListViewController: UIViewController {
         if !items[9].award1.isEmpty {
             var award1Image10:UIImage!
             
-            switch items[9].award1[0]{
+            switch awards[Int(items[9].award1[0])].level {
             case 1:
                 award1Image10 = UIImage(named: "Award1_1_icon")!
                 
@@ -1382,7 +1382,7 @@ class ItemListViewController: UIViewController {
         if !items[9].award2.isEmpty {
             var award2Image10:UIImage!
             
-            switch items[9].award2[0]{
+            switch awards[Int(items[9].award2[0])].level {
             case 1:
                 award2Image10 = UIImage(named: "Award2_1_icon")!
                 
@@ -1413,7 +1413,7 @@ class ItemListViewController: UIViewController {
         if !items[10].award1.isEmpty {
             var award1Image11:UIImage!
             
-            switch items[10].award1[0]{
+            switch awards[Int(items[10].award1[0])].level {
             case 1:
                 award1Image11 = UIImage(named: "Award1_1_icon")!
                 
@@ -1442,7 +1442,7 @@ class ItemListViewController: UIViewController {
         if !items[10].award2.isEmpty {
             var award2Image11:UIImage!
             
-            switch items[10].award2[0]{
+            switch awards[Int(items[10].award2[0])].level {
             case 1:
                 award2Image11 = UIImage(named: "Award2_1_icon")!
                 
@@ -1473,7 +1473,7 @@ class ItemListViewController: UIViewController {
         if !items[11].award1.isEmpty {
             var award1Image12:UIImage!
             
-            switch items[11].award1[0]{
+            switch awards[Int(items[11].award1[0])].level {
             case 1:
                 award1Image12 = UIImage(named: "Award1_1_icon")!
                 
@@ -1502,7 +1502,7 @@ class ItemListViewController: UIViewController {
         if !items[11].award2.isEmpty {
             var award2Image12:UIImage!
             
-            switch items[11].award2[0]{
+            switch awards[Int(items[11].award2[0])].level {
             case 1:
                 award2Image12 = UIImage(named: "Award2_1_icon")!
                 
@@ -1533,7 +1533,7 @@ class ItemListViewController: UIViewController {
         if !items[12].award1.isEmpty {
             var award1Image13:UIImage!
             
-            switch items[12].award1[0]{
+            switch awards[Int(items[12].award1[0])].level {
             case 1:
                 award1Image13 = UIImage(named: "Award1_1_icon")!
                 
@@ -1562,7 +1562,7 @@ class ItemListViewController: UIViewController {
         if !items[12].award2.isEmpty {
             var award2Image13:UIImage!
             
-            switch items[12].award2[0]{
+            switch awards[Int(items[12].award2[0])].level {
             case 1:
                 award2Image13 = UIImage(named: "Award2_1_icon")!
                 
@@ -1593,7 +1593,7 @@ class ItemListViewController: UIViewController {
         if !items[13].award1.isEmpty {
             var award1Image14:UIImage!
             
-            switch items[13].award1[0]{
+            switch awards[Int(items[13].award1[0])].level {
             case 1:
                 award1Image14 = UIImage(named: "Award1_1_icon")!
                 
@@ -1622,7 +1622,7 @@ class ItemListViewController: UIViewController {
         if !items[13].award2.isEmpty {
             var award2Image14:UIImage!
             
-            switch items[13].award2[0]{
+            switch awards[Int(items[13].award2[0])].level {
             case 1:
                 award2Image14 = UIImage(named: "Award2_1_icon")!
                 
@@ -1653,7 +1653,7 @@ class ItemListViewController: UIViewController {
         if !items[14].award1.isEmpty {
             var award1Image15:UIImage!
             
-            switch items[14].award1[0]{
+            switch awards[Int(items[14].award1[0])].level {
             case 1:
                 award1Image15 = UIImage(named: "Award1_1_icon")!
                 
@@ -1682,7 +1682,7 @@ class ItemListViewController: UIViewController {
         if !items[14].award2.isEmpty {
             var award2Image15:UIImage!
             
-            switch items[14].award2[0]{
+            switch awards[Int(items[14].award2[0])].level {
             case 1:
                 award2Image15 = UIImage(named: "Award2_1_icon")!
                 
@@ -1713,7 +1713,7 @@ class ItemListViewController: UIViewController {
         if !items[15].award1.isEmpty {
             var award1Image16:UIImage!
             
-            switch items[15].award1[0]{
+            switch awards[Int(items[15].award1[0])].level {
             case 1:
                 award1Image16 = UIImage(named: "Award1_1_icon")!
                 
@@ -1742,7 +1742,7 @@ class ItemListViewController: UIViewController {
         if !items[15].award2.isEmpty {
             var award2Image16:UIImage!
             
-            switch items[15].award2[0]{
+            switch awards[Int(items[15].award2[0])].level {
             case 1:
                 award2Image16 = UIImage(named: "Award2_1_icon")!
                 
@@ -1773,7 +1773,7 @@ class ItemListViewController: UIViewController {
         if !items[16].award1.isEmpty {
             var award1Image17:UIImage!
             
-            switch items[16].award1[0]{
+            switch awards[Int(items[16].award1[0])].level {
             case 1:
                 award1Image17 = UIImage(named: "Award1_1_icon")!
                 
@@ -1802,7 +1802,7 @@ class ItemListViewController: UIViewController {
         if !items[16].award2.isEmpty {
             var award2Image17:UIImage!
             
-            switch items[16].award2[0]{
+            switch awards[Int(items[16].award2[0])].level {
             case 1:
                 award2Image17 = UIImage(named: "Award2_1_icon")!
                 
@@ -1833,7 +1833,7 @@ class ItemListViewController: UIViewController {
         if !items[17].award1.isEmpty {
             var award1Image18:UIImage!
             
-            switch items[17].award1[0]{
+            switch awards[Int(items[17].award1[0])].level {
             case 1:
                 award1Image18 = UIImage(named: "Award1_1_icon")!
                 
@@ -1862,7 +1862,7 @@ class ItemListViewController: UIViewController {
         if !items[17].award2.isEmpty {
             var award2Image18:UIImage!
             
-            switch items[17].award2[0]{
+            switch awards[Int(items[17].award2[0])].level {
             case 1:
                 award2Image18 = UIImage(named: "Award2_1_icon")!
                 
@@ -1893,7 +1893,7 @@ class ItemListViewController: UIViewController {
         if !items[18].award1.isEmpty {
             var award1Image19:UIImage!
             
-            switch items[18].award1[0]{
+            switch awards[Int(items[18].award1[0])].level {
             case 1:
                 award1Image19 = UIImage(named: "Award1_1_icon")!
                 
@@ -1922,7 +1922,7 @@ class ItemListViewController: UIViewController {
         if !items[18].award2.isEmpty {
             var award2Image19:UIImage!
             
-            switch items[18].award2[0]{
+            switch awards[Int(items[18].award2[0])].level {
             case 1:
                 award2Image19 = UIImage(named: "Award2_1_icon")!
                 
@@ -1953,7 +1953,7 @@ class ItemListViewController: UIViewController {
         if !items[19].award1.isEmpty {
             var award1Image20:UIImage!
             
-            switch items[19].award1[0]{
+            switch awards[Int(items[19].award1[0])].level {
             case 1:
                 award1Image20 = UIImage(named: "Award1_1_icon")!
                 
@@ -1982,7 +1982,7 @@ class ItemListViewController: UIViewController {
         if !items[19].award2.isEmpty {
             var award2Image20:UIImage!
             
-            switch items[19].award2[0]{
+            switch awards[Int(items[19].award2[0])].level {
             case 1:
                 award2Image20 = UIImage(named: "Award2_1_icon")!
                 
@@ -2013,7 +2013,7 @@ class ItemListViewController: UIViewController {
         if !items[20].award1.isEmpty {
             var award1Image21:UIImage!
             
-            switch items[20].award1[0]{
+            switch awards[Int(items[20].award1[0])].level {
             case 1:
                 award1Image21 = UIImage(named: "Award1_1_icon")!
                 
@@ -2042,7 +2042,7 @@ class ItemListViewController: UIViewController {
         if !items[20].award2.isEmpty {
             var award2Image21:UIImage!
             
-            switch items[20].award2[0]{
+            switch awards[Int(items[20].award2[0])].level {
             case 1:
                 award2Image21 = UIImage(named: "Award2_1_icon")!
                 
@@ -2073,7 +2073,7 @@ class ItemListViewController: UIViewController {
         if !items[21].award1.isEmpty {
             var award1Image22:UIImage!
             
-            switch items[21].award1[0]{
+            switch awards[Int(items[21].award1[0])].level {
             case 1:
                 award1Image22 = UIImage(named: "Award1_1_icon")!
                 
@@ -2102,7 +2102,7 @@ class ItemListViewController: UIViewController {
         if !items[21].award2.isEmpty {
             var award2Image22:UIImage!
             
-            switch items[21].award2[0]{
+            switch awards[Int(items[21].award2[0])].level {
             case 1:
                 award2Image22 = UIImage(named: "Award2_1_icon")!
                 
@@ -2133,7 +2133,7 @@ class ItemListViewController: UIViewController {
         if !items[22].award1.isEmpty {
             var award1Image23:UIImage!
             
-            switch items[22].award1[0]{
+            switch awards[Int(items[22].award1[0])].level {
             case 1:
                 award1Image23 = UIImage(named: "Award1_1_icon")!
                 
@@ -2162,7 +2162,7 @@ class ItemListViewController: UIViewController {
         if !items[22].award2.isEmpty {
             var award2Image23:UIImage!
             
-            switch items[22].award2[0]{
+            switch awards[Int(items[22].award2[0])].level {
             case 1:
                 award2Image23 = UIImage(named: "Award2_1_icon")!
                 
@@ -2193,7 +2193,7 @@ class ItemListViewController: UIViewController {
         if !items[23].award1.isEmpty {
             var award1Image24:UIImage!
             
-            switch items[23].award1[0]{
+            switch awards[Int(items[23].award1[0])].level {
             case 1:
                 award1Image24 = UIImage(named: "Award1_1_icon")!
                 
@@ -2222,7 +2222,7 @@ class ItemListViewController: UIViewController {
         if !items[23].award2.isEmpty {
             var award2Image24:UIImage!
             
-            switch items[23].award2[0]{
+            switch awards[Int(items[23].award2[0])].level {
             case 1:
                 award2Image24 = UIImage(named: "Award2_1_icon")!
                 
@@ -2253,7 +2253,7 @@ class ItemListViewController: UIViewController {
         if !items[24].award1.isEmpty {
             var award1Image25:UIImage!
             
-            switch items[24].award1[0]{
+            switch awards[Int(items[24].award1[0])].level {
             case 1:
                 award1Image25 = UIImage(named: "Award1_1_icon")!
                 
@@ -2282,7 +2282,7 @@ class ItemListViewController: UIViewController {
         if !items[24].award2.isEmpty {
             var award2Image25:UIImage!
             
-            switch items[24].award2[0]{
+            switch awards[Int(items[24].award2[0])].level {
             case 1:
                 award2Image25 = UIImage(named: "Award2_1_icon")!
                 
@@ -2313,7 +2313,7 @@ class ItemListViewController: UIViewController {
         if !items[25].award1.isEmpty {
             var award1Image26:UIImage!
             
-            switch items[25].award1[0]{
+            switch awards[Int(items[25].award1[0])].level {
             case 1:
                 award1Image26 = UIImage(named: "Award1_1_icon")!
                 
@@ -2342,7 +2342,7 @@ class ItemListViewController: UIViewController {
         if !items[25].award2.isEmpty {
             var award2Image26:UIImage!
             
-            switch items[25].award2[0]{
+            switch awards[Int(items[25].award2[0])].level {
             case 1:
                 award2Image26 = UIImage(named: "Award2_1_icon")!
                 
@@ -2373,7 +2373,7 @@ class ItemListViewController: UIViewController {
         if !items[26].award1.isEmpty {
             var award1Image27:UIImage!
             
-            switch items[26].award1[0]{
+            switch awards[Int(items[26].award1[0])].level {
             case 1:
                 award1Image27 = UIImage(named: "Award1_1_icon")!
                 
@@ -2402,7 +2402,7 @@ class ItemListViewController: UIViewController {
         if !items[26].award2.isEmpty {
             var award2Image27:UIImage!
             
-            switch items[26].award2[0]{
+            switch awards[Int(items[26].award2[0])].level {
             case 1:
                 award2Image27 = UIImage(named: "Award2_1_icon")!
                 
@@ -2433,7 +2433,7 @@ class ItemListViewController: UIViewController {
         if !items[27].award1.isEmpty {
             var award1Image28:UIImage!
             
-            switch items[27].award1[0]{
+            switch awards[Int(items[27].award1[0])].level {
             case 1:
                 award1Image28 = UIImage(named: "Award1_1_icon")!
                 
@@ -2462,7 +2462,7 @@ class ItemListViewController: UIViewController {
         if !items[27].award2.isEmpty {
             var award2Image28:UIImage!
             
-            switch items[27].award2[0]{
+            switch awards[Int(items[27].award2[0])].level {
             case 1:
                 award2Image28 = UIImage(named: "Award2_1_icon")!
                 
@@ -2493,7 +2493,7 @@ class ItemListViewController: UIViewController {
         if !items[28].award1.isEmpty {
             var award1Image29:UIImage!
             
-            switch items[28].award1[0]{
+            switch awards[Int(items[28].award1[0])].level {
             case 1:
                 award1Image29 = UIImage(named: "Award1_1_icon")!
                 
@@ -2522,7 +2522,7 @@ class ItemListViewController: UIViewController {
         if !items[28].award2.isEmpty {
             var award2Image29:UIImage!
             
-            switch items[28].award2[0]{
+            switch awards[Int(items[28].award2[0])].level {
             case 1:
                 award2Image29 = UIImage(named: "Award2_1_icon")!
                 
@@ -2553,7 +2553,7 @@ class ItemListViewController: UIViewController {
         if !items[29].award1.isEmpty {
             var award1Image30:UIImage!
             
-            switch items[29].award1[0]{
+            switch awards[Int(items[29].award1[0])].level {
             case 1:
                 award1Image30 = UIImage(named: "Award1_1_icon")!
                 
@@ -2582,7 +2582,7 @@ class ItemListViewController: UIViewController {
         if !items[29].award2.isEmpty {
             var award2Image30:UIImage!
             
-            switch items[29].award2[0]{
+            switch awards[Int(items[29].award2[0])].level {
             case 1:
                 award2Image30 = UIImage(named: "Award2_1_icon")!
                 
@@ -2613,7 +2613,7 @@ class ItemListViewController: UIViewController {
         if !items[30].award1.isEmpty {
             var award1Image31:UIImage!
             
-            switch items[30].award1[0]{
+            switch awards[Int(items[30].award1[0])].level {
             case 1:
                 award1Image31 = UIImage(named: "Award1_1_icon")!
                 
@@ -2642,7 +2642,7 @@ class ItemListViewController: UIViewController {
         if !items[30].award2.isEmpty {
             var award2Image31:UIImage!
             
-            switch items[30].award2[0]{
+            switch awards[Int(items[30].award2[0])].level {
             case 1:
                 award2Image31 = UIImage(named: "Award2_1_icon")!
                 
@@ -2673,7 +2673,7 @@ class ItemListViewController: UIViewController {
         if !items[31].award1.isEmpty {
             var award1Image32:UIImage!
             
-            switch items[31].award1[0]{
+            switch awards[Int(items[31].award1[0])].level {
             case 1:
                 award1Image32 = UIImage(named: "Award1_1_icon")!
                 
@@ -2702,7 +2702,7 @@ class ItemListViewController: UIViewController {
         if !items[31].award2.isEmpty {
             var award2Image32:UIImage!
             
-            switch items[31].award2[0]{
+            switch awards[Int(items[31].award2[0])].level {
             case 1:
                 award2Image32 = UIImage(named: "Award2_1_icon")!
                 
@@ -2733,7 +2733,7 @@ class ItemListViewController: UIViewController {
         if !items[32].award1.isEmpty {
             var award1Image33:UIImage!
             
-            switch items[32].award1[0]{
+            switch awards[Int(items[32].award1[0])].level {
             case 1:
                 award1Image33 = UIImage(named: "Award1_1_icon")!
                 
@@ -2762,7 +2762,7 @@ class ItemListViewController: UIViewController {
         if !items[32].award2.isEmpty {
             var award2Image33:UIImage!
             
-            switch items[32].award2[0]{
+            switch awards[Int(items[32].award2[0])].level {
             case 1:
                 award2Image33 = UIImage(named: "Award2_1_icon")!
                 
@@ -2793,7 +2793,7 @@ class ItemListViewController: UIViewController {
         if !items[33].award1.isEmpty {
             var award1Image34:UIImage!
             
-            switch items[33].award1[0]{
+            switch awards[Int(items[33].award1[0])].level {
             case 1:
                 award1Image34 = UIImage(named: "Award1_1_icon")!
                 
@@ -2822,7 +2822,7 @@ class ItemListViewController: UIViewController {
         if !items[33].award2.isEmpty {
             var award2Image34:UIImage!
             
-            switch items[33].award2[0]{
+            switch awards[Int(items[33].award2[0])].level {
             case 1:
                 award2Image34 = UIImage(named: "Award2_1_icon")!
                 
@@ -2853,7 +2853,7 @@ class ItemListViewController: UIViewController {
         if !items[34].award1.isEmpty {
             var award1Image35:UIImage!
             
-            switch items[34].award1[0]{
+            switch awards[Int(items[34].award1[0])].level {
             case 1:
                 award1Image35 = UIImage(named: "Award1_1_icon")!
                 
@@ -2882,7 +2882,7 @@ class ItemListViewController: UIViewController {
         if !items[34].award2.isEmpty {
             var award2Image35:UIImage!
             
-            switch items[34].award2[0]{
+            switch awards[Int(items[34].award2[0])].level {
             case 1:
                 award2Image35 = UIImage(named: "Award2_1_icon")!
                 
@@ -2913,7 +2913,7 @@ class ItemListViewController: UIViewController {
         if !items[35].award1.isEmpty {
             var award1Image36:UIImage!
             
-            switch items[35].award1[0]{
+            switch awards[Int(items[35].award1[0])].level {
             case 1:
                 award1Image36 = UIImage(named: "Award1_1_icon")!
                 
@@ -2942,7 +2942,7 @@ class ItemListViewController: UIViewController {
         if !items[35].award2.isEmpty {
             var award2Image36:UIImage!
             
-            switch items[35].award2[0]{
+            switch awards[Int(items[35].award2[0])].level {
             case 1:
                 award2Image36 = UIImage(named: "Award2_1_icon")!
                 
@@ -2973,7 +2973,7 @@ class ItemListViewController: UIViewController {
         if !items[36].award1.isEmpty {
             var award1Image37:UIImage!
             
-            switch items[36].award1[0]{
+            switch awards[Int(items[36].award1[0])].level {
             case 1:
                 award1Image37 = UIImage(named: "Award1_1_icon")!
                 
@@ -3002,7 +3002,7 @@ class ItemListViewController: UIViewController {
         if !items[36].award2.isEmpty {
             var award2Image37:UIImage!
             
-            switch items[36].award2[0]{
+            switch awards[Int(items[36].award2[0])].level {
             case 1:
                 award2Image37 = UIImage(named: "Award2_1_icon")!
                 
@@ -3033,7 +3033,7 @@ class ItemListViewController: UIViewController {
         if !items[37].award1.isEmpty {
             var award1Image38:UIImage!
             
-            switch items[37].award1[0]{
+            switch awards[Int(items[37].award1[0])].level {
             case 1:
                 award1Image38 = UIImage(named: "Award1_1_icon")!
                 
@@ -3062,7 +3062,7 @@ class ItemListViewController: UIViewController {
         if !items[37].award2.isEmpty {
             var award2Image38:UIImage!
             
-            switch items[37].award2[0]{
+            switch awards[Int(items[37].award2[0])].level {
             case 1:
                 award2Image38 = UIImage(named: "Award2_1_icon")!
                 
@@ -3093,7 +3093,7 @@ class ItemListViewController: UIViewController {
         if !items[38].award1.isEmpty {
             var award1Image39:UIImage!
             
-            switch items[38].award1[0]{
+            switch awards[Int(items[38].award1[0])].level {
             case 1:
                 award1Image39 = UIImage(named: "Award1_1_icon")!
                 
@@ -3122,7 +3122,7 @@ class ItemListViewController: UIViewController {
         if !items[38].award2.isEmpty {
             var award2Image39:UIImage!
             
-            switch items[38].award2[0]{
+            switch awards[Int(items[38].award2[0])].level {
             case 1:
                 award2Image39 = UIImage(named: "Award2_1_icon")!
                 
@@ -3153,7 +3153,7 @@ class ItemListViewController: UIViewController {
         if !items[39].award1.isEmpty {
             var award1Image40:UIImage!
             
-            switch items[39].award1[0]{
+            switch awards[Int(items[39].award1[0])].level {
             case 1:
                 award1Image40 = UIImage(named: "Award1_1_icon")!
                 
@@ -3182,7 +3182,7 @@ class ItemListViewController: UIViewController {
         if !items[39].award2.isEmpty {
             var award2Image40:UIImage!
             
-            switch items[39].award2[0]{
+            switch awards[Int(items[39].award2[0])].level {
             case 1:
                 award2Image40 = UIImage(named: "Award2_1_icon")!
                 
