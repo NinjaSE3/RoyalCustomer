@@ -38,6 +38,8 @@ class AwardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        println(clickAward?.awardid)
+        
         self.awardImageView()
         self.awardDetailView()
         self.awardShareView()

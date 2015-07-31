@@ -72,6 +72,7 @@ class ItemViewController: UIViewController {
         
         // ラベル取得＆表示
         var badgePosiX: CGFloat = 0
+        var i = 0
         for url in badgeUrlStr {
 
             var badgeNsurl = NSURL(string: url)
@@ -92,6 +93,10 @@ class ItemViewController: UIViewController {
                 badgeImageView.addGestureRecognizer(badgeImageTap)
                 self.view.addSubview(badgeImageView)
                 badgePosiX = badgePosiX + badgeWidth + bafBadge
+                
+                // タグ（＝認定バッジ配列の要素番号）を設定
+                badgeImageView.tag = i
+                i++
             }
         }
 
@@ -165,7 +170,19 @@ class ItemViewController: UIViewController {
     Badgeのタップイベント
     */
     internal func tapGesture(sender: UITapGestureRecognizer){
-        println("tapped")
+        println("tapped Badge")
+        let awardViewController: UIViewController = AwardViewController()
+        navigationController?.pushViewController(awardViewController, animated: true)
+    }
+    
+    // 認定バッジクリック時にクリックされたバッジを特定する
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        // テストのため、仮想認定バッジ配列を準備
+        var myAwards:[Award] = [awards[0],awards[1],awards[3],awards[4],awards[5],awards[6]]
+        
+        var touch = touches.first as! UITouch
+        var tag:Int = touch.view.tag
+        clickAward = myAwards[tag]
     }
     
     
