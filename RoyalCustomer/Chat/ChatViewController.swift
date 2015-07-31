@@ -27,6 +27,8 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
 //    let socket = SocketIOClient(socketURL: "http://localhost:3000")
     
+    var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+    
     override var inputAccessoryView: UIView! {
         get {
             if toolBar == nil {
@@ -73,7 +75,6 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
         title = chat.user.name
-        var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate._chat = chat
     }
     
