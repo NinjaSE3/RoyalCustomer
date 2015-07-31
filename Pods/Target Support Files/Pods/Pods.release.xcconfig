@@ -1,7 +1,5 @@
-ALWAYS_SEARCH_USER_PATHS = YES
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CorePlot" "${PODS_ROOT}/Headers/Public/CorePlot/ios"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/CorePlot" -isystem "${PODS_ROOT}/Headers/Public/CorePlot/ios"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-CorePlot" -framework "Accelerate" -framework "Foundation" -framework "QuartzCore" -framework "UIKit"
-OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/PNChart" "${PODS_ROOT}/Headers/Public/UICountingLabel"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/PNChart" -isystem "${PODS_ROOT}/Headers/Public/UICountingLabel"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"PNChart" -l"UICountingLabel" -framework "CoreGraphics" -framework "Foundation" -framework "QuartzCore" -framework "UIKit"
 PODS_ROOT = ${SRCROOT}/Pods
