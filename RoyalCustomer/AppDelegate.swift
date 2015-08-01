@@ -114,35 +114,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func continueAsGuest() {
         let minute: NSTimeInterval = 60, hour = minute * 60, day = hour * 24
         account.chats = [
-            Chat(user: User(ID: 1, username: "CocaCola", firstName: "Coca", lastName: "Cola"), lastMessageText: "Thatnks for checking out Chats! :-)", lastMessageSentDate: NSDate()),
-            Chat(user: User(ID: 2, username: "SevenEleven", firstName: "Seven", lastName: "Eleven"), lastMessageText: "6 sounds good :-)", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute)),
-            Chat(user: User(ID: 3, username: "walterstephanie", firstName: "Valentine", lastName: "Sanchez"), lastMessageText: "Haha", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*12)),
-            Chat(user: User(ID: 23, username: "benlu", firstName: "Ben", lastName: "Lu"), lastMessageText: "I have no profile picture.", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*5)),
-            Chat(user: User(ID: 4, username: "wake_gs", firstName: "Aghbalu", lastName: "Amghar"), lastMessageText: "Damn", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*13)),
-            Chat(user: User(ID: 22, username: "doitlive", firstName: "中文 日本語", lastName: "한국인"), lastMessageText: "I have no profile picture or extended ASCII initials.", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*24)),
-            Chat(user: User(ID: 5, username: "kfriedson", firstName: "Candice", lastName: "Meunier"), lastMessageText: "I can't wait to see you! ❤️", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*34)),
-            Chat(user: User(ID: 6, username: "mmorits", firstName: "Ferdynand", lastName: "Kaźmierczak"), lastMessageText: "http://youtu.be/UZb2NOHPA2A", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*2-1)),
-            Chat(user: User(ID: 7, username: "krystalfister", firstName: "Lauren", lastName: "Cooper"), lastMessageText: "Thinking of you...", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*3)),
-            Chat(user: User(ID: 8, username: "christianramsey", firstName: "Bradley", lastName: "Simpson"), lastMessageText: "👍", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*4)),
-            Chat(user: User(ID: 9, username: "curiousonaut", firstName: "Clotilde", lastName: "Thomas"), lastMessageText: "Sounds good!", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*5)),
-            Chat(user: User(ID: 10, username: "acoops_", firstName: "Tania", lastName: "Caramitru"), lastMessageText: "Cool. Thanks!", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*6)),
-            Chat(user: User(ID: 11, username: "tpatteri", firstName: "Ileana", lastName: "Mazilu"), lastMessageText: "Hey, what are you up to?", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*7)),
-            Chat(user: User(ID: 12, username: "giuliusa", firstName: "Asja", lastName: "Zuhrić"), lastMessageText: "Drinks tonight?", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*8)),
-            Chat(user: User(ID: 13, username: "liang", firstName: "Sarah", lastName: "Lam"), lastMessageText: "Are you going to Blues on the Green tonight?", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*9)),
-            Chat(user: User(ID: 14, username: "dhoot_amit", firstName: "Ishan", lastName: "Sarin"), lastMessageText: "Thanks for open sourcing Chats.", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*10)),
-            Chat(user: User(ID: 15, username: "leezlee", firstName: "Stella", lastName: "Vosper"), lastMessageText: "Those who dance are considered insane by those who can't hear the music.", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11)),
-            Chat(user: User(ID: 16, username: "elenadissi", firstName: "Georgeta", lastName: "Mihăileanu"), lastMessageText: "Hey, what are you up to?", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11)),
-            Chat(user: User(ID: 17, username: "juanadearte", firstName: "Alice", lastName: "Adams"), lastMessageText: "Hey, want to hang out tonight?", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11)),
-            Chat(user: User(ID: 18, username: "teleject", firstName: "Gerard", lastName: "Gómez"), lastMessageText: "Haha. Hell yeah! No problem, bro!", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11)),
-            Chat(user: User(ID: 19, username: "oksanafrewer", firstName: "Melinda", lastName: "Osváth"), lastMessageText: "I am excellent!!! I was thinking recently that you are a very inspirational person.", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11)),
-            Chat(user: User(ID: 20, username: "cynthiasavard", firstName: "Saanvi", lastName: "Sarin"), lastMessageText: "See you soon!", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11)),
-            Chat(user: User(ID: 21, username: "stushona", firstName: "Jade", lastName: "Roger"), lastMessageText: "😊", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*11))
+            Chat(user: User(ID: 1, username: "森永の焼プリン", firstName: "森永の焼プリン", lastName: "＠太一郎"), lastMessageText: "おいしいをデザインする", lastMessageSentDate: NSDate()),
+            Chat(user: User(ID: 2, username: "カリカリ梅おむすび", firstName: "カリカリ梅おむすび", lastName: "＠鈴木"), lastMessageText: "混ぜ飯おむすび", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute)),
+            Chat(user: User(ID: 3, username: "週刊少年ジャンプ", firstName: "週刊少年ジャンプ", lastName: "＠尾田"), lastMessageText: "友情・努力・勝利", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*12)),
+            Chat(user: User(ID: 23, username: "ガツン、とみかん", firstName: "ガツン、とみかん", lastName: "＠退席中"), lastMessageText: "夏はこっちだ！", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*5)),
+            Chat(user: User(ID: 4, username: "カリカリトリプルチーズ", firstName: "カリカリトリプルチーズ", lastName: "＠林田"), lastMessageText: "カリカリとした食感のツイスト（ねじれた）形状のコーンスナックです。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*13)),
+            Chat(user: User(ID: 22, username: "日清カップヌードル", firstName: "日清カップヌードル", lastName: "＠百福"), lastMessageText: "STAY HOT いいぞ、もっとやれ。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*24)),
+            Chat(user: User(ID: 5, username: "かっぱえびせん", firstName: "かっぱえびせん", lastName: "＠松尾"), lastMessageText: "やめられないとまらない", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*34)),
+            Chat(user: User(ID: 6, username: "お〜いお茶", firstName: "お〜いお茶", lastName: "＠本庄"), lastMessageText: "史上最高のお〜いお茶 できました。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*2-1)),
+            Chat(user: User(ID: 7, username: "セブンカフェ", firstName: "セブンカフェ", lastName: "＠可士和"), lastMessageText: "一杯ずつ、挽きたて、淹れたて", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*3)),
+            Chat(user: User(ID: 8, username: "手巻おにぎり紀州南高梅（たたき梅）", firstName: "手巻おにぎり紀州南高梅（たたき梅）", lastName: "＠鈴木"), lastMessageText: "海苔のうまさ広がる", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*4)),
+            Chat(user: User(ID: 9, username: "ムービングラバーワイルドシェイク", firstName: "ムービングラバーワイルドシェイク", lastName: "＠西村"), lastMessageText: "あふれる毛束感、へたらず長持ち", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*5)),
+            Chat(user: User(ID: 10, username: "キットカット", firstName: "キットカット", lastName: "＠アンリ・ネスレ"), lastMessageText: "ブレイクタイム", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*6)),
+            Chat(user: User(ID: 11, username: "カントリーマアム", firstName: "カントリーマアム", lastName: "＠藤井"), lastMessageText: "ホームメイドのおいしさ。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*7)),
+            Chat(user: User(ID: 12, username: "ロースカツカレー", firstName: "ロースカツカレー", lastName: "＠退席中"), lastMessageText: "食べ応えのあるジューシーなロースカツを盛り付けたカレーです。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*8))
         ]
         for chat in account.chats {
             account.users.append(chat.user)
         }
-        account.phone = "2102390602"
-        account.user = User(ID: 24, username: "guest", firstName: "Guest", lastName: "User")
+        account.phone = "4154202843"
+        account.user = User(ID: 24, username: "十一時七雄", firstName: "十一時七雄", lastName: "＠元気")
         account.accessToken = "guest_access_token"
     }
     

@@ -15,7 +15,7 @@ class ChatsTableViewController: UITableViewController {
     convenience init() {
         self.init(style: .Plain)
         title = "Chats"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "composeAction")
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "composeAction")
         self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
     }
     
@@ -23,7 +23,7 @@ class ChatsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.leftBarButtonItem = editButtonItem() // TODO: KVO
+//        navigationItem.leftBarButtonItem = editButtonItem() // TODO: KVO
         tableView.backgroundColor = UIColor.whiteColor()
         tableView.rowHeight = chatTableViewCellHeight
         tableView.separatorInset.left = chatTableViewCellInsetLeft
