@@ -8,6 +8,16 @@
 
 import Foundation
 
+
+// 配色
+var primaryTextColor:UIColor!
+var secondaryTextColor:UIColor!
+var primaryColor:UIColor!
+var secondaryColor:UIColor!
+var primaryBackgroundColor:UIColor!
+var secondaryBackgroundColor:UIColor!
+
+
 class Item {
     var itemid :String
     var name   :NSString

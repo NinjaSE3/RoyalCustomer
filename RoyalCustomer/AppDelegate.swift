@@ -40,6 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.createAwards()
         //アカウント取得
         self.continueAsGuestAction()
+        
+        //カラーコード作成
+        primaryTextColor = UIColorFromRGB(0x212121);
+        secondaryTextColor = UIColorFromRGB(0x727272);
+        primaryColor = UIColorFromRGB(0x03A9F4);
+        secondaryColor = UIColorFromRGB(0xB3E5FC);
+        primaryBackgroundColor = UIColorFromRGB(0xF8F8F8);
+        secondaryBackgroundColor = UIColorFromRGB(0xB6B6B6);
 
         if let accessToken = account.accessToken {
             if accessToken == "guest_access_token" {
@@ -201,5 +209,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         awards.append(Award(awardid:13,level:2,name:"認定13",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
         awards.append(Award(awardid:14,level:3,name:"認定14",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
         awards.append(Award(awardid:15,level:3,name:"認定15",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
+    }
+    
+    //UIntに16進で数値をいれるとUIColorが戻る関数
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
