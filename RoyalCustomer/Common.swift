@@ -26,9 +26,11 @@ class Item {
     var award2 :[Float]
     var prchedHist : [String: Int]  // "2015/7"(年月): 30（個数）
     var prchedThisM :[Int: Int]     // 19 (当月日付): 1（個数）
+    var brandImage :String          //　ブランド画像名称
+    var outline :String         // 商品概要
     
     // イニシャライザ
-    init(itemid: String, name: NSString, image: String, award1: [Float], award2: [Float], prchedHist:[String: Int], prchedThisM:[Int: Int] ) {
+    init(itemid: String, name: NSString, image: String, award1: [Float], award2: [Float], prchedHist:[String: Int], prchedThisM:[Int: Int], brandImage: String, outline: String ) {
         self.itemid = itemid
         self.name   = name
         self.image  = image
@@ -36,6 +38,8 @@ class Item {
         self.award2 = award2
         self.prchedHist = prchedHist
         self.prchedThisM = prchedThisM
+        self.brandImage = brandImage
+        self.outline = outline
     }
 }
 

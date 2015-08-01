@@ -10,13 +10,12 @@ import UIKit
 
 class ItemViewController: UIViewController {
     
-    // 変数定義
+    // Viewに関する変数定義
     private var shohinImageView: UIImageView!
+    private var brandImageView:  UIImageView!
     private var badgeImageView:  UIImageView!
+    private var itemViewScrollView: UIScrollView!
     private var pScrollView:     UIScrollView!
-    
-    // TestDate
-    var items :[UInt] = [10,35,18, 20, 50, 5]
     
     // Viewに関する情報取得
     let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
@@ -25,11 +24,14 @@ class ItemViewController: UIViewController {
         let baf:            CGFloat = 10
         let bafBadge:       CGFloat = 5
         let navBarHeight:   CGFloat = self.navigationController!.navigationBar.bounds.size.height
-        let shohinHeight:   CGFloat = 200
-        let shohinWidth:    CGFloat  = 200
+        let shohinHeight:   CGFloat = 250
+        let shohinWidth:    CGFloat = 200
+        let brandHeight:    CGFloat = 50
+        let brandWidth:     CGFloat = 50
+        
         let bLabelPosition: CGFloat = navBarHeight + shohinHeight + baf
-        let bLabText:       String = "取得した認定バッジ"
-        let pLabText:       String = "あなたの購入履歴"
+        let bLabText:       String = "取得した認定バッジ&トロフィー"
+        let pLabText:       String = "商品購入数"
         let badgeHeight:    CGFloat = 50
         let badgeWidth:     CGFloat = 50
         let badgePosiY:     CGFloat = bLabelPosition + baf
@@ -43,15 +45,8 @@ class ItemViewController: UIViewController {
 //        let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
 //        let sReq = NSURLRequest(URL:shohinUrl!)
         
-        
         //　表示するバッジ画像を設定　TODO:商品一覧から受け取ったURLを設定
 //        let badgeUrlStr: [String] = ["http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg","http://odagirist.net/icon/rank/1.png","http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg", "http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg"]
-        
-        
-        super.viewDidLoad()
-        
-        // 背景色をWhiteに設定する.
-        self.view.backgroundColor = UIColor.whiteColor()
         
         /* 商品画像の生成 */
         // 非同期検索＆表示
@@ -64,13 +59,45 @@ class ItemViewController: UIViewController {
 //            self.view.addSubview(shohinImageView)
 //        }
         
+        super.viewDidLoad()
+        
+        // 背景色をWhiteに設定する.
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        // 商品詳細View表示用UIScrollView作成
+        itemViewScrollView = UIScrollView(frame: self.view.bounds)
+        itemViewScrollView.backgroundColor = UIColor.clearColor()
+        
+        println(self.view.bounds.height)
+        
+        itemViewScrollView.pagingEnabled = false
+        itemViewScrollView.bounces = true
+        itemViewScrollView.scrollEnabled = true
+        itemViewScrollView.directionalLockEnabled = false
+        itemViewScrollView.showsHorizontalScrollIndicator = true
+        itemViewScrollView.showsVerticalScrollIndicator = true
+        
+        
+        // 購入グラフ&カレンダーを　UIScrollViewにadd
+        self.view.addSubview(itemViewScrollView)
+        
         
         // 商品画像の表示（ユーザーテスト用）
-        let shohinImageView = UIImageView(frame: CGRectMake(0, navBarHeight, shohinHeight, shohinWidth))
+        let shohinImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, shohinHeight))
         let shohinImage = UIImage(named: clickItem!.image)
         shohinImageView.image = shohinImage
-        self.view.addSubview(shohinImageView)
+
+        // 縦横比保持 TODO:画像のサイズ調整
+        //  shohinImageView.contentMode = UIViewContentMode.ScaleAspectFit
         
+        itemViewScrollView.addSubview(shohinImageView)
+        
+        // ブランドロゴ付与
+        let brandImageView = UIImageView(frame: CGRectMake(10, shohinHeight - shohinHeight/4, brandWidth, brandHeight))
+        let brandImage = UIImage(named: clickItem!.brandImage)
+        brandImageView.image = brandImage
+        brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        itemViewScrollView.addSubview(brandImageView)
         
         /* 認定バッジの生成 */
         // ラベル説明用ラベル表示
@@ -80,7 +107,7 @@ class ItemViewController: UIViewController {
         bLabel.font = UIFont(name: "HiraKakuProN-W3", size: 16)
         bLabel.layer.position = CGPoint(x: self.view.bounds.width/4,y: bLabelPosition)
         bLabel.textAlignment = NSTextAlignment.Center
-        self.view.addSubview(bLabel)
+        itemViewScrollView.addSubview(bLabel)
         
         // ラベル取得＆表示
         var badgePosiX: CGFloat = 0
