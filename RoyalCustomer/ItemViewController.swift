@@ -201,8 +201,7 @@ class ItemViewController: UIViewController {
         barChart.labelMarginTop = 5.0
         barChart.xLabels = prchedDateArray
         barChart.yValues = prchedNumArray
-        barChart.strokeColor = UIColor.blueColor()
-        barChart.labelTextColor = UIColor.blackColor()
+        barChart.strokeColor = primaryColor
         barChart.showLabel = false
         barChart.strokeChart()
         
