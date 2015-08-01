@@ -30,7 +30,7 @@ class DayView: UIView {
             dayLabel.textColor = UIColor.blueColor()
         }
         
-        // TODO 当日ならハイライト
+        // 当日ならハイライト
         var dateFormatter:NSDateFormatter = NSDateFormatter();
         dateFormatter.dateFormat = "yyyy/MM/dd";
         var dateString:String = dateFormatter.stringFromDate(NSDate());
@@ -41,10 +41,26 @@ class DayView: UIView {
         
         if day == currentDay {
             dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
+            dayLabel.layer.masksToBounds = true
+            dayLabel.layer.cornerRadius = 17.0
+            dayLabel.backgroundColor = UIColor.blueColor()
+            dayLabel.textColor = UIColor.whiteColor()
         }
         
-        // TODO　購入ありならハイライト
+        // 購入ありならハイライト
+        for (date,num) in clickItem!.prchedThisM {
+            if day == date {
+                if num <= 1 {
+                    dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
+                } else if num <= 2 {
+                    dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
+                    dayLabel.textColor = UIColor.orangeColor()
+                } else {
+                   // 何もしない
+                }
+            }
+       }
         
-        self.addSubview(dayLabel)
+       self.addSubview(dayLabel)
     }
 }
