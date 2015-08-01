@@ -140,11 +140,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     //商品ハードコーディング
     func createItems() {
         items.append(Item(itemid:"000001",name:"商品1",image:"Item1",award1:[0,1,2],award2:[3,4,5], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
-        items.append(Item(itemid:"000002",name:"商品2",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":20, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
-        items.append(Item(itemid:"000003",name:"商品3",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":22, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
-        items.append(Item(itemid:"000004",name:"商品4",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":3, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
-        items.append(Item(itemid:"000005",name:"商品5",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":12, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
-        items.append(Item(itemid:"000006",name:"商品6",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000002",name:"商品2",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":20, "2015/6":10,"2015/5":12,"2015/4":5], prchedThisM:[1:1,5:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,16:1,26:1]))
+        items.append(Item(itemid:"000003",name:"商品3",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":22], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,27:1]))
+        items.append(Item(itemid:"000004",name:"商品4",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,24:1,28:1]))
+        items.append(Item(itemid:"000005",name:"商品5",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":12, "2015/6":20,"2015/5":22], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000006",name:"商品6",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":22,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
         items.append(Item(itemid:"000007",name:"商品7",image:"Item1",award1:[6,7],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
         items.append(Item(itemid:"000008",name:"商品8",image:"Item1",award1:[15],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
         items.append(Item(itemid:"000009",name:"商品9",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
