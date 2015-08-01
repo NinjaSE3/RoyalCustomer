@@ -33,6 +33,7 @@
 		2D14E7EB1B69DF230004C6B5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D14E7E71B69DF230004C6B5 /* Message.swift */; };
 		2D14E7EC1B69DF230004C6B5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D14E7E81B69DF230004C6B5 /* User.swift */; };
 		2D14E7EF1B69DF2A0004C6B5 /* UserPictureImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D14E7EE1B69DF2A0004C6B5 /* UserPictureImageView.swift */; };
+		2D9EE3481B6C6A9000E2C7AD /* json.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D9EE3471B6C6A9000E2C7AD /* json.swift */; };
 		2DA685271B6B14A800E2FC6B /* SocketAckManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6851A1B6B14A800E2FC6B /* SocketAckManager.swift */; };
 		2DA685281B6B14A800E2FC6B /* SocketAnyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6851B1B6B14A800E2FC6B /* SocketAnyEvent.swift */; };
 		2DA685291B6B14A800E2FC6B /* SocketEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA6851C1B6B14A800E2FC6B /* SocketEngine.swift */; };
@@ -91,6 +92,7 @@
 		2D14E7E71B69DF230004C6B5 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		2D14E7E81B69DF230004C6B5 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2D14E7EE1B69DF2A0004C6B5 /* UserPictureImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPictureImageView.swift; sourceTree = "<group>"; };
+		2D9EE3471B6C6A9000E2C7AD /* json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = json.swift; sourceTree = "<group>"; };
 		2DA6851A1B6B14A800E2FC6B /* SocketAckManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAckManager.swift; sourceTree = "<group>"; };
 		2DA6851B1B6B14A800E2FC6B /* SocketAnyEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketAnyEvent.swift; sourceTree = "<group>"; };
 		2DA6851C1B6B14A800E2FC6B /* SocketEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketEngine.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				2D14E7E61B69DF230004C6B5 /* Chat.swift */,
 				2D14E7E71B69DF230004C6B5 /* Message.swift */,
 				2D14E7E81B69DF230004C6B5 /* User.swift */,
+				2D9EE3471B6C6A9000E2C7AD /* json.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -463,6 +466,7 @@
 				2DA6852F1B6B14A800E2FC6B /* SocketPacket.swift in Sources */,
 				2D14E7EC1B69DF230004C6B5 /* User.swift in Sources */,
 				2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */,
+				2D9EE3481B6C6A9000E2C7AD /* json.swift in Sources */,
 				2D14E7DC1B69DF050004C6B5 /* UserTableViewCell.swift in Sources */,
 				2D14E7E21B69DF0E0004C6B5 /* ActivityOverlayView.swift in Sources */,
 				2D14E7D01B69DEED0004C6B5 /* ChatTableViewCell.swift in Sources */,

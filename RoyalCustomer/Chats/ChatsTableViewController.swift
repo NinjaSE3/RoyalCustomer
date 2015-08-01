@@ -14,7 +14,7 @@ class ChatsTableViewController: UITableViewController {
 
     convenience init() {
         self.init(style: .Plain)
-        title = "Chats"
+        title = "メッセージ一覧"
 //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "composeAction")
         self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
     }
