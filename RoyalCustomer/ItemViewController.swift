@@ -51,7 +51,7 @@ class ItemViewController: UIViewController {
         super.viewDidLoad()
         
         // 背景色をWhiteに設定する.
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = primaryBackgroundColor
         
         /* 商品画像の生成 */
         // 非同期検索＆表示
@@ -64,6 +64,14 @@ class ItemViewController: UIViewController {
 //            self.view.addSubview(shohinImageView)
 //        }
         
+        // ナビゲーションバーに商品名を表示
+        //var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        title.textColor = primaryBackgroundColor
+        //title.backgroundColor = UIColor.redColor()
+        title.text = clickItem!.name as String
+        title.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = title
         
         // 商品画像の表示（ユーザーテスト用）
         let shohinImageView = UIImageView(frame: CGRectMake(0, navBarHeight, shohinHeight, shohinWidth))
