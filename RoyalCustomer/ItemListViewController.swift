@@ -133,6 +133,9 @@ class ItemListViewController: UIViewController {
     private var award2ImageView39: UIImageView!
     private var award2ImageView40: UIImageView!
     
+    // プロフィールビュー
+    private var profileView: UIButton!
+    
     // スクロールビュー
     private var scrView = MyScrollView()
     
@@ -143,6 +146,7 @@ class ItemListViewController: UIViewController {
         self.view.backgroundColor = UIColor.whiteColor()
         
         self.navigationView()
+        self.profView()
         self.itemListView()
         self.awardListView()
         
@@ -168,12 +172,40 @@ class ItemListViewController: UIViewController {
     
     func navigationView(){
         // ナビゲーションの表示
+        //var imgButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
+        //imgButton.setImage(UIImage(named: "User1"), forState: UIControlState.Normal)
+        //imgButton.addTarget(self.navigationController, action: Selector("onClickProfile:"), forControlEvents:  UIControlEvents.TouchUpInside)
+        //var imgButtonItem = UIBarButtonItem(customView: imgButton)
+        //self.navigationItem.leftBarButtonItem = imgButtonItem
+        self.navigationItem.title = "購入商品一覧"
+    }
+    
+    func profView(){
+        // プロフィールの表示
+        profileView = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 60))
+        profileView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        profileView.backgroundColor=secondaryBackgroundColor
+        profileView.layer.masksToBounds = true
+        profileView.setTitle("MotherFucker" , forState: .Normal)
+        profileView.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        //profileView!.font = UIFont(name: "Helvetica",size: CGFloat(10))
+        profileView.layer.position = CGPoint(x: self.profileView.frame.width/2, y:self.profileView.frame.height/2)
+        profileView.setImage(UIImage(named: "User1"), forState: UIControlState.Normal)
+        profileView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        profileView.imageView?.layer.cornerRadius = 8
+        profileView.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
+        profileView.imageView?.layer.borderWidth = 5
+        
+        //self.view.addSubview(profileView)
+        
+        /*
         var imgButton = UIButton(frame: CGRect(x: 0, y: 0, width: 44, height: 44))
         imgButton.setImage(UIImage(named: "User1"), forState: UIControlState.Normal)
         imgButton.addTarget(self.navigationController, action: Selector("onClickProfile:"), forControlEvents:  UIControlEvents.TouchUpInside)
         var imgButtonItem = UIBarButtonItem(customView: imgButton)
         self.navigationItem.leftBarButtonItem = imgButtonItem
-        self.navigationItem.title = "くらさわさん"
+        self.navigationItem.title = "購入商品一覧"
+        */
     }
     
     func itemListView(){
@@ -192,7 +224,7 @@ class ItemListViewController: UIViewController {
         itemImageView01.backgroundColor = UIColor.redColor()
         itemImageView01.layer.position = CGPoint(
             x: itemImageView01.frame.width/2,
-            y: itemImageView01.frame.height/2
+            y: itemImageView01.frame.height/2+self.profileView.frame.height
         )
         itemImageView01.userInteractionEnabled = true
         
@@ -206,7 +238,7 @@ class ItemListViewController: UIViewController {
         itemImageView02.backgroundColor = UIColor.redColor()
         itemImageView02.layer.position = CGPoint(
             x: itemImageView02.frame.width/2+itemImageView01.frame.width,
-            y: itemImageView02.frame.height/2
+            y: itemImageView02.frame.height/2+self.profileView.frame.height
         )
         itemImageView02.userInteractionEnabled = true
         
@@ -220,7 +252,7 @@ class ItemListViewController: UIViewController {
         itemImageView03.backgroundColor = UIColor.redColor()
         itemImageView03.layer.position = CGPoint(
             x: itemImageView03.frame.width/2+itemImageView02.frame.width+itemImageView01.frame.width,
-            y: itemImageView03.frame.height/2
+            y: itemImageView03.frame.height/2+self.profileView.frame.height
         )
         itemImageView03.userInteractionEnabled = true
         
@@ -234,7 +266,7 @@ class ItemListViewController: UIViewController {
         itemImageView04.backgroundColor = UIColor.redColor()
         itemImageView04.layer.position = CGPoint(
             x: itemImageView04.frame.width/2+itemImageView03.frame.width+itemImageView02.frame.width+itemImageView01.frame.width,
-            y: itemImageView04.frame.height/2
+            y: itemImageView04.frame.height/2+self.profileView.frame.height
         )
         itemImageView04.userInteractionEnabled = true
         
@@ -248,7 +280,7 @@ class ItemListViewController: UIViewController {
         itemImageView05.backgroundColor = UIColor.redColor()
         itemImageView05.layer.position = CGPoint(
             x: itemImageView05.frame.width/2+itemImageView01.frame.width,
-            y: itemImageView05.frame.height/2+itemImageView02.frame.height
+            y: itemImageView05.frame.height/2+itemImageView02.frame.height+self.profileView.frame.height
         )
         itemImageView05.userInteractionEnabled = true
         
@@ -262,7 +294,7 @@ class ItemListViewController: UIViewController {
         itemImageView06.backgroundColor = UIColor.redColor()
         itemImageView06.layer.position = CGPoint(
             x: itemImageView06.frame.width/2+itemImageView01.frame.width,
-            y: itemImageView06.frame.height/2+itemImageView06.frame.height+itemImageView02.frame.height
+            y: itemImageView06.frame.height/2+itemImageView06.frame.height+itemImageView02.frame.height+self.profileView.frame.height
         )
         itemImageView06.userInteractionEnabled = true
         
@@ -276,7 +308,7 @@ class ItemListViewController: UIViewController {
         itemImageView07.backgroundColor = UIColor.redColor()
         itemImageView07.layer.position = CGPoint(
             x: itemImageView07.frame.width/2+itemImageView05.frame.width+itemImageView01.frame.width,
-            y: itemImageView07.frame.height/2+itemImageView02.frame.height
+            y: itemImageView07.frame.height/2+itemImageView02.frame.height+self.profileView.frame.height
         )
         itemImageView07.userInteractionEnabled = true
         
@@ -290,7 +322,7 @@ class ItemListViewController: UIViewController {
         itemImageView08.backgroundColor = UIColor.redColor()
         itemImageView08.layer.position = CGPoint(
             x: itemImageView08.frame.width/2,
-            y: itemImageView08.frame.height/2+itemImageView01.frame.height
+            y: itemImageView08.frame.height/2+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView08.userInteractionEnabled = true
         
@@ -304,7 +336,7 @@ class ItemListViewController: UIViewController {
         itemImageView09.backgroundColor = UIColor.redColor()
         itemImageView09.layer.position = CGPoint(
             x: itemImageView09.frame.width/2+itemImageView08.frame.width,
-            y: itemImageView09.frame.height/2+itemImageView01.frame.height
+            y: itemImageView09.frame.height/2+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView09.userInteractionEnabled = true
         
@@ -318,7 +350,7 @@ class ItemListViewController: UIViewController {
         itemImageView10.backgroundColor = UIColor.redColor()
         itemImageView10.layer.position = CGPoint(
             x: itemImageView10.frame.width/2+itemImageView08.frame.width+itemImageView09.frame.width,
-            y: itemImageView10.frame.height/2+itemImageView01.frame.height
+            y: itemImageView10.frame.height/2+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView10.userInteractionEnabled = true
         
@@ -332,7 +364,7 @@ class ItemListViewController: UIViewController {
         itemImageView11.backgroundColor = UIColor.redColor()
         itemImageView11.layer.position = CGPoint(
             x: itemImageView11.frame.width/2,
-            y: itemImageView11.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height
+            y: itemImageView11.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView11.userInteractionEnabled = true
 
@@ -346,7 +378,7 @@ class ItemListViewController: UIViewController {
         itemImageView12.backgroundColor = UIColor.redColor()
         itemImageView12.layer.position = CGPoint(
             x: itemImageView12.frame.width/2+itemImageView11.frame.width,
-            y: itemImageView12.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height
+            y: itemImageView12.frame.height/2+itemImageView08.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView12.userInteractionEnabled = true
         
@@ -360,7 +392,7 @@ class ItemListViewController: UIViewController {
         itemImageView13.backgroundColor = UIColor.redColor()
         itemImageView13.layer.position = CGPoint(
             x: itemImageView13.frame.width/2+itemImageView11.frame.width,
-            y: itemImageView13.frame.height/2+itemImageView12.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+            y: itemImageView13.frame.height/2+itemImageView12.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView13.userInteractionEnabled = true
         
@@ -374,7 +406,7 @@ class ItemListViewController: UIViewController {
         itemImageView14.backgroundColor = UIColor.redColor()
         itemImageView14.layer.position = CGPoint(
             x: itemImageView14.frame.width/2+itemImageView01.frame.width,
-            y: itemImageView14.frame.height/2+itemImageView01.frame.height
+            y: itemImageView14.frame.height/2+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView14.userInteractionEnabled = true
         
@@ -388,7 +420,7 @@ class ItemListViewController: UIViewController {
         itemImageView15.backgroundColor = UIColor.redColor()
         itemImageView15.layer.position = CGPoint(
             x: itemImageView15.frame.width/2+itemImageView14.frame.width+itemImageView01.frame.width,
-            y: itemImageView15.frame.height/2+itemImageView01.frame.height
+            y: itemImageView15.frame.height/2+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView15.userInteractionEnabled = true
         
@@ -402,7 +434,7 @@ class ItemListViewController: UIViewController {
         itemImageView16.backgroundColor = UIColor.redColor()
         itemImageView16.layer.position = CGPoint(
             x: itemImageView16.frame.width/2+itemImageView14.frame.width+itemImageView01.frame.width,
-            y: itemImageView16.frame.height/2+itemImageView15.frame.height+itemImageView01.frame.height
+            y: itemImageView16.frame.height/2+itemImageView15.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView16.userInteractionEnabled = true
         
@@ -416,7 +448,7 @@ class ItemListViewController: UIViewController {
         itemImageView17.backgroundColor = UIColor.redColor()
         itemImageView17.layer.position = CGPoint(
             x: itemImageView17.frame.width/2,
-            y: itemImageView17.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+            y: itemImageView17.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView17.userInteractionEnabled = true
         
@@ -430,7 +462,7 @@ class ItemListViewController: UIViewController {
         itemImageView18.backgroundColor = UIColor.redColor()
         itemImageView18.layer.position = CGPoint(
             x: itemImageView18.frame.width/2,
-            y: itemImageView18.frame.height/2+itemImageView17.frame.height+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+            y: itemImageView18.frame.height/2+itemImageView17.frame.height+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView18.userInteractionEnabled = true
         
@@ -444,7 +476,7 @@ class ItemListViewController: UIViewController {
         itemImageView19.backgroundColor = UIColor.redColor()
         itemImageView19.layer.position = CGPoint(
             x: itemImageView19.frame.width/2+itemImageView17.frame.width,
-            y: itemImageView19.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height
+            y: itemImageView19.frame.height/2+itemImageView11.frame.height+itemImageView08.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView19.userInteractionEnabled = true
         
@@ -458,11 +490,11 @@ class ItemListViewController: UIViewController {
         itemImageView20.backgroundColor = UIColor.redColor()
         itemImageView20.layer.position = CGPoint(
             x: itemImageView20.frame.width/2+itemImageView19.frame.width+itemImageView17.frame.width,
-            y: itemImageView20.frame.height/2+itemImageView14.frame.height+itemImageView01.frame.height
+            y: itemImageView20.frame.height/2+itemImageView14.frame.height+itemImageView01.frame.height+self.profileView.frame.height
         )
         itemImageView20.userInteractionEnabled = true
         
-        var pageHeight = itemImageView01.frame.height + itemImageView08.frame.height + itemImageView11.frame.height + itemImageView19.frame.height
+        var pageHeight = itemImageView01.frame.height + itemImageView08.frame.height + itemImageView11.frame.height + itemImageView19.frame.height+self.profileView.frame.height
         
         // 21
         itemImageView21 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
@@ -750,7 +782,7 @@ class ItemListViewController: UIViewController {
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         // 全体のサイズ
-        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight*2)
+        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight*2-self.profileView.frame.height)
         // 配置
         scrView.layer.position = CGPoint(
             x: scrView.frame.width/2,
@@ -761,6 +793,7 @@ class ItemListViewController: UIViewController {
         self.view.addSubview(scrView)
         
         // 各イメージを追加
+        scrView.addSubview(profileView)
         scrView.addSubview(itemImageView01)
         scrView.addSubview(itemImageView02)
         scrView.addSubview(itemImageView03)
