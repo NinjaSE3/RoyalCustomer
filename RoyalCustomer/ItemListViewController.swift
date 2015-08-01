@@ -143,7 +143,7 @@ class ItemListViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         
         // Viewの背景色をWhiteに設定する.
-        self.view.backgroundColor = UIColor.whiteColor()
+        //self.view.backgroundColor = UIColor.whiteColor()
         
         self.navigationView()
         self.profView()
@@ -177,7 +177,12 @@ class ItemListViewController: UIViewController {
         //imgButton.addTarget(self.navigationController, action: Selector("onClickProfile:"), forControlEvents:  UIControlEvents.TouchUpInside)
         //var imgButtonItem = UIBarButtonItem(customView: imgButton)
         //self.navigationItem.leftBarButtonItem = imgButtonItem
-        self.navigationItem.title = "購入商品一覧"
+        //self.navigationItem.title = "購入商品一覧"
+        var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        title.textColor = primaryBackgroundColor
+        title.text = "購入商品一覧"
+        title.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = title
     }
     
     func profView(){
