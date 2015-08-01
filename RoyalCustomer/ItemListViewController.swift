@@ -186,13 +186,13 @@ class ItemListViewController: UIViewController {
         profileView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         profileView.backgroundColor=secondaryBackgroundColor
         profileView.layer.masksToBounds = true
-        profileView.setTitle("MotherFucker" , forState: .Normal)
-        profileView.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        profileView.setTitle("十一時七雄さん" , forState: .Normal)
+        profileView.setTitleColor(primaryColor, forState: .Normal)
         //profileView!.font = UIFont(name: "Helvetica",size: CGFloat(10))
         profileView.layer.position = CGPoint(x: self.profileView.frame.width/2, y:self.profileView.frame.height/2)
-        profileView.setImage(UIImage(named: "User1"), forState: UIControlState.Normal)
+        profileView.setImage(UIImage(named: "User0"), forState: UIControlState.Normal)
         profileView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        profileView.imageView?.layer.cornerRadius = 8
+        //profileView.imageView?.layer.cornerRadius = 5
         profileView.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
         profileView.imageView?.layer.borderWidth = 5
         
@@ -211,8 +211,8 @@ class ItemListViewController: UIViewController {
     func itemListView(){
         
         // 商品一覧を作成（今はべた書き）
-        var borderColor = UIColor.blackColor().CGColor
-        var borderWidth:CGFloat = 1
+        var borderColor:CGColor = primaryBackgroundColor.CGColor
+        var borderWidth:CGFloat = 2
         
         // 01
         itemImageView01 = UIImageView(frame: CGRectMake(0,0,self.view.bounds.width/2,self.view.bounds.width/2))
