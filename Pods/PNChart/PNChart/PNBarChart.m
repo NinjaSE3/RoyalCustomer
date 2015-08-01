@@ -47,9 +47,9 @@
     self.backgroundColor = [UIColor whiteColor];
     self.clipsToBounds   = YES;
     _showLabel           = YES;
-    _barBackgroundColor  = PNLightGrey;
+    _barBackgroundColor  = UIColor.whiteColor;
     _labelTextColor      = [UIColor grayColor];
-    _labelFont           = [UIFont systemFontOfSize:11.0f];
+    _labelFont           = [UIFont systemFontOfSize:14.0f];
     _xChartLabels        = [NSMutableArray array];
     _yChartLabels        = [NSMutableArray array];
     _bars                = [NSMutableArray array];
@@ -58,7 +58,7 @@
     _labelMarginTop      = 0;
     _chartMargin         = 25.0;
     _barRadius           = 2.0;
-    _showChartBorder     = NO;
+    _showChartBorder     = YES;
     _showLevelLine       = NO;
     _yChartLabelWidth    = 18;
     _rotateForXAxisText  = false;

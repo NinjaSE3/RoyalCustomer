@@ -36,6 +36,8 @@ class ItemViewController: UIViewController {
         let pLabelPosition: CGFloat = badgePosiY + badgeHeight + baf
         let pGraphPosition: CGFloat = pLabelPosition
         
+        var prchedDateArray :[String] = []
+        var prchedNumArray :[Int] = []
         
         // 表示する商品画像を設定　TODO:商品一覧から受け取ったURLを設定
 //        let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
@@ -164,6 +166,24 @@ class ItemViewController: UIViewController {
         pScrollView.showsHorizontalScrollIndicator = true
         pScrollView.showsVerticalScrollIndicator = false
 
+
+        
+        // 購入情報の取り出し
+        var keys = Array(clickItem!.prchedHist.keys)
+        // keysを昇順でソートする
+        keys.sort({
+            $0 < $1
+        })
+        
+        for sortKey in keys {
+            for (date, num) in clickItem!.prchedHist {
+                if sortKey == date {
+                var dates:[String] = date.componentsSeparatedByString("/")
+                prchedDateArray.append(dates[1]+"月")
+                prchedNumArray.append(num)
+                }
+            }
+        }
         // 購入グラフ表示
         var barChart = PNBarChart(frame: CGRectMake(0, 0, 350.0, 250.0))
         barChart.backgroundColor = UIColor.clearColor()
@@ -176,12 +196,14 @@ class ItemViewController: UIViewController {
         
         
         // remove for default animation (all bars animate at once)
-      //  barChart.animationType = .Waterfall
-        
+        //  barChart.animationType = .Waterfall
         
         barChart.labelMarginTop = 5.0
-        barChart.xLabels = ["2月","3月","4月","5月","6月","7月"]
-        barChart.yValues = [1,24,12,18,30,10]
+        barChart.xLabels = prchedDateArray
+        barChart.yValues = prchedNumArray
+        barChart.strokeColor = UIColor.blueColor()
+        barChart.labelTextColor = UIColor.blackColor()
+        barChart.showLabel = false
         barChart.strokeChart()
         
        // barChart.delegate = self

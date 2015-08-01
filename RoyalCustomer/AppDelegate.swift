@@ -40,6 +40,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.createAwards()
         //アカウント取得
         self.continueAsGuestAction()
+        
+        //カラーコード作成
+        primaryTextColor = UIColorFromRGB(0x212121);
+        secondaryTextColor = UIColorFromRGB(0x727272);
+        primaryColor = UIColorFromRGB(0x03A9F4);
+        secondaryColor = UIColorFromRGB(0xB3E5FC);
+        primaryBackgroundColor = UIColorFromRGB(0xF8F8F8);
+        secondaryBackgroundColor = UIColorFromRGB(0xB6B6B6);
 
         if let accessToken = account.accessToken {
             if accessToken == "guest_access_token" {
@@ -130,46 +138,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //商品ハードコーディング
     func createItems() {
-        items.append(Item(itemid:"000001",name:"商品1",image:"Item1",award1:[0,1,2],award2:[3,4,5]))
-        items.append(Item(itemid:"000002",name:"商品2",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000003",name:"商品3",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000004",name:"商品4",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000005",name:"商品5",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000006",name:"商品6",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000007",name:"商品7",image:"Item1",award1:[6,7],award2:[]))
-        items.append(Item(itemid:"000008",name:"商品8",image:"Item1",award1:[15],award2:[]))
-        items.append(Item(itemid:"000009",name:"商品9",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000010",name:"商品10",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000011",name:"商品11",image:"Item1",award1:[],award2:[8]))
-        items.append(Item(itemid:"000012",name:"商品12",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000013",name:"商品13",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000014",name:"商品14",image:"Item1",award1:[9],award2:[10]))
-        items.append(Item(itemid:"000015",name:"商品15",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000016",name:"商品16",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000017",name:"商品17",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000018",name:"商品18",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000019",name:"商品19",image:"Item1",award1:[11],award2:[12]))
-        items.append(Item(itemid:"000020",name:"商品20",image:"Item1",award1:[],award2:[13,14]))
-        items.append(Item(itemid:"000021",name:"商品21",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000022",name:"商品22",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000023",name:"商品23",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000024",name:"商品24",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000025",name:"商品25",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000026",name:"商品26",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000027",name:"商品27",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000028",name:"商品28",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000029",name:"商品29",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000030",name:"商品30",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000031",name:"商品31",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000032",name:"商品32",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000033",name:"商品33",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000034",name:"商品34",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000035",name:"商品35",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000036",name:"商品36",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000037",name:"商品37",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000038",name:"商品38",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000039",name:"商品39",image:"Item1",award1:[],award2:[]))
-        items.append(Item(itemid:"000040",name:"商品40",image:"Item1",award1:[],award2:[]))
+        items.append(Item(itemid:"000001",name:"商品1",image:"Item1",award1:[0,1,2],award2:[3,4,5], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000002",name:"商品2",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":20, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000003",name:"商品3",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":22, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000004",name:"商品4",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":3, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000005",name:"商品5",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":12, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000006",name:"商品6",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000007",name:"商品7",image:"Item1",award1:[6,7],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000008",name:"商品8",image:"Item1",award1:[15],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000009",name:"商品9",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000010",name:"商品10",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000011",name:"商品11",image:"Item1",award1:[],award2:[8], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000012",name:"商品12",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000013",name:"商品13",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000014",name:"商品14",image:"Item1",award1:[9],award2:[10], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000015",name:"商品15",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000016",name:"商品16",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000017",name:"商品17",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000018",name:"商品18",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000019",name:"商品19",image:"Item1",award1:[11],award2:[12], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000020",name:"商品20",image:"Item1",award1:[],award2:[13,14], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000021",name:"商品21",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000022",name:"商品22",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000023",name:"商品23",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000024",name:"商品24",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000025",name:"商品25",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000026",name:"商品26",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000027",name:"商品27",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000028",name:"商品28",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000029",name:"商品29",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000030",name:"商品30",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000031",name:"商品31",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000032",name:"商品32",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000033",name:"商品33",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000034",name:"商品34",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000035",name:"商品35",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000036",name:"商品36",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000037",name:"商品37",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000038",name:"商品38",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000039",name:"商品39",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
+        items.append(Item(itemid:"000040",name:"商品40",image:"Item1",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1]))
         
     }
     
@@ -191,5 +199,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         awards.append(Award(awardid:13,level:2,name:"認定13",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
         awards.append(Award(awardid:14,level:3,name:"認定14",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
         awards.append(Award(awardid:15,level:3,name:"認定15",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
+    }
+    
+    //UIntに16進で数値をいれるとUIColorが戻る関数
+    func UIColorFromRGB(rgbValue: UInt) -> UIColor {
+        return UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        )
     }
 }
