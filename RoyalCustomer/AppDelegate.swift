@@ -63,7 +63,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let chatsTableViewController: UIViewController = ChatsTableViewController()
         // UINavigationを設定
         let itemListNavigationController = UINavigationController(rootViewController: itemListViewController)
+        itemListNavigationController.navigationBar.barTintColor = primaryColor
+        itemListNavigationController.navigationBar.tintColor = primaryBackgroundColor
         let chatsNavigationController = UINavigationController(rootViewController: chatsTableViewController)
+        chatsNavigationController.navigationBar.barTintColor = primaryColor
+        chatsNavigationController.navigationBar.tintColor = primaryBackgroundColor
+
         
         // タブを要素に持つArrayの.を作成する.
         let myTabs = NSArray(objects: itemListNavigationController, chatsNavigationController)

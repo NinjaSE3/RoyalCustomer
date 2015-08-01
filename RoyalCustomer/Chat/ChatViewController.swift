@@ -89,24 +89,26 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        chat.loadedMessages = []
+
         // socket.io
         self.socket.connect()
         self.addHandlers()
 
-
-        chat.loadedMessages = [
-            [
-                Message(incoming: true, text: "いつも買ってくれてありがとう！", sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60)),
-                Message(incoming: false, text: "こちらこそ！(^^)", sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2))
-            ],
-            [
-                Message(incoming: true, text: "新商品の開発のために、普段使ってくれている人の意見が聞きたいんだけど質問しても良いかな？", sentDate: NSDate(timeIntervalSinceNow: -33)),
-                Message(incoming: false, text: "5分くらいで済むならいいよ！", sentDate: NSDate(timeIntervalSinceNow: -19)),
-                Message(incoming: true, text: "ありがとう！", sentDate: NSDate()),
-                Message(incoming: true, text: "お弁当買う時に一緒に買う飲み物って何？", sentDate: NSDate())
-            ]
-        ]
+        //getChatLog
+        var chatLog:JSON = self.getChatLog(account.user.username,brandname: chat.user.username)
         
+        for(var i=0;i<chatLog.length;i++){
+            println(JSON(chatLog[i]["from"]).toString(pretty: true))
+            println(chat.user.username)
+            //チャット相手からの送信
+            if(JSON(chatLog[i]["from"]).toString(pretty: true) == chat.user.username){
+                chat.loadedMessages.append([Message(incoming: true, text: JSON(chatLog[i]["chattext"]).toString(pretty: true), sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60))])
+            }else{
+                chat.loadedMessages.append([Message(incoming: false, text: JSON(chatLog[i]["chattext"]).toString(pretty: true), sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60))])
+            }
+        }
+	
         let whiteColor = UIColor.whiteColor()
         view.backgroundColor = whiteColor // smooths push animation
         
@@ -129,6 +131,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         notificationCenter.addObserver(self, selector: "menuControllerWillHide:", name: UIMenuControllerWillHideMenuNotification, object: nil) // #CopyMessage
         
         // tableViewScrollToBottomAnimated(false) // doesn't work
+    }
+    
+    func getChatLog(username:String! ,brandname:String!) -> JSON{
+        var getChatLogURL = "http://52.8.45.203/getChatLog?username=" + username.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "&brandname=" + brandname.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let chatLog = JSON(url: getChatLogURL)
+        println(getChatLogURL)
+        println(chatLog)
+        return chatLog
     }
     
     
@@ -314,8 +324,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         chat.loadedMessages.append([Message(incoming: false, text: textView.text, sentDate: NSDate())])
 
         // socket.io chatメッセージ送信
-        self.socket.emit("add user",chat.user.name)
+        self.socket.emit("add user",chat.user.username)
         self.socket.emit("new message",textView.text)
+        
+        //DB insert
+        self.addChatLog(account.user.username, brandname: chat.user.username, chattext: textView.text, time: nsDateToString(), read: "0", from: account.user.username)
 
         textView.text = nil
         updateTextViewHeight()
@@ -339,7 +352,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         textView.resignFirstResponder()
         textView.becomeFirstResponder()
         
+        //socket.io
         chat.loadedMessages.append([Message(incoming: true, text: message, sentDate: NSDate())])
+        
         textView.text = nil
         updateTextViewHeight()
         sendButton.enabled = false
@@ -354,6 +369,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         tableView.endUpdates()
         tableViewScrollToBottomAnimated(true)
         AudioServicesPlaySystemSound(messageSoundOutgoing)
+    }
+    
+    func nsDateToString() -> String{
+        let now = NSDate() // => Feb 13, 2015, 4:05 PM"
+        let iso8601Formatter = NSDateFormatter()
+        iso8601Formatter.dateFormat = "yyyyMMddHHmmss"
+        return iso8601Formatter.stringFromDate(now) // => 20150731212231
+    }
+    
+    func addChatLog(username:String,brandname:String,chattext:String,time:String,read:String,from:String) -> JSON{
+        var addChatLogURL = "http://52.8.45.203/addChatLog?username=" + username.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "&brandname=" + brandname.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "&chattext=" + chattext.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())! + "&time=" + time + "&read=" + read + "&from=" + username.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
+        let addChatLogExt = JSON(url: addChatLogURL)
+        println(addChatLogURL)
+        println(addChatLogExt)
+        return addChatLogExt
     }
     
     func tableViewScrollToBottomAnimated(animated: Bool) {
