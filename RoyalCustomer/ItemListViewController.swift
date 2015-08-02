@@ -847,11 +847,28 @@ class ItemListViewController: UIViewController {
         
         // アイコンサイズ係数
         var awardIconSize:CGFloat = 0.2
+        // アイコン背景係数
+        var awardBackgroundSize:CGFloat = 0.2
+        var awardBackgroundAlpha:CGFloat = 0.7
         
         // 1
+        if !items[0].award1.isEmpty || !items[0].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:MyUIButton = MyUIButton(frame: CGRectMake(0,0,itemImageView01.frame.width,itemImageView01.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.userInteractionEnabled = true
+            awardBackground.addTarget(self, action: Selector("onClickItemImageView:"), forControlEvents: UIControlEvents.TouchUpInside)
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView01.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView01.frame.maxY - itemImageView01.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[0].award1.isEmpty {
             var award1Image01:UIImage!
-
+            
             switch awards[Int(items[0].award1[0])].level {
             case 1:
                 award1Image01 = UIImage(named: "Award1_1_icon")!
@@ -909,6 +926,18 @@ class ItemListViewController: UIViewController {
         }
         
         //2
+        if !items[1].award1.isEmpty || !items[1].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView02.frame.width,itemImageView02.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView02.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView02.frame.maxY - itemImageView02.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[1].award1.isEmpty {
             var award1Image02:UIImage!
             
@@ -969,6 +998,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 3
+        if !items[2].award1.isEmpty || !items[2].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView03.frame.width,itemImageView03.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView03.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView03.frame.maxY - itemImageView03.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[2].award1.isEmpty {
             var award1Image03:UIImage!
             
@@ -1029,6 +1070,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 4
+        if !items[3].award1.isEmpty || !items[3].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView04.frame.width,itemImageView04.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView04.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView04.frame.maxY - itemImageView04.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[3].award1.isEmpty {
             var award1Image04:UIImage!
             
@@ -1089,6 +1142,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 5
+        if !items[4].award1.isEmpty || !items[4].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView05.frame.width,itemImageView05.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView05.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView05.frame.maxY - itemImageView05.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[4].award1.isEmpty {
             var award1Image05:UIImage!
             
@@ -1149,6 +1214,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 6
+        if !items[5].award1.isEmpty || !items[5].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView06.frame.width,itemImageView06.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView06.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView06.frame.maxY - itemImageView06.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[5].award1.isEmpty {
             var award1Image06:UIImage!
             
@@ -1209,6 +1286,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 7
+        if !items[6].award1.isEmpty || !items[6].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView07.frame.width,itemImageView07.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView07.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView07.frame.maxY - itemImageView07.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[6].award1.isEmpty {
             var award1Image07:UIImage!
             
@@ -1269,6 +1358,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 8
+        if !items[7].award1.isEmpty || !items[7].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView08.frame.width,itemImageView08.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView08.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView08.frame.maxY - itemImageView08.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[7].award1.isEmpty {
             var award1Image08:UIImage!
             
@@ -1329,6 +1430,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 9
+        if !items[8].award1.isEmpty || !items[8].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView09.frame.width,itemImageView09.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView09.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView09.frame.maxY - itemImageView09.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[8].award1.isEmpty {
             var award1Image09:UIImage!
             
@@ -1389,6 +1502,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 10
+        if !items[9].award1.isEmpty || !items[9].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView10.frame.width,itemImageView10.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView10.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView10.frame.maxY - itemImageView10.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[9].award1.isEmpty {
             var award1Image10:UIImage!
             
@@ -1449,6 +1574,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 11
+        if !items[10].award1.isEmpty || !items[10].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView11.frame.width,itemImageView11.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView11.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView11.frame.maxY - itemImageView11.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[10].award1.isEmpty {
             var award1Image11:UIImage!
             
@@ -1509,6 +1646,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 12
+        if !items[11].award1.isEmpty || !items[11].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView12.frame.width,itemImageView12.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView12.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView12.frame.maxY - itemImageView12.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[11].award1.isEmpty {
             var award1Image12:UIImage!
             
@@ -1569,6 +1718,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 13
+        if !items[12].award1.isEmpty || !items[12].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView13.frame.width,itemImageView13.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView13.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView13.frame.maxY - itemImageView13.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[12].award1.isEmpty {
             var award1Image13:UIImage!
             
@@ -1629,6 +1790,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 14
+        if !items[13].award1.isEmpty || !items[13].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView14.frame.width,itemImageView14.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView14.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView14.frame.maxY - itemImageView14.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[13].award1.isEmpty {
             var award1Image14:UIImage!
             
@@ -1689,6 +1862,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 15
+        if !items[14].award1.isEmpty || !items[14].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView15.frame.width,itemImageView15.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView15.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView15.frame.maxY - itemImageView15.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[14].award1.isEmpty {
             var award1Image15:UIImage!
             
@@ -1749,6 +1934,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 16
+        if !items[15].award1.isEmpty || !items[15].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView16.frame.width,itemImageView16.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView16.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView16.frame.maxY - itemImageView16.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[15].award1.isEmpty {
             var award1Image16:UIImage!
             
@@ -1809,6 +2006,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 17
+        if !items[16].award1.isEmpty || !items[16].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView17.frame.width,itemImageView17.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView17.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView17.frame.maxY - itemImageView17.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[16].award1.isEmpty {
             var award1Image17:UIImage!
             
@@ -1869,6 +2078,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 18
+        if !items[17].award1.isEmpty || !items[17].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView18.frame.width,itemImageView18.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView18.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView18.frame.maxY - itemImageView18.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[17].award1.isEmpty {
             var award1Image18:UIImage!
             
@@ -1929,6 +2150,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 19
+        if !items[18].award1.isEmpty || !items[18].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView19.frame.width,itemImageView19.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView19.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView19.frame.maxY - itemImageView19.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[18].award1.isEmpty {
             var award1Image19:UIImage!
             
@@ -1989,6 +2222,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 20
+        if !items[19].award1.isEmpty || !items[19].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView20.frame.width,itemImageView20.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView20.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView20.frame.maxY - itemImageView20.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[19].award1.isEmpty {
             var award1Image20:UIImage!
             
@@ -2049,6 +2294,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 21
+        if !items[20].award1.isEmpty || !items[20].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView21.frame.width,itemImageView21.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView21.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView21.frame.maxY - itemImageView21.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[20].award1.isEmpty {
             var award1Image21:UIImage!
             
@@ -2109,6 +2366,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 22
+        if !items[21].award1.isEmpty || !items[21].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView22.frame.width,itemImageView22.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView22.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView22.frame.maxY - itemImageView22.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[21].award1.isEmpty {
             var award1Image22:UIImage!
             
@@ -2169,6 +2438,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 23
+        if !items[22].award1.isEmpty || !items[22].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView23.frame.width,itemImageView23.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView23.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView23.frame.maxY - itemImageView23.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[22].award1.isEmpty {
             var award1Image23:UIImage!
             
@@ -2229,6 +2510,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 24
+        if !items[23].award1.isEmpty || !items[23].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView24.frame.width,itemImageView24.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView24.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView24.frame.maxY - itemImageView24.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[23].award1.isEmpty {
             var award1Image24:UIImage!
             
@@ -2289,6 +2582,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 25
+        if !items[24].award1.isEmpty || !items[24].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView25.frame.width,itemImageView25.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView25.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView25.frame.maxY - itemImageView25.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[24].award1.isEmpty {
             var award1Image25:UIImage!
             
@@ -2349,6 +2654,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 26
+        if !items[25].award1.isEmpty || !items[25].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView26.frame.width,itemImageView26.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView26.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView26.frame.maxY - itemImageView26.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[25].award1.isEmpty {
             var award1Image26:UIImage!
             
@@ -2409,6 +2726,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 27
+        if !items[26].award1.isEmpty || !items[26].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView27.frame.width,itemImageView27.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView27.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView27.frame.maxY - itemImageView27.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[26].award1.isEmpty {
             var award1Image27:UIImage!
             
@@ -2469,6 +2798,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 28
+        if !items[27].award1.isEmpty || !items[27].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView28.frame.width,itemImageView28.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView28.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView28.frame.maxY - itemImageView28.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[27].award1.isEmpty {
             var award1Image28:UIImage!
             
@@ -2529,6 +2870,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 29
+        if !items[28].award1.isEmpty || !items[28].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView29.frame.width,itemImageView29.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView29.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView29.frame.maxY - itemImageView29.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[28].award1.isEmpty {
             var award1Image29:UIImage!
             
@@ -2589,6 +2942,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 30
+        if !items[29].award1.isEmpty || !items[29].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView30.frame.width,itemImageView30.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView30.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView30.frame.maxY - itemImageView30.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[29].award1.isEmpty {
             var award1Image30:UIImage!
             
@@ -2649,6 +3014,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 31
+        if !items[30].award1.isEmpty || !items[30].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView31.frame.width,itemImageView31.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView31.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView31.frame.maxY - itemImageView31.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[30].award1.isEmpty {
             var award1Image31:UIImage!
             
@@ -2709,6 +3086,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 32
+        if !items[31].award1.isEmpty || !items[31].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView32.frame.width,itemImageView32.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView32.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView32.frame.maxY - itemImageView32.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[31].award1.isEmpty {
             var award1Image32:UIImage!
             
@@ -2769,6 +3158,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 33
+        if !items[32].award1.isEmpty || !items[32].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView33.frame.width,itemImageView33.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView33.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView33.frame.maxY - itemImageView33.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[32].award1.isEmpty {
             var award1Image33:UIImage!
             
@@ -2829,6 +3230,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 34
+        if !items[33].award1.isEmpty || !items[33].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView34.frame.width,itemImageView34.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView34.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView34.frame.maxY - itemImageView34.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[33].award1.isEmpty {
             var award1Image34:UIImage!
             
@@ -2889,6 +3302,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 35
+        if !items[34].award1.isEmpty || !items[34].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView35.frame.width,itemImageView35.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView35.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView35.frame.maxY - itemImageView35.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[34].award1.isEmpty {
             var award1Image35:UIImage!
             
@@ -2949,6 +3374,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 36
+        if !items[35].award1.isEmpty || !items[35].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView36.frame.width,itemImageView36.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView36.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView36.frame.maxY - itemImageView36.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[35].award1.isEmpty {
             var award1Image36:UIImage!
             
@@ -3009,6 +3446,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 37
+        if !items[36].award1.isEmpty || !items[36].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView37.frame.width,itemImageView37.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView37.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView37.frame.maxY - itemImageView37.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[36].award1.isEmpty {
             var award1Image37:UIImage!
             
@@ -3069,6 +3518,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 38
+        if !items[37].award1.isEmpty || !items[37].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView38.frame.width,itemImageView38.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView38.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView38.frame.maxY - itemImageView38.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[37].award1.isEmpty {
             var award1Image38:UIImage!
             
@@ -3129,6 +3590,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 39
+        if !items[38].award1.isEmpty || !items[38].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView39.frame.width,itemImageView39.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView39.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView39.frame.maxY - itemImageView39.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[38].award1.isEmpty {
             var award1Image39:UIImage!
             
@@ -3189,6 +3662,18 @@ class ItemListViewController: UIViewController {
         }
         
         // 40
+        if !items[39].award1.isEmpty || !items[39].award2.isEmpty {
+            // 認定アイコン背景を作成
+            /*var awardBackground:UIButton = UIButton(frame: CGRectMake(0,0,itemImageView40.frame.width,itemImageView40.frame.height*awardBackgroundSize))
+            awardBackground.tag = 0
+            awardBackground.backgroundColor = primaryBackgroundColor
+            awardBackground.alpha = awardBackgroundAlpha
+            awardBackground.layer.position = CGPoint(
+                x: itemImageView40.frame.minX + awardBackground.frame.width/2,
+                y: itemImageView40.frame.maxY - itemImageView40.frame.height*awardBackgroundSize/2
+            )
+            scrView.addSubview(awardBackground)*/
+        }
         if !items[39].award1.isEmpty {
             var award1Image40:UIImage!
             
@@ -3266,6 +3751,12 @@ class ItemListViewController: UIViewController {
     
     // 通常のScrollViewではtouchesBeganが呼ばれないため拡張
     class MyScrollView: UIScrollView {
+        override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+            superview?.touchesBegan(touches, withEvent: event)
+        }
+    }
+    // 通常のUIButtonではtouchesBeganが呼ばれないため拡張
+    class MyUIButton: UIButton {
         override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
             superview?.touchesBegan(touches, withEvent: event)
         }
