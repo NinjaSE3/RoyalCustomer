@@ -12,8 +12,8 @@ import UIKit
 class ItemViewController: UIViewController{
     
     // View定義
-    private var itemViewScrollView: UIScrollView!
     private var pScrollView:     UIScrollView!
+    private var itemViewScrollView = MyScrollView()
     
     // Viewに関する情報取得
     let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
@@ -96,7 +96,9 @@ class ItemViewController: UIViewController{
         self.view.backgroundColor = UIColor.whiteColor()
         
         // 商品詳細View表示用UIScrollView作成
-        itemViewScrollView = UIScrollView(frame: self.view.bounds)
+        itemViewScrollView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        // タッチイベントを即時取得
+        itemViewScrollView.delaysContentTouches = false
         itemViewScrollView.backgroundColor = UIColor.clearColor()
         itemViewScrollView.pagingEnabled = false
         itemViewScrollView.bounces = true
@@ -165,7 +167,9 @@ class ItemViewController: UIViewController{
             badgeImageView.userInteractionEnabled = true //タップを認識させる
             let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
             badgeImageView.addGestureRecognizer(badgeImageTap)
+            badgeImageView.tag = Int(aNum)
             itemViewScrollView.addSubview(badgeImageView)
+
             
            // バッジに付与する認定実績
             var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
@@ -177,7 +181,7 @@ class ItemViewController: UIViewController{
             itemViewScrollView.addSubview(badgeNum)
             
             badgePosiX = badgePosiX + badgeWidth + bafBadge
-            badgeImageView.tag = Int(aNum)
+
         }
         
         for aNum in clickItem!.award2 {
@@ -188,7 +192,9 @@ class ItemViewController: UIViewController{
             badgeImageView.userInteractionEnabled = true
             let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
             badgeImageView.addGestureRecognizer(badgeImageTap)
+            badgeImageView.tag = Int(aNum)
             itemViewScrollView.addSubview(badgeImageView)
+
             
             // バッジに付与する認定実績
             var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
@@ -200,7 +206,7 @@ class ItemViewController: UIViewController{
             itemViewScrollView.addSubview(badgeNum)
             
             badgePosiX = badgePosiX + badgeWidth + bafBadge
-            badgeImageView.tag = Int(aNum)
+
         }
         
         
@@ -272,6 +278,8 @@ class ItemViewController: UIViewController{
        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosition, 370, pGraphHeight))
        itemViewScrollView.addSubview(calenderView)
         
+        self.view.addSubview(itemViewScrollView)
+        
        // 購入グラフ&カレンダーを　UIScrollViewにadd
      //  self.view.addSubview(pScrollView)
     }
@@ -307,6 +315,15 @@ class ItemViewController: UIViewController{
         var touch = touches.first as! UITouch
         var tag:Int = touch.view.tag
         clickAward = awards[tag]
+        println("Calltouches")
+    }
+    
+    // 通常のScrollViewではtouchesBeganが呼ばれないため拡張
+    class MyScrollView: UIScrollView {
+        override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+            superview?.touchesBegan(touches, withEvent: event)
+             println("Calltouches2")
+        }
     }
     
 }
