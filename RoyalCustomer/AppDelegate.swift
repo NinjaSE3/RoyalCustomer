@@ -143,9 +143,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //商品ハードコーディング
     func createItems() {
-        items.append(Item(itemid:"000001",name:"商品1",image:"Item1",award1:[0,1,2],award2:[3,4,5], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"カラメルソースのほろ苦さがクリーミープリンにぴったりです。\n遠赤外線オーブンで焼き上げたシンプルな味わいを、\nゆったりとリラックスしてお楽しみ下さい。"))
-        items.append(Item(itemid:"000002",name:"商品2",image:"Item2",award1:[],award2:[], prchedHist:["2015/7":20, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
-        items.append(Item(itemid:"000003",name:"商品3",image:"Item3",award1:[],award2:[], prchedHist:["2015/7":22, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
+        items.append(Item(itemid:"000001",name:"商品1",image:"Item1",award1:[0,1,2],award2:[3,4,5], prchedHist:["2015/8":3,"2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,3:2], brandImage: "Brand1_icon", outline:"カラメルソースのほろ苦さがクリーミープリンにぴったりです。\n遠赤外線オーブンで焼き上げたシンプルな味わいを、\nゆったりとリラックスしてお楽しみ下さい。"))
+        items.append(Item(itemid:"000002",name:"商品2",image:"Item2",award1:[],award2:[], prchedHist:["2015/8":3,"2015/7":20, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
+        items.append(Item(itemid:"000003",name:"商品3",image:"Item3",award1:[],award2:[], prchedHist:["2015/8":3,"2015/7":22, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
         items.append(Item(itemid:"000004",name:"商品4",image:"Item4",award1:[],award2:[], prchedHist:["2015/7":3, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
         items.append(Item(itemid:"000005",name:"商品5",image:"Item5",award1:[],award2:[], prchedHist:["2015/7":12, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
         items.append(Item(itemid:"000006",name:"商品6",image:"Item6",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
@@ -188,22 +188,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //認定ハードコーディング
     func createAwards() {
-        awards.append(Award(awardid:0,level:1,name:"認定0",image:"Award1_1_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:1,level:2,name:"認定1",image:"Award1_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:2,level:3,name:"認定2",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:3,level:1,name:"認定3",image:"Award2_1_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:4,level:2,name:"認定4",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:5,level:3,name:"認定5",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:6,level:2,name:"認定6",image:"Award1_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:7,level:3,name:"認定7",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:8,level:3,name:"認定8",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:9,level:3,name:"認定9",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:10,level:3,name:"認定10",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:11,level:3,name:"認定11",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:12,level:3,name:"認定12",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:13,level:2,name:"認定13",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:14,level:3,name:"認定14",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
-        awards.append(Award(awardid:15,level:3,name:"認定15",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド"))
+        awards.append(Award(awardid:0,level:1,name:"認定0",image:"Award1_1_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:1,level:2,name:"認定1",image:"Award1_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:50))
+        awards.append(Award(awardid:2,level:3,name:"認定2",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:30))
+        awards.append(Award(awardid:3,level:1,name:"認定3",image:"Award2_1_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:30))
+        awards.append(Award(awardid:4,level:2,name:"認定4",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:20))
+        awards.append(Award(awardid:5,level:3,name:"認定5",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:10))
+        awards.append(Award(awardid:6,level:2,name:"認定6",image:"Award1_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:7,level:3,name:"認定7",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:8,level:3,name:"認定8",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:9,level:3,name:"認定9",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:10,level:3,name:"認定10",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:11,level:3,name:"認定11",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:12,level:3,name:"認定12",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:13,level:2,name:"認定13",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:14,level:3,name:"認定14",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
+        awards.append(Award(awardid:15,level:3,name:"認定15",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
     }
     
     //UIntに16進で数値をいれるとUIColorが戻る関数

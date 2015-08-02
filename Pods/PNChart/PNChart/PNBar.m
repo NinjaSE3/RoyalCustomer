@@ -181,8 +181,9 @@
         _textLayer = [[CATextLayer alloc]init];
         [_textLayer setString:@"0"];
         [_textLayer setAlignmentMode:kCAAlignmentCenter];
-        [_textLayer setForegroundColor:[[UIColor colorWithRed:178/255.0 green:178/255. blue:178/255.0 alpha:1.0] CGColor]];
-       _textLayer.hidden = YES;
+//        [_textLayer setForegroundColor:[[UIColor colorWithRed:178/255.0 green:178/255. blue:178/255.0 alpha:1.0] CGColor]];
+        [_textLayer setForegroundColor:[[UIColor whiteColor] CGColor]];
+        _textLayer.hidden = YES;
 
     }
 
@@ -193,11 +194,14 @@
 {
     CGFloat textheigt = self.bounds.size.height*self.grade;
   
+    // customized by rio
     CGFloat topSpace = self.bounds.size.height * (1-self.grade);
     CGFloat textWidth = self.bounds.size.width;
   
     [_chartLine addSublayer:self.textLayer];
-    [self.textLayer setFontSize:18.0];
+    
+    // customized by rio
+    [self.textLayer setFontSize:12.0];
   
     [self.textLayer setString:[[NSString alloc]initWithFormat:@"%0.f",grade*self.maxDivisor]];
   

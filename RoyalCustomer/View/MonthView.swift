@@ -29,14 +29,29 @@ class MonthView: UIView {
         
         var day:Int? = self.getLastDay(year,month:month);
         var dayWidth:Int = Int( frame.size.width / 7.0 )
-        var dayHeight:Int = dayWidth + 5
+        var dayHeight:Int = 30
         if day != nil {
+            
+            // ヘッダ行の設定
+            let headTxt:[String] = ["日","月","火","水","木","金","土"]
+            var headDay = 1
+            for var i:Int = 0; i < 7;i++ {
+
+                var x:Int       = ((headDay - 1 ) * (dayWidth));
+                var dayLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(x), 0		, CGFloat(dayWidth),CGFloat(dayHeight)))
+                dayLabel.textAlignment = NSTextAlignment.Center
+                dayLabel.text = headTxt[i]
+                dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 12)
+                self.addSubview(dayLabel)
+                headDay++
+                }
+            
             //初日の曜日を取得
             var weekday:Int = self.getWeekDay(year,month: month,day:1)
             for var i:Int = 0; i < day!;i++ {
                 var week:Int    = self.getWeek(year,month: month,day:i+1)
                 var x:Int       = ((weekday - 1 ) * (dayWidth));
-                var y:Int       = (week-1) * dayHeight
+                var y:Int       = (week) * dayHeight
                 var frame:CGRect = CGRectMake(CGFloat(x),
                     CGFloat(y),
                     CGFloat(dayWidth),
