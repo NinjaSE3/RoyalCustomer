@@ -18,10 +18,12 @@ class DayView: UIView {
     init(frame:CGRect,year:Int,month:Int,day:Int,weekday:Int){
         super.init(frame: frame)
         var dayWidth:Int = Int( (UIScreen.mainScreen().bounds.size.width) / 7.0 )
-        var dayHeight:CGFloat = 30
+        var dayHeight:CGFloat = 20
         var dayLabel:UILabel = UILabel(frame: CGRectMake(0, 0, CGFloat(dayWidth),dayHeight))
         dayLabel.textAlignment = NSTextAlignment.Center
         dayLabel.text = String(format:"%02d", day)
+        dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 13)
+        
         if weekday == 1 {
             //日曜日は赤
             dayLabel.textColor = UIColor.redColor()
@@ -41,20 +43,21 @@ class DayView: UIView {
         
         if day == currentDay {
             dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
-            dayLabel.layer.masksToBounds = true
-            dayLabel.layer.cornerRadius = 17.0
-            dayLabel.backgroundColor = UIColor.blueColor()
-            dayLabel.textColor = UIColor.whiteColor()
         }
         
         // 購入ありならハイライト
         for (date,num) in clickItem!.prchedThisM {
             if day == date {
                 if num <= 1 {
-                    dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
+                    dayLabel.layer.masksToBounds = true
+                    dayLabel.layer.cornerRadius = 8
+                    dayLabel.backgroundColor = primaryColor
+                    dayLabel.textColor = UIColor.whiteColor()
                 } else if num <= 2 {
-                    dayLabel.font = UIFont.boldSystemFontOfSize(UIFont.labelFontSize())
-                    dayLabel.textColor = UIColor.orangeColor()
+                    dayLabel.layer.masksToBounds = true
+                    dayLabel.layer.cornerRadius = 8
+                    dayLabel.backgroundColor = primaryColor
+                    dayLabel.textColor = UIColor.whiteColor()
                 } else {
                    // 何もしない
                 }

@@ -54,7 +54,7 @@
     _yChartLabels        = [NSMutableArray array];
     _bars                = [NSMutableArray array];
     _xLabelSkip          = 1;
-    _yLabelSum           = 4;
+    _yLabelSum           = 5;
     _labelMarginTop      = 0;
     _chartMargin         = 25.0;
     _barRadius           = 2.0;
@@ -62,10 +62,10 @@
     _showLevelLine       = NO;
     _yChartLabelWidth    = 18;
     _rotateForXAxisText  = false;
-    _isGradientShow      = YES;
+    _isGradientShow      = NO;
     _isShowNumbers       = YES;
 	_yLabelFormatter = ^(CGFloat yValue){
-		return [NSString stringWithFormat:@"%1.f",yValue];
+		return [NSString stringWithFormat:@"%3.f",yValue];
 	};
 }
 

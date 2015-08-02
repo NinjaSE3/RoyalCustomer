@@ -33,20 +33,20 @@ class CalenderView: UIView,UIScrollViewDelegate{
         scrollView = UIScrollView(frame: self.bounds)
         scrollView.backgroundColor = UIColor.clearColor()
         scrollView.contentSize   = CGSizeMake(frame.size.width,frame.size.height);
+        
+        println(frame.size.height)
+        println(frame.size.width)
         scrollView.contentOffset = CGPointMake(frame.size.width , 0.0);
         scrollView.delegate = self;
         scrollView.pagingEnabled = true;
         scrollView.showsHorizontalScrollIndicator = false;
         scrollView.showsVerticalScrollIndicator = false;
         scrollView.scrollsToTop = false;
-        
-        
         self.addSubview(scrollView)
         
         
-        currentMonthView = MonthView(frame: CGRectMake(frame.size.width, 0, frame.size.width,frame.size.height),
+        currentMonthView = MonthView(frame: CGRectMake(frame.size.width + 25, 0, 300,250),
             year:currentYear,month:currentMonth)
-        
         
         scrollView.addSubview(currentMonthView);
 
