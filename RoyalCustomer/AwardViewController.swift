@@ -56,6 +56,10 @@ class AwardViewController: UIViewController {
         self.addBody()
         self.addFrom()
         self.addShare()
+        
+        // スワイプ検知用
+        addSwipeRecognizer()
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -205,4 +209,72 @@ class AwardViewController: UIViewController {
         }
     }
     */
+    
+    /* 閉じるボタン表示 */
+    func addCloseButton(){
+        let closeMeBtn = UIButton(frame: CGRectMake(0, 0, 300, 50))
+        closeMeBtn.layer.position = CGPoint(x: self.view.frame.width/2, y:100)
+        closeMeBtn.setTitle("Close Me!", forState: .Normal)
+        closeMeBtn.addTarget(self, action: "closeMe:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(closeMeBtn)
+    }
+    
+    // 閉じるボタンで閉じる
+    func closeMe(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    /**
+    * スワイプ検知用に登録
+    */
+    func addSwipeRecognizer() {
+//        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "swiped:")
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+//        
+//        var swipeRight = UISwipeGestureRecognizer(target: self, action: "swiped:")
+//        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+//        
+//        var swipeUp = UISwipeGestureRecognizer(target: self, action: "swiped:")
+//        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+        
+        var swipeDown = UISwipeGestureRecognizer(target: self, action: "swiped:")
+        swipeDown.direction = UISwipeGestureRecognizerDirection.Down
+        
+//        self.view.addGestureRecognizer(swipeLeft)
+//        self.view.addGestureRecognizer(swipeRight)
+//        self.view.addGestureRecognizer(swipeUp)
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    /**
+    * スワイプ
+    */
+    func swiped(gesture: UIGestureRecognizer) {
+        
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizerDirection.Left:
+                // 左
+                println("left")
+            case UISwipeGestureRecognizerDirection.Right:
+                // 右
+                println("right")
+            case UISwipeGestureRecognizerDirection.Up:
+                // 上
+                println("up")
+            case UISwipeGestureRecognizerDirection.Down:
+                // 下
+                println("down")
+                dismissViewControllerAnimated(true, completion: nil)
+                
+            default:
+                // その他
+                println("other")
+                break
+            }
+            
+        }
+    }
+    
 }

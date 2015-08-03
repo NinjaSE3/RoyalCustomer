@@ -306,7 +306,12 @@ class ItemViewController: UIViewController{
         println("tapped Badge")
         println(clickAward?.awardid)
         let awardViewController: UIViewController = AwardViewController()
-        navigationController?.pushViewController(awardViewController, animated: true)
+        // アニメーションを設定する.
+        awardViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        
+        // Viewの移動する.
+        self.presentViewController(awardViewController, animated: true, completion: nil)
+
     }
     
     // 認定バッジクリック時にクリックされたバッジを特定する
