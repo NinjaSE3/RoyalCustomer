@@ -202,12 +202,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //認定ハードコーディング
     func createAwards() {
-        awards.append(Award(awardid:0,level:1,name:"認定0",image:"Award1_1_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
-        awards.append(Award(awardid:1,level:2,name:"認定1",image:"Award1_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:50))
-        awards.append(Award(awardid:2,level:3,name:"認定2",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:30))
-        awards.append(Award(awardid:3,level:1,name:"認定3",image:"Award2_1_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:30))
-        awards.append(Award(awardid:4,level:2,name:"認定4",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:20))
-        awards.append(Award(awardid:5,level:3,name:"認定5",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:10))
+        awards.append(Award(awardid:0,level:1,name:"認定0",image:"Award1_1_icon",title:"購入数100個突破記念メダル",body:"いつもご愛好いただき誠にありがとうございます。\n林田様はこれまでで累計100個の「森永\nの焼きプリン」をご購入されましたので、感謝の印と\nして記念メダルを進呈いたします。皆様のご期待に\n沿えるよう、これからも邁進してまいりますので、こ\nれからも変わらぬご愛好を賜りますようお願い申し上げます。",from:"森永製菓 ブランド事業部",num:100))
+        awards.append(Award(awardid:1,level:2,name:"認定1",image:"Award1_2_icon",title:"累計50個購入達成の感謝を込めて",body:"",from:"森永製菓 ブランド事業部",num:50))
+        awards.append(Award(awardid:2,level:3,name:"認定2",image:"Award1_3_icon",title:"やったぜ30個達成！！",body:"認定文章",from:"森永製菓 ブランド事業部",num:30))
+        awards.append(Award(awardid:3,level:1,name:"認定3",image:"Award2_1_icon",title:"認定タイトル",body:"認定文章",from:"森永製菓 ブランド事業部",num:30))
+        awards.append(Award(awardid:4,level:2,name:"認定4",image:"Award2_2_icon",title:"認定タイトル",body:"認定文章",from:"森永製菓 ブランド事業部",num:20))
+        awards.append(Award(awardid:5,level:3,name:"認定5",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"森永製菓 ブランド事業部",num:10))
         awards.append(Award(awardid:6,level:2,name:"認定6",image:"Award1_2_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
         awards.append(Award(awardid:7,level:3,name:"認定7",image:"Award1_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
         awards.append(Award(awardid:8,level:3,name:"認定8",image:"Award2_3_icon",title:"認定タイトル",body:"認定文章",from:"認定ブランド",num:100))
