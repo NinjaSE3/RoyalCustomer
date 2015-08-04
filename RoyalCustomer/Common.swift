@@ -22,6 +22,8 @@ var facebookColor:UIColor!
 
 // フォント
 var fontName:String!
+var fontNameBold:String!
+
 
 class Item {
     var itemid :String
