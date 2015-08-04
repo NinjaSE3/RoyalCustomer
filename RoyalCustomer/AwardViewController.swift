@@ -28,12 +28,15 @@ class AwardViewController: UIViewController {
     private var awardBodyButton:  UIButton!
     private var awardFromButton:  UIButton!
     private var awardShareButton: UIButton!
+    private var arrowImageView:   UIButton!
+    var awardAnimationView: UIImageView!
     
     init() {
         super.init(nibName: nil, bundle: nil)
         
         // Viewの背景色を設定する.
         self.view.backgroundColor = secondaryAwardColor
+        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -54,9 +57,11 @@ class AwardViewController: UIViewController {
         self.addBody()
         self.addFrom()
         self.addShare()
+        self.addDownArrow()
         
         // スワイプ検知用
         addSwipeRecognizer()
+        
         
     }
     
@@ -68,7 +73,7 @@ class AwardViewController: UIViewController {
         /* 商品イメージを表示 */
         
         // 商品イメージのサイズ
-        let itemImageSize:CGFloat = 180
+        let itemImageSize:CGFloat = 200
         
         itemImageView = UIImageView(frame: CGRectMake(0,0,self.view.frame.width,itemImageSize))
         let itemImage = UIImage(named: clickItem!.image)
@@ -92,11 +97,11 @@ class AwardViewController: UIViewController {
         let awardImageSize:CGFloat = 90
         // 位置
         let brandImageX:CGFloat = 0.7
-        let brandImageY:CGFloat = 0.1
+        let brandImageY:CGFloat = 0.12
         
         awardImageView = UIImageView(frame: CGRectMake(0,0,awardImageSize,awardImageSize))
         let awardImage = UIImage(named: clickAward!.image)
-        awardImageView.image = awardImage
+        //awardImageView.image = awardImage
         //awardImageView.layer.borderWidth = 1
         //awardImageView.backgroundColor = UIColor.redColor()
         awardImageView.layer.position = CGPoint(
@@ -114,7 +119,7 @@ class AwardViewController: UIViewController {
         let brandImageSize:CGFloat = 70
         // 位置
         let brandImageX:CGFloat = 0.1
-        let brandImageY:CGFloat = 0.25
+        let brandImageY:CGFloat = 0.3
         
         brandImageView = UIImageView(frame: CGRectMake(0,0,brandImageSize,brandImageSize))
         let brandImage = UIImage(named: clickItem!.brandImage)
@@ -144,7 +149,10 @@ class AwardViewController: UIViewController {
         awardTitleButton.titleLabel!.font = UIFont(name: fontName, size: 25)
         awardTitleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         awardTitleButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        awardTitleButton.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.awardTitleButton.frame.height/2)
+        awardTitleButton.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y:UIApplication.sharedApplication().statusBarFrame.height + self.awardTitleButton.frame.height/2
+        )
         self.view.addSubview(awardTitleButton)
     }
 
@@ -153,15 +161,16 @@ class AwardViewController: UIViewController {
         /* 認定説明文を表示 */
         awardBodyButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 200))
         
-        awardBodyButton.titleEdgeInsets.top = 20
-        awardBodyButton.titleEdgeInsets.left = 20
-        awardBodyButton.titleEdgeInsets.right = 20
-        awardBodyButton.titleEdgeInsets.bottom = 20
+        awardBodyButton.titleEdgeInsets.top = 30
+        awardBodyButton.titleEdgeInsets.left = 30
+        awardBodyButton.titleEdgeInsets.right = 30
+        awardBodyButton.titleEdgeInsets.bottom = 30
         
         //awardBodyButton.backgroundColor = secondaryAwardColor
         awardBodyButton.layer.masksToBounds = true
         awardBodyButton.setTitle(clickAward!.body as String , forState: .Normal)
         awardBodyButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        awardBodyButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByCharWrapping
         awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 14)
         awardBodyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         awardBodyButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
@@ -175,10 +184,10 @@ class AwardViewController: UIViewController {
         /* 認定ブランドを表示 */
         awardFromButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
         
-        awardFromButton.titleEdgeInsets.top = 20
-        awardFromButton.titleEdgeInsets.left = 20
-        awardFromButton.titleEdgeInsets.right = 20
-        awardFromButton.titleEdgeInsets.bottom = 20
+        awardFromButton.titleEdgeInsets.top = 30
+        awardFromButton.titleEdgeInsets.left = 30
+        awardFromButton.titleEdgeInsets.right = 30
+        awardFromButton.titleEdgeInsets.bottom = 30
         
         //awardFromButton.backgroundColor = UIColor.blueColor()
         awardFromButton.layer.masksToBounds = true
@@ -201,7 +210,7 @@ class AwardViewController: UIViewController {
         awardShareButton.layer.masksToBounds = true
         awardShareButton.setImage(UIImage(named: "facebookicon"), forState: UIControlState.Normal)
         awardShareButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        awardShareButton.setTitle("Facebookでシェアする" , forState: .Normal)
+        awardShareButton.setTitle(" Facebookでシェアする" , forState: .Normal)
         awardShareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         //awardShareButton.invalidateIntrinsicContentSize()
@@ -210,9 +219,31 @@ class AwardViewController: UIViewController {
         awardShareButton.addTarget(self, action: "onClickAwardShareButton:", forControlEvents: .TouchUpInside)
         awardShareButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y:self.awardFromButton.frame.maxY+self.awardShareButton.frame.height/2)
+            y: self.awardFromButton.frame.maxY+self.awardShareButton.frame.height/2 + 20)
         self.view.addSubview(awardShareButton)
         
+    }
+    
+    func addDownArrow(){
+        /* 閉じる矢印を表示 */
+        
+        // サイズ
+        let imageSize:CGFloat = 40
+        // 位置
+        let imageY:CGFloat = 0.92
+        
+        arrowImageView = UIButton(frame: CGRect(x: 0, y: 0, width:self.view.frame.width, height:imageSize))
+        arrowImageView.layer.masksToBounds = true
+        arrowImageView.setImage(UIImage(named: "DownArrow"), forState: UIControlState.Normal)
+        arrowImageView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        //arrowImageView.backgroundColor = UIColor.redColor()
+        arrowImageView.addTarget(self, action: "closeMe:", forControlEvents: .TouchUpInside)
+        arrowImageView.layer.position = CGPoint(
+            x: self.view.frame.width/2,
+            y: self.view.frame.height*imageY + arrowImageView.frame.height/2
+        )
+        
+        self.view.addSubview(arrowImageView)
     }
     
     
@@ -298,5 +329,120 @@ class AwardViewController: UIViewController {
             
         }
     }
+    
+    func animationStart(){
+        /* アニメーションを描画 */
+        println("animationStart")
+        self.sparkAnimation()
+        
+        let startImageSize:CGFloat = 300
+        let duration1 = 0.3
+        let duration2 = 0.6
+        let delay:CFTimeInterval = 1.0
+        
+        let awardImage = UIImage(named : clickAward!.image)
+        awardAnimationView = UIImageView(frame: CGRectMake(0,0,startImageSize,startImageSize))
+        awardAnimationView.image = awardImage
+        awardAnimationView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+        self.view.addSubview(awardAnimationView)
+        
+        
+        // 拡大
+        let toBig = CABasicAnimation(keyPath: "transform.scale")
+        toBig.fromValue = 0.0
+        toBig.toValue = 1.0
+        toBig.duration = duration1
+        toBig.beginTime = CACurrentMediaTime()
+        toBig.repeatCount = 1
+        toBig.removedOnCompletion = false
+        toBig.fillMode = kCAFillModeForwards;
+        toBig.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        self.awardAnimationView.layer.addAnimation(toBig, forKey: "toBig")
+        
+        // 移動
+        var toPoint: CGPoint = CGPointMake(
+            self.awardImageView.layer.frame.midX - awardAnimationView.frame.midX,
+            self.awardImageView.layer.frame.midY - awardAnimationView.frame.midY
+        )
+        var fromPoint: CGPoint = CGPointZero
+        
+        let movement = CABasicAnimation(keyPath: "position")
+        movement.additive = true
+        movement.fromValue =  NSValue(CGPoint: fromPoint)
+        movement.toValue =  NSValue(CGPoint: toPoint)
+        movement.duration = duration2
+        movement.beginTime = CACurrentMediaTime() + delay
+        movement.repeatCount = 1
+        movement.removedOnCompletion = false
+        movement.fillMode = kCAFillModeForwards;
+        movement.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        self.awardAnimationView.layer.addAnimation(movement, forKey: "movement")
+        
+        // 縮小
+        let toSmoll = CABasicAnimation(keyPath: "transform.scale")
+        toSmoll.fromValue = 1.0
+        toSmoll.toValue = 0.3
+        toSmoll.duration = duration2
+        toSmoll.beginTime = CACurrentMediaTime() + delay
+        toSmoll.repeatCount = 1
+        toSmoll.removedOnCompletion = false
+        toSmoll.fillMode = kCAFillModeForwards;
+        toSmoll.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        self.awardAnimationView.layer.addAnimation(toSmoll, forKey: "toSmoll")
+        
+        
+    }
+    
+    var emitterLayer = CAEmitterLayer()
+    func sparkAnimation(){
+        /* パーティクルを生成 */
+        self.emitterLayer.emitterPosition = CGPointMake(self.view.bounds.size.width / 2.0, self.view.bounds.size.height / 2.0)
+        self.emitterLayer.emitterSize = CGSizeMake(self.view.bounds.size.width / 2.0, 50.0)
+        self.emitterLayer.emitterMode = kCAEmitterLayerVolume
+        self.emitterLayer.emitterShape = kCAEmitterLayerRectangle
+        self.emitterLayer.renderMode = kCAEmitterLayerAdditive
+        let emitterCell = CAEmitterCell()
+        emitterCell.name = "star"
+        emitterCell.emissionLongitude = (CGFloat)(M_PI/2.0)
+        emitterCell.emissionRange = (CGFloat)(0.55 * M_PI)
+        emitterCell.birthRate = 0.0
+        emitterCell.lifetime = 1.2
+        emitterCell.velocity = 0
+        emitterCell.velocityRange = 500
+        emitterCell.yAcceleration = 20
+        emitterCell.contents = UIImage(named:"star")!.CGImage
+        //emitterCell.color = UIColor(red:0.0, green:0.5, blue:0.5, alpha:0.5).CGColor
+        emitterCell.greenRange = 0.3
+        emitterCell.blueRange = 0.3
+        emitterCell.alphaSpeed = -0.5 / emitterCell.lifetime
+        emitterCell.scale = 0.2
+        emitterCell.scaleSpeed = 1.2
+        emitterCell.spinRange = (CGFloat)(2.0 * M_PI)
+        
+        self.emitterLayer.emitterCells =  [emitterCell];
+        //self.view.layer.insertSublayer(self.emitterLayer, atIndex: 0)
+        self.view.layer.insertSublayer(self.emitterLayer, atIndex: 100)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let emitterAnimation = CABasicAnimation(keyPath: "emitterCells.star.birthRate")
+        emitterAnimation.fromValue		= 100.0
+        emitterAnimation.toValue		= 0.0
+        emitterAnimation.duration		= 0.4
+        emitterAnimation.timingFunction	= CAMediaTimingFunction(name:kCAMediaTimingFunctionLinear)
+        
+        self.emitterLayer.addAnimation(emitterAnimation, forKey: "starAnimation")
+        
+        animationStart()
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
+
     
 }
