@@ -60,12 +60,6 @@ class ChatsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // socket.io
-        println("disconnect")
-        appDelegate.socket.emit("disconnect")
-        usleep(10000)
-        appDelegate.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
-        
         let chat = chats[indexPath.row]
         let chatViewController = ChatViewController(chat: chat)
         navigationController?.pushViewController(chatViewController, animated: true)

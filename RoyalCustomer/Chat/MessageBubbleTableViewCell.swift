@@ -34,19 +34,21 @@ class MessageBubbleTableViewCell: UITableViewCell {
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None
         
-        
-        contentView.addSubview(bubbleImageView)
-        bubbleImageView.addSubview(messageLabel)
-
         //顔写真
         var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let user = appDelegate._chat!.user
         userPictureImageView.configureWithUser(user)
         contentView.addSubview(userPictureImageView)
         
+        contentView.addSubview(bubbleImageView)
+        bubbleImageView.addSubview(messageLabel)
+        
+        
         bubbleImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         messageLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         //バブルの開始位置
+//        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 50))
+//        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 4.5))
         contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 5))
         contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 50))
         bubbleImageView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Width, relatedBy: .Equal, toItem: messageLabel, attribute: .Width, multiplier: 1, constant: 30))

@@ -24,8 +24,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var rotating = false
     
     // socket.io
-//    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
-//    let socket = SocketIOClient(socketURL: "http://localhost:3000")
+    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
     
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     
@@ -90,9 +89,16 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         
         chat.loadedMessages = []
+        
+        if(chat.user.username == "森永の焼プリン"){
+        //socket.io
+        usleep(10000)
+        self.socket.connect()
+        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
 
         // socket.io
         self.addHandlers()
+        }
         
         //getChatLog
         var chatLog:JSON = self.getChatLog(account.user.username,brandname: chat.user.username)
@@ -141,12 +147,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         notificationCenter.addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: "menuControllerWillHide:", name: UIMenuControllerWillHideMenuNotification, object: nil) // #CopyMessage
         
-//         tableViewScrollToBottomAnimated(false) // doesn't work
+        tableViewScrollToBottomAnimated(true)
         
+        if(chat.user.username == "森永の焼プリン"){
         // socket.io add user
         usleep(10000)
         println(chat.user.username)
-        appDelegate.socket.emit("add user",chat.user.username)
+        self.socket.emit("add user",chat.user.username)
+        }
 
     }
     
@@ -171,35 +179,35 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func addHandlers() {
         println("addHandle")
 
-        appDelegate.socket.on("add user") {[weak self] data, ack in
+        self.socket.on("add user") {[weak self] data, ack in
             println("add user")
         }
-        appDelegate.socket.on("add room") {[weak self] data, ack in
+        self.socket.on("add room") {[weak self] data, ack in
             println("add room")
         }
-        appDelegate.socket.on("new message") {[weak self] data, ack in
+        self.socket.on("new message") {[weak self] data, ack in
             println("new message")
             println(data?[0]["message"] as! String!)
             //socket.ioの返信描画
             self!.receiveAction(data?[0]["message"] as! String!)
         }
-        appDelegate.socket.on("typing") {[weak self] data, ack in
+        self.socket.on("typing") {[weak self] data, ack in
             println("typing")
         }
-        appDelegate.socket.on("stop typing") {[weak self] data, ack in
+        self.socket.on("stop typing") {[weak self] data, ack in
             println("stop typing")
         }
-        appDelegate.socket.on("disconnect") {[weak self] data, ack in
+        self.socket.on("disconnect") {[weak self] data, ack in
             println("disconnect")
         }
-        appDelegate.socket.on("user joined") {[weak self] data, ack in
+        self.socket.on("user joined") {[weak self] data, ack in
             println("user joined")
         }
-        appDelegate.socket.on("user left") {[weak self] data, ack in
+        self.socket.on("user left") {[weak self] data, ack in
             println("user left")
         }
         
-        appDelegate.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
     }
     
     
@@ -210,8 +218,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         chat.loadedMessages.append([Message(incoming: false, text: textView.text, sentDate: NSDate())])
 
+        if(chat.user.username == "森永の焼プリン"){
         // socket.io chat message send
-        appDelegate.socket.emit("new message",textView.text)
+        self.socket.emit("new message",textView.text)
+        }
         
         //DB insert
         self.addChatLog(account.user.username, brandname: chat.user.username, chattext: textView.text, time: nsDateToString(), read: "0", from: account.user.username)
@@ -238,8 +248,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        textView.resignFirstResponder()
 //        textView.becomeFirstResponder()
         
+        if(chat.user.username == "森永の焼プリン"){
         //socket.io
         chat.loadedMessages.append([Message(incoming: true, text: message, sentDate: NSDate())])
+        }
         
         textView.text = nil
         updateTextViewHeight()
@@ -270,6 +282,17 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewWillDisappear(animated: Bool)  {
         super.viewWillDisappear(animated)
         chat.draft = textView.text
+        println("back")
+        
+        if(chat.user.username == "森永の焼プリン"){
+        // socket.io
+        println("disconnect")
+        self.socket.emit("disconnect")
+//        appDelegate.socket.leaveNamespace()
+        self.socket.disconnect(fast: true)
+        usleep(10000)
+        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+        }
     }
     
     // This gets called a lot. Perhaps there's a better way to know when `view.window` has been set?

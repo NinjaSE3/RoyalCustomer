@@ -27,9 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var _chat:Chat?
     
-    // socket.io
-    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
-    
     
     /*
     アプリケーション起動時に呼ばれるメソッド.
@@ -37,10 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        //socket.io
-        self.socket.connect()
-        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
 
         //商品作成
         self.createItems()
@@ -135,16 +128,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         account.chats = [
             Chat(user: User(ID: 1, username: "森永の焼プリン", firstName: "森永の焼プリン", lastName: "＠太一郎"), lastMessageText: "おいしいをデザインする", lastMessageSentDate: NSDate()),
             Chat(user: User(ID: 8, username: "カリカリ梅おむすび", firstName: "カリカリ梅おむすび", lastName: "＠鈴木"), lastMessageText: "混ぜ飯おむすび", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute)),
-            Chat(user: User(ID: 3, username: "週刊少年ジャンプ", firstName: "週刊少年ジャンプ", lastName: "＠尾田"), lastMessageText: "友情・努力・勝利", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*12)),
+            Chat(user: User(ID: 3, username: "週刊少年ジャンプ", firstName: "週刊少年ジャンプ", lastName: "＠退席中"), lastMessageText: "友情・努力・勝利", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*12)),
             Chat(user: User(ID: 10, username: "ガツン、とみかん", firstName: "ガツン、とみかん", lastName: "＠退席中"), lastMessageText: "夏はこっちだ！", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*5)),
             Chat(user: User(ID: 4, username: "カリカリダブルチーズ", firstName: "カリカリダブルチーズ", lastName: "＠林田"), lastMessageText: "カリカリとした食感のツイスト（ねじれた）形状のコーンスナックです。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*13)),
-            Chat(user: User(ID: 18, username: "かっぱえびせん", firstName: "かっぱえびせん", lastName: "＠松尾"), lastMessageText: "やめられないとまらない", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*34)),
-            Chat(user: User(ID: 11, username: "お〜いお茶", firstName: "お〜いお茶", lastName: "＠本庄"), lastMessageText: "史上最高のお〜いお茶 できました。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*2-1)),
-            Chat(user: User(ID: 6, username: "セブンカフェ", firstName: "セブンカフェ", lastName: "＠可士和"), lastMessageText: "一杯ずつ、挽きたて、淹れたて", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*3)),
-            Chat(user: User(ID: 7, username: "手巻おにぎり紀州南高梅（たたき梅）", firstName: "手巻おにぎり紀州南高梅（たたき梅）", lastName: "＠鈴木"), lastMessageText: "海苔のうまさ広がる", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*4)),
-            Chat(user: User(ID: 2, username: "ムービングラバーワイルドシェイク", firstName: "ムービングラバーワイルドシェイク", lastName: "＠西村"), lastMessageText: "あふれる毛束感、へたらず長持ち", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*5)),
+            Chat(user: User(ID: 18, username: "かっぱえびせん", firstName: "かっぱえびせん", lastName: "＠退席中"), lastMessageText: "やめられないとまらない", lastMessageSentDate: NSDate(timeIntervalSinceNow: -hour*34)),
+            Chat(user: User(ID: 11, username: "お〜いお茶", firstName: "お〜いお茶", lastName: "＠退席中"), lastMessageText: "史上最高のお〜いお茶 できました。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*2-1)),
+            Chat(user: User(ID: 6, username: "セブンカフェ", firstName: "セブンカフェ", lastName: "＠退席中"), lastMessageText: "一杯ずつ、挽きたて、淹れたて", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*3)),
+            Chat(user: User(ID: 7, username: "手巻おにぎり紀州南高梅（たたき梅）", firstName: "手巻おにぎり紀州南高梅（たたき梅）", lastName: "＠退席中"), lastMessageText: "海苔のうまさ広がる", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*4)),
+            Chat(user: User(ID: 2, username: "ムービングラバーワイルドシェイク", firstName: "ムービングラバーワイルドシェイク", lastName: "＠退席中"), lastMessageText: "あふれる毛束感、へたらず長持ち", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*5)),
             Chat(user: User(ID: 19, username: "キットカット", firstName: "キットカット", lastName: "＠アンリ・ネスレ"), lastMessageText: "ブレイクタイム", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*6)),
-            Chat(user: User(ID: 13, username: "カントリーマアム", firstName: "カントリーマアム", lastName: "＠藤井"), lastMessageText: "ホームメイドのおいしさ。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*7)),
+            Chat(user: User(ID: 13, username: "カントリーマアム", firstName: "カントリーマアム", lastName: "＠退席中"), lastMessageText: "ホームメイドのおいしさ。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*7)),
             Chat(user: User(ID: 9, username: "ロースカツカレー", firstName: "ロースカツカレー", lastName: "＠退席中"), lastMessageText: "食べ応えのあるジューシーなロースカツを盛り付けたカレーです。", lastMessageSentDate: NSDate(timeIntervalSinceNow: -day*8))
         ]
         for chat in account.chats {
