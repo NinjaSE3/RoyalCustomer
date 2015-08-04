@@ -62,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //フォント定義
         fontName = "HiraKakuProN-W3"
+        fontNameBold = "HiraKakuProN-W6"
         
         if let accessToken = account.accessToken {
             if accessToken == "guest_access_token" {

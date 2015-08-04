@@ -69,6 +69,25 @@ class AwardViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    
+    func addTitle(){
+        /* 認定タイトルを表示 */
+        
+        awardTitleButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+        awardTitleButton.backgroundColor = primaryAwardColor
+        awardTitleButton.layer.masksToBounds = true
+        awardTitleButton.setTitle(clickAward!.title as String , forState: .Normal)
+        awardTitleButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        awardTitleButton.titleLabel!.font = UIFont(name: fontNameBold, size: 23)
+        awardTitleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        awardTitleButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        awardTitleButton.layer.position = CGPoint(
+            x: self.view.bounds.width/2,
+            y:UIApplication.sharedApplication().statusBarFrame.height + self.awardTitleButton.frame.height/2
+        )
+        self.view.addSubview(awardTitleButton)
+    }
+    
     func addItemImage(){
         /* 商品イメージを表示 */
         
@@ -136,24 +155,6 @@ class AwardViewController: UIViewController {
         )
         
         self.view.addSubview(brandImageView)
-    }
-    
-    func addTitle(){
-        /* 認定タイトルを表示 */
-        
-        awardTitleButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
-        awardTitleButton.backgroundColor = primaryAwardColor
-        awardTitleButton.layer.masksToBounds = true
-        awardTitleButton.setTitle(clickAward!.title as String , forState: .Normal)
-        awardTitleButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardTitleButton.titleLabel!.font = UIFont(name: fontName, size: 23)
-        awardTitleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-        awardTitleButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        awardTitleButton.layer.position = CGPoint(
-            x: self.view.bounds.width/2,
-            y:UIApplication.sharedApplication().statusBarFrame.height + self.awardTitleButton.frame.height/2
-        )
-        self.view.addSubview(awardTitleButton)
     }
 
     
