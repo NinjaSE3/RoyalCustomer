@@ -171,7 +171,7 @@ class AwardViewController: UIViewController {
         awardBodyButton.setTitle(clickAward!.body as String , forState: .Normal)
         awardBodyButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         awardBodyButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         awardBodyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         awardBodyButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
         awardBodyButton.layer.position = CGPoint(
@@ -193,7 +193,7 @@ class AwardViewController: UIViewController {
         awardFromButton.layer.masksToBounds = true
         awardFromButton.setTitle(clickAward!.from as String , forState: .Normal)
         awardFromButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardFromButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        awardFromButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         awardFromButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
         awardFromButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
@@ -212,7 +212,7 @@ class AwardViewController: UIViewController {
         awardShareButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         awardShareButton.setTitle(" Facebookでシェアする" , forState: .Normal)
         awardShareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 16)
+        awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 18)
         //awardShareButton.invalidateIntrinsicContentSize()
         //awardShareButton.sizeToFit()
         awardShareButton.layer.cornerRadius = 5.0
@@ -356,7 +356,7 @@ class AwardViewController: UIViewController {
         toBig.repeatCount = 1
         toBig.removedOnCompletion = false
         toBig.fillMode = kCAFillModeForwards;
-        toBig.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        toBig.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
         self.awardAnimationView.layer.addAnimation(toBig, forKey: "toBig")
         
         // 移動
