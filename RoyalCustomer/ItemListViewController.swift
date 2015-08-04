@@ -223,95 +223,30 @@ class ItemListViewController: UIViewController {
     func awardListView(){
         /* 認定アイコンを表示 */
         
-        // アイコンサイズ係数
-        var awardIconSize:CGFloat = 0.2
-        // アイコン背景係数
-        var awardBackgroundSize:CGFloat = 0.2
-        var awardBackgroundAlpha:CGFloat = 0.7
+        // アイコンサイズ・位置係数
+        let awardIconSize:CGFloat = 0.25
+        let awardIconX:CGFloat = 0.85
         
         var i = 0
         var item: ItemView
         for item in itemViews{
             if !items[i].award1.isEmpty || !items[i].award2.isEmpty {
-                // 認定アイコン背景を作成
-                var awardBackground:UIImageView = UIImageView(frame: CGRectMake(0,0,item.imageView.frame.width,item.imageView.frame.height*awardBackgroundSize))
-                awardBackground.tag = i
-                awardBackground.userInteractionEnabled = true
-                awardBackground.backgroundColor = primaryBackgroundColor
-                awardBackground.alpha = awardBackgroundAlpha
-                awardBackground.layer.position = CGPoint(
-                    x: item.imageView.frame.minX + awardBackground.frame.width/2,
-                    y: item.imageView.frame.maxY - item.imageView.frame.height*awardBackgroundSize/2
+                let awardIconImage = UIImage(named: "Award1_1_icon")!
+                var awardIconView = UIImageView(frame: CGRectMake(0,0,item.imageView.frame.width*awardIconSize,item.imageView.frame.height*awardIconSize))
+                awardIconView.tag = i
+                awardIconView.image = awardIconImage
+                awardIconView.layer.position = CGPoint(
+                    x: item.imageView.frame.minX + item.imageView.frame.width * awardIconX + awardIconSize / 2,
+                    y: item.imageView.frame.minY + item.imageView.frame.width * awardIconSize / 2
                 )
-                scrView.addSubview(awardBackground)
-            }
-            var awardIconX :CGFloat = 0
-            if !items[i].award1.isEmpty {
-                var award1Image:UIImage!
-                
-                switch awards[Int(items[i].award1[0])].level {
-                case 1:
-                    award1Image = UIImage(named: "Award1_1_icon")!
-                    
-                    break
-                case 2:
-                    award1Image = UIImage(named: "Award1_2_icon")!
-                    
-                    break
-                case 3:
-                    award1Image = UIImage(named: "Award1_3_icon")!
-                    
-                    break
-                default:
-                    break
-                }
-                var award1ImageView = UIImageView(frame: CGRectMake(0,0,item.imageView.frame.width*awardIconSize,item.imageView.frame.height*awardIconSize))
-                award1ImageView.tag = i
-                award1ImageView.image = award1Image
-                award1ImageView.layer.position = CGPoint(
-                    x: item.imageView.frame.minX + awardIconX + item.imageView.frame.width*awardIconSize/2,
-                    y: item.imageView.frame.maxY - item.imageView.frame.height*awardIconSize/2
-                )
-                awardIconX += item.imageView.frame.width*awardIconSize
-                award1ImageView.userInteractionEnabled = true
-                scrView.addSubview(award1ImageView)
-            }
-            if !items[i].award2.isEmpty {
-                var award2Image:UIImage!
-                
-                switch awards[Int(items[i].award2[0])].level {
-                case 1:
-                    award2Image = UIImage(named: "Award2_1_icon")!
-                    
-                    break
-                case 2:
-                    award2Image = UIImage(named: "Award2_2_icon")!
-                    
-                    break
-                case 3:
-                    award2Image = UIImage(named: "Award2_3_icon")!
-                    
-                    break
-                default:
-                    break
-                }
-                var award2ImageView = UIImageView(frame: CGRectMake(0,0,item.imageView.frame.width*awardIconSize,item.imageView.frame.height*awardIconSize))
-                award2ImageView.tag = i
-                award2ImageView.image = award2Image
-                award2ImageView.layer.position = CGPoint(
-                    x: item.imageView.frame.minX + awardIconX + item.imageView.frame.width*awardIconSize/2,
-                    y: item.imageView.frame.maxY - item.imageView.frame.height*awardIconSize/2
-                )
-                awardIconX += item.imageView.frame.width*awardIconSize
-                award2ImageView.userInteractionEnabled = true
-                scrView.addSubview(award2ImageView)
+                awardIconView.userInteractionEnabled = true
+                scrView.addSubview(awardIconView)
             }
             
             i++
         }
-        
-        
     }
+    
     
     // 商品クリック時にクリックされた商品を特定する
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
