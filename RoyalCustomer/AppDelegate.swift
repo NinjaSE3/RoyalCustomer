@@ -48,7 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondaryColor = UIColorFromRGB(0xB3E5FC);
         primaryBackgroundColor = UIColorFromRGB(0xF8F8F8);
         secondaryBackgroundColor = UIColorFromRGB(0xE6E6E6);
+        primaryAwardColor = UIColorFromRGB(0xF3D51A);
+        secondaryAwardColor = UIColorFromRGB(0xFEFCE5);
 
+        //フォント定義
+        fontName = "HiraKakuProN-W3"
+        
         if let accessToken = account.accessToken {
             if accessToken == "guest_access_token" {
                 account.accessToken = nil

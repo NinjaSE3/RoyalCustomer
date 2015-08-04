@@ -32,8 +32,8 @@ class AwardViewController: UIViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         
-        // Viewの背景色をWhiteに設定する.
-        self.view.backgroundColor = UIColor.whiteColor()
+        // Viewの背景色を設定する.
+        self.view.backgroundColor = secondaryAwardColor
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -46,9 +46,7 @@ class AwardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        println(clickAward?.awardid)
-        
+                
         self.addTitle()
         self.addItemImage()
         self.addBrandImage()
@@ -138,12 +136,14 @@ class AwardViewController: UIViewController {
     func addTitle(){
         /* 認定タイトルを表示 */
         
-        awardTitleButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 60))
-        awardTitleButton.backgroundColor = UIColor.yellowColor()
+        awardTitleButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+        awardTitleButton.backgroundColor = primaryAwardColor
         awardTitleButton.layer.masksToBounds = true
         awardTitleButton.setTitle(clickAward!.title as String , forState: .Normal)
         awardTitleButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardTitleButton.titleLabel!.font = UIFont(name: "Helvetica-Bold",size: CGFloat(30))
+        awardTitleButton.titleLabel!.font = UIFont(name: fontName, size: 25)
+        awardTitleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        awardTitleButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         awardTitleButton.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.awardTitleButton.frame.height/2)
         self.view.addSubview(awardTitleButton)
     }
@@ -151,13 +151,19 @@ class AwardViewController: UIViewController {
     
     func addBody(){
         /* 認定説明文を表示 */
-        
         awardBodyButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 200))
-        //awardDetailButton.backgroundColor = UIColor.blueColor()
+        
+        awardBodyButton.titleEdgeInsets.top = 20
+        awardBodyButton.titleEdgeInsets.left = 20
+        awardBodyButton.titleEdgeInsets.right = 20
+        awardBodyButton.titleEdgeInsets.bottom = 20
+        
+        //awardBodyButton.backgroundColor = secondaryAwardColor
         awardBodyButton.layer.masksToBounds = true
         awardBodyButton.setTitle(clickAward!.body as String , forState: .Normal)
         awardBodyButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        //awardDetailButton.titleLabel!.font = UIFont(name: "Helvetica",size: CGFloat(10))
+        awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        awardBodyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         awardBodyButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
             y: self.itemImageView.frame.maxY+self.awardBodyButton.frame.height/2)
@@ -167,11 +173,18 @@ class AwardViewController: UIViewController {
     func addFrom(){
         /* 認定ブランドを表示 */
         awardFromButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+        
+        awardFromButton.titleEdgeInsets.top = 20
+        awardFromButton.titleEdgeInsets.left = 20
+        awardFromButton.titleEdgeInsets.right = 20
+        awardFromButton.titleEdgeInsets.bottom = 20
+        
         //awardFromButton.backgroundColor = UIColor.blueColor()
         awardFromButton.layer.masksToBounds = true
         awardFromButton.setTitle(clickAward!.from as String , forState: .Normal)
         awardFromButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        //awardFromButton!.font = UIFont(name: "Helvetica",size: CGFloat(10))
+        awardFromButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        awardFromButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
         awardFromButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
             y: awardBodyButton.frame.maxY+self.awardFromButton.frame.height/2)
@@ -185,6 +198,7 @@ class AwardViewController: UIViewController {
         awardShareButton.layer.masksToBounds = true
         awardShareButton.setTitle("Facebookでシェアする" , forState: .Normal)
         awardShareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         awardShareButton.layer.cornerRadius = 5.0
         awardShareButton.addTarget(self, action: "onClickAwardShareButton:", forControlEvents: .TouchUpInside)
         awardShareButton.layer.position = CGPoint(
