@@ -121,6 +121,7 @@ class ItemListViewController: UIViewController {
         var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
         title.textColor = primaryBackgroundColor
         title.text = "購入商品一覧"
+        title.font = UIFont(name: fontName, size: 16)
         title.textAlignment = NSTextAlignment.Center
         self.navigationItem.titleView = title
     }
@@ -133,6 +134,7 @@ class ItemListViewController: UIViewController {
         profileView.layer.masksToBounds = true
         profileView.setTitle("十一時七雄さん" , forState: .Normal)
         profileView.setTitleColor(primaryColor, forState: .Normal)
+        profileView.titleLabel!.font = UIFont(name: fontName, size: 18)
         //profileView!.font = UIFont(name: "Helvetica",size: CGFloat(10))
         profileView.layer.position = CGPoint(x: self.profileView.frame.width/2, y:self.profileView.frame.height/2)
         profileView.setImage(UIImage(named: "User0"), forState: UIControlState.Normal)
@@ -175,7 +177,7 @@ class ItemListViewController: UIViewController {
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         // 全体のサイズ
-        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight-self.profileView.frame.height)
+        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight+self.profileView.frame.height)
         // 配置
         scrView.layer.position = CGPoint(
             x: scrView.frame.width/2,

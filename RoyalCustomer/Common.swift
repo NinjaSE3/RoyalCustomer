@@ -16,7 +16,12 @@ var primaryColor:UIColor!
 var secondaryColor:UIColor!
 var primaryBackgroundColor:UIColor!
 var secondaryBackgroundColor:UIColor!
+var primaryAwardColor:UIColor!
+var secondaryAwardColor:UIColor!
+var facebookColor:UIColor!
 
+// フォント
+var fontName:String!
 
 class Item {
     var itemid :String

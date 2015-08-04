@@ -134,7 +134,7 @@ class ItemViewController: UIViewController{
         // 商品説明のset
         let shohinOutline: UIButton = UIButton(frame: CGRectMake(txtArePosiX,shohinOutlinePosition,self.view.bounds.width,sOutlineHeight))
         shohinOutline.setTitle(clickItem!.outline, forState: UIControlState.Normal)
-        shohinOutline.titleLabel!.font = UIFont(name: "HiraKakuProN-W3", size: 12)
+        shohinOutline.titleLabel!.font = UIFont(name: fontName, size: 12)
         shohinOutline.titleLabel!.numberOfLines = 3
         shohinOutline.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         shohinOutline.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
@@ -150,7 +150,7 @@ class ItemViewController: UIViewController{
         // 認定バッジ説明のset
         let bButton: UIButton = UIButton(frame: CGRectMake(txtArePosiX,bLabelPosition, self.view.bounds.width,badgeTxtHeight))
         bButton.setTitle(bLabText, forState: UIControlState.Normal)
-        bButton.titleLabel!.font = UIFont(name: "HiraKakuProN-W3", size: 12)
+        bButton.titleLabel!.font = UIFont(name: fontName, size: 12)
         bButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         bButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         itemViewScrollView.addSubview(bButton)
@@ -174,7 +174,7 @@ class ItemViewController: UIViewController{
            // バッジに付与する認定実績
             var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
             badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
-            badgeNum.titleLabel!.font = UIFont(name: "HiraKakuProN-W3", size: 8)
+            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
             badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             badgeNum.backgroundColor = UIColor.grayColor()
             badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
@@ -199,7 +199,7 @@ class ItemViewController: UIViewController{
             // バッジに付与する認定実績
             var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
             badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
-            badgeNum.titleLabel!.font = UIFont(name: "HiraKakuProN-W3", size: 8)
+            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
             badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
             badgeNum.backgroundColor = UIColor.grayColor()
             badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
@@ -214,7 +214,7 @@ class ItemViewController: UIViewController{
         // 購入情報説明用ラベル表示
         let pButton: UIButton = UIButton(frame: CGRectMake(0,pLabelPosition, self.view.bounds.width,badgeTxtHeight))
         pButton.setTitle(pLabText, forState: UIControlState.Normal)
-        pButton.titleLabel!.font = UIFont(name: "HiraKakuProN-W3", size: 13)
+        pButton.titleLabel!.font = UIFont(name: fontName, size: 13)
         pButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButton)
         
@@ -271,7 +271,7 @@ class ItemViewController: UIViewController{
         
         let pButtonThisM: UIButton = UIButton(frame: CGRectMake(0,pButtonThisMPosiY, self.view.bounds.width,badgeTxtHeight))
         pButtonThisM.setTitle(pCalTxt, forState: UIControlState.Normal)
-        pButtonThisM.titleLabel!.font = UIFont(name: "HiraKakuProN-W3", size: 13)
+        pButtonThisM.titleLabel!.font = UIFont(name: fontName, size: 13)
         pButtonThisM.setTitleColor(primaryColor, forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButtonThisM)
         
@@ -306,7 +306,12 @@ class ItemViewController: UIViewController{
         println("tapped Badge")
         println(clickAward?.awardid)
         let awardViewController: UIViewController = AwardViewController()
-        navigationController?.pushViewController(awardViewController, animated: true)
+        // アニメーションを設定する.
+        awardViewController.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        
+        // Viewの移動する.
+        self.presentViewController(awardViewController, animated: true, completion: nil)
+
     }
     
     // 認定バッジクリック時にクリックされたバッジを特定する
