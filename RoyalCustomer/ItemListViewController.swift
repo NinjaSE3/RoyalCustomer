@@ -157,6 +157,7 @@ class ItemListViewController: UIViewController {
         profileView.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         profileView.backgroundColor=secondaryBackgroundColor
         profileView.layer.masksToBounds = true
+        profileView.titleEdgeInsets.left = 5
         profileView.setTitle("十一時七雄さん" , forState: .Normal)
         profileView.setTitleColor(primaryColor, forState: .Normal)
         profileView.titleLabel!.font = UIFont(name: fontName, size: 18)
@@ -164,9 +165,15 @@ class ItemListViewController: UIViewController {
         profileView.layer.position = CGPoint(x: self.profileView.frame.width/2, y:self.profileView.frame.height/2)
         profileView.setImage(UIImage(named: "User0"), forState: UIControlState.Normal)
         profileView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        //profileView.imageView?.layer.cornerRadius = 5
+        profileView.imageView?.layer.cornerRadius = profileView.imageView!.frame.width/2
         profileView.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
         profileView.imageView?.layer.borderWidth = 5
+        profileView.layer.position = CGPoint(
+            x: self.profileView.frame.width/2,
+            y: 44 + UIApplication.sharedApplication().statusBarFrame.size.height + self.profileView.frame.height/2
+        )
+        
+        self.view.addSubview(profileView)
     }
     
     func itemListView(){
@@ -186,7 +193,7 @@ class ItemListViewController: UIViewController {
             item.imageView.backgroundColor = UIColor.redColor()
             item.imageView.layer.position = CGPoint(
                 x: item.x + item.imageView.frame.width/2,
-                y: item.y + item.imageView.frame.height/2 + self.profileView.frame.height
+                y: item.y + item.imageView.frame.height/2
             )
             item.imageView.userInteractionEnabled = true
             
@@ -202,18 +209,18 @@ class ItemListViewController: UIViewController {
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         // 全体のサイズ
-        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight+self.profileView.frame.height)
+        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight+self.profileView.frame.height*3)
         // 配置
         scrView.layer.position = CGPoint(
             x: scrView.frame.width/2,
-            y: scrView.frame.height/2
+            y: profileView.layer.frame.maxY + scrView.frame.height/2
         )
         let gesture = UITapGestureRecognizer(target:self, action:"onClickItemImageView:")
         scrView.addGestureRecognizer(gesture)
         self.view.addSubview(scrView)
         
         // 各イメージを追加
-        scrView.addSubview(profileView)
+        //scrView.addSubview(profileView)
         for item in itemViews {
             scrView.addSubview(item.imageView)
         }
@@ -224,20 +231,21 @@ class ItemListViewController: UIViewController {
         /* 認定アイコンを表示 */
         
         // アイコンサイズ・位置係数
-        let awardIconSize:CGFloat = 0.25
+        let awardIconSizeX:CGFloat = 0.2
+        let awardIconSizeY:CGFloat = 0.3
         let awardIconX:CGFloat = 0.85
         
         var i = 0
         var item: ItemView
         for item in itemViews{
             if !items[i].award1.isEmpty || !items[i].award2.isEmpty {
-                let awardIconImage = UIImage(named: "Award1_1_icon")!
-                var awardIconView = UIImageView(frame: CGRectMake(0,0,item.imageView.frame.width*awardIconSize,item.imageView.frame.height*awardIconSize))
+                let awardIconImage = UIImage(named: "AwardIcon")!
+                var awardIconView = UIImageView(frame: CGRectMake(0,0,item.imageView.frame.width*awardIconSizeX,item.imageView.frame.height*awardIconSizeY))
                 awardIconView.tag = i
                 awardIconView.image = awardIconImage
                 awardIconView.layer.position = CGPoint(
-                    x: item.imageView.frame.minX + item.imageView.frame.width * awardIconX + awardIconSize / 2,
-                    y: item.imageView.frame.minY + item.imageView.frame.width * awardIconSize / 2
+                    x: item.imageView.frame.minX + item.imageView.frame.width * awardIconX + awardIconSizeX / 2,
+                    y: item.imageView.frame.minY + item.imageView.frame.width * awardIconSizeY / 2
                 )
                 awardIconView.userInteractionEnabled = true
                 scrView.addSubview(awardIconView)
