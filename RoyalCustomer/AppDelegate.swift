@@ -50,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondaryBackgroundColor = UIColorFromRGB(0xE6E6E6);
         primaryAwardColor = UIColorFromRGB(0xF3D51A);
         secondaryAwardColor = UIColorFromRGB(0xFEFCE5);
+        facebookColor = UIColorFromRGB(0x3B5998);
 
         //フォント定義
         fontName = "HiraKakuProN-W3"

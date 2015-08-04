@@ -195,17 +195,24 @@ class AwardViewController: UIViewController {
     func addShare(){
         /* シェアボタンを表示 */
         awardShareButton = UIButton(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
-        awardShareButton.backgroundColor = UIColor.blueColor()
+        awardShareButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        //awardShareButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        awardShareButton.backgroundColor = facebookColor
         awardShareButton.layer.masksToBounds = true
+        awardShareButton.setImage(UIImage(named: "facebookicon"), forState: UIControlState.Normal)
+        awardShareButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         awardShareButton.setTitle("Facebookでシェアする" , forState: .Normal)
         awardShareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 16)
+        //awardShareButton.invalidateIntrinsicContentSize()
+        //awardShareButton.sizeToFit()
         awardShareButton.layer.cornerRadius = 5.0
         awardShareButton.addTarget(self, action: "onClickAwardShareButton:", forControlEvents: .TouchUpInside)
         awardShareButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
             y:self.awardFromButton.frame.maxY+self.awardShareButton.frame.height/2)
         self.view.addSubview(awardShareButton)
+        
     }
     
     
