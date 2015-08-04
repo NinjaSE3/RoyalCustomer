@@ -75,6 +75,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemListNavigationController = UINavigationController(rootViewController: itemListViewController)
         itemListNavigationController.navigationBar.barTintColor = primaryColor
         itemListNavigationController.navigationBar.tintColor = primaryBackgroundColor
+        //var image:UIImage = UIImage(named: "Rainbow")!
+        //image.drawInRect(CGRectMake(0, 0, 44, 80))
+        //itemListNavigationController.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
         let chatsNavigationController = UINavigationController(rootViewController: chatsTableViewController)
         chatsNavigationController.navigationBar.barTintColor = primaryColor
         chatsNavigationController.navigationBar.tintColor = primaryBackgroundColor
