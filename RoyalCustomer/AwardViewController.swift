@@ -170,7 +170,7 @@ class AwardViewController: UIViewController {
         awardBodyButton.layer.masksToBounds = true
         awardBodyButton.setTitle(clickAward!.body as String , forState: .Normal)
         awardBodyButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardBodyButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        awardBodyButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
         awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 14)
         awardBodyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         awardBodyButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
