@@ -177,7 +177,7 @@ class ItemListViewController: UIViewController {
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         // 全体のサイズ
-        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight-self.profileView.frame.height)
+        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight+self.profileView.frame.height)
         // 配置
         scrView.layer.position = CGPoint(
             x: scrView.frame.width/2,

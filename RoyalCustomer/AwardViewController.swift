@@ -75,7 +75,7 @@ class AwardViewController: UIViewController {
         itemImageView.image = itemImage
         itemImageView.contentMode = UIViewContentMode.ScaleAspectFit
         //itemImageView.layer.borderWidth = 1
-        //itemImageView.backgroundColor = UIColor.redColor()
+        itemImageView.backgroundColor = UIColor.whiteColor()
         itemImageView.layer.position = CGPoint(
             x: self.view.frame.width/2,
             y: self.awardTitleButton.frame.maxY + itemImageView.frame.height/2
@@ -164,6 +164,7 @@ class AwardViewController: UIViewController {
         awardBodyButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 14)
         awardBodyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        awardBodyButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
         awardBodyButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
             y: self.itemImageView.frame.maxY+self.awardBodyButton.frame.height/2)
