@@ -11,6 +11,9 @@ import UIKit
 class ChatsTableViewController: UITableViewController {
     
     var chats: [Chat] { return account.chats }
+    
+    var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+
 
     convenience init() {
         self.init(style: .Plain)
@@ -22,6 +25,8 @@ class ChatsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
 //        navigationItem.leftBarButtonItem = editButtonItem() // TODO: KVO
         tableView.backgroundColor = UIColor.whiteColor()
@@ -55,6 +60,12 @@ class ChatsTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // socket.io
+        println("disconnect")
+        appDelegate.socket.emit("disconnect")
+        usleep(10000)
+        appDelegate.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+        
         let chat = chats[indexPath.row]
         let chatViewController = ChatViewController(chat: chat)
         navigationController?.pushViewController(chatViewController, animated: true)

@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var _chat:Chat?
     
+    // socket.io
+    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
+    
+    
     /*
     アプリケーション起動時に呼ばれるメソッド.
     */
@@ -34,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
+        //socket.io
+        self.socket.connect()
+        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+
         //商品作成
         self.createItems()
         //認定作成

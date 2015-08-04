@@ -30,8 +30,8 @@ class MessageBubbleTableViewCell: UITableViewCell {
         messageLabel.userInteractionEnabled = false   // #CopyMessage
         
         //顔写真
+        usleep(10000)
         userPictureImageView = UserPictureImageView(frame: CGRect(x: 8, y: (chatTableViewCellHeight-64)/2, width: 40, height: 40))
-        
         super.init(style: .Default, reuseIdentifier: reuseIdentifier)
         selectionStyle = .None
         
@@ -47,9 +47,10 @@ class MessageBubbleTableViewCell: UITableViewCell {
         
         bubbleImageView.setTranslatesAutoresizingMaskIntoConstraints(false)
         messageLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        usleep(10000)
         //バブルの開始位置
-        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 50))
-        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 4.5))
+        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Left, relatedBy: .Equal, toItem: contentView, attribute: .Left, multiplier: 1, constant: 5))
+        contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Top, relatedBy: .Equal, toItem: contentView, attribute: .Top, multiplier: 1, constant: 50))
         bubbleImageView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Width, relatedBy: .Equal, toItem: messageLabel, attribute: .Width, multiplier: 1, constant: 30))
         contentView.addConstraint(NSLayoutConstraint(item: bubbleImageView, attribute: .Bottom, relatedBy: .Equal, toItem: contentView, attribute: .Bottom, multiplier: 1, constant: -4.5))
         //文字の開始位置

@@ -24,7 +24,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var rotating = false
     
     // socket.io
-    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
+//    let socket = SocketIOClient(socketURL: "http://52.8.45.203:3000")
 //    let socket = SocketIOClient(socketURL: "http://localhost:3000")
     
     var appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
@@ -92,20 +92,31 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         chat.loadedMessages = []
 
         // socket.io
-        self.socket.connect()
         self.addHandlers()
-
+        
         //getChatLog
         var chatLog:JSON = self.getChatLog(account.user.username,brandname: chat.user.username)
         
         for(var i=0;i<chatLog.length;i++){
-            println(JSON(chatLog[i]["from"]).toString(pretty: true))
-            println(chat.user.username)
             //チャット相手からの送信
             if(JSON(chatLog[i]["from"]).toString(pretty: true) == chat.user.username){
-                chat.loadedMessages.append([Message(incoming: true, text: JSON(chatLog[i]["chattext"]).toString(pretty: true), sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60))])
+                chat.loadedMessages.append(
+                    [Message(
+                        incoming: true,
+                        text: JSON(chatLog[i]["chattext"]).toString(pretty: true),
+                        sentDate: dateFromISOString(JSON(chatLog[i]["time"]).toString(pretty: true))
+                        )
+                    ]
+                )
             }else{
-                chat.loadedMessages.append([Message(incoming: false, text: JSON(chatLog[i]["chattext"]).toString(pretty: true), sentDate: NSDate(timeIntervalSinceNow: -60*60*24*2-60*60))])
+                chat.loadedMessages.append(
+                    [Message(
+                        incoming: false,
+                        text: JSON(chatLog[i]["chattext"]).toString(pretty: true),
+                        sentDate: dateFromISOString(JSON(chatLog[i]["time"]).toString(pretty: true))
+                        )
+                    ]
+                )
             }
         }
 	
@@ -130,7 +141,21 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         notificationCenter.addObserver(self, selector: "keyboardDidShow:", name: UIKeyboardDidShowNotification, object: nil)
         notificationCenter.addObserver(self, selector: "menuControllerWillHide:", name: UIMenuControllerWillHideMenuNotification, object: nil) // #CopyMessage
         
-        // tableViewScrollToBottomAnimated(false) // doesn't work
+//         tableViewScrollToBottomAnimated(false) // doesn't work
+        
+        // socket.io add user
+        usleep(10000)
+        println(chat.user.username)
+        appDelegate.socket.emit("add user",chat.user.username)
+
+    }
+    
+    func dateFromISOString(string: String) -> NSDate {
+        var dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "ja")
+        dateFormatter.timeZone = NSTimeZone.localTimeZone()
+        dateFormatter.dateFormat = "yyyyMMddHHmmss"
+        return dateFormatter.dateFromString(string)!
     }
     
     func getChatLog(username:String! ,brandname:String!) -> JSON{
@@ -146,26 +171,90 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func addHandlers() {
         println("addHandle")
 
-        self.socket.on("add user") {[weak self] data, ack in
+        appDelegate.socket.on("add user") {[weak self] data, ack in
             println("add user")
         }
-        self.socket.on("new message") {[weak self] data, ack in
+        appDelegate.socket.on("add room") {[weak self] data, ack in
+            println("add room")
+        }
+        appDelegate.socket.on("new message") {[weak self] data, ack in
             println("new message")
             println(data?[0]["message"] as! String!)
             //socket.ioの返信描画
             self!.receiveAction(data?[0]["message"] as! String!)
         }
-        self.socket.on("typing") {[weak self] data, ack in
+        appDelegate.socket.on("typing") {[weak self] data, ack in
             println("typing")
         }
-        self.socket.on("stop typing") {[weak self] data, ack in
+        appDelegate.socket.on("stop typing") {[weak self] data, ack in
             println("stop typing")
         }
-        self.socket.on("disconnect") {[weak self] data, ack in
+        appDelegate.socket.on("disconnect") {[weak self] data, ack in
             println("disconnect")
         }
+        appDelegate.socket.on("user joined") {[weak self] data, ack in
+            println("user joined")
+        }
+        appDelegate.socket.on("user left") {[weak self] data, ack in
+            println("user left")
+        }
         
-        self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+        appDelegate.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
+    }
+    
+    
+    func sendAction() {
+        // Autocomplete text before sending #hack
+        textView.resignFirstResponder()
+        textView.becomeFirstResponder()
+        
+        chat.loadedMessages.append([Message(incoming: false, text: textView.text, sentDate: NSDate())])
+
+        // socket.io chat message send
+        appDelegate.socket.emit("new message",textView.text)
+        
+        //DB insert
+        self.addChatLog(account.user.username, brandname: chat.user.username, chattext: textView.text, time: nsDateToString(), read: "0", from: account.user.username)
+
+        textView.text = nil
+        updateTextViewHeight()
+        sendButton.enabled = false
+        
+        let lastSection = tableView.numberOfSections()
+        tableView.beginUpdates()
+        tableView.insertSections(NSIndexSet(index: lastSection), withRowAnimation: .Automatic)
+        tableView.insertRowsAtIndexPaths([
+            NSIndexPath(forRow: 0, inSection: lastSection),
+            NSIndexPath(forRow: 1, inSection: lastSection)
+            ], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+        tableViewScrollToBottomAnimated(true)
+        AudioServicesPlaySystemSound(messageSoundOutgoing)
+    }
+    
+    //socket.io chatの返信描画
+    func receiveAction(message:String){
+        // Autocomplete text before sending #hack
+//        textView.resignFirstResponder()
+//        textView.becomeFirstResponder()
+        
+        //socket.io
+        chat.loadedMessages.append([Message(incoming: true, text: message, sentDate: NSDate())])
+        
+        textView.text = nil
+        updateTextViewHeight()
+        sendButton.enabled = false
+        
+        let lastSection = tableView.numberOfSections()
+        tableView.beginUpdates()
+        tableView.insertSections(NSIndexSet(index: lastSection), withRowAnimation: .Automatic)
+        tableView.insertRowsAtIndexPaths([
+            NSIndexPath(forRow: 0, inSection: lastSection),
+            NSIndexPath(forRow: 1, inSection: lastSection)
+            ], withRowAnimation: .Automatic)
+        tableView.endUpdates()
+        tableViewScrollToBottomAnimated(true)
+        AudioServicesPlaySystemSound(messageSoundOutgoing)
     }
     
     
@@ -207,10 +296,10 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
             updateTextViewHeight()
         }
     }
-    //    // #iOS8
-    //    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
-    //        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
-    //    }
+    //        // #iOS8
+    //        override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!) {
+    //            super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+    //        }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return chat.loadedMessages.count
@@ -316,60 +405,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func sendAction() {
-        // Autocomplete text before sending #hack
-        textView.resignFirstResponder()
-        textView.becomeFirstResponder()
-        
-        chat.loadedMessages.append([Message(incoming: false, text: textView.text, sentDate: NSDate())])
-
-        // socket.io chatメッセージ送信
-        self.socket.emit("add user",chat.user.username)
-        self.socket.emit("new message",textView.text)
-        
-        //DB insert
-        self.addChatLog(account.user.username, brandname: chat.user.username, chattext: textView.text, time: nsDateToString(), read: "0", from: account.user.username)
-
-        textView.text = nil
-        updateTextViewHeight()
-        sendButton.enabled = false
-        
-        let lastSection = tableView.numberOfSections()
-        tableView.beginUpdates()
-        tableView.insertSections(NSIndexSet(index: lastSection), withRowAnimation: .Automatic)
-        tableView.insertRowsAtIndexPaths([
-            NSIndexPath(forRow: 0, inSection: lastSection),
-            NSIndexPath(forRow: 1, inSection: lastSection)
-            ], withRowAnimation: .Automatic)
-        tableView.endUpdates()
-        tableViewScrollToBottomAnimated(true)
-        AudioServicesPlaySystemSound(messageSoundOutgoing)
-    }
     
-    //socket.io chatの返信描画
-    func receiveAction(message:String){
-        // Autocomplete text before sending #hack
-        textView.resignFirstResponder()
-        textView.becomeFirstResponder()
-        
-        //socket.io
-        chat.loadedMessages.append([Message(incoming: true, text: message, sentDate: NSDate())])
-        
-        textView.text = nil
-        updateTextViewHeight()
-        sendButton.enabled = false
-        
-        let lastSection = tableView.numberOfSections()
-        tableView.beginUpdates()
-        tableView.insertSections(NSIndexSet(index: lastSection), withRowAnimation: .Automatic)
-        tableView.insertRowsAtIndexPaths([
-            NSIndexPath(forRow: 0, inSection: lastSection),
-            NSIndexPath(forRow: 1, inSection: lastSection)
-            ], withRowAnimation: .Automatic)
-        tableView.endUpdates()
-        tableViewScrollToBottomAnimated(true)
-        AudioServicesPlaySystemSound(messageSoundOutgoing)
-    }
     
     func nsDateToString() -> String{
         let now = NSDate() // => Feb 13, 2015, 4:05 PM"
@@ -389,7 +425,11 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableViewScrollToBottomAnimated(animated: Bool) {
         let numberOfRows = tableView.numberOfRowsInSection(0)
         if numberOfRows > 0 {
-            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: numberOfRows-1, inSection: 0), atScrollPosition: .Bottom, animated: animated)
+            //末尾までスクロールする
+            let nos = tableView.numberOfSections()
+            let nor = tableView.numberOfRowsInSection(nos-1)
+            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: nor-1, inSection: nos-1), atScrollPosition: .Bottom, animated: animated)
+//            tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: numberOfRows-1, inSection: 0), atScrollPosition: .Bottom, animated: animated)
         }
     }
     
