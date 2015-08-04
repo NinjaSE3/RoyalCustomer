@@ -116,7 +116,10 @@ class ItemViewController: UIViewController{
         shohinImageView.image = shohinImage
 
         // 縦横比保持 TODO:画像のサイズ調整
-        //  shohinImageView.contentMode = UIViewContentMode.ScaleAspectFit
+//        shohinImageView.contentMode = UIViewContentMode.ScaleAspectFill
+//        shohinImageView.contentMode = UIViewContentMode.Top
+        shohinImageView.contentMode = UIViewContentMode.Center
+        shohinImageView.clipsToBounds = true
         
         itemViewScrollView.addSubview(shohinImageView)
         
@@ -128,7 +131,7 @@ class ItemViewController: UIViewController{
         brandImageView.clipsToBounds = true
         brandImageView.layer.borderColor = primaryColor.CGColor
         brandImageView.layer.borderWidth = 2
-//        brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         itemViewScrollView.addSubview(brandImageView)
         
         // 商品説明のset

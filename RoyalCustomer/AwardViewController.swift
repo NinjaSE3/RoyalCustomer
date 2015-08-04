@@ -146,7 +146,7 @@ class AwardViewController: UIViewController {
         awardTitleButton.layer.masksToBounds = true
         awardTitleButton.setTitle(clickAward!.title as String , forState: .Normal)
         awardTitleButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardTitleButton.titleLabel!.font = UIFont(name: fontName, size: 25)
+        awardTitleButton.titleLabel!.font = UIFont(name: fontName, size: 23)
         awardTitleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         awardTitleButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         awardTitleButton.layer.position = CGPoint(
