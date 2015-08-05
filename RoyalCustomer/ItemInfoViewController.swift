@@ -25,11 +25,27 @@ class ItemInfoViewController: UIViewController{
     var itemTabLeft:UIButton!
     var itemTabRight:UIButton!
 
+    // 素材の高さ、幅
+    let shohinHeight:   CGFloat = 180
+    let shohinWidth:    CGFloat = 200
+    let pButtonHeight:  CGFloat = 25
+    let sOutlineHeight: CGFloat = 50
+    let brandHeight:    CGFloat = 50
+    let brandWidth:     CGFloat = 50
+    let badgeTxtHeight: CGFloat = 15
+    let badgeHeight:    CGFloat = 50
+    let badgeWidth:     CGFloat = 50
+    let pGraphHeight:   CGFloat = 250
+    let pGraphWidth:    CGFloat = 350
+    let pCalHeight:     CGFloat = 180
+    let pCalWidth:      CGFloat = 370
+    
     let itemTabHight:   CGFloat = 60
     let itemHeight:     CGFloat = 180
     let itemWidth:      CGFloat = 200
-    let brandHeight:    CGFloat = 50
-    let brandWidth:     CGFloat = 50
+    
+    // 素材のポジション
+    var pCalPosiY:      CGFloat = 0
     
     private var pScrollView:     UIScrollView!
     
@@ -98,18 +114,7 @@ class ItemInfoViewController: UIViewController{
         // タブページを初期化
         self.resetTabPage()
         
-        // 素材の高さ、幅
-        let shohinHeight:   CGFloat = 180
-        let shohinWidth:    CGFloat = 200
-        let pButtonHeight:  CGFloat = 25
-        let sOutlineHeight: CGFloat = 50
-        let brandHeight:    CGFloat = 50
-        let brandWidth:     CGFloat = 50
-        let badgeTxtHeight: CGFloat = 15
-        let badgeHeight:    CGFloat = 50
-        let badgeWidth:     CGFloat = 50
-        let pGraphHeight:   CGFloat = 250
-        let pGraphWidth:    CGFloat = 350
+
         
         // 素材の位置
         let baf:            CGFloat = 10 //　素材間のバッファ
@@ -122,14 +127,16 @@ class ItemInfoViewController: UIViewController{
         let pCalLabelPosition: CGFloat = badgePosiY + badgeHeight + baf         // 「商品購入日」ラベルの位置
         let pButtonThisMPosiY: CGFloat = pCalLabelPosition + pButtonHeight + baf    // カレンダー年月ラベル表示位置
         let pCalPosition:   CGFloat = pButtonThisMPosiY + badgeTxtHeight + baf      //　カレンダー表示位置
-        let bTrpLabelPosition: CGFloat = pCalPosition + 190            // 「取得した認定トロフィー」ラベルの位置
+        let bTrpLabelPosition: CGFloat = pCalPosition + pCalHeight + bafBadge       // 「取得した認定トロフィー」ラベルの位置
         let badgeTrpPosiY:     CGFloat = bTrpLabelPosition + badgeTxtHeight + baf     //　認定トロフィー表示位置
         let badgeTrpNumPosiY:  CGFloat = bTrpLabelPosition + badgeTxtHeight + bafBadge // 認定トロフィーの右上の数字表示位置
-        
         let txtArePosiX: CGFloat = 20
+        
+        pCalPosiY = pCalPosition
         
         // 素材文言
         let bLabText:       String = "取得した認定バッジ"
+        let bNoLabText:     String = "取得したバッジ＆トロフィーはありません。"
         let bLabTrpText:    String = "取得した認定トロフィー"
         let pLabText:       String = "商品購入数"
         let pCalLabText:    String = "当月購入カレンダー"
@@ -187,7 +194,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.directionalLockEnabled = false
         itemViewScrollView.showsHorizontalScrollIndicator = true
         itemViewScrollView.showsVerticalScrollIndicator = false
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 1.5)
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 1.6)
         self.view.addSubview(itemViewScrollView)
         
         
@@ -418,29 +425,38 @@ class ItemInfoViewController: UIViewController{
         var badgePosiX: CGFloat = txtArePosiX
         
         // 認定バッジ生成（ユーザーテスト用）
-        for aNum in clickItem!.award1 {
-            let badgeImagStr: String = awards[Int(aNum)].image
-            var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth))
-            let badgeImage = UIImage(named: badgeImagStr)
-            badgeImageView.image = badgeImage
-            badgeImageView.userInteractionEnabled = true //タップを認識させる
-            let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
-            badgeImageView.addGestureRecognizer(badgeImageTap)
-            badgeImageView.tag = Int(aNum)
-            itemViewScrollView.addSubview(badgeImageView)
-            
-            
-            // バッジに付与する認定実績
-            var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
-            badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
-            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
-            badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            badgeNum.backgroundColor = UIColor.grayColor()
-            badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
-            itemViewScrollView.addSubview(badgeNum)
-            
-            badgePosiX = badgePosiX + badgeWidth + bafBadge
-            
+        if clickItem!.award1.count == 0 {
+            let bNoButton: UIButton = UIButton(frame: CGRectMake(badgePosiX,badgePosiY, self.view.bounds.width,badgeTxtHeight))
+            bNoButton.setTitle(bNoLabText, forState: UIControlState.Normal)
+            bNoButton.titleLabel!.font = UIFont(name: fontName, size: 11)
+            bNoButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
+            bNoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+            itemViewScrollView.addSubview(bNoButton)
+        } else {
+            for aNum in clickItem!.award1 {
+                let badgeImagStr: String = awards[Int(aNum)].image
+                var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth))
+                let badgeImage = UIImage(named: badgeImagStr)
+                badgeImageView.image = badgeImage
+                badgeImageView.userInteractionEnabled = true //タップを認識させる
+                let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
+                badgeImageView.addGestureRecognizer(badgeImageTap)
+                badgeImageView.tag = Int(aNum)
+                itemViewScrollView.addSubview(badgeImageView)
+                
+                
+                // バッジに付与する認定実績
+                var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
+                badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
+                badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
+                badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                badgeNum.backgroundColor = UIColor.grayColor()
+                badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
+                itemViewScrollView.addSubview(badgeNum)
+                
+                badgePosiX = badgePosiX + badgeWidth + bafBadge
+                
+            }
         }
         
         // 認定トロフィー説明のset
@@ -454,29 +470,38 @@ class ItemInfoViewController: UIViewController{
         
         // 認定トロフィー表示用
         badgePosiX = txtArePosiX
-        for aNum in clickItem!.award2 {
-            let badgeImagStr: String = awards[Int(aNum)].image
-            var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgeTrpPosiY, badgeHeight, badgeWidth))
-            let badgeImage = UIImage(named: badgeImagStr)
-            badgeImageView.image = badgeImage
-            badgeImageView.userInteractionEnabled = true
-            let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
-            badgeImageView.addGestureRecognizer(badgeImageTap)
-            badgeImageView.tag = Int(aNum)
-            itemViewScrollView.addSubview(badgeImageView)
-            
-            
-            // バッジに付与する認定実績
-            var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeTrpNumPosiY, badgeHeight/3, badgeWidth/3))
-            badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
-            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
-            badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            badgeNum.backgroundColor = UIColor.grayColor()
-            badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
-            itemViewScrollView.addSubview(badgeNum)
-            
-            badgePosiX = badgePosiX + badgeWidth + bafBadge
-            
+        if clickItem!.award2.count == 0 {
+            let bNoButton: UIButton = UIButton(frame: CGRectMake(badgePosiX,badgeTrpPosiY, self.view.bounds.width,badgeTxtHeight))
+            bNoButton.setTitle(bNoLabText, forState: UIControlState.Normal)
+            bNoButton.titleLabel!.font = UIFont(name: fontName, size: 11)
+            bNoButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
+            bNoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+            itemViewScrollView.addSubview(bNoButton)
+        } else {
+            for aNum in clickItem!.award2 {
+                let badgeImagStr: String = awards[Int(aNum)].image
+                var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgeTrpPosiY, badgeHeight, badgeWidth))
+                let badgeImage = UIImage(named: badgeImagStr)
+                badgeImageView.image = badgeImage
+                badgeImageView.userInteractionEnabled = true
+                let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
+                badgeImageView.addGestureRecognizer(badgeImageTap)
+                badgeImageView.tag = Int(aNum)
+                itemViewScrollView.addSubview(badgeImageView)
+                
+                
+                // バッジに付与する認定実績
+                var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeTrpNumPosiY, badgeHeight/3, badgeWidth/3))
+                badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
+                badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
+                badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+                badgeNum.backgroundColor = UIColor.grayColor()
+                badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
+                itemViewScrollView.addSubview(badgeNum)
+                
+                badgePosiX = badgePosiX + badgeWidth + bafBadge
+                
+            }
         }
         
         // カレンダー表示
@@ -501,7 +526,8 @@ class ItemInfoViewController: UIViewController{
         pButtonThisM.setTitleColor(primaryColor, forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButtonThisM)
         
-        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosition, 370, pGraphHeight))
+        // カレンダー表示
+        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosition, pCalWidth, pCalHeight))
         itemViewScrollView.addSubview(calenderView)
         
         //self.view.addSubview(itemViewScrollView)
@@ -628,6 +654,11 @@ class ItemInfoViewController: UIViewController{
         var tag:Int = touch.view.tag
         clickAward = awards[tag]
         println("Calltouches")
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosiY, pCalWidth, 180))
+        itemViewScrollView.addSubview(calenderView)
     }
 
 

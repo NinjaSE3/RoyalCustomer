@@ -25,6 +25,9 @@ class MonthView: UIView {
             if view.isKindOfClass(DayView) {
                 view.removeFromSuperview()
             }
+            if view.isKindOfClass(UILabel){
+                view.removeFromSuperview()
+            }
         }
         
         var day:Int? = self.getLastDay(year,month:month);
@@ -33,12 +36,13 @@ class MonthView: UIView {
         if day != nil {
             
             // ヘッダ行の設定
+            
             let headTxt:[String] = ["日","月","火","水","木","金","土"]
             var headDay = 1
             for var i:Int = 0; i < 7;i++ {
 
                 var x:Int       = ((headDay - 1 ) * (dayWidth));
-                var dayLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(x), 0		, CGFloat(dayWidth),CGFloat(dayHeight)))
+                var dayLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(x), 0, CGFloat(dayWidth),CGFloat(dayHeight)))
                 dayLabel.textAlignment = NSTextAlignment.Center
                 dayLabel.text = headTxt[i]
                 dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 12)
