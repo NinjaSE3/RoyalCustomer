@@ -410,6 +410,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DEB5B571B7161650054592E /* morinaga.html in Resources */,
+				2DE549281B71DA4700036873 /* commingsoon.html in Resources */,
 				2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */,
 				2D0899751B69A7E400BD9798 /* LaunchScreen.xib in Resources */,
 				2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */,
@@ -496,6 +498,7 @@
 				0DD1D4481B6B286C009C591C /* AwardViewController.swift in Sources */,
 				003AE21D1B71BC56001EE7E4 /* ExamplesDefaults.swift in Sources */,
 				2D14E7EF1B69DF2A0004C6B5 /* UserPictureImageView.swift in Sources */,
+				2DEB5B551B715AA20054592E /* ItemInfoViewController.swift in Sources */,
 				2DA685281B6B14A800E2FC6B /* SocketAnyEvent.swift in Sources */,
 				2DA6852B1B6B14A800E2FC6B /* SocketEventHandler.swift in Sources */,
 				2DA685321B6B14A800E2FC6B /* SwiftRegex.swift in Sources */,

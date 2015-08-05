@@ -1,0 +1,11 @@
+body    {
+    background-color: #F8F8F8;
+    p {
+        font-family:'HiraKakuProN-W3';
+    }
+    div {
+        background-color: #212121;
+        color: #FFFFFF;
+    }
+    
+}

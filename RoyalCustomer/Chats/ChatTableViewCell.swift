@@ -8,7 +8,7 @@
 
 import UIKit
 
-let chatTableViewCellHeight: CGFloat = 72
+let chatTableViewCellHeight: CGFloat = 88
 let chatTableViewCellInsetLeft = chatTableViewCellHeight + 8
 
 class ChatTableViewCell: UITableViewCell {
@@ -18,22 +18,23 @@ class ChatTableViewCell: UITableViewCell {
     let lastMessageSentDateLabel: UILabel
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
-        userPictureImageView = UserPictureImageView(frame: CGRect(x: 8, y: (chatTableViewCellHeight-64)/2, width: 64, height: 64))
+        userPictureImageView = UserPictureImageView(frame: CGRect(x: 20, y: (chatTableViewCellHeight-64)/2, width: 64, height: 64))
         
         userNameLabel = UILabel(frame: CGRectZero)
         userNameLabel.backgroundColor = UIColor.whiteColor()
-        userNameLabel.font = UIFont.systemFontOfSize(17)
+        userNameLabel.textColor = primaryColor
+        userNameLabel.font = UIFont.systemFontOfSize(15)
         
         lastMessageTextLabel = UILabel(frame: CGRectZero)
         lastMessageTextLabel.backgroundColor = UIColor.whiteColor()
-        lastMessageTextLabel.font = UIFont.systemFontOfSize(15)
-        lastMessageTextLabel.numberOfLines = 2
-        lastMessageTextLabel.textColor = UIColor(red: 142/255, green: 142/255, blue: 147/255, alpha: 1)
+        lastMessageTextLabel.font = UIFont.systemFontOfSize(12)
+        lastMessageTextLabel.numberOfLines = 3
+        lastMessageTextLabel.textColor = secondaryTextColor
         
         lastMessageSentDateLabel = UILabel(frame: CGRectZero)
         lastMessageSentDateLabel.autoresizingMask = .FlexibleLeftMargin
         lastMessageSentDateLabel.backgroundColor = UIColor.whiteColor()
-        lastMessageSentDateLabel.font = UIFont.systemFontOfSize(15)
+        lastMessageSentDateLabel.font = UIFont.systemFontOfSize(12)
         lastMessageSentDateLabel.textColor = lastMessageTextLabel.textColor
         
         super.init(style: style, reuseIdentifier: reuseIdentifier)

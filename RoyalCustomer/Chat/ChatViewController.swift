@@ -9,7 +9,7 @@
 import AudioToolbox
 import UIKit
 
-let messageFontSize: CGFloat = 17
+let messageFontSize: CGFloat = 15
 let toolBarMinHeight: CGFloat = 44
 let textViewMaxHeight: (portrait: CGFloat, landscape: CGFloat) = (portrait: 272, landscape: 90)
 let messageSoundOutgoing: SystemSoundID = createMessageSoundOutgoing()
@@ -73,7 +73,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.chat = chat
         super.init(nibName: nil, bundle: nil)
         hidesBottomBarWhenPushed = true
-        title = chat.user.name
+        self.title = chat.user.name
         appDelegate._chat = chat
     }
     
@@ -87,6 +87,14 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        title.textColor = primaryBackgroundColor
+        title.text = chat.user.name
+        title.font = UIFont(name: fontName, size: 16)
+        title.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = title
         
         chat.loadedMessages = []
         

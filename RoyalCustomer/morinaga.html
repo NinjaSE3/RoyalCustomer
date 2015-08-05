@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style type="text/css">
+            body{
+                background-color: #F8F8F8;
+            }
+            p {
+                font-family:'HiraKakuProN-W3';
+            }
+            .bar {
+                background-color: #03A9F4;
+                color: #FFFFFF;
+                padding:0px;
+                margin:0px;
+            }
+            img{
+                padding:0px;
+                margin:0px;
+            }
+            center{
+                padding:0px;
+                margin:0px;
+            }
+        </style>
+
+    </head>
+    <body>
+        <p>カラメルソースのほろ苦さがクリーミィなプリンにぴったりです。遠赤外線オーブンでじっくり焼き上げたシンプルな味わいを、ゆったりとリラックスしてお楽しみください。</p>
+        <p>食卓につどい、たくさんの笑顔。そのそばに寄り添い、見守っていきたい。そんな思いをカタチにした商品をご紹介します。</p>
+        <div class="bar"><center>私たちがお届けしたいもの</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <p>手作りをとことん目指したシンプルな味わい。その美味しさのヒミツとは？</p>
+        <p>こだわり１　「手作り感のあるプリン」</p>
+        <p>"卵、砂糖、乳"を主原料に、家庭で手作りしたようなシンプルで飽きのこない味わいを追求しました。たっぷりと使用した卵の自然な力のみで固めた優しい食感に仕上げています。</p>
+        <p>こだわり２　「ほろにがカラメルソース」</p>
+        <p>"丁寧に砂糖を焦がして出来るカラメル"のような味わいを実現させるために、2種類のカラメルをブレンド。"ほろ苦"を再現すると同時に、酸味を抑える技術も採用、プリンとジャストマッチする美味しさです。</p>
+        <p>こだわり３　「こんがり焼き目」</p>
+        <p>焼き目がつきやすいよう独自に開発されたベースを、30メートル以上ある巨大な遠赤外線オーブンでじっくり焼き上げ、食欲をそそるこんがりした焼き目に仕上げています。</p>
+        
+        <center>
+        <div id="player"></div>
+        </center>
+        
+        <script>
+            var tag = document.createElement('script');
+            
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                                       width: '100%',
+                                       videoId: '9nskp6P7mPk',
+                                       events: {
+                                       'onReady': onPlayerReady,
+                                       }
+                                       });
+            }
+        
+        function onPlayerReady(event) {
+            //event.target.playVideo();
+        }
+        
+            </script>
+    </body>
+</html>

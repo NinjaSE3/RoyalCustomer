@@ -15,9 +15,6 @@ class ItemViewController: UIViewController{
     // View定義
     private var pScrollView:     UIScrollView!
     private var itemViewScrollView = MyScrollView()
-    
-    // Viewに関する情報取得
-    let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.size.height
 
     // SwiftChart定義
     private var chart: Chart?  //arc
@@ -25,7 +22,6 @@ class ItemViewController: UIViewController{
     override func viewDidLoad() {
 
         // 素材の高さ、幅
-        let navBarHeight:   CGFloat = self.navigationController!.navigationBar.bounds.size.height
         let shohinHeight:   CGFloat = 180
         let shohinWidth:    CGFloat = 200
         let sOutlineHeight: CGFloat = 50
@@ -77,7 +73,7 @@ class ItemViewController: UIViewController{
 //            
 //            // UIImageViewの生成 TODO：表示位置の動的設定
 //            let shohinImageView = UIImageView(image:shohinImage)
-//            shohinImageView.frame = CGRectMake(0, navBarHeight, shohinHeight, shohinWidth)
+//            shohinImageView.frame = CGRectMake(0, ViewManager.navigationBarHeight(self), shohinHeight, shohinWidth)
 //            self.view.addSubview(shohinImageView)
 //        }
         
@@ -420,17 +416,6 @@ class ItemViewController: UIViewController{
         
        // 購入グラフ&カレンダーを　UIScrollViewにadd
      //  self.view.addSubview(pScrollView)
-    }
-    
-    
-    
-    
-    
-    
-    
-    // navigationBarの高さ取得
-    func navigationBarHeight(callFrom: UIViewController) -> CGFloat? {
-        return callFrom.navigationController?.navigationBar.frame.size.height
     }
     
     override func didReceiveMemoryWarning() {
