@@ -9,8 +9,9 @@
 import UIKit
 
 let account = Account()
-var items  :[Item] = []
-var awards :[Award] = []
+var items     :[Item] = []
+var showOrder :[NSTimeInterval] = []
+var awards    :[Award] = []
 // クリックされた商品
 var clickItem:Item?
 // クリックされた認定
@@ -37,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //商品作成
         self.createItems()
+        //商品表示順を決定
+        self.createShowOrder()
         //認定作成
         self.createAwards()
         //アカウント取得
@@ -222,6 +225,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         items.append(Item(itemid:"000063",name:"商品63",image:"Item3",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
         items.append(Item(itemid:"000064",name:"商品64",image:"Item4",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
         items.append(Item(itemid:"000065",name:"商品65",image:"Item5",award1:[],award2:[], prchedHist:["2015/7":13, "2015/6":10,"2015/5":12,"2015/4":5,"2015/3":8,"2015/2":15], prchedThisM:[1:1,4:1,6:1,7:2,8:1,9:1,10:1,11:1,12:1,13:1,14:1,20:1], brandImage: "Brand1_icon", outline:"説明１"))
+    }
+    
+    //商品の表示順を決定
+    func createShowOrder() {
+        showOrder = [
+             1, 2, 3, 5, 6, 8, 4, 9,10,12,11,13,15, 7,14,16,18,20,19,17,
+            22,21,23,24,25,26,27,28,30,29,31,32,37,33,36,35,34,38,40,39,
+            41,42,43,45,46,44,47,48,49,50,51,52,53,54,55,56,57,58,59,60,
+            61,62,63,64,65
+        ]
     }
     
     //認定ハードコーディング

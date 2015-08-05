@@ -200,6 +200,19 @@ class ItemListViewController: UIViewController {
             if pageHeight < item.y + item.imageView.frame.height{
                 pageHeight = item.y + item.imageView.frame.height
             }
+            
+            // 表示順アニメーションを追加
+            item.imageView.alpha = 0
+            UIView.animateWithDuration(
+                0.8,
+                delay: showOrder[i]*0.1,
+                options: nil,
+                animations: {
+                    item.imageView.alpha = 1
+                },
+                completion: nil
+                )
+            
             i++
         }
         
