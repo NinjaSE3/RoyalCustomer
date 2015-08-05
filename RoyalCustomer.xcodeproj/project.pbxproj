@@ -49,7 +49,6 @@
 		2DA685331B6B14A800E2FC6B /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA685261B6B14A800E2FC6B /* WebSocket.swift */; };
 		2DEB5B551B715AA20054592E /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB5B541B715AA20054592E /* ItemInfoViewController.swift */; };
 		2DEB5B571B7161650054592E /* webview.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB5B561B7161650054592E /* webview.html */; };
-		2DEB5B591B716DBD0054592E /* webview.css in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB5B581B716DBD0054592E /* webview.css */; };
 		DB829A14935AADF7CC40A00A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EF4838FFD2D1488134D06C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -111,7 +110,6 @@
 		2DA685261B6B14A800E2FC6B /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
 		2DEB5B541B715AA20054592E /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
 		2DEB5B561B7161650054592E /* webview.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = webview.html; sourceTree = "<group>"; };
-		2DEB5B581B716DBD0054592E /* webview.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = webview.css; sourceTree = "<group>"; };
 		32EF4838FFD2D1488134D06C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D3EF0A61C712F8DA3A41F1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		79CB1A88BA802A196012D779 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -189,7 +187,6 @@
 				0DD1D4471B6B286C009C591C /* AwardViewController.swift */,
 				2DEB5B541B715AA20054592E /* ItemInfoViewController.swift */,
 				2DEB5B561B7161650054592E /* webview.html */,
-				2DEB5B581B716DBD0054592E /* webview.css */,
 			);
 			path = RoyalCustomer;
 			sourceTree = "<group>";
@@ -415,7 +412,6 @@
 				2DEB5B571B7161650054592E /* webview.html in Resources */,
 				2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */,
 				2D0899751B69A7E400BD9798 /* LaunchScreen.xib in Resources */,
-				2DEB5B591B716DBD0054592E /* webview.css in Resources */,
 				2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

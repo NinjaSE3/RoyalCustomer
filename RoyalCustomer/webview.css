@@ -3,4 +3,9 @@ body    {
     p {
         font-family:'HiraKakuProN-W3';
     }
+    div {
+        background-color: #212121;
+        color: #FFFFFF;
+    }
+    
 }

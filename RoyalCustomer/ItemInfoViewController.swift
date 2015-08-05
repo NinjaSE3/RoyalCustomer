@@ -137,6 +137,8 @@ class ItemInfoViewController: UIViewController{
         myWebView.allowsInlineMediaPlayback = false
         // 自動的に再生を開始.
         myWebView.mediaPlaybackRequiresUserAction = false
+        
+        myWebView.scrollView.scrollEnabled = false
         // load開始.
         myWebView.loadRequest(request)
         itemViewScrollView.addSubview(myWebView)
