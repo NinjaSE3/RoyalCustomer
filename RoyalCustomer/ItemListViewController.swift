@@ -262,6 +262,18 @@ class ItemListViewController: UIViewController {
                 )
                 awardIconView.userInteractionEnabled = true
                 scrView.addSubview(awardIconView)
+                
+                // 表示順アニメーションを追加
+                awardIconView.alpha = 0
+                UIView.animateWithDuration(
+                    0.8,
+                    delay: showOrder[i]*0.1,
+                    options: nil,
+                    animations: {
+                        awardIconView.alpha = 1
+                    },
+                    completion: nil
+                )
             }
             
             i++
