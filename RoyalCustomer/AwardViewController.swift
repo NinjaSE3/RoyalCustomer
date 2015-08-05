@@ -73,7 +73,7 @@ class AwardViewController: UIViewController {
     func addTitle(){
         /* 認定タイトルを表示 */
         
-        awardTitleButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
+        awardTitleButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50 + ViewManager.statusBarHeight))
         awardTitleButton.backgroundColor = primaryAwardColor
         awardTitleButton.layer.masksToBounds = true
         awardTitleButton.setTitle(clickAward!.title as String , forState: .Normal)
@@ -81,9 +81,10 @@ class AwardViewController: UIViewController {
         awardTitleButton.titleLabel!.font = UIFont(name: fontNameBold, size: 23)
         awardTitleButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         awardTitleButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        awardTitleButton.titleEdgeInsets.top = ViewManager.statusBarHeight
         awardTitleButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y:UIApplication.sharedApplication().statusBarFrame.height + self.awardTitleButton.frame.height/2
+            y: self.awardTitleButton.frame.height/2
         )
         self.view.addSubview(awardTitleButton)
     }
