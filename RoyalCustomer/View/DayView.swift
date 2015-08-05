@@ -17,8 +17,9 @@ class DayView: UIView {
     
     init(frame:CGRect,year:Int,month:Int,day:Int,weekday:Int){
         super.init(frame: frame)
+        
         var dayWidth:Int = Int( (UIScreen.mainScreen().bounds.size.width) / 7.0 )
-        var dayHeight:CGFloat = 20
+        var dayHeight:CGFloat = 25
         var dayLabel:UILabel = UILabel(frame: CGRectMake(0, 0, CGFloat(dayWidth),dayHeight))
         dayLabel.textAlignment = NSTextAlignment.Center
         dayLabel.text = String(format:"%02d", day)
