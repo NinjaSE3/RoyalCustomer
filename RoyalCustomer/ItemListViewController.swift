@@ -293,9 +293,12 @@ class ItemListViewController: UIViewController {
     
     // 商品クリック時に商品詳細画面に遷移する
     func onClickItemImageView(recognizer: UIGestureRecognizer) {
-        println("test")
-        let itemViewController: UIViewController = ItemViewController()
-        navigationController?.pushViewController(itemViewController, animated: true)
+        
+        let itemInfoViewController: UIViewController = ItemInfoViewController()
+        navigationController?.pushViewController(itemInfoViewController, animated: true)
+        
+        //let itemViewController: UIViewController = ItemViewController()
+        //navigationController?.pushViewController(itemViewController, animated: true)
     }
     
     // 通常のScrollViewではtouchesBeganが呼ばれないため拡張
