@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         account.addObserver(self, forKeyPath: "accessToken", options: NSKeyValueObservingOptions(0), context: nil) // always
         
         // Tabに設定するViewControllerのインスタンスを生成.
-        let itemListViewController: UIViewController = ItemViewController()
+        let itemListViewController: UIViewController = ItemListViewController()
         itemListViewController.tabBarItem = UITabBarItem(title: "購入商品一覧", image: UIImage(named: "UserIcon_grey"), selectedImage: UIImage(named: "UserIcon"))
         let chatsTableViewController: UIViewController = ChatsTableViewController()
         chatsTableViewController.tabBarItem = UITabBarItem(title: "メッセージ一覧", image: UIImage(named: "ChatIcon_grey"), selectedImage: UIImage(named: "ChatIcon"))

@@ -17,10 +17,16 @@ class ChatsTableViewController: UITableViewController {
 
     convenience init() {
         self.init(style: .Plain)
-        title = "メッセージ一覧"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "composeAction")
+        var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        title.textColor = primaryBackgroundColor
+        title.text = "ブランドメッセージ一覧"
+        title.font = UIFont(name: fontName, size: 16)
+        title.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = title
+        //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "composeAction")
         self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
     }
+
     
     
     override func viewDidLoad() {
