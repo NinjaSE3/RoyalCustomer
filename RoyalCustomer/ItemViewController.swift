@@ -58,6 +58,7 @@ class ItemViewController: UIViewController{
         var prchedDateArray :[String] = []
         var prchedNumArray :[CGFloat] = []
         var prchedGrpDict: [String: CGFloat] = [:]
+        var prchedLGrpDict: [String: CGFloat] = [:]
         
         // 表示する商品画像を設定　TODO:商品一覧から受け取ったURLを設定
 //        let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
@@ -256,45 +257,36 @@ class ItemViewController: UIViewController{
             }
         }
         
-        println(prchedGrpDict)
-        
         // 購入グラフ表示
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-        
-//        struct BarsTmpType {
-//            var title :String
-//            var min   :CGFloat
-//            var max   :CGFloat
-//            
-//            
-//        }
-//        var barsTmp :[BarsTmpType] = []
         var barsData: [(title: String, min: CGFloat, max: CGFloat)] = []
+        // LineDataの定義
+        var lineData: [(title: String, val: CGFloat)] = []
+        var tmpMax: CGFloat = 0
+        var yValMax: CGFloat = 0
         
-        for (key,value) in prchedGrpDict {
-//            var tmp :BarsTmpType = BarsTmpType(title:key, min:0, max:value)
-//            tmp.title = key
-//            tmp.min = 0
-//            tmp.max = value
-            
-            
-            barsData.append((title: key, min: CGFloat(0), max: value))
+        
+        // 購入情報の取り出し
+        var keys2 = Array(prchedGrpDict.keys)
+        // keysを昇順でソートする
+        keys2.sort({
+            $0 < $1
+        })
+        
+        for sortKey in keys2 {
+            for (key,value) in prchedGrpDict {
+                if sortKey == key {
+                tmpMax = tmpMax + value
+                barsData.append((title: key, min: CGFloat(0), max: value))
+                lineData.append((title: key, val: CGFloat(tmpMax)))
+                yValMax = tmpMax + 5
+                }
+            }
         }
         
-        
-        let lineData: [(title: String, val: CGFloat)] = [
-            ("A", 4),
-            ("B", 9),
-            ("C", 12),
-            ("D", 16),
-            ("E", 28),
-            ("F", 38),
-            ("G", 48),
-            ("H", 52)
-        ]
-        
         let alpha: CGFloat = 0.5
-        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+//        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+        let posColor = primaryColor
         let negColor = UIColor.redColor().colorWithAlphaComponent(alpha)
         let zero = ChartAxisValueFloat(0)
         let bars: [ChartBarModel] = Array(enumerate(barsData)).flatMap {index, tuple in
@@ -304,7 +296,7 @@ class ItemViewController: UIViewController{
             ]
         }
         
-        let yValues = Array(stride(from: 0, through: 60, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
+        let yValues = Array(stride(from: 0, through: yValMax, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
         let xValues =
         [ChartAxisValueString(order: -1)] +
             Array(enumerate(barsData)).map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
