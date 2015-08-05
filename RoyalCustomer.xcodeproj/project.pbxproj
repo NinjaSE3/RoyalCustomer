@@ -50,6 +50,10 @@
 		2DA685321B6B14A800E2FC6B /* SwiftRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA685251B6B14A800E2FC6B /* SwiftRegex.swift */; };
 		2DA685331B6B14A800E2FC6B /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DA685261B6B14A800E2FC6B /* WebSocket.swift */; };
 		F229BF3A65D711740FF6BDE6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9CC56ACEEC9C2D1CA839C09 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		2DE549281B71DA4700036873 /* commingsoon.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DE549271B71DA4700036873 /* commingsoon.html */; };
+		2DEB5B551B715AA20054592E /* ItemInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEB5B541B715AA20054592E /* ItemInfoViewController.swift */; };
+		2DEB5B571B7161650054592E /* morinaga.html in Resources */ = {isa = PBXBuildFile; fileRef = 2DEB5B561B7161650054592E /* morinaga.html */; };
+		DB829A14935AADF7CC40A00A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32EF4838FFD2D1488134D06C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,6 +114,10 @@
 		2DA685241B6B14A800E2FC6B /* SocketTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketTypes.swift; sourceTree = "<group>"; };
 		2DA685251B6B14A800E2FC6B /* SwiftRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftRegex.swift; sourceTree = "<group>"; };
 		2DA685261B6B14A800E2FC6B /* WebSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocket.swift; sourceTree = "<group>"; };
+		2DE549271B71DA4700036873 /* commingsoon.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = commingsoon.html; sourceTree = "<group>"; };
+		2DEB5B541B715AA20054592E /* ItemInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemInfoViewController.swift; sourceTree = "<group>"; };
+		2DEB5B561B7161650054592E /* morinaga.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = morinaga.html; sourceTree = "<group>"; };
+		32EF4838FFD2D1488134D06C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		43D3EF0A61C712F8DA3A41F1 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		79CB1A88BA802A196012D779 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A9CC56ACEEC9C2D1CA839C09 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -187,6 +195,9 @@
 				0DD1D4471B6B286C009C591C /* AwardViewController.swift */,
 				003AE21C1B71BC56001EE7E4 /* ExamplesDefaults.swift */,
 				003AE21E1B71BD29001EE7E4 /* Env.swift */,
+				2DEB5B541B715AA20054592E /* ItemInfoViewController.swift */,
+				2DEB5B561B7161650054592E /* morinaga.html */,
+				2DE549271B71DA4700036873 /* commingsoon.html */,
 			);
 			path = RoyalCustomer;
 			sourceTree = "<group>";
