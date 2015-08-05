@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 
 // 配色
 var primaryTextColor:UIColor!
@@ -31,13 +31,13 @@ class Item {
     var image  :String
     var award1 :[Float]
     var award2 :[Float]
-    var prchedHist : [String: Int]  // "2015/7"(年月): 30（個数）
-    var prchedThisM :[Int: Int]     // 19 (当月日付): 1（個数）
+    var prchedHist : [String: CGFloat]  // "2015/7"(年月): 30（個数）
+    var prchedThisM :[Int: CGFloat]     // 19 (当月日付): 1（個数）
     var brandImage :String          //　ブランド画像名称
     var outline :String             // 商品概要
     
     // イニシャライザ
-    init(itemid: String, name: NSString, image: String, award1: [Float], award2: [Float], prchedHist:[String: Int], prchedThisM:[Int: Int], brandImage: String, outline: String ) {
+    init(itemid: String, name: NSString, image: String, award1: [Float], award2: [Float], prchedHist:[String: CGFloat], prchedThisM:[Int: CGFloat], brandImage: String, outline: String ) {
         self.itemid = itemid
         self.name   = name
         self.image  = image

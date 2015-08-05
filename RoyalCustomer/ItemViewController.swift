@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftCharts
 
 
 class ItemViewController: UIViewController{
@@ -15,6 +16,9 @@ class ItemViewController: UIViewController{
     private var pScrollView:     UIScrollView!
     private var itemViewScrollView = MyScrollView()
 
+    // SwiftChart定義
+    private var chart: Chart?  //arc
+    
     override func viewDidLoad() {
 
         // 素材の高さ、幅
@@ -52,8 +56,8 @@ class ItemViewController: UIViewController{
 
         // 購買情報
         var prchedDateArray :[String] = []
-        var prchedNumArray :[Int] = []
-        
+        var prchedNumArray :[CGFloat] = []
+        var prchedGrpDict: [String: CGFloat] = [:]
         
         // 表示する商品画像を設定　TODO:商品一覧から受け取ったURLを設定
 //        let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
@@ -245,21 +249,152 @@ class ItemViewController: UIViewController{
                 var dates:[String] = date.componentsSeparatedByString("/")
                 prchedDateArray.append(dates[1]+"月")
                 prchedNumArray.append(num)
+                
+                var str: String = dates[1]+"月"
+                prchedGrpDict[str] = num
                 }
             }
         }
-        // 購入グラフ表示
-        var barChart = PNBarChart(frame: CGRectMake(txtArePosiX, pGraphPosition, pGraphWidth, pGraphHeight))
-        barChart.backgroundColor = UIColor.clearColor()
-        barChart.labelMarginTop = 5.0
-        barChart.xLabels = prchedDateArray
-        barChart.yValues = prchedNumArray
-        barChart.strokeColor = primaryColor
-        barChart.showLabel = false
-        barChart.strokeChart()
         
-       itemViewScrollView.addSubview(barChart)
+        println(prchedGrpDict)
+        
+        // 購入グラフ表示
+        let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
+        
+//        struct BarsTmpType {
+//            var title :String
+//            var min   :CGFloat
+//            var max   :CGFloat
+//            
+//            
+//        }
+//        var barsTmp :[BarsTmpType] = []
+        var barsData: [(title: String, min: CGFloat, max: CGFloat)] = []
+        
+        for (key,value) in prchedGrpDict {
+//            var tmp :BarsTmpType = BarsTmpType(title:key, min:0, max:value)
+//            tmp.title = key
+//            tmp.min = 0
+//            tmp.max = value
+            
+            
+            barsData.append((title: key, min: CGFloat(0), max: value))
+        }
+        
+        
+        let lineData: [(title: String, val: CGFloat)] = [
+            ("A", 4),
+            ("B", 9),
+            ("C", 12),
+            ("D", 16),
+            ("E", 28),
+            ("F", 38),
+            ("G", 48),
+            ("H", 52)
+        ]
+        
+        let alpha: CGFloat = 0.5
+        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+        let negColor = UIColor.redColor().colorWithAlphaComponent(alpha)
+        let zero = ChartAxisValueFloat(0)
+        let bars: [ChartBarModel] = Array(enumerate(barsData)).flatMap {index, tuple in
+            [
+                ChartBarModel(constant: ChartAxisValueFloat(CGFloat(index)), axisValue1: zero, axisValue2: ChartAxisValueFloat(tuple.min), bgColor: negColor),
+                ChartBarModel(constant: ChartAxisValueFloat(CGFloat(index)), axisValue1: zero, axisValue2: ChartAxisValueFloat(tuple.max), bgColor: posColor)
+            ]
+        }
+        
+        let yValues = Array(stride(from: 0, through: 60, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
+        let xValues =
+        [ChartAxisValueString(order: -1)] +
+            Array(enumerate(barsData)).map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
+            [ChartAxisValueString(order: barsData.count)]
+        
+        
+        let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
+        let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
+        let chartFrame = ExamplesDefaults.chartFrame(self.view.bounds)
+        let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
+        let (xAxis, yAxis, innerFrame) = (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
+        
+        let barsLayer = ChartBarsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, bars: bars, horizontal: false, barWidth: Env.iPad ? 40 : 25, animDuration: 0.5)
+        
+        // labels layer
+        // create chartpoints for the top and bottom of the bars, where we will show the labels
+//        let labelChartPoints = bars.map {bar in
+//            ChartPoint(x: bar.constant, y: bar.axisValue2)
+//        }
+//        let formatter = NSNumberFormatter()
+//        formatter.maximumFractionDigits = 2
+//        let labelsLayer = ChartPointsViewsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: labelChartPoints, viewGenerator: {(chartPointModel, layer, chart) -> UIView? in
+//            let label = HandlingLabel()
+//            let posOffset: CGFloat = 10
+//            
+//            let pos = chartPointModel.chartPoint.y.scalar > 0
+//            
+//            let yOffset = pos ? -posOffset : posOffset
+//            label.text = "\(formatter.stringFromNumber(chartPointModel.chartPoint.y.scalar)!)%"
+//            label.font = ExamplesDefaults.labelFont
+//            label.sizeToFit()
+//            label.center = CGPointMake(chartPointModel.screenLoc.x, pos ? innerFrame.origin.y : innerFrame.origin.y + innerFrame.size.height)
+//            label.alpha = 0
+//            
+//            label.movedToSuperViewHandler = {[weak label] in
+//                UIView.animateWithDuration(0.3, animations: {
+//                    label?.alpha = 1
+//                    label?.center.y = chartPointModel.screenLoc.y + yOffset
+//                })
+//            }
+//            return label
+//            
+//            }, displayDelay: 0.5) // show after bars animation
+        
+        // line layer
+        let lineChartPoints = Array(enumerate(lineData)).map {index, tuple in ChartPoint(x: ChartAxisValueFloat(CGFloat(index)), y: ChartAxisValueFloat(tuple.val))}
+        let lineModel = ChartLineModel(chartPoints: lineChartPoints, lineColor: primaryColor, lineWidth: 2, animDuration: 0.5, animDelay: 1)
+        let lineLayer = ChartPointsLineLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, lineModels: [lineModel])
+        
+        let circleViewGenerator = {(chartPointModel: ChartPointLayerModel, layer: ChartPointsLayer, chart: Chart) -> UIView? in
+            let color = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
+            let circleView = ChartPointEllipseView(center: chartPointModel.screenLoc, diameter: 6)
+            circleView.animDuration = 0.5
+            circleView.fillColor = color
+            return circleView
+        }
+        let lineCirclesLayer = ChartPointsViewsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: lineChartPoints, viewGenerator: circleViewGenerator, displayDelay: 1.5, delayBetweenItems: 0.05)
+        
+        
+        // show a gap between positive and negative bar
+        let dummyZeroYChartPoint = ChartPoint(x: ChartAxisValueFloat(0), y: ChartAxisValueFloat(0))
+        let yZeroGapLayer = ChartPointsViewsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: [dummyZeroYChartPoint], viewGenerator: {(chartPointModel, layer, chart) -> UIView? in
+            let height: CGFloat = 2
+            let v = UIView(frame: CGRectMake(innerFrame.origin.x + 2, chartPointModel.screenLoc.y - height / 2, innerFrame.origin.x + innerFrame.size.height, height))
+            v.backgroundColor = UIColor.whiteColor()
+            return v
+        })
+        
+        // guideLinesLayer定義
+        var settings = ChartGuideLinesDottedLayerSettings(linesColor: UIColor.blackColor(), linesWidth: ExamplesDefaults.guidelinesWidth)
+        let guidelinesLayer = ChartGuideLinesDottedLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, settings: settings)
 
+        
+        let chart = Chart(
+            frame: chartFrame,
+            layers: [
+                xAxis,
+                yAxis,
+                barsLayer,
+             //   labelsLayer,
+                yZeroGapLayer,
+                lineLayer,
+                lineCirclesLayer,
+                guidelinesLayer
+            ]
+        )
+        
+        itemViewScrollView.addSubview(chart.view)
+        self.view.addSubview(itemViewScrollView)
+        self.chart = chart
         
        // カレンダー表示
        // 当月購買詳細ラベル表示
