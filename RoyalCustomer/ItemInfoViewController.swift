@@ -138,7 +138,8 @@ class ItemInfoViewController: UIViewController{
         let bLabText:       String = "取得した認定バッジ"
         let bNoLabText:     String = "取得したバッジ＆トロフィーはありません。"
         let bLabTrpText:    String = "取得した認定トロフィー"
-        let pLabText:       String = "商品購入数"
+        let pLabText1:       String = "商品購入数"
+        let pLabText2:       String = "商品購入日"
         let pCalLabText:    String = "当月購入カレンダー"
         
         // 購買情報
@@ -240,7 +241,7 @@ class ItemInfoViewController: UIViewController{
         /* 購入情報の生成 */
         // 購入情報説明用ラベル表示
         let pButton: UIButton = UIButton(frame: CGRectMake(0,pLabelPosition, self.view.bounds.width,pButtonHeight))
-        pButton.setTitle(pLabText, forState: UIControlState.Normal)
+        pButton.setTitle(pLabText1, forState: UIControlState.Normal)
         pButton.backgroundColor = primaryColor
         pButton.titleLabel!.font = UIFont(name: fontName, size: 14)
         pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -507,7 +508,7 @@ class ItemInfoViewController: UIViewController{
         // カレンダー表示
         // 商品購入カレンダー説明ラベル
         let pCalButton: UIButton = UIButton(frame: CGRectMake(0,pCalLabelPosition, self.view.bounds.width,pButtonHeight))
-        pCalButton.setTitle(pLabText, forState: UIControlState.Normal)
+        pCalButton.setTitle(pLabText2, forState: UIControlState.Normal)
         pCalButton.backgroundColor = primaryColor
         pCalButton.titleLabel!.font = UIFont(name: fontName, size: 14)
         pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -535,6 +536,8 @@ class ItemInfoViewController: UIViewController{
         // 購入グラフ&カレンダーを　UIScrollViewにadd
         //  self.view.addSubview(pScrollView)
         
+        // スクロール位置を先頭に
+        itemViewScrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     func onClickRightButton(sender: UIButton){
@@ -592,7 +595,9 @@ class ItemInfoViewController: UIViewController{
         // load開始.
         myWebView.loadRequest(request)
         itemViewScrollView.addSubview(myWebView)
-
+        
+        // スクロール位置を先頭に
+        itemViewScrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     func resetTabPage() {
