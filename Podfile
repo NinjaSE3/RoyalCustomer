@@ -1,2 +1,3 @@
 platform :ios, "8.0"
-pod 'PNChart'
+use_frameworks!
+pod 'SwiftCharts', '~> 0.2'
