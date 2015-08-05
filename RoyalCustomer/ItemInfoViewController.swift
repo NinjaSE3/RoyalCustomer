@@ -130,7 +130,13 @@ class ItemInfoViewController: UIViewController{
         // webViewを生成.
         myWebView = UIWebView(frame: CGRectMake(0, itemHeight + itemTabHight, self.view.bounds.width, self.view.bounds.height * 2.25 - itemHeight ))
         // ファイルパスを生成.
-        let path: NSString = NSBundle.mainBundle().pathForResource("webview", ofType:"html")!
+        let path: NSString!
+        if(clickItem!.name == "森永の焼プリン"){
+            path = NSBundle.mainBundle().pathForResource("morinaga", ofType:"html")!
+        }else{
+            path = NSBundle.mainBundle().pathForResource("commingsoon", ofType:"html")!
+        }
+        
         // requestを生成.
         let request:NSURLRequest = NSURLRequest(URL: NSURL.fileURLWithPath(path as String)!)
         // fullscreen表示ではなく、inline表示にする.
