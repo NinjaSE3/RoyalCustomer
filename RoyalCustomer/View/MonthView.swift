@@ -29,7 +29,7 @@ class MonthView: UIView {
         
         var day:Int? = self.getLastDay(year,month:month);
         var dayWidth:Int = Int( frame.size.width / 7.0 )
-        var dayHeight:Int = 30
+        var dayHeight:Int = 25
         if day != nil {
             
             // ヘッダ行の設定
