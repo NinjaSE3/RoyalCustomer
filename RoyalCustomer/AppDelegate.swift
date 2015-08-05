@@ -48,10 +48,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //カラーコード作成
         primaryTextColor = UIColorFromRGB(0x212121);
         secondaryTextColor = UIColorFromRGB(0x727272);
-        primaryColor = UIColorFromRGB(0x03A9F4);
+        primaryColor = UIColorFromRGB(0x1D8CEE);
         secondaryColor = UIColorFromRGB(0xB3E5FC);
         primaryBackgroundColor = UIColorFromRGB(0xF8F8F8);
-        secondaryBackgroundColor = UIColorFromRGB(0xE6E6E6);
+        secondaryBackgroundColor = UIColorFromRGB(0xEFEFEF);
         primaryAwardColor = UIColorFromRGB(0xF3D51A);
         secondaryAwardColor = UIColorFromRGB(0xFEFCE5);
         facebookColor = UIColorFromRGB(0x3B5998);

@@ -163,11 +163,13 @@ class ItemListViewController: UIViewController {
         profileView.titleLabel!.font = UIFont(name: fontName, size: 18)
         //profileView!.font = UIFont(name: "Helvetica",size: CGFloat(10))
         profileView.layer.position = CGPoint(x: self.profileView.frame.width/2, y:self.profileView.frame.height/2)
-        profileView.setImage(UIImage(named: "User0"), forState: UIControlState.Normal)
+        var userImage = UIImage(named: "User0")
+        userImage?.drawInRect(CGRectMake(0, 0, 60, 60))
+        profileView.setImage(userImage, forState: UIControlState.Normal)
         profileView.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        profileView.imageView?.layer.cornerRadius = profileView.imageView!.frame.width/2
-        profileView.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
-        profileView.imageView?.layer.borderWidth = 5
+        //profileView.imageView?.layer.cornerRadius = profileView.imageView!.frame.width/2
+        //profileView.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
+        //profileView.imageView?.layer.borderWidth = 1
         profileView.layer.position = CGPoint(
             x: self.profileView.frame.width/2,
             y: ViewManager.navigationBarHeight(self) + ViewManager.statusBarHeight + self.profileView.frame.height/2
