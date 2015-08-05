@@ -99,7 +99,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.directionalLockEnabled = false
         itemViewScrollView.showsHorizontalScrollIndicator = true
         itemViewScrollView.showsVerticalScrollIndicator = false
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 1.5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 2.25 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
         self.view.addSubview(itemViewScrollView)
         
         
@@ -128,7 +128,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.addSubview(brandImageView)
         
         // webViewを生成.
-        myWebView = UIWebView(frame: CGRectMake(0, itemHeight + itemTabHight, self.view.bounds.width, self.view.bounds.height - itemHeight ))
+        myWebView = UIWebView(frame: CGRectMake(0, itemHeight + itemTabHight, self.view.bounds.width, self.view.bounds.height * 2.25 - itemHeight ))
         // ファイルパスを生成.
         let path: NSString = NSBundle.mainBundle().pathForResource("webview", ofType:"html")!
         // requestを生成.
