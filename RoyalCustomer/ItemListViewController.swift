@@ -158,7 +158,7 @@ class ItemListViewController: UIViewController {
         profileView.backgroundColor=secondaryBackgroundColor
         profileView.layer.masksToBounds = true
         profileView.titleEdgeInsets.left = 5
-        profileView.setTitle("十一時七雄さん" , forState: .Normal)
+        profileView.setTitle("倉澤孝明さん" , forState: .Normal)
         profileView.setTitleColor(primaryColor, forState: .Normal)
         profileView.titleLabel!.font = UIFont(name: fontName, size: 18)
         //profileView!.font = UIFont(name: "Helvetica",size: CGFloat(10))

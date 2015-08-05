@@ -101,6 +101,7 @@ class ItemInfoViewController: UIViewController{
         // 素材の高さ、幅
         let shohinHeight:   CGFloat = 180
         let shohinWidth:    CGFloat = 200
+        let pButtonHeight:  CGFloat = 25
         let sOutlineHeight: CGFloat = 50
         let brandHeight:    CGFloat = 50
         let brandWidth:     CGFloat = 50
@@ -113,34 +114,83 @@ class ItemInfoViewController: UIViewController{
         // 素材の位置
         let baf:            CGFloat = 10 //　素材間のバッファ
         let bafBadge:       CGFloat = 5  //　バッジ間のバッファ
-        let shohinOutlinePosition: CGFloat = shohinHeight + baf
-        let linePosition: CGFloat = shohinOutlinePosition + sOutlineHeight + baf
-        let bLabelPosition: CGFloat = linePosition + baf
-        let badgePosiY:     CGFloat = bLabelPosition + badgeTxtHeight + baf
-        let badgeNumPosiY:  CGFloat = bLabelPosition + badgeTxtHeight + bafBadge
-        let pLabelPosition: CGFloat = badgePosiY + badgeHeight + baf + bafBadge
-        let pGraphPosition: CGFloat = badgePosiY + badgeHeight + baf
-        let pButtonThisMPosiY: CGFloat = pGraphPosition + pGraphHeight + baf
-        let pCalPosition:   CGFloat = pButtonThisMPosiY + badgeTxtHeight + baf
-        
+        let pLabelPosition: CGFloat = shohinHeight                              //「商品購入数」ラベルの位置
+        let pGraphPosition: CGFloat = pLabelPosition + pButtonHeight + baf      // 購入累積グラフ表示位置
+        let bLabelPosition: CGFloat = pGraphPosition + pGraphHeight             //「取得した認定バッジ」ラベルの位置
+        let badgePosiY:     CGFloat = bLabelPosition + badgeTxtHeight + baf     //　認定バッジ表示位置
+        let badgeNumPosiY:  CGFloat = bLabelPosition + badgeTxtHeight + bafBadge // 認定バッジの右上の数字表示位置
+        let pCalLabelPosition: CGFloat = badgePosiY + badgeHeight + baf         // 「商品購入日」ラベルの位置
+        let pButtonThisMPosiY: CGFloat = pCalLabelPosition + pButtonHeight + baf    // カレンダー年月ラベル表示位置
+        let pCalPosition:   CGFloat = pButtonThisMPosiY + badgeTxtHeight + baf      //　カレンダー表示位置
+        let bTrpLabelPosition: CGFloat = pCalPosition + 190            // 「取得した認定トロフィー」ラベルの位置
+        let badgeTrpPosiY:     CGFloat = bTrpLabelPosition + badgeTxtHeight + baf     //　認定トロフィー表示位置
+        let badgeTrpNumPosiY:  CGFloat = bTrpLabelPosition + badgeTxtHeight + bafBadge // 認定トロフィーの右上の数字表示位置
         
         let txtArePosiX: CGFloat = 20
         
         // 素材文言
-        let bLabText:       String = "取得した認定バッジ&トロフィー"
-        let pLabText:       String = "商品購入数"
-        let pCalLabText:       String = "当月購入カレンダー"
+        let bLabText:       String = "取得した認定バッジ"
+        let bLabTrpText:    String = "取得した認定トロフィー"
+        let pLabText1:       String = "商品購入数"
+        let pLabText2:       String = "商品購入日"
+        let pCalLabText:    String = "当月購入カレンダー"
         
         // 購買情報
         var prchedDateArray :[String] = []
         var prchedNumArray :[CGFloat] = []
         var prchedGrpDict: [String: CGFloat] = [:]
-
+        var prchedLGrpDict: [String: CGFloat] = [:]
         
+        // 表示する商品画像を設定　TODO:商品一覧から受け取ったURLを設定
+        //        let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
+        //        let sReq = NSURLRequest(URL:shohinUrl!)
+        
+        //　表示するバッジ画像を設定　TODO:商品一覧から受け取ったURLを設定
+        //        let badgeUrlStr: [String] = ["http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg","http://odagirist.net/icon/rank/1.png","http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg", "http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg"]
+        
+        /* 商品画像の生成 */
+        // 非同期検索＆表示
+        //        NSURLConnection.sendAsynchronousRequest(sReq, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+        //            let shohinImage = UIImage(data:data)
+        //
+        //            // UIImageViewの生成 TODO：表示位置の動的設定
+        //            let shohinImageView = UIImageView(image:shohinImage)
+        //            shohinImageView.frame = CGRectMake(0, ViewManager.navigationBarHeight(self), shohinHeight, shohinWidth)
+        //            self.view.addSubview(shohinImageView)
+        //        }
+        
+        super.viewDidLoad()
         
         // 背景色をWhiteに設定する.
         self.view.backgroundColor = primaryBackgroundColor
-
+        
+        // ナビゲーションバーに商品名を表示
+        //var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        title.textColor = primaryBackgroundColor
+        //title.backgroundColor = UIColor.redColor()
+        title.text = clickItem!.name as String
+        title.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = title
+        super.viewDidLoad()
+        
+        // 背景色をWhiteに設定する.
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        // 商品詳細View表示用UIScrollView作成
+        //itemViewScrollView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        // タッチイベントを即時取得
+        itemViewScrollView.delaysContentTouches = false
+        itemViewScrollView.backgroundColor = UIColor.clearColor()
+        itemViewScrollView.pagingEnabled = false
+        itemViewScrollView.bounces = true
+        itemViewScrollView.scrollEnabled = true
+        itemViewScrollView.directionalLockEnabled = false
+        itemViewScrollView.showsHorizontalScrollIndicator = true
+        itemViewScrollView.showsVerticalScrollIndicator = false
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 1.5)
+        self.view.addSubview(itemViewScrollView)
+        
         
         // 商品画像の表示（ユーザーテスト用）
         let shohinImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, shohinHeight)) // UIScrollview内での位置設定であることに注意
@@ -152,7 +202,6 @@ class ItemInfoViewController: UIViewController{
         //        shohinImageView.contentMode = UIViewContentMode.Top
         shohinImageView.contentMode = UIViewContentMode.Center
         shohinImageView.clipsToBounds = true
-        
         itemViewScrollView.addSubview(shohinImageView)
         
         // ブランドロゴ付与
@@ -166,91 +215,29 @@ class ItemInfoViewController: UIViewController{
         brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         itemViewScrollView.addSubview(brandImageView)
         
-        // 商品説明のset
-        let shohinOutline: UIButton = UIButton(frame: CGRectMake(txtArePosiX,shohinOutlinePosition,self.view.bounds.width,sOutlineHeight))
-        shohinOutline.setTitle(clickItem!.outline, forState: UIControlState.Normal)
-        shohinOutline.titleLabel!.font = UIFont(name: fontName, size: 12)
-        shohinOutline.titleLabel!.numberOfLines = 3
-        shohinOutline.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        shohinOutline.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        itemViewScrollView.addSubview(shohinOutline)
-        
-        // 仕切り線設定
-        let lineUIImageView = UIImageView(frame: CGRectMake(0, linePosition, self.view.bounds.width, 5))
-        let lineImage = UIImage(named: "line1")
-        lineUIImageView.image = lineImage
-        itemViewScrollView.addSubview(lineUIImageView)
-        
-        /* 認定バッジの生成 */
-        // 認定バッジ説明のset
-        let bButton: UIButton = UIButton(frame: CGRectMake(txtArePosiX,bLabelPosition, self.view.bounds.width,badgeTxtHeight))
-        bButton.setTitle(bLabText, forState: UIControlState.Normal)
-        bButton.titleLabel!.font = UIFont(name: fontName, size: 12)
-        bButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        bButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        itemViewScrollView.addSubview(bButton)
-        
-        // ラベル取得＆表示
-        var badgePosiX: CGFloat = txtArePosiX
-        
-        // 認定バッジ生成（ユーザーテスト用）
-        for aNum in clickItem!.award1 {
-            let badgeImagStr: String = awards[Int(aNum)].image
-            var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth))
-            let badgeImage = UIImage(named: badgeImagStr)
-            badgeImageView.image = badgeImage
-            badgeImageView.userInteractionEnabled = true //タップを認識させる
-            let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
-            badgeImageView.addGestureRecognizer(badgeImageTap)
-            badgeImageView.tag = Int(aNum)
-            itemViewScrollView.addSubview(badgeImageView)
-            
-            
-            // バッジに付与する認定実績
-            var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
-            badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
-            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
-            badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            badgeNum.backgroundColor = UIColor.grayColor()
-            badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
-            itemViewScrollView.addSubview(badgeNum)
-            
-            badgePosiX = badgePosiX + badgeWidth + bafBadge
-            
-        }
-        
-        for aNum in clickItem!.award2 {
-            let badgeImagStr: String = awards[Int(aNum)].image
-            var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth))
-            let badgeImage = UIImage(named: badgeImagStr)
-            badgeImageView.image = badgeImage
-            badgeImageView.userInteractionEnabled = true
-            let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
-            badgeImageView.addGestureRecognizer(badgeImageTap)
-            badgeImageView.tag = Int(aNum)
-            itemViewScrollView.addSubview(badgeImageView)
-            
-            
-            // バッジに付与する認定実績
-            var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
-            badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
-            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
-            badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-            badgeNum.backgroundColor = UIColor.grayColor()
-            badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
-            itemViewScrollView.addSubview(badgeNum)
-            
-            badgePosiX = badgePosiX + badgeWidth + bafBadge
-            
-        }
+//        // 商品説明のset
+//        let shohinOutline: UIButton = UIButton(frame: CGRectMake(txtArePosiX,shohinOutlinePosition,self.view.bounds.width,sOutlineHeight))
+//        shohinOutline.setTitle(clickItem!.outline, forState: UIControlState.Normal)
+//        shohinOutline.titleLabel!.font = UIFont(name: fontName, size: 12)
+//        shohinOutline.titleLabel!.numberOfLines = 3
+//        shohinOutline.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+//        shohinOutline.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+//        itemViewScrollView.addSubview(shohinOutline)
+//        
+//        // 仕切り線設定
+//        let lineUIImageView = UIImageView(frame: CGRectMake(0, linePosition, self.view.bounds.width, 5))
+//        let lineImage = UIImage(named: "line1")
+//        lineUIImageView.image = lineImage
+//        itemViewScrollView.addSubview(lineUIImageView)
         
         
         /* 購入情報の生成 */
         // 購入情報説明用ラベル表示
-        let pButton: UIButton = UIButton(frame: CGRectMake(0,pLabelPosition, self.view.bounds.width,badgeTxtHeight))
-        pButton.setTitle(pLabText, forState: UIControlState.Normal)
-        pButton.titleLabel!.font = UIFont(name: fontName, size: 13)
-        pButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
+        let pButton: UIButton = UIButton(frame: CGRectMake(0,pLabelPosition, self.view.bounds.width,pButtonHeight))
+        pButton.setTitle(pLabText1, forState: UIControlState.Normal)
+        pButton.backgroundColor = primaryColor
+        pButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButton)
         
         
@@ -281,52 +268,42 @@ class ItemInfoViewController: UIViewController{
                     var dates:[String] = date.componentsSeparatedByString("/")
                     prchedDateArray.append(dates[1]+"月")
                     prchedNumArray.append(num)
-                    
                     var str: String = dates[1]+"月"
                     prchedGrpDict[str] = num
                 }
             }
         }
         
-        println(prchedGrpDict)
-        
         // 購入グラフ表示
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-        
-        //        struct BarsTmpType {
-        //            var title :String
-        //            var min   :CGFloat
-        //            var max   :CGFloat
-        //
-        //
-        //        }
-        //        var barsTmp :[BarsTmpType] = []
         var barsData: [(title: String, min: CGFloat, max: CGFloat)] = []
+        // LineDataの定義
+        var lineData: [(title: String, val: CGFloat)] = []
+        var tmpMax: CGFloat = 0
+        var yValMax: CGFloat = 0
         
-        for (key,value) in prchedGrpDict {
-            //            var tmp :BarsTmpType = BarsTmpType(title:key, min:0, max:value)
-            //            tmp.title = key
-            //            tmp.min = 0
-            //            tmp.max = value
-            
-            
-            barsData.append((title: key, min: CGFloat(0), max: value))
+        
+        // 購入情報の取り出し
+        var keys2 = Array(prchedGrpDict.keys)
+        // keysを昇順でソートする
+        keys2.sort({
+            $0 < $1
+        })
+        
+        for sortKey in keys2 {
+            for (key,value) in prchedGrpDict {
+                if sortKey == key {
+                    tmpMax = tmpMax + value
+                    barsData.append((title: key, min: CGFloat(0), max: value))
+                    lineData.append((title: key, val: CGFloat(tmpMax)))
+                    yValMax = tmpMax + 10
+                }
+            }
         }
         
-        
-        let lineData: [(title: String, val: CGFloat)] = [
-            ("A", 4),
-            ("B", 9),
-            ("C", 12),
-            ("D", 16),
-            ("E", 28),
-            ("F", 38),
-            ("G", 48),
-            ("H", 52)
-        ]
-        
         let alpha: CGFloat = 0.5
-        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+        //        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+        let posColor = primaryColor
         let negColor = UIColor.redColor().colorWithAlphaComponent(alpha)
         let zero = ChartAxisValueFloat(0)
         let bars: [ChartBarModel] = Array(enumerate(barsData)).flatMap {index, tuple in
@@ -336,7 +313,7 @@ class ItemInfoViewController: UIViewController{
             ]
         }
         
-        let yValues = Array(stride(from: 0, through: 60, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
+        let yValues = Array(stride(from: 0, through: yValMax, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
         let xValues =
         [ChartAxisValueString(order: -1)] +
             Array(enumerate(barsData)).map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
@@ -345,7 +322,7 @@ class ItemInfoViewController: UIViewController{
         
         let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
         let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
-        let chartFrame = ExamplesDefaults.chartFrame(self.view.bounds)
+        let chartFrame = CGRectMake(0, pGraphPosition, pGraphWidth, pGraphHeight)
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
         let (xAxis, yAxis, innerFrame) = (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
         
@@ -425,15 +402,99 @@ class ItemInfoViewController: UIViewController{
         )
         
         itemViewScrollView.addSubview(chart.view)
-        self.view.addSubview(itemViewScrollView)
+        //self.view.addSubview(itemViewScrollView)
         self.chart = chart
         
+        
+        /* 認定バッジの生成 */
+        // 認定バッジ説明のset
+        let bButton: UIButton = UIButton(frame: CGRectMake(txtArePosiX,bLabelPosition, self.view.bounds.width,badgeTxtHeight))
+        bButton.setTitle(bLabText, forState: UIControlState.Normal)
+        bButton.titleLabel!.font = UIFont(name: fontName, size: 12)
+        bButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        bButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        itemViewScrollView.addSubview(bButton)
+        
+        // ラベル取得＆表示
+        var badgePosiX: CGFloat = txtArePosiX
+        
+        // 認定バッジ生成（ユーザーテスト用）
+        for aNum in clickItem!.award1 {
+            let badgeImagStr: String = awards[Int(aNum)].image
+            var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth))
+            let badgeImage = UIImage(named: badgeImagStr)
+            badgeImageView.image = badgeImage
+            badgeImageView.userInteractionEnabled = true //タップを認識させる
+            let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
+            badgeImageView.addGestureRecognizer(badgeImageTap)
+            badgeImageView.tag = Int(aNum)
+            itemViewScrollView.addSubview(badgeImageView)
+            
+            
+            // バッジに付与する認定実績
+            var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeNumPosiY, badgeHeight/3, badgeWidth/3))
+            badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
+            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
+            badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            badgeNum.backgroundColor = UIColor.grayColor()
+            badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
+            itemViewScrollView.addSubview(badgeNum)
+            
+            badgePosiX = badgePosiX + badgeWidth + bafBadge
+            
+        }
+        
+        // 認定トロフィー説明のset
+        let bTrpButton: UIButton = UIButton(frame: CGRectMake(txtArePosiX,bTrpLabelPosition, self.view.bounds.width,badgeTxtHeight))
+        bTrpButton.setTitle(bLabTrpText, forState: UIControlState.Normal)
+        bTrpButton.titleLabel!.font = UIFont(name: fontName, size: 12)
+        bTrpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        bTrpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
+        itemViewScrollView.addSubview(bTrpButton)
+        
+        
+        // 認定トロフィー表示用
+        badgePosiX = txtArePosiX
+        for aNum in clickItem!.award2 {
+            let badgeImagStr: String = awards[Int(aNum)].image
+            var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgeTrpPosiY, badgeHeight, badgeWidth))
+            let badgeImage = UIImage(named: badgeImagStr)
+            badgeImageView.image = badgeImage
+            badgeImageView.userInteractionEnabled = true
+            let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
+            badgeImageView.addGestureRecognizer(badgeImageTap)
+            badgeImageView.tag = Int(aNum)
+            itemViewScrollView.addSubview(badgeImageView)
+            
+            
+            // バッジに付与する認定実績
+            var badgeNum: UIButton = UIButton(frame: CGRectMake(badgePosiX+35, badgeTrpNumPosiY, badgeHeight/3, badgeWidth/3))
+            badgeNum.setTitle(String(awards[Int(aNum)].num), forState: UIControlState.Normal)
+            badgeNum.titleLabel!.font = UIFont(name: fontName, size: 8)
+            badgeNum.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+            badgeNum.backgroundColor = UIColor.grayColor()
+            badgeNum.layer.cornerRadius = badgeNum.layer.frame.size.width / 2.0
+            itemViewScrollView.addSubview(badgeNum)
+            
+            badgePosiX = badgePosiX + badgeWidth + bafBadge
+            
+        }
+        
         // カレンダー表示
+        // 商品購入カレンダー説明ラベル
+        let pCalButton: UIButton = UIButton(frame: CGRectMake(0,pCalLabelPosition, self.view.bounds.width,pButtonHeight))
+        pCalButton.setTitle(pLabText2, forState: UIControlState.Normal)
+        pCalButton.backgroundColor = primaryColor
+        pCalButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        itemViewScrollView.addSubview(pCalButton)
+        
+        
         // 当月購買詳細ラベル表示
         var dateFormatter:NSDateFormatter = NSDateFormatter();
-        dateFormatter.dateFormat = "yyyy/MM";
+        dateFormatter.dateFormat = "yyyy年M月";
         var dateString:String = dateFormatter.stringFromDate(NSDate());
-        let pCalTxt = pCalLabText+"  "+dateString
+        let pCalTxt = dateString
         
         let pButtonThisM: UIButton = UIButton(frame: CGRectMake(0,pButtonThisMPosiY, self.view.bounds.width,badgeTxtHeight))
         pButtonThisM.setTitle(pCalTxt, forState: UIControlState.Normal)
@@ -444,12 +505,13 @@ class ItemInfoViewController: UIViewController{
         var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosition, 370, pGraphHeight))
         itemViewScrollView.addSubview(calenderView)
         
-        self.view.addSubview(itemViewScrollView)
+        //self.view.addSubview(itemViewScrollView)
         
         // 購入グラフ&カレンダーを　UIScrollViewにadd
         //  self.view.addSubview(pScrollView)
         
-        
+        // スクロール位置を先頭に
+        itemViewScrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     func onClickRightButton(sender: UIButton){
@@ -464,8 +526,8 @@ class ItemInfoViewController: UIViewController{
         self.view.backgroundColor = primaryBackgroundColor
         
         // スクロールビューを追加
-        self.addScrollView()
-        
+        //self.addScrollView()
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 2.5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
         
         // 商品画像の表示（ユーザーテスト用）
         let itemImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, itemHeight)) // UIScrollview内での位置設定であることに注意
@@ -507,7 +569,9 @@ class ItemInfoViewController: UIViewController{
         // load開始.
         myWebView.loadRequest(request)
         itemViewScrollView.addSubview(myWebView)
-
+        
+        // スクロール位置を先頭に
+        itemViewScrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     func resetTabPage() {
@@ -531,7 +595,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.directionalLockEnabled = false
         itemViewScrollView.showsHorizontalScrollIndicator = true
         itemViewScrollView.showsVerticalScrollIndicator = false
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 2.5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
+        
         self.view.addSubview(itemViewScrollView)
     }
    

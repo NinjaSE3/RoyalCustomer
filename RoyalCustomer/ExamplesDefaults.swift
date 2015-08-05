@@ -39,7 +39,7 @@ struct ExamplesDefaults {
         chartSettings.leading = 10
         chartSettings.top = 10
         chartSettings.trailing = 10
-        chartSettings.bottom = 10
+        chartSettings.bottom = 0
         chartSettings.labelsToAxisSpacingX = 5
         chartSettings.labelsToAxisSpacingY = 5
         chartSettings.axisTitleLabelsToLabelsSpacing = 4
