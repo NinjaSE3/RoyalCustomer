@@ -135,12 +135,58 @@ class ItemInfoViewController: UIViewController{
         var prchedDateArray :[String] = []
         var prchedNumArray :[CGFloat] = []
         var prchedGrpDict: [String: CGFloat] = [:]
-
+        var prchedLGrpDict: [String: CGFloat] = [:]
         
+        // 表示する商品画像を設定　TODO:商品一覧から受け取ったURLを設定
+        //        let shohinUrl = NSURL(string:"http://www.7meal.jp/prd/044996/01250/04008427_01_00.jpg")
+        //        let sReq = NSURLRequest(URL:shohinUrl!)
+        
+        //　表示するバッジ画像を設定　TODO:商品一覧から受け取ったURLを設定
+        //        let badgeUrlStr: [String] = ["http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg","http://odagirist.net/icon/rank/1.png","http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg", "http://www.illustcatcher.com/detail_sean/object/img/medal_m.jpg"]
+        
+        /* 商品画像の生成 */
+        // 非同期検索＆表示
+        //        NSURLConnection.sendAsynchronousRequest(sReq, queue:NSOperationQueue.mainQueue()){(res, data, err) in
+        //            let shohinImage = UIImage(data:data)
+        //
+        //            // UIImageViewの生成 TODO：表示位置の動的設定
+        //            let shohinImageView = UIImageView(image:shohinImage)
+        //            shohinImageView.frame = CGRectMake(0, ViewManager.navigationBarHeight(self), shohinHeight, shohinWidth)
+        //            self.view.addSubview(shohinImageView)
+        //        }
+        
+        super.viewDidLoad()
         
         // 背景色をWhiteに設定する.
         self.view.backgroundColor = primaryBackgroundColor
-
+        
+        // ナビゲーションバーに商品名を表示
+        //var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        title.textColor = primaryBackgroundColor
+        //title.backgroundColor = UIColor.redColor()
+        title.text = clickItem!.name as String
+        title.textAlignment = NSTextAlignment.Center
+        self.navigationItem.titleView = title
+        super.viewDidLoad()
+        
+        // 背景色をWhiteに設定する.
+        self.view.backgroundColor = UIColor.whiteColor()
+        
+        // 商品詳細View表示用UIScrollView作成
+        //itemViewScrollView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
+        // タッチイベントを即時取得
+        itemViewScrollView.delaysContentTouches = false
+        itemViewScrollView.backgroundColor = UIColor.clearColor()
+        itemViewScrollView.pagingEnabled = false
+        itemViewScrollView.bounces = true
+        itemViewScrollView.scrollEnabled = true
+        itemViewScrollView.directionalLockEnabled = false
+        itemViewScrollView.showsHorizontalScrollIndicator = true
+        itemViewScrollView.showsVerticalScrollIndicator = false
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 1.7)
+        self.view.addSubview(itemViewScrollView)
+        
         
         // 商品画像の表示（ユーザーテスト用）
         let shohinImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, shohinHeight)) // UIScrollview内での位置設定であることに注意
@@ -288,45 +334,36 @@ class ItemInfoViewController: UIViewController{
             }
         }
         
-        println(prchedGrpDict)
-        
         // 購入グラフ表示
         let labelSettings = ChartLabelSettings(font: ExamplesDefaults.labelFont)
-        
-        //        struct BarsTmpType {
-        //            var title :String
-        //            var min   :CGFloat
-        //            var max   :CGFloat
-        //
-        //
-        //        }
-        //        var barsTmp :[BarsTmpType] = []
         var barsData: [(title: String, min: CGFloat, max: CGFloat)] = []
+        // LineDataの定義
+        var lineData: [(title: String, val: CGFloat)] = []
+        var tmpMax: CGFloat = 0
+        var yValMax: CGFloat = 0
         
-        for (key,value) in prchedGrpDict {
-            //            var tmp :BarsTmpType = BarsTmpType(title:key, min:0, max:value)
-            //            tmp.title = key
-            //            tmp.min = 0
-            //            tmp.max = value
-            
-            
-            barsData.append((title: key, min: CGFloat(0), max: value))
+        
+        // 購入情報の取り出し
+        var keys2 = Array(prchedGrpDict.keys)
+        // keysを昇順でソートする
+        keys2.sort({
+            $0 < $1
+        })
+        
+        for sortKey in keys2 {
+            for (key,value) in prchedGrpDict {
+                if sortKey == key {
+                    tmpMax = tmpMax + value
+                    barsData.append((title: key, min: CGFloat(0), max: value))
+                    lineData.append((title: key, val: CGFloat(tmpMax)))
+                    yValMax = tmpMax + 5
+                }
+            }
         }
         
-        
-        let lineData: [(title: String, val: CGFloat)] = [
-            ("A", 4),
-            ("B", 9),
-            ("C", 12),
-            ("D", 16),
-            ("E", 28),
-            ("F", 38),
-            ("G", 48),
-            ("H", 52)
-        ]
-        
         let alpha: CGFloat = 0.5
-        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+        //        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
+        let posColor = primaryColor
         let negColor = UIColor.redColor().colorWithAlphaComponent(alpha)
         let zero = ChartAxisValueFloat(0)
         let bars: [ChartBarModel] = Array(enumerate(barsData)).flatMap {index, tuple in
@@ -336,7 +373,7 @@ class ItemInfoViewController: UIViewController{
             ]
         }
         
-        let yValues = Array(stride(from: 0, through: 60, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
+        let yValues = Array(stride(from: 0, through: yValMax, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
         let xValues =
         [ChartAxisValueString(order: -1)] +
             Array(enumerate(barsData)).map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
@@ -425,7 +462,7 @@ class ItemInfoViewController: UIViewController{
         )
         
         itemViewScrollView.addSubview(chart.view)
-        self.view.addSubview(itemViewScrollView)
+        //self.view.addSubview(itemViewScrollView)
         self.chart = chart
         
         // カレンダー表示
@@ -444,11 +481,10 @@ class ItemInfoViewController: UIViewController{
         var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosition, 370, pGraphHeight))
         itemViewScrollView.addSubview(calenderView)
         
-        self.view.addSubview(itemViewScrollView)
+        //self.view.addSubview(itemViewScrollView)
         
         // 購入グラフ&カレンダーを　UIScrollViewにadd
         //  self.view.addSubview(pScrollView)
-        
         
     }
     
@@ -464,8 +500,8 @@ class ItemInfoViewController: UIViewController{
         self.view.backgroundColor = primaryBackgroundColor
         
         // スクロールビューを追加
-        self.addScrollView()
-        
+        //self.addScrollView()
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 2.5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
         
         // 商品画像の表示（ユーザーテスト用）
         let itemImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, itemHeight)) // UIScrollview内での位置設定であることに注意
@@ -531,7 +567,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.directionalLockEnabled = false
         itemViewScrollView.showsHorizontalScrollIndicator = true
         itemViewScrollView.showsVerticalScrollIndicator = false
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 2.5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
+        
         self.view.addSubview(itemViewScrollView)
     }
    
