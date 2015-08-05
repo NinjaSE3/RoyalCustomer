@@ -23,11 +23,11 @@ class ChatTableViewCell: UITableViewCell {
         userNameLabel = UILabel(frame: CGRectZero)
         userNameLabel.backgroundColor = UIColor.whiteColor()
         userNameLabel.textColor = primaryColor
-        userNameLabel.font = UIFont.systemFontOfSize(15)
+        userNameLabel.font = UIFont.systemFontOfSize(16)
         
         lastMessageTextLabel = UILabel(frame: CGRectZero)
         lastMessageTextLabel.backgroundColor = UIColor.whiteColor()
-        lastMessageTextLabel.font = UIFont.systemFontOfSize(12)
+        lastMessageTextLabel.font = UIFont.systemFontOfSize(13)
         lastMessageTextLabel.numberOfLines = 3
         lastMessageTextLabel.textColor = secondaryTextColor
         
