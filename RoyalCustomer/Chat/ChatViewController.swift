@@ -98,9 +98,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         chat.loadedMessages = []
         
-        if(chat.user.username == "森永の焼プリン"){
+        if(chat.user.username == "コカ・コーラ"){
         //socket.io
-        usleep(10000)
+        sleep(1)
         self.socket.connect()
         self.socket.onAny {println("Got event: \($0.event), with items: \($0.items)")}
 
@@ -157,9 +157,9 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         tableViewScrollToBottomAnimated(true)
         
-        if(chat.user.username == "森永の焼プリン"){
+        if(chat.user.username == "コカ・コーラ"){
         // socket.io add user
-        usleep(10000)
+        sleep(1)
         println(chat.user.username)
         self.socket.emit("add user",chat.user.username)
         }
@@ -226,7 +226,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         chat.loadedMessages.append([Message(incoming: false, text: textView.text, sentDate: NSDate())])
 
-        if(chat.user.username == "森永の焼プリン"){
+        if(chat.user.username == "コカ・コーラ"){
         // socket.io chat message send
         self.socket.emit("new message",textView.text)
         }
@@ -256,7 +256,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //        textView.resignFirstResponder()
 //        textView.becomeFirstResponder()
         
-        if(chat.user.username == "森永の焼プリン"){
+        if(chat.user.username == "コカ・コーラ"){
         //socket.io
         chat.loadedMessages.append([Message(incoming: true, text: message, sentDate: NSDate())])
         }
@@ -292,7 +292,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         chat.draft = textView.text
         println("back")
         
-        if(chat.user.username == "森永の焼プリン"){
+        if(chat.user.username == "コカ・コーラ"){
         // socket.io
         println("disconnect")
         self.socket.emit("disconnect")
