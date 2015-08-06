@@ -31,13 +31,13 @@ class CalenderView: UIView,UIScrollViewDelegate{
         currentMonth = dates[1].toInt()!
         
         scrollView = UIScrollView(frame: self.bounds)
-        scrollView.backgroundColor = UIColor.clearColor()
+        scrollView.backgroundColor = UIColor.greenColor()
         scrollView.contentSize   = CGSizeMake(frame.size.width,frame.size.height);
         
         println(frame.size.height)
         println(frame.size.width)
         scrollView.contentOffset = CGPointMake(frame.size.width , 0.0);
-        scrollView.delegate = self;
+       // scrollView.delegate = self;
         scrollView.pagingEnabled = true;
         scrollView.showsHorizontalScrollIndicator = false;
         scrollView.showsVerticalScrollIndicator = false;
@@ -47,6 +47,9 @@ class CalenderView: UIView,UIScrollViewDelegate{
         
         currentMonthView = MonthView(frame: CGRectMake(frame.size.width + 20, 0, 330,250),
             year:currentYear,month:currentMonth)
+        
+        currentMonthView.layer.backgroundColor = UIColor.redColor().CGColor
+        
         
         //翌月
         var ret = self.getNextYearAndMonth()
@@ -116,20 +119,20 @@ class CalenderView: UIView,UIScrollViewDelegate{
     
     
     func resetContentOffSet () {
-        //position調整
-        prevMonthView.frame = CGRectMake(0, 0, frame.size.width,frame.size.height)
-        currentMonthView.frame = CGRectMake(frame.size.width, 0, frame.size.width,frame.size.height)
-        nextMonthView.frame = CGRectMake(frame.size.width * 2.0, 0, frame.size.width,frame.size.height)
+//        //position調整
+//        prevMonthView.frame = CGRectMake(0, 0, frame.size.width,frame.size.height)
+//        currentMonthView.frame = CGRectMake(frame.size.width, 0, frame.size.width,frame.size.height)
+//        nextMonthView.frame = CGRectMake(frame.size.width * 2.0, 0, frame.size.width,frame.size.height)
         
-        var scrollViewDelegate:UIScrollViewDelegate = scrollView.delegate!
-        scrollView.delegate = nil
-        //delegateを呼びたくないので
-        scrollView.contentOffset = CGPointMake(frame.size.width , 0.0);
-        scrollView.delegate = scrollViewDelegate
-        
-        if scrollView.isKindOfClass(MonthView){
-            scrollView.removeFromSuperview()
-        }
+//        var scrollViewDelegate:UIScrollViewDelegate = scrollView.delegate!
+//        scrollView.delegate = nil
+//        //delegateを呼びたくないので
+//        scrollView.contentOffset = CGPointMake(frame.size.width , 0.0);
+//        scrollView.delegate = scrollViewDelegate
+//        
+//        if scrollView.isKindOfClass(MonthView){
+//            scrollView.removeFromSuperview()
+//        }
         
     }
     

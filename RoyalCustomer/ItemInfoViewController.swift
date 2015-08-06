@@ -24,6 +24,8 @@ class ItemInfoViewController: UIViewController{
     // itemtabボタン
     var itemTabLeft:UIButton!
     var itemTabRight:UIButton!
+    var calenderView :CalenderView!
+
 
     // 素材の高さ、幅
     let shohinHeight:   CGFloat = 180
@@ -38,7 +40,7 @@ class ItemInfoViewController: UIViewController{
     let pGraphHeight:   CGFloat = 250
     let pGraphWidth:    CGFloat = 350
     let pCalHeight:     CGFloat = 180
-    let pCalWidth:      CGFloat = 370
+    let pCalWidth:      CGFloat = 350
     
     let itemTabHight:   CGFloat = 60
     let itemHeight:     CGFloat = 180
@@ -536,19 +538,32 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.addSubview(pButtonThisM)
         
         // カレンダー表示
-        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosition, pCalWidth, pCalHeight))
-        itemViewScrollView.addSubview(calenderView)
+        var dateFormatter2:NSDateFormatter = NSDateFormatter();
+        dateFormatter2.dateFormat = "yyyy/MM/dd";
+        var dateString2:String = dateFormatter2.stringFromDate(NSDate());
+        var dates2:[String] = dateString2.componentsSeparatedByString("/")
         
-        //self.view.addSubview(itemViewScrollView)
+        var currentYear2:Int = 0
+        var currentMonth2:Int = 0
         
-        // 購入グラフ&カレンダーを　UIScrollViewにadd
-        //  self.view.addSubview(pScrollView)
+        currentYear2  = dates2[0].toInt()!
+        currentMonth2 = dates2[1].toInt()!
+    
+        let currentMonthView = MonthView(frame: CGRectMake(0, pCalPosition, pCalWidth,pCalHeight),
+        year:currentYear2,month:currentMonth2)
+        itemViewScrollView.addSubview(currentMonthView)
+        
+        // UIScrollView呼び出しでなく直接MonthView呼び出しに修正
+//        calenderView = CalenderView(frame: CGRectMake(0, pCalPosition, pCalWidth, pCalHeight))
+//        calenderView.backgroundColor = UIColor.redColor()
         
         // スクロール位置を先頭に
         itemViewScrollView.contentOffset = CGPoint(x: 0, y: 0)
     }
     
     func onClickRightButton(sender: UIButton){
+        
+        
         // タブの文字色を変更
         self.itemTabRight.setTitleColor(primaryColor, forState: .Normal)
         self.itemTabLeft.setTitleColor(secondaryTextColor, forState: .Normal)
@@ -673,11 +688,6 @@ class ItemInfoViewController: UIViewController{
         var tag:Int = touch.view.tag
         clickAward = awards[tag]
         println("Calltouches")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        var calenderView:CalenderView = CalenderView(frame: CGRectMake(0, pCalPosiY, pCalWidth, 180))
-        itemViewScrollView.addSubview(calenderView)
     }
 
 

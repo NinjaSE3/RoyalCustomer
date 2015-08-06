@@ -21,14 +21,11 @@ class MonthView: UIView {
     func setUpDays(year:Int,month:Int){
         
         var subViews:[UIView] = self.subviews as! [UIView]
-        for view in subViews {
-            if view.isKindOfClass(DayView) {
-                view.removeFromSuperview()
-            }
-            if view.isKindOfClass(UILabel){
-                view.removeFromSuperview()
-            }
-        }
+        //for view in subViews {
+        //    if view.isKindOfClass(DayView) {
+        //        view.removeFromSuperview()
+        //    }
+        //}
         
         var day:Int? = self.getLastDay(year,month:month);
         var dayWidth:Int = Int( frame.size.width / 7.0 )
@@ -64,6 +61,7 @@ class MonthView: UIView {
                 
                 var dayView:DayView = DayView(frame: frame, year:year,month:month,day:i+1,weekday:weekday)
                 self.addSubview(dayView)
+                
                 weekday++
                 if weekday > 7 {
                     weekday = 1
