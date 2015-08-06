@@ -559,7 +559,7 @@ class ItemInfoViewController: UIViewController{
         
         // スクロールビューを追加
         //self.addScrollView()
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 2.5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 4 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
         
         // 商品画像の表示（ユーザーテスト用）
         let itemImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, itemHeight)) // UIScrollview内での位置設定であることに注意
@@ -581,11 +581,17 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.addSubview(brandImageView)
         
         // webViewを生成.
-        myWebView = UIWebView(frame: CGRectMake(0, itemHeight, self.view.bounds.width, self.view.bounds.height * 2.25 - itemHeight ))
+        myWebView = UIWebView(frame: CGRectMake(0, itemHeight, self.view.bounds.width, self.view.bounds.height * 4 - itemHeight ))
         // ファイルパスを生成.
         let path: NSString!
         if(clickItem!.name == "森永の焼プリン"){
             path = NSBundle.mainBundle().pathForResource("morinaga", ofType:"html")!
+        }else if(clickItem!.name == "コカ・コーラ"){
+            path = NSBundle.mainBundle().pathForResource("cocacola", ofType:"html")!
+        }else if(clickItem!.name == "お〜いお茶"){
+            path = NSBundle.mainBundle().pathForResource("o-iocha", ofType:"html")!
+        }else if(clickItem!.name == "セブンカフェ"){
+            path = NSBundle.mainBundle().pathForResource("sevencafe", ofType:"html")!
         }else{
             path = NSBundle.mainBundle().pathForResource("commingsoon", ofType:"html")!
         }

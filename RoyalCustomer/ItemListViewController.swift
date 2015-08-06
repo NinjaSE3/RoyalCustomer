@@ -181,18 +181,18 @@ class ItemListViewController: UIViewController {
     func itemListView(){
         // 商品一覧を作成
         var borderColor:CGColor = primaryBackgroundColor.CGColor
-        var borderWidth:CGFloat = 2
+        var borderWidth:CGFloat = 1
         
         var i = 0
         var pageHeight: CGFloat = 0
         var item: ItemView
         for item in itemViews {
-            let itemImage = UIImage(named: items[i].image)
+            let itemImage = UIImage(named: items[i].image)!.alpha(0.8)
             item.imageView.image = itemImage
             item.imageView.tag = i
             item.imageView.layer.borderColor = borderColor
             item.imageView.layer.borderWidth = borderWidth
-            item.imageView.backgroundColor = UIColor.redColor()
+            item.imageView.backgroundColor = UIColor.whiteColor()
             item.imageView.layer.position = CGPoint(
                 x: item.x + item.imageView.frame.width/2,
                 y: item.y + item.imageView.frame.height/2
@@ -307,4 +307,6 @@ class ItemListViewController: UIViewController {
             superview?.touchesBegan(touches, withEvent: event)
         }
     }
+    
+
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="http://52.8.45.203/tmp/webview.css">
+            </head>
+    <body>
+        <div class="bar"><center>世界中の人々に愛されているおいしさ。</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <p>コカ・コーラボトルが生まれて、今年で100年。</p>
+        <p>これからも、このカタチと、この味で。</p>
+        <div class="bar"><center>コカ・コーラ誕生の歴史</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center><img src="http://d1lwft0f0qzya1.cloudfront.net/dims4/COKE/dbec831/2147483647/thumbnail/596x334/quality/75/?url=http%3A%2F%2Fassets.coca-colacompany.com%2Ffd%2F72%2Ff487e78e4e0aafdc5e21383140c6%2Fhead-panel-birth.jpg" width="100%"></center>
+        <p>薬剤師のジョン・S・ペンバートン博士は、アメリカ・ジョージア州アトランタで、薬品や飲みものを研究していました。1886年（明治19年）5月、今までにない独自の甘い香りを漂わせるカラメル色のシロップが、ペンバートン博士の手で完成します。 その新しいシロップに、友人であり経理担当のフランク・ロビンソンは、響きがよく、覚えやすい”コカ・コーラ”という名前をつけ、さらに美しい飾り文字でロゴを仕立てました。</p>
+        <center><img src="http://d1lwft0f0qzya1.cloudfront.net/dims4/COKE/862c0d6/2147483647/resize/295x%3E/quality/75/?url=http%3A%2F%2Fassets.coca-colacompany.com%2F13%2Fe6%2F98ee066d48029f723c91f0cde4fd%2Fbirth-slide02-01.jpg" width="100%"></center>
+        <p>1886年、コカ･コーラが誕生した当時、今ほど水事情が良くなかった当時の米国南部において炭酸水は嗜好品として楽しまれていました。コカ・コーラは販売当初から炭酸水で割ってつくられており、ソーダ水を提供するアトランタに4軒あったソーダファウンテンで人びとに販売されたのが始まりです。ペンバートン博士は、この新しい飲みもの”コカ・コーラ”を、グラス1杯5セントで売り出しました。</p>
+        <center><img src="http://d1lwft0f0qzya1.cloudfront.net/dims4/COKE/4e85a4c/2147483647/resize/584x%3E/quality/75/?url=http%3A%2F%2Fassets.coca-colacompany.com%2F63%2F84%2F9872533b4eb59f6c3711ee647694%2F03.png" width="100%"></center>
+        <p>コカ・コーラ誕生の年、1886年に1日あたり9杯の売上げだったコカ・コーラ。それから127年あまり、今では世界中で1日に約19億杯のコカ・コーラ社製品が飲まれています。</p>
+
+        <div class="bar"><center>夏を変えよう、キミを変えよう。</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center>
+            <div id="player"></div>
+        </center>
+        
+        <script>
+            var tag = document.createElement('script');
+            
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                                       width: '100%',
+                                       videoId: 'd8grdaheFkY',
+                                       events: {
+                                       'onReady': onPlayerReady,
+                                       }
+                                       });
+            }
+        
+        function onPlayerReady(event) {
+            //event.target.playVideo();
+        }
+        
+            </script>
+    </body>
+</html>
