@@ -83,7 +83,7 @@ class ItemInfoViewController: UIViewController{
         itemTabLeft.setTitle("購買履歴" , forState: .Normal)
         itemTabLeft.setTitleColor(primaryColor, forState: .Normal)
         itemTabLeft.titleLabel!.font = UIFont(name: fontName, size: 18)
-        itemTabLeft.layer.position = CGPoint(x: self.itemTabLeft.frame.width/2, y:ViewManager.navigationBarHeight(self) + ViewManager.statusBarHeight + itemTabHight/2)
+        itemTabLeft.layer.position = CGPoint(x: self.itemTabLeft.frame.width/2, y: itemTabHight/2)
         itemTabLeft.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
         itemTabLeft.imageView?.layer.borderWidth = 5
         itemTabLeft.addTarget(self, action: "onClickLeftButton:", forControlEvents: .TouchUpInside)
@@ -95,7 +95,7 @@ class ItemInfoViewController: UIViewController{
         itemTabRight.setTitle("商品情報" , forState: .Normal)
         itemTabRight.setTitleColor(secondaryTextColor, forState: .Normal)
         itemTabRight.titleLabel!.font = UIFont(name: fontName, size: 18)
-        itemTabRight.layer.position = CGPoint(x: self.itemTabLeft.frame.width + self.itemTabRight.frame.width/2, y:ViewManager.navigationBarHeight(self) + ViewManager.statusBarHeight + itemTabHight/2)
+        itemTabRight.layer.position = CGPoint(x: self.itemTabLeft.frame.width + self.itemTabRight.frame.width/2, y: itemTabHight/2)
         itemTabRight.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
         itemTabRight.imageView?.layer.borderWidth = 5
         itemTabRight.addTarget(self, action: "onClickRightButton:", forControlEvents: .TouchUpInside)
@@ -609,6 +609,10 @@ class ItemInfoViewController: UIViewController{
             path = NSBundle.mainBundle().pathForResource("o-iocha", ofType:"html")!
         }else if(clickItem!.name == "セブンカフェ"){
             path = NSBundle.mainBundle().pathForResource("sevencafe", ofType:"html")!
+        }else if(clickItem!.name == "キットカット"){
+            path = NSBundle.mainBundle().pathForResource("kit-kat", ofType:"html")!
+        }else if(clickItem!.name == "手巻おにぎり紀州南高梅（たたき梅）"){
+            path = NSBundle.mainBundle().pathForResource("sevennankobai", ofType:"html")!
         }else{
             path = NSBundle.mainBundle().pathForResource("commingsoon", ofType:"html")!
         }
@@ -636,10 +640,10 @@ class ItemInfoViewController: UIViewController{
     
     func addScrollView() {
         // 商品詳細View表示用UIScrollView作成
-        itemViewScrollView.frame = CGRectMake(0, itemTabHight, view.bounds.width, view.bounds.height)
+        itemViewScrollView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         itemViewScrollView.layer.position = CGPoint(
             x:view.bounds.width/2,
-            y:view.bounds.height/2 + itemTabHight + ViewManager.statusBarHeight + ViewManager.navigationBarHeight(self)
+            y:view.bounds.height/2 + itemTabHight
         )
         // タッチイベントを即時取得
         itemViewScrollView.delaysContentTouches = false

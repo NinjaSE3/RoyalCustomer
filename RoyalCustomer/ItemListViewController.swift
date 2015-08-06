@@ -172,7 +172,8 @@ class ItemListViewController: UIViewController {
         //profileView.imageView?.layer.borderWidth = 1
         profileView.layer.position = CGPoint(
             x: self.profileView.frame.width/2,
-            y: ViewManager.navigationBarHeight(self) + ViewManager.statusBarHeight + self.profileView.frame.height/2
+            y: self.profileView.frame.height/2
+            //y: ViewManager.navigationBarHeight(self) + ViewManager.statusBarHeight + self.profileView.frame.height/2
         )
         
         self.view.addSubview(profileView)

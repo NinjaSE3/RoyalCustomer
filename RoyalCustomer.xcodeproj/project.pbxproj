@@ -18,6 +18,8 @@
 		2D02CD201B73041400DC4006 /* cocacola.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD1F1B73041400DC4006 /* cocacola.html */; };
 		2D02CD241B730D3D00DC4006 /* o-iocha.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD231B730D3D00DC4006 /* o-iocha.html */; };
 		2D02CD261B730EDD00DC4006 /* sevencafe.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD251B730EDD00DC4006 /* sevencafe.html */; };
+		2D02CD2A1B7333E600DC4006 /* kit-kat.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD291B7333E600DC4006 /* kit-kat.html */; };
+		2D02CD2C1B73363C00DC4006 /* sevennankobai.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD2B1B73363C00DC4006 /* sevennankobai.html */; };
 		2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08996A1B69A7E400BD9798 /* AppDelegate.swift */; };
 		2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08996E1B69A7E400BD9798 /* Main.storyboard */; };
 		2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0899711B69A7E400BD9798 /* Images.xcassets */; };
@@ -81,6 +83,8 @@
 		2D02CD1F1B73041400DC4006 /* cocacola.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = cocacola.html; sourceTree = "<group>"; };
 		2D02CD231B730D3D00DC4006 /* o-iocha.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "o-iocha.html"; sourceTree = "<group>"; };
 		2D02CD251B730EDD00DC4006 /* sevencafe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sevencafe.html; sourceTree = "<group>"; };
+		2D02CD291B7333E600DC4006 /* kit-kat.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "kit-kat.html"; sourceTree = "<group>"; };
+		2D02CD2B1B73363C00DC4006 /* sevennankobai.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sevennankobai.html; sourceTree = "<group>"; };
 		2D0899651B69A7E400BD9798 /* RoyalCustomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoyalCustomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0899691B69A7E400BD9798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D08996A1B69A7E400BD9798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +209,8 @@
 				2D02CD1F1B73041400DC4006 /* cocacola.html */,
 				2D02CD231B730D3D00DC4006 /* o-iocha.html */,
 				2D02CD251B730EDD00DC4006 /* sevencafe.html */,
+				2D02CD291B7333E600DC4006 /* kit-kat.html */,
+				2D02CD2B1B73363C00DC4006 /* sevennankobai.html */,
 			);
 			path = RoyalCustomer;
 			sourceTree = "<group>";
@@ -433,9 +439,11 @@
 				2DE549281B71DA4700036873 /* commingsoon.html in Resources */,
 				2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */,
 				2D02CD201B73041400DC4006 /* cocacola.html in Resources */,
+				2D02CD2A1B7333E600DC4006 /* kit-kat.html in Resources */,
 				2D02CD241B730D3D00DC4006 /* o-iocha.html in Resources */,
 				2D0899751B69A7E400BD9798 /* LaunchScreen.xib in Resources */,
 				2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */,
+				2D02CD2C1B73363C00DC4006 /* sevennankobai.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

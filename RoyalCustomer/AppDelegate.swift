@@ -78,13 +78,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemListNavigationController = UINavigationController(rootViewController: itemListViewController)
         itemListNavigationController.navigationBar.barTintColor = primaryColor
         itemListNavigationController.navigationBar.tintColor = primaryBackgroundColor
-        //var image:UIImage = UIImage(named: "Rainbow")!
-        //image.drawInRect(CGRectMake(0, 0, 44, 80))
-        //itemListNavigationController.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
+                
         let chatsNavigationController = UINavigationController(rootViewController: chatsTableViewController)
         chatsNavigationController.navigationBar.barTintColor = primaryColor
         chatsNavigationController.navigationBar.tintColor = primaryBackgroundColor
-
+        
+        var image:UIImage = UIImage(named: "Nevigation-Bar")!
+        image.drawInRect(CGRectMake(0, 0, itemListNavigationController.navigationBar.frame.width, itemListNavigationController.navigationBar.frame.height))
+        itemListNavigationController.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
+        chatsNavigationController.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
         
         // タブを要素に持つArrayの.を作成する.
         let myTabs = NSArray(objects: itemListNavigationController, chatsNavigationController)
