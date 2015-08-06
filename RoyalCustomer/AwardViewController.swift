@@ -345,6 +345,7 @@ class AwardViewController: UIViewController {
         let awardImage = UIImage(named : clickAward!.image)
         awardAnimationView = UIImageView(frame: CGRectMake(0,0,startImageSize,startImageSize))
         awardAnimationView.image = awardImage
+        awardAnimationView.contentMode = UIViewContentMode.ScaleAspectFill
         awardAnimationView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
         self.view.addSubview(awardAnimationView)
         
