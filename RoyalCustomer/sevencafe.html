@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="http://52.8.45.203/tmp/webview.css">
+            </head>
+    <body>
+        <div class="bar"><center>近くて便利、セブン-イレブンです。</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center><img src="http://www.sej.co.jp/mngdbps/_template_/_user_/_SITE_/localhost/_res/images/products/sevencafe/main_150325.jpg" width="100%"></center>
+        <center><img src="http://52.8.45.203/tmp/kaori.png" width="100%"></center>
+        
+        <div class="bar"><center>1杯ずつ、挽きたて、淹れたて。</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center>
+            <div id="player"></div>
+        </center>
+        
+        <script>
+            var tag = document.createElement('script');
+            
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                                       width: '100%',
+                                       videoId: '6b7UrnjKi3k',
+                                       events: {
+                                       'onReady': onPlayerReady,
+                                       }
+                                       });
+            }
+        
+        function onPlayerReady(event) {
+            //event.target.playVideo();
+        }
+        
+            </script>
+    </body>
+</html>

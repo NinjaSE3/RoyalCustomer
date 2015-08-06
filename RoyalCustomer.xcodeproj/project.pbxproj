@@ -15,6 +15,9 @@
 		0DA74CE41B7289F700E29017 /* UIImageExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA74CE31B7289F700E29017 /* UIImageExt.swift */; };
 		0DD1D4461B6A998D009C591C /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1D4451B6A998D009C591C /* Common.swift */; };
 		0DD1D4481B6B286C009C591C /* AwardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD1D4471B6B286C009C591C /* AwardViewController.swift */; };
+		2D02CD201B73041400DC4006 /* cocacola.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD1F1B73041400DC4006 /* cocacola.html */; };
+		2D02CD241B730D3D00DC4006 /* o-iocha.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD231B730D3D00DC4006 /* o-iocha.html */; };
+		2D02CD261B730EDD00DC4006 /* sevencafe.html in Resources */ = {isa = PBXBuildFile; fileRef = 2D02CD251B730EDD00DC4006 /* sevencafe.html */; };
 		2D08996B1B69A7E400BD9798 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D08996A1B69A7E400BD9798 /* AppDelegate.swift */; };
 		2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D08996E1B69A7E400BD9798 /* Main.storyboard */; };
 		2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D0899711B69A7E400BD9798 /* Images.xcassets */; };
@@ -75,6 +78,9 @@
 		0DA74CE31B7289F700E29017 /* UIImageExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExt.swift; sourceTree = "<group>"; };
 		0DD1D4451B6A998D009C591C /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		0DD1D4471B6B286C009C591C /* AwardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwardViewController.swift; sourceTree = "<group>"; };
+		2D02CD1F1B73041400DC4006 /* cocacola.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = cocacola.html; sourceTree = "<group>"; };
+		2D02CD231B730D3D00DC4006 /* o-iocha.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "o-iocha.html"; sourceTree = "<group>"; };
+		2D02CD251B730EDD00DC4006 /* sevencafe.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = sevencafe.html; sourceTree = "<group>"; };
 		2D0899651B69A7E400BD9798 /* RoyalCustomer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoyalCustomer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D0899691B69A7E400BD9798 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D08996A1B69A7E400BD9798 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -196,6 +202,9 @@
 				2DEB5B561B7161650054592E /* morinaga.html */,
 				2DE549271B71DA4700036873 /* commingsoon.html */,
 				0DA74CE31B7289F700E29017 /* UIImageExt.swift */,
+				2D02CD1F1B73041400DC4006 /* cocacola.html */,
+				2D02CD231B730D3D00DC4006 /* o-iocha.html */,
+				2D02CD251B730EDD00DC4006 /* sevencafe.html */,
 			);
 			path = RoyalCustomer;
 			sourceTree = "<group>";
@@ -420,8 +429,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DEB5B571B7161650054592E /* morinaga.html in Resources */,
+				2D02CD261B730EDD00DC4006 /* sevencafe.html in Resources */,
 				2DE549281B71DA4700036873 /* commingsoon.html in Resources */,
 				2D0899701B69A7E400BD9798 /* Main.storyboard in Resources */,
+				2D02CD201B73041400DC4006 /* cocacola.html in Resources */,
+				2D02CD241B730D3D00DC4006 /* o-iocha.html in Resources */,
 				2D0899751B69A7E400BD9798 /* LaunchScreen.xib in Resources */,
 				2D0899721B69A7E400BD9798 /* Images.xcassets in Resources */,
 			);
