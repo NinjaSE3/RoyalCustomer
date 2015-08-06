@@ -249,6 +249,18 @@ class ItemInfoViewController: UIViewController{
         pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButton)
         
+        //　購入情報説明用ラベル下の矢印画像を表示
+        let pArrowImage1 = UIImage(named: "baritem")
+        var pArrowImageView1 = UIImageView(frame: CGRectMake(
+            self.view.frame.width/2 - pArrowImage1!.size.width/2,
+            pButton.frame.maxY,
+            pArrowImage1!.size.width,
+            pArrowImage1!.size.height)
+        )
+        pArrowImageView1.image = pArrowImage1
+        pArrowImageView1.contentMode = UIViewContentMode.ScaleAspectFit
+        pArrowImageView1.userInteractionEnabled = true //タップを認識させる
+        itemViewScrollView.addSubview(pArrowImageView1)
         
         // 購入グラフ&カレンダー表示用UIScrollView作成
         pScrollView = UIScrollView(frame: self.view.bounds)
@@ -477,7 +489,6 @@ class ItemInfoViewController: UIViewController{
         bTrpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         itemViewScrollView.addSubview(bTrpButton)
         
-        
         // 認定トロフィー表示用
         badgePosiX = txtArePosiX
         if clickItem!.award2.count == 0 {
@@ -524,6 +535,18 @@ class ItemInfoViewController: UIViewController{
         pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pCalButton)
         
+        //　購入情報説明用ラベル下の矢印画像を表示
+        let pArrowImage2 = UIImage(named: "baritem")
+        var pArrowImageView2 = UIImageView(frame: CGRectMake(
+            self.view.frame.width/2 - pArrowImage2!.size.width/2,
+            pCalButton.frame.maxY,
+            pArrowImage2!.size.width,
+            pArrowImage2!.size.height)
+        )
+        pArrowImageView2.image = pArrowImage2
+        pArrowImageView2.contentMode = UIViewContentMode.ScaleAspectFit
+        pArrowImageView2.userInteractionEnabled = true //タップを認識させる
+        itemViewScrollView.addSubview(pArrowImageView2)
         
         // 当月購買詳細ラベル表示
         var dateFormatter:NSDateFormatter = NSDateFormatter();
