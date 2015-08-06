@@ -445,6 +445,7 @@ class ItemInfoViewController: UIViewController{
                 var badgeImageView = UIImageView(frame: CGRectMake(badgePosiX, badgePosiY, badgeHeight, badgeWidth))
                 let badgeImage = UIImage(named: badgeImagStr)
                 badgeImageView.image = badgeImage
+                badgeImageView.contentMode = UIViewContentMode.ScaleAspectFit
                 badgeImageView.userInteractionEnabled = true //タップを認識させる
                 let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
                 badgeImageView.addGestureRecognizer(badgeImageTap)
@@ -491,6 +492,7 @@ class ItemInfoViewController: UIViewController{
                 let badgeImage = UIImage(named: badgeImagStr)
                 badgeImageView.image = badgeImage
                 badgeImageView.userInteractionEnabled = true
+                badgeImageView.contentMode = UIViewContentMode.ScaleAspectFit
                 let badgeImageTap = UITapGestureRecognizer(target: self, action: "tapGesture:")
                 badgeImageView.addGestureRecognizer(badgeImageTap)
                 badgeImageView.tag = Int(aNum)
