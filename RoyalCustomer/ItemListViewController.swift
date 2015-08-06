@@ -146,7 +146,7 @@ class ItemListViewController: UIViewController {
         var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
         title.textColor = primaryBackgroundColor
         title.text = "購入商品一覧"
-        title.font = UIFont(name: fontName, size: 16)
+        title.font = UIFont(name: fontName, size: 18)
         title.textAlignment = NSTextAlignment.Center
         self.navigationItem.titleView = title
     }
