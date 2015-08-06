@@ -648,6 +648,7 @@ class ItemInfoViewController: UIViewController{
         // タッチイベントを即時取得
         itemViewScrollView.delaysContentTouches = false
         itemViewScrollView.backgroundColor = UIColor.clearColor()
+        itemViewScrollView.canCancelContentTouches = true
         itemViewScrollView.pagingEnabled = false
         itemViewScrollView.bounces = true
         itemViewScrollView.scrollEnabled = true
@@ -667,6 +668,14 @@ class ItemInfoViewController: UIViewController{
         override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
             superview?.touchesBegan(touches, withEvent: event)
             println("Calltouches2")
+        }
+        
+        override func touchesShouldCancelInContentView(view: UIView!) -> Bool {
+            if (view.isKindOfClass(UIButton)) {
+                return true
+            }
+            
+            return super.touchesShouldCancelInContentView(view)
         }
     }
     
@@ -693,6 +702,5 @@ class ItemInfoViewController: UIViewController{
         clickAward = awards[tag]
         println("Calltouches")
     }
-
-
+    
 }
