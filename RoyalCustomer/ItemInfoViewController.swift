@@ -594,6 +594,10 @@ class ItemInfoViewController: UIViewController{
             path = NSBundle.mainBundle().pathForResource("o-iocha", ofType:"html")!
         }else if(clickItem!.name == "セブンカフェ"){
             path = NSBundle.mainBundle().pathForResource("sevencafe", ofType:"html")!
+        }else if(clickItem!.name == "キットカット"){
+            path = NSBundle.mainBundle().pathForResource("kit-kat", ofType:"html")!
+        }else if(clickItem!.name == "手巻おにぎり紀州南高梅（たたき梅）"){
+            path = NSBundle.mainBundle().pathForResource("sevennankobai", ofType:"html")!
         }else{
             path = NSBundle.mainBundle().pathForResource("commingsoon", ofType:"html")!
         }

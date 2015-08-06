@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="http://52.8.45.203/tmp/webview.css">
+            </head>
+    <body>
+        <div class="bar"><center>近くて便利、セブン-イレブンです。</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center><img src="http://www.sej.co.jp/mngdbps/_template_/_user_/_SITE_/localhost/_res/images/products/onigiri2014/onigiri_title_img_150728.jpg" width="100%"></center>
+        
+        <div class="bar"><center>風味の良いパリパリの海苔</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center><img src="http://www.sej.co.jp/mngdbps/_template_/_user_/_SITE_/localhost/_res/images/products/onigiri2014/onigiri_img01_150519.jpg"></center>
+        <p>手巻おにぎりの海苔の特徴は、そのパリパリ感。海苔の香ばしさにこだわって、海苔の出荷からパッケージまで見直し、風味豊かで歯切れの良い海苔を実現しました。</p>
+
+        <div class="bar"><center>ふんわりご飯とたっぷりの具材</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center><img src="http://www.sej.co.jp/mngdbps/_template_/_user_/_SITE_/localhost/_res/images/products/onigiri2014/onigiri_img02_150519.jpg"></center>
+        <p>直巻おむすびは、炊きたてのご飯をふんわり握る独自の製法で、ふっくらとやさしい味わいになりました。さらに手巻おにぎりや金のおむすびは、具材の品質を高め具材も増量！</p>
+
+        <div class="bar"><center>セブン-イレブンのおにぎり</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center>
+            <div id="player"></div>
+        </center>
+        
+        <script>
+            var tag = document.createElement('script');
+            
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                                       width: '100%',
+                                       videoId: 'NOqcvByig-M',
+                                       events: {
+                                       'onReady': onPlayerReady,
+                                       }
+                                       });
+            }
+        
+        function onPlayerReady(event) {
+            //event.target.playVideo();
+        }
+        
+            </script>
+    </body>
+</html>

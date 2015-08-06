@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link rel="stylesheet" type="text/css" href="http://52.8.45.203/tmp/webview.css">
+            </head>
+    <body>
+        <div class="bar"><center>キットカットを知る</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center><img src="https://nestle.jp/brand/kit/about/history/images/1935_image.jpg"></center>
+        <p>1935年<br>
+        イギリスで「チョコレート クリスプ」が誕生！<br>
+        8月29日、イギリスのロントリ―社が、ウェハースをチョコレートで包んだ「チョコレート クリスプ」を発売。ロントリ―社の工場で働く男性から寄せられた「お弁当と一緒に、職場に持っていけるチョコレートバーを作ってはどうか」という提案から、初めてキットカットの元となる４フィンガー（バーが４本連なった形状）の製品が生まれました。</p>
+        <center><img src="https://nestle.jp/brand/kit/about/history/images/1937_image01.jpg"></center>
+        <p>1937年<br>
+        キットカット チョコレートクリスプ<br>
+        イギリスで大ヒットとなった「チョコレート クリスプ」。製品名が少し長いことを懸念したロントリ―社は、1937年5月、「チョコレート クリスプ」に「KIT KAT（キットカット）」というブランドを付け、「キットカット チョコレートクリスプ」としました。</p>
+        <center><img src="https://nestle.jp/brand/kit/about/history/images/1937_image02.jpg"></center>
+        <p>
+        「Break」誕生！<br>
+        時を同じくして、この年初めてキットカットで「Break（ブレイク）」する、というコンセプトを打ち出した広告を開始。70年以上たった今でも、「キットカット」と「ブレイク」を結びつけたそのコンセプトは継続して使用されるほどキットカットに欠かせないブランド資産になったのです。</p>
+        <center><img src="https://nestle.jp/brand/kit/about/history/images/1958_image02.jpg"></center>
+        <p>1958年<br>
+        Have a break, have a Kit Kat.<br>
+        この年初めて、「Have a break, have a Kit Kat.」というコミュニケーションが開発され、このコミュニケーションを使ったテレビコマーシャルが作られると同時に、大きなキャンペーンがイギリスで開始されました。「Have a break, have a Kit Kat.」は50年以上たった今でも、製品やコミュニケーションを通じて、世界中に届けられています。</p>
+        <div class="bar"><center>意外と知らないカカオのヒミツ</center></div>
+        <center><img src="http://52.8.45.203/tmp/baritem.png"></center>
+        <center>
+            <div id="player"></div>
+        </center>
+        
+        <script>
+            var tag = document.createElement('script');
+            
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            var player;
+            function onYouTubeIframeAPIReady() {
+                player = new YT.Player('player', {
+                                       width: '100%',
+                                       videoId: '8cFMNgIXngM',
+                                       events: {
+                                       'onReady': onPlayerReady,
+                                       }
+                                       });
+            }
+        
+        function onPlayerReady(event) {
+            //event.target.playVideo();
+        }
+        
+            </script>
+    </body>
+</html>
