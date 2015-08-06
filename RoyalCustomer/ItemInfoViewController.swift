@@ -303,10 +303,12 @@ class ItemInfoViewController: UIViewController{
                     tmpMax = tmpMax + value
                     barsData.append((title: key, min: CGFloat(0), max: value))
                     lineData.append((title: key, val: CGFloat(tmpMax)))
-                    yValMax = tmpMax + 10
+                    yValMax = ceil(tmpMax * 1.3)
                 }
             }
         }
+        
+        let grpBy : CGFloat = ceil(yValMax / 5)
         
         let alpha: CGFloat = 0.5
         //        let posColor = UIColor.greenColor().colorWithAlphaComponent(alpha)
@@ -320,7 +322,7 @@ class ItemInfoViewController: UIViewController{
             ]
         }
         
-        let yValues = Array(stride(from: 0, through: yValMax, by: 10)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
+        let yValues = Array(stride(from: 0, through: yValMax, by: grpBy)).map {ChartAxisValueFloat($0, labelSettings: labelSettings)}
         let xValues =
         [ChartAxisValueString(order: -1)] +
             Array(enumerate(barsData)).map {index, tuple in ChartAxisValueString(tuple.0, order: index, labelSettings: labelSettings)} +
@@ -337,33 +339,37 @@ class ItemInfoViewController: UIViewController{
         
         // labels layer
         // create chartpoints for the top and bottom of the bars, where we will show the labels
-        //        let labelChartPoints = bars.map {bar in
-        //            ChartPoint(x: bar.constant, y: bar.axisValue2)
-        //        }
-        //        let formatter = NSNumberFormatter()
-        //        formatter.maximumFractionDigits = 2
-        //        let labelsLayer = ChartPointsViewsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: labelChartPoints, viewGenerator: {(chartPointModel, layer, chart) -> UIView? in
-        //            let label = HandlingLabel()
-        //            let posOffset: CGFloat = 10
-        //
-        //            let pos = chartPointModel.chartPoint.y.scalar > 0
-        //
-        //            let yOffset = pos ? -posOffset : posOffset
-        //            label.text = "\(formatter.stringFromNumber(chartPointModel.chartPoint.y.scalar)!)%"
-        //            label.font = ExamplesDefaults.labelFont
-        //            label.sizeToFit()
-        //            label.center = CGPointMake(chartPointModel.screenLoc.x, pos ? innerFrame.origin.y : innerFrame.origin.y + innerFrame.size.height)
-        //            label.alpha = 0
-        //
-        //            label.movedToSuperViewHandler = {[weak label] in
-        //                UIView.animateWithDuration(0.3, animations: {
-        //                    label?.alpha = 1
-        //                    label?.center.y = chartPointModel.screenLoc.y + yOffset
-        //                })
-        //            }
-        //            return label
-        //
-        //            }, displayDelay: 0.5) // show after bars animation
+                let labelChartPoints = bars.map {bar in
+                    ChartPoint(x: bar.constant, y: bar.axisValue2)
+                }
+                let formatter = NSNumberFormatter()
+                formatter.maximumFractionDigits = 2
+                let labelsLayer = ChartPointsViewsLayer(xAxis: xAxis, yAxis: yAxis, innerFrame: innerFrame, chartPoints: labelChartPoints, viewGenerator: {(chartPointModel, layer, chart) -> UIView? in
+                    let label = HandlingLabel()
+                    let posOffset: CGFloat = 10
+        
+                    let pos = chartPointModel.chartPoint.y.scalar > 1
+        
+                    let yOffset = pos ? -posOffset : posOffset
+                    label.text = "\(formatter.stringFromNumber(chartPointModel.chartPoint.y.scalar)!)"
+                    label.font = ExamplesDefaults.labelFont
+                    label.sizeToFit()
+                    label.center = CGPointMake(chartPointModel.screenLoc.x, pos ? innerFrame.origin.y : innerFrame.origin.y + innerFrame.size.height)
+                    label.alpha = 0
+        
+                    label.movedToSuperViewHandler = {[weak label] in
+                        UIView.animateWithDuration(0.3, animations: {
+                            label?.alpha = 1
+                            label?.center.y = chartPointModel.screenLoc.y + yOffset
+                        })
+                    }
+                    if label.text == "0" {
+                        let tmpLabel : UIView = UIView()
+                            return tmpLabel
+                        } else {
+                            return label
+                        }
+                    }, displayDelay: 0.5) // show after bars animation
         
         // line layer
         let lineChartPoints = Array(enumerate(lineData)).map {index, tuple in ChartPoint(x: ChartAxisValueFloat(CGFloat(index)), y: ChartAxisValueFloat(tuple.val))}
@@ -400,8 +406,8 @@ class ItemInfoViewController: UIViewController{
                 xAxis,
                 yAxis,
                 barsLayer,
-                //   labelsLayer,
-                yZeroGapLayer,
+                labelsLayer,
+             //   yZeroGapLayer,
                 lineLayer,
                 lineCirclesLayer,
                 guidelinesLayer
