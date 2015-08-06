@@ -599,7 +599,7 @@ class ItemInfoViewController: UIViewController{
         
         // スクロールビューを追加
         //self.addScrollView()
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 4 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 5 - self.navigationController!.navigationBar.bounds.size.height - UIApplication.sharedApplication().statusBarFrame.size.height )
         
         // 商品画像の表示（ユーザーテスト用）
         let itemImageView = UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, itemHeight)) // UIScrollview内での位置設定であることに注意
@@ -621,7 +621,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.addSubview(brandImageView)
         
         // webViewを生成.
-        myWebView = UIWebView(frame: CGRectMake(0, itemHeight, self.view.bounds.width, self.view.bounds.height * 4 - itemHeight ))
+        myWebView = UIWebView(frame: CGRectMake(0, itemHeight, self.view.bounds.width, self.view.bounds.height * 5 - itemHeight ))
         // ファイルパスを生成.
         let path: NSString!
         if(clickItem!.name == "森永の焼プリン"){
