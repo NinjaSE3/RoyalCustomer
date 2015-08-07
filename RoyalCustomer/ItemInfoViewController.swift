@@ -131,7 +131,7 @@ class ItemInfoViewController: UIViewController{
         
         // 素材の位置
         let baf:            CGFloat = 10 //　素材間のバッファ
-        let bafBadge:       CGFloat = 5  //　バッジ間のバッファ
+        let bafBadge:       CGFloat = 20  //　バッジ間のバッファ
         let pLabelPosition: CGFloat = shohinHeight                              //「商品購入数」ラベルの位置
         let pGraphPosition: CGFloat = pLabelPosition + pButtonHeight + baf      // 購入累積グラフ表示位置
         let bLabelPosition: CGFloat = pGraphPosition + pGraphHeight             //「取得した認定バッジ」ラベルの位置
