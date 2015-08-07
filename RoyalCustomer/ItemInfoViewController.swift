@@ -35,10 +35,10 @@ class ItemInfoViewController: UIViewController{
     let brandHeight:    CGFloat = 50
     let brandWidth:     CGFloat = 50
     let badgeTxtHeight: CGFloat = 15
-    let badgeHeight:    CGFloat = 50
-    let badgeWidth:     CGFloat = 50
+    let badgeHeight:    CGFloat = 70
+    let badgeWidth:     CGFloat = 70
     let pGraphHeight:   CGFloat = 250
-    let pGraphWidth:    CGFloat = 350
+    let pGraphWidth:    CGFloat = 370
     let pCalHeight:     CGFloat = 180
     let pCalWidth:      CGFloat = 350
     
@@ -80,7 +80,7 @@ class ItemInfoViewController: UIViewController{
         
         itemTabLeft.backgroundColor=secondaryBackgroundColor
         itemTabLeft.layer.masksToBounds = true
-        itemTabLeft.setTitle("購買履歴" , forState: .Normal)
+        itemTabLeft.setTitle("ステータス" , forState: .Normal)
         itemTabLeft.setTitleColor(primaryColor, forState: .Normal)
         itemTabLeft.titleLabel!.font = UIFont(name: fontName, size: 18)
         itemTabLeft.layer.position = CGPoint(x: self.itemTabLeft.frame.width/2, y: itemTabHight/2)
@@ -96,7 +96,7 @@ class ItemInfoViewController: UIViewController{
 
         itemTabRight.backgroundColor=secondaryBackgroundColor
         itemTabRight.layer.masksToBounds = true
-        itemTabRight.setTitle("商品情報" , forState: .Normal)
+        itemTabRight.setTitle("ブランドストーリー" , forState: .Normal)
         itemTabRight.setTitleColor(secondaryTextColor, forState: .Normal)
         itemTabRight.titleLabel!.font = UIFont(name: fontName, size: 18)
         itemTabRight.layer.position = CGPoint(x: self.itemTabLeft.frame.width + self.itemTabRight.frame.width/2, y: itemTabHight/2)
@@ -131,28 +131,29 @@ class ItemInfoViewController: UIViewController{
         
         // 素材の位置
         let baf:            CGFloat = 10 //　素材間のバッファ
-        let bafBadge:       CGFloat = 5  //　バッジ間のバッファ
+        let bafBadge:       CGFloat = 20  //　バッジ間のバッファ
         let pLabelPosition: CGFloat = shohinHeight                              //「商品購入数」ラベルの位置
         let pGraphPosition: CGFloat = pLabelPosition + pButtonHeight + baf      // 購入累積グラフ表示位置
         let bLabelPosition: CGFloat = pGraphPosition + pGraphHeight             //「取得した認定バッジ」ラベルの位置
         let badgePosiY:     CGFloat = bLabelPosition + badgeTxtHeight + baf     //　認定バッジ表示位置
-        let badgeNumPosiY:  CGFloat = bLabelPosition + badgeTxtHeight + bafBadge // 認定バッジの右上の数字表示位置
+        let badgeNumPosiY:  CGFloat = bLabelPosition + badgeTxtHeight + baf // 認定バッジの右上の数字表示位置
         let pCalLabelPosition: CGFloat = badgePosiY + badgeHeight + baf         // 「商品購入日」ラベルの位置
-        let pButtonThisMPosiY: CGFloat = pCalLabelPosition + pButtonHeight + baf    // カレンダー年月ラベル表示位置
+        let pButtonThisMPosiY: CGFloat = pCalLabelPosition + pButtonHeight + bafBadge    // カレンダー年月ラベル表示位置
         let pCalPosition:   CGFloat = pButtonThisMPosiY + badgeTxtHeight + baf      //　カレンダー表示位置
         let bTrpLabelPosition: CGFloat = pCalPosition + pCalHeight + bafBadge       // 「取得した認定トロフィー」ラベルの位置
         let badgeTrpPosiY:     CGFloat = bTrpLabelPosition + badgeTxtHeight + baf     //　認定トロフィー表示位置
-        let badgeTrpNumPosiY:  CGFloat = bTrpLabelPosition + badgeTxtHeight + bafBadge // 認定トロフィーの右上の数字表示位置
+        let badgeTrpNumPosiY:  CGFloat = bTrpLabelPosition + badgeTxtHeight + baf // 認定トロフィーの右上の数字表示位置
         let txtArePosiX: CGFloat = 20
         
         pCalPosiY = pCalPosition
         
         // 素材文言
-        let bLabText:       String = "取得した認定バッジ"
-        let bNoLabText:     String = "取得したバッジ＆トロフィーはありません。"
-        let bLabTrpText:    String = "取得した認定トロフィー"
-        let pLabText1:       String = "商品購入数"
-        let pLabText2:       String = "商品購入日"
+        let bLabText:       String = "累計購入数達成バッジ"
+        let bNoLabText:     String = "取得した累計購入数達成バッジはありません。"
+        let bNoLabText2:     String = "取得した連続購入日数達成トロフィーはありません。"
+        let bLabTrpText:    String = "連続購入日数達成トロフィー"
+        let pLabText1:       String = "購入数"
+        let pLabText2:       String = "購入日"
         let pCalLabText:    String = "当月購入カレンダー"
         
         // 購買情報
@@ -230,7 +231,11 @@ class ItemInfoViewController: UIViewController{
         brandImageView.image = brandImage
         brandImageView.layer.cornerRadius = brandImageView.frame.size.width / 2.0
         brandImageView.clipsToBounds = true
-        brandImageView.layer.borderColor = primaryColor.CGColor
+        brandImageView.layer.borderColor = secondaryTextColor.CGColor
+//        brandImageView.layer.shadowColor = UIColor.blackColor().CGColor
+//        brandImageView.layer.shadowOffset = CGSizeMake(1,1)
+//        brandImageView.layer.shadowOpacity = 0.5
+//        brandImageView.layer.shadowRadius = 2
         brandImageView.layer.borderWidth = 2
         brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         itemViewScrollView.addSubview(brandImageView)
@@ -256,7 +261,7 @@ class ItemInfoViewController: UIViewController{
         let pButton: UIButton = UIButton(frame: CGRectMake(0,pLabelPosition, self.view.bounds.width,pButtonHeight))
         pButton.setTitle(pLabText1, forState: UIControlState.Normal)
         pButton.backgroundColor = primaryColor
-        pButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        pButton.titleLabel!.font = UIFont(name: fontName, size: 18)
         pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButton)
         
@@ -356,7 +361,7 @@ class ItemInfoViewController: UIViewController{
         
         let xModel = ChartAxisModel(axisValues: xValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings))
         let yModel = ChartAxisModel(axisValues: yValues, axisTitleLabel: ChartAxisLabel(text: "", settings: labelSettings.defaultVertical()))
-        let chartFrame = CGRectMake(0, pGraphPosition, pGraphWidth, pGraphHeight)
+        let chartFrame = CGRectMake(10, pGraphPosition, pGraphWidth, pGraphHeight)
         let coordsSpace = ChartCoordsSpaceLeftBottomSingleAxis(chartSettings: ExamplesDefaults.chartSettings, chartFrame: chartFrame, xModel: xModel, yModel: yModel)
         let (xAxis, yAxis, innerFrame) = (coordsSpace.xAxis, coordsSpace.yAxis, coordsSpace.chartInnerFrame)
         
@@ -448,7 +453,7 @@ class ItemInfoViewController: UIViewController{
         // 認定バッジ説明のset
         let bButton: UIButton = UIButton(frame: CGRectMake(txtArePosiX,bLabelPosition, self.view.bounds.width,badgeTxtHeight))
         bButton.setTitle(bLabText, forState: UIControlState.Normal)
-        bButton.titleLabel!.font = UIFont(name: fontName, size: 12)
+        bButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         bButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         bButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         itemViewScrollView.addSubview(bButton)
@@ -460,7 +465,7 @@ class ItemInfoViewController: UIViewController{
         if clickItem!.award1.count == 0 {
             let bNoButton: UIButton = UIButton(frame: CGRectMake(badgePosiX,badgePosiY, self.view.bounds.width,badgeTxtHeight))
             bNoButton.setTitle(bNoLabText, forState: UIControlState.Normal)
-            bNoButton.titleLabel!.font = UIFont(name: fontName, size: 11)
+            bNoButton.titleLabel!.font = UIFont(name: fontName, size: 14)
             bNoButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
             bNoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
             itemViewScrollView.addSubview(bNoButton)
@@ -495,7 +500,7 @@ class ItemInfoViewController: UIViewController{
         // 認定トロフィー説明のset
         let bTrpButton: UIButton = UIButton(frame: CGRectMake(txtArePosiX,bTrpLabelPosition, self.view.bounds.width,badgeTxtHeight))
         bTrpButton.setTitle(bLabTrpText, forState: UIControlState.Normal)
-        bTrpButton.titleLabel!.font = UIFont(name: fontName, size: 12)
+        bTrpButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         bTrpButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
         bTrpButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
         itemViewScrollView.addSubview(bTrpButton)
@@ -504,8 +509,8 @@ class ItemInfoViewController: UIViewController{
         badgePosiX = txtArePosiX
         if clickItem!.award2.count == 0 {
             let bNoButton: UIButton = UIButton(frame: CGRectMake(badgePosiX,badgeTrpPosiY, self.view.bounds.width,badgeTxtHeight))
-            bNoButton.setTitle(bNoLabText, forState: UIControlState.Normal)
-            bNoButton.titleLabel!.font = UIFont(name: fontName, size: 11)
+            bNoButton.setTitle(bNoLabText2, forState: UIControlState.Normal)
+            bNoButton.titleLabel!.font = UIFont(name: fontName, size: 14)
             bNoButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
             bNoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
             itemViewScrollView.addSubview(bNoButton)
@@ -542,7 +547,7 @@ class ItemInfoViewController: UIViewController{
         let pCalButton: UIButton = UIButton(frame: CGRectMake(0,pCalLabelPosition, self.view.bounds.width,pButtonHeight))
         pCalButton.setTitle(pLabText2, forState: UIControlState.Normal)
         pCalButton.backgroundColor = primaryColor
-        pCalButton.titleLabel!.font = UIFont(name: fontName, size: 14)
+        pCalButton.titleLabel!.font = UIFont(name: fontName, size: 18)
         pButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pCalButton)
         
@@ -567,7 +572,7 @@ class ItemInfoViewController: UIViewController{
         
         let pButtonThisM: UIButton = UIButton(frame: CGRectMake(0,pButtonThisMPosiY, self.view.bounds.width,badgeTxtHeight))
         pButtonThisM.setTitle(pCalTxt, forState: UIControlState.Normal)
-        pButtonThisM.titleLabel!.font = UIFont(name: fontName, size: 13)
+        pButtonThisM.titleLabel!.font = UIFont(name: fontName, size: 16)
         pButtonThisM.setTitleColor(primaryColor, forState: UIControlState.Normal)
         itemViewScrollView.addSubview(pButtonThisM)
         
@@ -583,7 +588,7 @@ class ItemInfoViewController: UIViewController{
         currentYear2  = dates2[0].toInt()!
         currentMonth2 = dates2[1].toInt()!
     
-        let currentMonthView = MonthView(frame: CGRectMake(0, pCalPosition, pCalWidth,pCalHeight),
+        let currentMonthView = MonthView(frame: CGRectMake(20, pCalPosition, pCalWidth,pCalHeight),
         year:currentYear2,month:currentMonth2)
         itemViewScrollView.addSubview(currentMonthView)
         
@@ -631,7 +636,7 @@ class ItemInfoViewController: UIViewController{
         brandImageView.image = brandImage
         brandImageView.layer.cornerRadius = brandImageView.frame.size.width / 2.0
         brandImageView.clipsToBounds = true
-        brandImageView.layer.borderColor = primaryColor.CGColor
+        brandImageView.layer.borderColor = secondaryTextColor.CGColor
         brandImageView.layer.borderWidth = 2
         brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         itemViewScrollView.addSubview(brandImageView)

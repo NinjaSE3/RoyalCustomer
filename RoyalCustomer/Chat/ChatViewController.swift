@@ -92,7 +92,7 @@ class ChatViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
         title.textColor = primaryBackgroundColor
         title.text = chat.user.name
-        title.font = UIFont(name: fontName, size: 16)
+        title.font = UIFont(name: fontName, size: 20)
         title.textAlignment = NSTextAlignment.Center
         self.navigationItem.titleView = title
         

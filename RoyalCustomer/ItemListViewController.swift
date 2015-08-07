@@ -36,7 +36,7 @@ class ItemListViewController: UIViewController {
         self.createItemViews()
         
         self.navigationView()
-        self.profView()
+        //self.profView()
         self.itemListView()
         self.awardListView()
         
@@ -145,7 +145,7 @@ class ItemListViewController: UIViewController {
         //self.navigationItem.title = "購入商品一覧"
         var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
         title.textColor = primaryBackgroundColor
-        title.text = "購入商品一覧"
+        title.text = "タイムライン"
         title.font = UIFont(name: fontName, size: 18)
         title.textAlignment = NSTextAlignment.Center
         self.navigationItem.titleView = title
@@ -225,11 +225,12 @@ class ItemListViewController: UIViewController {
         // ページサイズ
         scrView.frame = CGRectMake(0, 0, view.bounds.width, view.bounds.height)
         // 全体のサイズ
-        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight+self.profileView.frame.height*3)
+        //scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight+self.profileView.frame.height*3)
+        scrView.contentSize = CGSizeMake(view.bounds.width, pageHeight)
         // 配置
         scrView.layer.position = CGPoint(
             x: scrView.frame.width/2,
-            y: profileView.layer.frame.maxY + scrView.frame.height/2
+            y: scrView.frame.height/2
         )
         let gesture = UITapGestureRecognizer(target:self, action:"onClickItemImageView:")
         scrView.addGestureRecognizer(gesture)

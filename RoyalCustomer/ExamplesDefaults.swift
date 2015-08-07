@@ -60,11 +60,11 @@ struct ExamplesDefaults {
     }
     
     static var labelFont: UIFont {
-        return ExamplesDefaults.fontWithSize(Env.iPad ? 14 : 11)
+        return ExamplesDefaults.fontWithSize(Env.iPad ? 16 : 14)
     }
     
     static var labelFontSmall: UIFont {
-        return ExamplesDefaults.fontWithSize(Env.iPad ? 12 : 10)
+        return ExamplesDefaults.fontWithSize(Env.iPad ? 15 : 13)
     }
     
     static func fontWithSize(size: CGFloat) -> UIFont {

@@ -71,9 +71,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Tabに設定するViewControllerのインスタンスを生成.
         let itemListViewController: UIViewController = ItemListViewController()
-        itemListViewController.tabBarItem = UITabBarItem(title: "購入商品一覧", image: UIImage(named: "UserIcon_grey"), selectedImage: UIImage(named: "UserIcon"))
+        itemListViewController.tabBarItem = UITabBarItem(title: "タイムライン", image: UIImage(named: "UserIcon_grey"), selectedImage: UIImage(named: "UserIcon"))
         let chatsTableViewController: UIViewController = ChatsTableViewController()
-        chatsTableViewController.tabBarItem = UITabBarItem(title: "メッセージ一覧", image: UIImage(named: "ChatIcon_grey"), selectedImage: UIImage(named: "ChatIcon"))
+        chatsTableViewController.tabBarItem = UITabBarItem(title: "メッセージ", image: UIImage(named: "ChatIcon_grey"), selectedImage: UIImage(named: "ChatIcon"))
         // UINavigationを設定
         let itemListNavigationController = UINavigationController(rootViewController: itemListViewController)
         itemListNavigationController.navigationBar.barTintColor = primaryColor
@@ -83,10 +83,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         chatsNavigationController.navigationBar.barTintColor = primaryColor
         chatsNavigationController.navigationBar.tintColor = primaryBackgroundColor
         
-        var image:UIImage = UIImage(named: "Nevigation-Bar")!
-        image.drawInRect(CGRectMake(0, 0, itemListNavigationController.navigationBar.frame.width, itemListNavigationController.navigationBar.frame.height))
-        itemListNavigationController.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
-        chatsNavigationController.navigationBar.setBackgroundImage(image, forBarMetrics: .Default)
+        // ナビゲーションバーの背景画像を設定
+        let display: CGRect  = UIScreen.mainScreen().bounds
+        var naviImage:UIImage = UIImage(named: "Nevigation-Bar")!
+        if (display.size.height == 568) {   // iPhone 5 の場合
+            naviImage = UIImage(named: "Nevigation-Bar")!
+        } else if (display.size.height == 667) { // iPhone 6 の場合
+            naviImage = UIImage(named: "Nevigation-Bar")!
+        } else if (display.size.height == 736) { // iPhone 6 Plus の場合
+            naviImage = UIImage(named: "Nevigation-Bar6")!
+        }
+        naviImage.drawInRect(CGRectMake(0, 0, itemListNavigationController.navigationBar.frame.width, itemListNavigationController.navigationBar.frame.height))
+        itemListNavigationController.navigationBar.setBackgroundImage(naviImage, forBarMetrics: .Default)
+        chatsNavigationController.navigationBar.setBackgroundImage(naviImage, forBarMetrics: .Default)
         
         // タブを要素に持つArrayの.を作成する.
         let myTabs = NSArray(objects: itemListNavigationController, chatsNavigationController)
