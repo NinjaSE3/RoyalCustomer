@@ -149,6 +149,11 @@ class ItemListViewController: UIViewController {
         title.font = UIFont(name: fontName, size: 20)
         title.textAlignment = NSTextAlignment.Center
         self.navigationItem.titleView = title
+        
+        // バックボタンを変更
+        var backButton :UIBarButtonItem = UIBarButtonItem()
+        backButton.title = "戻る";
+        self.navigationItem.backBarButtonItem = backButton;
     }
     
     func profView(){

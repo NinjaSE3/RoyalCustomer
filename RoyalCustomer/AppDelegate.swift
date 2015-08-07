@@ -78,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let itemListNavigationController = UINavigationController(rootViewController: itemListViewController)
         itemListNavigationController.navigationBar.barTintColor = primaryColor
         itemListNavigationController.navigationBar.tintColor = primaryBackgroundColor
-                
+        
         let chatsNavigationController = UINavigationController(rootViewController: chatsTableViewController)
         chatsNavigationController.navigationBar.barTintColor = primaryColor
         chatsNavigationController.navigationBar.tintColor = primaryBackgroundColor

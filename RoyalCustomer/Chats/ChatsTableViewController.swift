@@ -25,6 +25,12 @@ class ChatsTableViewController: UITableViewController {
         self.navigationItem.titleView = title
         //        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Compose, target: self, action: "composeAction")
         self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Contacts, tag: 1)
+        
+        
+        // バックボタンを変更
+        var backButton :UIBarButtonItem = UIBarButtonItem()
+        backButton.title = "戻る";
+        self.navigationItem.backBarButtonItem = backButton;
     }
 
     
