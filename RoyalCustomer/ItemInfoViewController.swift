@@ -80,7 +80,7 @@ class ItemInfoViewController: UIViewController{
         
         itemTabLeft.backgroundColor=secondaryBackgroundColor
         itemTabLeft.layer.masksToBounds = true
-        itemTabLeft.setTitle("購買履歴" , forState: .Normal)
+        itemTabLeft.setTitle("ステータス" , forState: .Normal)
         itemTabLeft.setTitleColor(primaryColor, forState: .Normal)
         itemTabLeft.titleLabel!.font = UIFont(name: fontName, size: 18)
         itemTabLeft.layer.position = CGPoint(x: self.itemTabLeft.frame.width/2, y: itemTabHight/2)
@@ -96,7 +96,7 @@ class ItemInfoViewController: UIViewController{
 
         itemTabRight.backgroundColor=secondaryBackgroundColor
         itemTabRight.layer.masksToBounds = true
-        itemTabRight.setTitle("商品情報" , forState: .Normal)
+        itemTabRight.setTitle("ブランドストーリー" , forState: .Normal)
         itemTabRight.setTitleColor(secondaryTextColor, forState: .Normal)
         itemTabRight.titleLabel!.font = UIFont(name: fontName, size: 18)
         itemTabRight.layer.position = CGPoint(x: self.itemTabLeft.frame.width + self.itemTabRight.frame.width/2, y: itemTabHight/2)
@@ -148,11 +148,12 @@ class ItemInfoViewController: UIViewController{
         pCalPosiY = pCalPosition
         
         // 素材文言
-        let bLabText:       String = "取得した認定バッジ"
-        let bNoLabText:     String = "取得したバッジ＆トロフィーはありません。"
-        let bLabTrpText:    String = "取得した認定トロフィー"
-        let pLabText1:       String = "商品購入数"
-        let pLabText2:       String = "商品購入日"
+        let bLabText:       String = "累計購入数達成バッジ"
+        let bNoLabText:     String = "取得した累計購入数達成バッジはありません。"
+        let bNoLabText2:     String = "取得した連続購入日数達成トロフィーはありません。"
+        let bLabTrpText:    String = "連続購入日数達成トロフィー"
+        let pLabText1:       String = "購入数"
+        let pLabText2:       String = "購入日"
         let pCalLabText:    String = "当月購入カレンダー"
         
         // 購買情報
@@ -504,7 +505,7 @@ class ItemInfoViewController: UIViewController{
         badgePosiX = txtArePosiX
         if clickItem!.award2.count == 0 {
             let bNoButton: UIButton = UIButton(frame: CGRectMake(badgePosiX,badgeTrpPosiY, self.view.bounds.width,badgeTxtHeight))
-            bNoButton.setTitle(bNoLabText, forState: UIControlState.Normal)
+            bNoButton.setTitle(bNoLabText2, forState: UIControlState.Normal)
             bNoButton.titleLabel!.font = UIFont(name: fontName, size: 11)
             bNoButton.setTitleColor(primaryColor, forState: UIControlState.Normal)
             bNoButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
