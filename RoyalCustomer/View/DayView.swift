@@ -19,11 +19,11 @@ class DayView: UIView {
         super.init(frame: frame)
         
         var dayWidth:Int = Int( (UIScreen.mainScreen().bounds.size.width) / 7.0 )
-        var dayHeight:CGFloat = 25
+        var dayHeight:CGFloat = 24
         var dayLabel:UILabel = UILabel(frame: CGRectMake(0, 0, CGFloat(dayWidth),dayHeight))
         dayLabel.textAlignment = NSTextAlignment.Center
         dayLabel.text = String(format:"%02d", day)
-        dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 13)
+        dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 14)
         
         if weekday == 1 {
             //日曜日は赤

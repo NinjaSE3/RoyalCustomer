@@ -588,7 +588,7 @@ class ItemInfoViewController: UIViewController{
         currentYear2  = dates2[0].toInt()!
         currentMonth2 = dates2[1].toInt()!
     
-        let currentMonthView = MonthView(frame: CGRectMake(20, pCalPosition, pCalWidth,pCalHeight),
+        let currentMonthView = MonthView(frame: CGRectMake(25, pCalPosition, pCalWidth,pCalHeight),
         year:currentYear2,month:currentMonth2)
         itemViewScrollView.addSubview(currentMonthView)
         

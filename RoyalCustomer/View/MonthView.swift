@@ -42,7 +42,7 @@ class MonthView: UIView {
                 var dayLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(x), 0, CGFloat(dayWidth),CGFloat(dayHeight)))
                 dayLabel.textAlignment = NSTextAlignment.Center
                 dayLabel.text = headTxt[i]
-                dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 12)
+                dayLabel.font = UIFont(name: "HiraKakuProN-W3", size: 14)
                 self.addSubview(dayLabel)
                 headDay++
                 }
