@@ -88,6 +88,10 @@ class ItemInfoViewController: UIViewController{
         itemTabLeft.imageView?.layer.borderWidth = 5
         itemTabLeft.addTarget(self, action: "onClickLeftButton:", forControlEvents: .TouchUpInside)
 
+        // アイコン表示
+        let defaultTabLeftImage: UIImage = UIImage(named: "pattern_grey")!
+        itemTabLeft.setImage(defaultTabLeftImage, forState: .Normal)
+
         self.view.addSubview(itemTabLeft)
 
         itemTabRight.backgroundColor=secondaryBackgroundColor
@@ -100,6 +104,10 @@ class ItemInfoViewController: UIViewController{
         itemTabRight.imageView?.layer.borderWidth = 5
         itemTabRight.addTarget(self, action: "onClickRightButton:", forControlEvents: .TouchUpInside)
         
+        // アイコン表示
+        let defaultTabRightImage: UIImage = UIImage(named: "info_grey")!
+        itemTabRight.setImage(defaultTabRightImage, forState: .Normal)
+
         self.view.addSubview(itemTabRight)
         
         // 最初は購買履歴画面を表示
@@ -112,7 +120,10 @@ class ItemInfoViewController: UIViewController{
         self.itemTabRight.setTitleColor(secondaryTextColor, forState: .Normal)
         self.itemTabLeft.setTitleColor(primaryColor, forState: .Normal)
         
-        
+        // 選択状態の画像を表示する
+        let selectedImage: UIImage = UIImage(named: "pattern")!
+        itemTabLeft.setImage(selectedImage, forState: .Selected)
+
         // タブページを初期化
         self.resetTabPage()
         
@@ -590,6 +601,11 @@ class ItemInfoViewController: UIViewController{
         // タブの文字色を変更
         self.itemTabRight.setTitleColor(primaryColor, forState: .Normal)
         self.itemTabLeft.setTitleColor(secondaryTextColor, forState: .Normal)
+
+        // 選択状態の画像を表示する
+        let selectedImage: UIImage = UIImage(named: "pattern")!
+        itemTabRight.setImage(selectedImage, forState: .Selected)
+
         
         // タブページを初期化
         self.resetTabPage()
