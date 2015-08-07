@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Tabに設定するViewControllerのインスタンスを生成.
         let itemListViewController: UIViewController = ItemListViewController()
-        itemListViewController.tabBarItem = UITabBarItem(title: "タイムライン", image: UIImage(named: "UserIcon_grey"), selectedImage: UIImage(named: "UserIcon"))
+        itemListViewController.tabBarItem = UITabBarItem(title: "タイムライン", image: UIImage(named: "timeline_grey_03_s"), selectedImage: UIImage(named: "timeline_03_s"))
         let chatsTableViewController: UIViewController = ChatsTableViewController()
         chatsTableViewController.tabBarItem = UITabBarItem(title: "メッセージ", image: UIImage(named: "ChatIcon_grey"), selectedImage: UIImage(named: "ChatIcon"))
         // UINavigationを設定
