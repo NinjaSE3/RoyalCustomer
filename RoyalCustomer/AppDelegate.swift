@@ -146,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func continueAsGuest() {
         let minute: NSTimeInterval = 60, hour = minute * 60, day = hour * 24
         account.chats = [
-            Chat(user: User(ID: 17, username: "コカ・コーラ", firstName: "コカ・コーラ", lastName: "＠林田"), lastMessageText: "夏を変えよう、キミを変えよう。", lastMessageSentDate: NSDate()),
+            Chat(user: User(ID: 17, username: "コカ・コーラ", firstName: "コカ・コーラ", lastName: "＠鈴木"), lastMessageText: "夏を変えよう、キミを変えよう。", lastMessageSentDate: NSDate()),
             Chat(user: User(ID: 1, username: "森永の焼プリン", firstName: "森永の焼プリン", lastName: "＠オフライン"), lastMessageText: "おいしいをデザインする", lastMessageSentDate: NSDate()),
             Chat(user: User(ID: 8, username: "カリカリ梅おむすび", firstName: "カリカリ梅おむすび", lastName: "＠オフライン"), lastMessageText: "混ぜ飯おむすび", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*5)),
             Chat(user: User(ID: 3, username: "週刊少年ジャンプ", firstName: "週刊少年ジャンプ", lastName: "＠オフライン"), lastMessageText: "友情・努力・勝利", lastMessageSentDate: NSDate(timeIntervalSinceNow: -minute*12)),

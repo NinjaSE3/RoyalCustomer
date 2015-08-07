@@ -240,7 +240,7 @@ class ItemInfoViewController: UIViewController{
 //        brandImageView.layer.shadowOffset = CGSizeMake(1,1)
 //        brandImageView.layer.shadowOpacity = 0.5
 //        brandImageView.layer.shadowRadius = 2
-        brandImageView.layer.borderWidth = 2
+        brandImageView.layer.borderWidth = 1
         brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         itemViewScrollView.addSubview(brandImageView)
         
@@ -643,7 +643,7 @@ class ItemInfoViewController: UIViewController{
         brandImageView.layer.cornerRadius = brandImageView.frame.size.width / 2.0
         brandImageView.clipsToBounds = true
         brandImageView.layer.borderColor = secondaryTextColor.CGColor
-        brandImageView.layer.borderWidth = 2
+        brandImageView.layer.borderWidth = 1
         brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         itemViewScrollView.addSubview(brandImageView)
         
