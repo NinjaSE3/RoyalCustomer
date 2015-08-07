@@ -213,7 +213,7 @@ class ItemInfoViewController: UIViewController{
         itemViewScrollView.directionalLockEnabled = false
         itemViewScrollView.showsHorizontalScrollIndicator = true
         itemViewScrollView.showsVerticalScrollIndicator = false
-        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, self.view.bounds.height * 1.6)
+        itemViewScrollView.contentSize = CGSizeMake(self.view.bounds.width, UIScreen.mainScreen().bounds.size.height * 1.55)
         self.view.addSubview(itemViewScrollView)
         
         
