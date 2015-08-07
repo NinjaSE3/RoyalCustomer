@@ -146,7 +146,7 @@ class ItemListViewController: UIViewController {
         var title = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
         title.textColor = primaryBackgroundColor
         title.text = "タイムライン"
-        title.font = UIFont(name: fontName, size: 18)
+        title.font = UIFont(name: fontName, size: 20)
         title.textAlignment = NSTextAlignment.Center
         self.navigationItem.titleView = title
     }

@@ -25,11 +25,12 @@ class AwardViewController: UIViewController {
     private var brandImageView:   UIImageView!
     private var awardImageView:   UIImageView!
     private var awardTitleButton: UIButton!
-    private var awardBodyButton:  UIButton!
+    private var awardBodyLabel:   UILabel!
     private var awardFromButton:  UIButton!
     private var awardShareButton: UIButton!
     private var arrowImageView:   UIButton!
-    var awardAnimationView: UIImageView!
+    var awardAnimationView:       UIImageView!
+    var backgroundGrayoutView:       UIImageView!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -57,6 +58,7 @@ class AwardViewController: UIViewController {
         self.addBody()
         self.addFrom()
         self.addShare()
+        //self.backgroundGrayout()
         self.addDownArrow()
         
         // スワイプ検知用
@@ -139,14 +141,14 @@ class AwardViewController: UIViewController {
         let brandImageSize:CGFloat = 70
         // 位置
         let brandImageX:CGFloat = 0.1
-        let brandImageY:CGFloat = 0.3
+        let brandImageY:CGFloat = 0.26
         
         brandImageView = UIImageView(frame: CGRectMake(0,0,brandImageSize,brandImageSize))
         let brandImage = UIImage(named: clickItem!.brandImage)
         brandImageView.image = brandImage
         //brandImageView.contentMode = UIViewContentMode.ScaleAspectFit
         brandImageView.layer.borderWidth = 1
-        brandImageView.layer.borderColor = primaryColor.CGColor
+        brandImageView.layer.borderColor = secondaryTextColor.CGColor
         brandImageView.layer.cornerRadius = brandImageSize/2
         brandImageView.clipsToBounds = true
         //brandImageView.backgroundColor = UIColor.redColor()
@@ -161,32 +163,38 @@ class AwardViewController: UIViewController {
     
     func addBody(){
         /* 認定説明文を表示 */
-        awardBodyButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 200))
-        
-        awardBodyButton.titleEdgeInsets.top = 30
-        awardBodyButton.titleEdgeInsets.left = 30
-        awardBodyButton.titleEdgeInsets.right = 30
-        awardBodyButton.titleEdgeInsets.bottom = 30
+        awardBodyLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width*0.9, height: 400))
         
         //awardBodyButton.backgroundColor = secondaryAwardColor
-        awardBodyButton.layer.masksToBounds = true
-        awardBodyButton.setTitle(clickAward!.body as String , forState: .Normal)
-        awardBodyButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardBodyButton.titleLabel!.lineBreakMode = NSLineBreakMode.ByWordWrapping
-        awardBodyButton.titleLabel!.font = UIFont(name: fontName, size: 16)
-        awardBodyButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Left
-        awardBodyButton.contentVerticalAlignment = UIControlContentVerticalAlignment.Top
-        awardBodyButton.layer.position = CGPoint(
+        awardBodyLabel.layer.masksToBounds = true
+        
+        //行間を調整
+        let awardBodyText = clickAward!.body as String
+        let attributedText = NSMutableAttributedString(string: awardBodyText)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 14
+        attributedText.addAttribute(NSParagraphStyleAttributeName, value: paragraphStyle, range: NSMakeRange(0, attributedText.length))
+        awardBodyLabel.attributedText = attributedText
+        //awardBodyLabel.backgroundColor = UIColor.redColor()
+        
+        //awardBodyButton.setTitle(clickAward!.body as String , forState: .Normal)
+        awardBodyLabel.textColor = primaryTextColor
+        awardBodyLabel.numberOfLines = 0
+        awardBodyLabel.font = UIFont(name: fontName, size: 17)
+        awardBodyLabel.textAlignment = NSTextAlignment.Left
+        awardBodyLabel.sizeToFit()
+
+        awardBodyLabel.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: self.itemImageView.frame.maxY+self.awardBodyButton.frame.height/2)
-        self.view.addSubview(awardBodyButton)
+            y: self.itemImageView.frame.maxY+self.awardBodyLabel.frame.height/2+30)
+        self.view.addSubview(awardBodyLabel)
     }
     
     func addFrom(){
         /* 認定ブランドを表示 */
         awardFromButton = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 50))
         
-        awardFromButton.titleEdgeInsets.top = 30
+        awardFromButton.titleEdgeInsets.top = 60
         awardFromButton.titleEdgeInsets.left = 30
         awardFromButton.titleEdgeInsets.right = 30
         awardFromButton.titleEdgeInsets.bottom = 30
@@ -194,18 +202,18 @@ class AwardViewController: UIViewController {
         //awardFromButton.backgroundColor = UIColor.blueColor()
         awardFromButton.layer.masksToBounds = true
         awardFromButton.setTitle(clickAward!.from as String , forState: .Normal)
-        awardFromButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        awardFromButton.titleLabel!.font = UIFont(name: fontName, size: 16)
+        awardFromButton.setTitleColor(primaryTextColor, forState: .Normal)
+        awardFromButton.titleLabel!.font = UIFont(name: fontNameBold, size: 20)
         awardFromButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Right
         awardFromButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: awardBodyButton.frame.maxY+self.awardFromButton.frame.height/2)
+            y: awardBodyLabel.frame.maxY+self.awardFromButton.frame.height/2)
         self.view.addSubview(awardFromButton)
     }
     
     func addShare(){
         /* シェアボタンを表示 */
-        awardShareButton = UIButton(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
+        awardShareButton = UIButton(frame: CGRect(x: 0, y: 0, width: 220, height: 35))
         awardShareButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
         //awardShareButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         awardShareButton.backgroundColor = facebookColor
@@ -214,14 +222,14 @@ class AwardViewController: UIViewController {
         awardShareButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         awardShareButton.setTitle(" Facebookでシェアする" , forState: .Normal)
         awardShareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 18)
+        awardShareButton.titleLabel!.font = UIFont(name: fontName, size: 16)
         //awardShareButton.invalidateIntrinsicContentSize()
         //awardShareButton.sizeToFit()
         awardShareButton.layer.cornerRadius = 5.0
         awardShareButton.addTarget(self, action: "onClickAwardShareButton:", forControlEvents: .TouchUpInside)
         awardShareButton.layer.position = CGPoint(
             x: self.view.bounds.width/2,
-            y: self.awardFromButton.frame.maxY+self.awardShareButton.frame.height/2 + 20)
+            y: self.view.frame.height - 100)
         self.view.addSubview(awardShareButton)
         
     }
@@ -342,13 +350,14 @@ class AwardViewController: UIViewController {
         let duration2 = 0.6
         let delay:CFTimeInterval = 1.0
         
+        
+        /* 認定バッジイメージ */
         let awardImage = UIImage(named : clickAward!.image)
         awardAnimationView = UIImageView(frame: CGRectMake(0,0,startImageSize,startImageSize))
         awardAnimationView.image = awardImage
         awardAnimationView.contentMode = UIViewContentMode.ScaleAspectFill
         awardAnimationView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
         self.view.addSubview(awardAnimationView)
-        
         
         // 拡大
         let toBig = CABasicAnimation(keyPath: "transform.scale")
@@ -427,6 +436,33 @@ class AwardViewController: UIViewController {
         self.view.layer.insertSublayer(self.emitterLayer, atIndex: 100)
     }
     
+    /*
+    func backgroundGrayout(){
+        /* アニメーション開始時に背景をグレーアウト（できていない） */
+        backgroundGrayoutView = UIImageView(frame: (CGRectMake(0,0,self.view.frame.width,self.view.frame.height)))
+        backgroundGrayoutView.backgroundColor = UIColor.blackColor()
+        backgroundGrayoutView.alpha = 0.8
+        
+        println(self.view.frame.width)
+        
+        //UIView.animateWithDuration(1.0) {
+        //    backgroundGrayoutView.alpha = 0
+        //}
+        
+        UIView.animateWithDuration(
+            1.3,
+            delay: 0,
+            options: nil,
+            animations: {
+                self.backgroundGrayoutView.alpha = 0
+            },
+            completion: nil
+        )
+        
+        self.view.addSubview(backgroundGrayoutView)
+    }
+    */
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -446,6 +482,4 @@ class AwardViewController: UIViewController {
         super.viewWillAppear(animated)
         
     }
-
-    
 }
