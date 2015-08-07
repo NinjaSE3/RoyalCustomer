@@ -11,11 +11,11 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="RoyalCustomer_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vGw-Q8-I9P">
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" misplaced="YES" image="RoyalCustomer_logo" translatesAutoresizingMaskIntoConstraints="NO" id="vGw-Q8-I9P">
                     <rect key="frame" x="-17" y="189" width="448" height="358"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="vGw-Q8-I9P" secondAttribute="height" multiplier="224:179" id="CBc-E7-vHX"/>
-                        <constraint firstAttribute="width" constant="100" id="Oqx-UG-1rf"/>
+                        <constraint firstAttribute="width" constant="250" id="Oqx-UG-1rf"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="  Copyright (c) 2015年 NRI. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
