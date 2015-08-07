@@ -77,37 +77,39 @@ class ItemInfoViewController: UIViewController{
     func itemTabView(){
         itemTabLeft = UIButton(frame: CGRect(x: 0, y: 0, width: self.view.frame.width/2, height: itemTabHight))
         itemTabRight = UIButton(frame: CGRect(x: self.view.frame.width/2, y: 0, width: self.view.frame.width/2, height: itemTabHight))
-        
+
         itemTabLeft.backgroundColor=secondaryBackgroundColor
         itemTabLeft.layer.masksToBounds = true
+        itemTabLeft.titleEdgeInsets.left = 5
         itemTabLeft.setTitle("ステータス" , forState: .Normal)
         itemTabLeft.setTitleColor(primaryColor, forState: .Normal)
-        itemTabLeft.titleLabel!.font = UIFont(name: fontName, size: 18)
-        itemTabLeft.layer.position = CGPoint(x: self.itemTabLeft.frame.width/2, y: itemTabHight/2)
-        itemTabLeft.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
-        itemTabLeft.imageView?.layer.borderWidth = 5
-        itemTabLeft.addTarget(self, action: "onClickLeftButton:", forControlEvents: .TouchUpInside)
-
+        itemTabLeft.titleLabel!.font = UIFont(name: fontName, size: 16)
+//        itemTabLeft.layer.position = CGPoint(x: self.itemTabLeft.frame.width/2, y: itemTabHight/2)
+//        itemTabLeft.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
+//        itemTabLeft.imageView?.layer.borderWidth = 5
         // アイコン表示
-        let defaultTabLeftImage: UIImage = UIImage(named: "pattern_grey")!
+        let defaultTabLeftImage: UIImage = UIImage(named: "status_grey_03")!
         itemTabLeft.setImage(defaultTabLeftImage, forState: .Normal)
+        itemTabLeft.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 
+        itemTabLeft.addTarget(self, action: "onClickLeftButton:", forControlEvents: .TouchUpInside)
         self.view.addSubview(itemTabLeft)
 
         itemTabRight.backgroundColor=secondaryBackgroundColor
         itemTabRight.layer.masksToBounds = true
+        itemTabRight.titleEdgeInsets.left = 5
         itemTabRight.setTitle("ブランドストーリー" , forState: .Normal)
         itemTabRight.setTitleColor(secondaryTextColor, forState: .Normal)
-        itemTabRight.titleLabel!.font = UIFont(name: fontName, size: 18)
-        itemTabRight.layer.position = CGPoint(x: self.itemTabLeft.frame.width + self.itemTabRight.frame.width/2, y: itemTabHight/2)
-        itemTabRight.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
-        itemTabRight.imageView?.layer.borderWidth = 5
-        itemTabRight.addTarget(self, action: "onClickRightButton:", forControlEvents: .TouchUpInside)
-        
+        itemTabRight.titleLabel!.font = UIFont(name: fontName, size: 16)
+//        itemTabRight.layer.position = CGPoint(x: self.itemTabLeft.frame.width + self.itemTabRight.frame.width/2, y: itemTabHight/2)
+//        itemTabRight.imageView?.layer.borderColor = secondaryBackgroundColor.CGColor
+//        itemTabRight.imageView?.layer.borderWidth = 5
         // アイコン表示
-        let defaultTabRightImage: UIImage = UIImage(named: "info_grey")!
+        let defaultTabRightImage: UIImage = UIImage(named: "story_grey_03")!
         itemTabRight.setImage(defaultTabRightImage, forState: .Normal)
+        itemTabRight.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
 
+        itemTabRight.addTarget(self, action: "onClickRightButton:", forControlEvents: .TouchUpInside)
         self.view.addSubview(itemTabRight)
         
         // 最初は購買履歴画面を表示
@@ -121,9 +123,11 @@ class ItemInfoViewController: UIViewController{
         self.itemTabLeft.setTitleColor(primaryColor, forState: .Normal)
         
         // 選択状態の画像を表示する
-        let selectedImage: UIImage = UIImage(named: "pattern")!
-        itemTabLeft.setImage(selectedImage, forState: .Selected)
-
+        let selectedImage: UIImage = UIImage(named: "status_03")!
+        itemTabLeft.setImage(selectedImage, forState: .Normal)
+        let noSelectedImage: UIImage = UIImage(named: "story_grey_03")!
+        itemTabRight.setImage(noSelectedImage, forState: .Normal)
+        
         // タブページを初期化
         self.resetTabPage()
         
@@ -608,8 +612,10 @@ class ItemInfoViewController: UIViewController{
         self.itemTabLeft.setTitleColor(secondaryTextColor, forState: .Normal)
 
         // 選択状態の画像を表示する
-        let selectedImage: UIImage = UIImage(named: "pattern")!
-        itemTabRight.setImage(selectedImage, forState: .Selected)
+        let selectedImage: UIImage = UIImage(named: "story_03")!
+        itemTabRight.setImage(selectedImage, forState: .Normal)
+        let noSelectedImage: UIImage = UIImage(named: "status_grey_03")!
+        itemTabLeft.setImage(noSelectedImage, forState: .Normal)
 
         
         // タブページを初期化
