@@ -29,7 +29,8 @@ class AwardViewController: UIViewController {
     private var awardFromButton:  UIButton!
     private var awardShareButton: UIButton!
     private var arrowImageView:   UIButton!
-    var awardAnimationView: UIImageView!
+    var awardAnimationView:       UIImageView!
+    var backgroundGrayoutView:       UIImageView!
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -57,6 +58,7 @@ class AwardViewController: UIViewController {
         self.addBody()
         self.addFrom()
         self.addShare()
+        //self.backgroundGrayout()
         self.addDownArrow()
         
         // スワイプ検知用
@@ -348,13 +350,14 @@ class AwardViewController: UIViewController {
         let duration2 = 0.6
         let delay:CFTimeInterval = 1.0
         
+        
+        /* 認定バッジイメージ */
         let awardImage = UIImage(named : clickAward!.image)
         awardAnimationView = UIImageView(frame: CGRectMake(0,0,startImageSize,startImageSize))
         awardAnimationView.image = awardImage
         awardAnimationView.contentMode = UIViewContentMode.ScaleAspectFill
         awardAnimationView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
         self.view.addSubview(awardAnimationView)
-        
         
         // 拡大
         let toBig = CABasicAnimation(keyPath: "transform.scale")
@@ -432,6 +435,33 @@ class AwardViewController: UIViewController {
         //self.view.layer.insertSublayer(self.emitterLayer, atIndex: 0)
         self.view.layer.insertSublayer(self.emitterLayer, atIndex: 100)
     }
+    
+    /*
+    func backgroundGrayout(){
+        /* アニメーション開始時に背景をグレーアウト（できていない） */
+        backgroundGrayoutView = UIImageView(frame: (CGRectMake(0,0,self.view.frame.width,self.view.frame.height)))
+        backgroundGrayoutView.backgroundColor = UIColor.blackColor()
+        backgroundGrayoutView.alpha = 0.8
+        
+        println(self.view.frame.width)
+        
+        //UIView.animateWithDuration(1.0) {
+        //    backgroundGrayoutView.alpha = 0
+        //}
+        
+        UIView.animateWithDuration(
+            1.3,
+            delay: 0,
+            options: nil,
+            animations: {
+                self.backgroundGrayoutView.alpha = 0
+            },
+            completion: nil
+        )
+        
+        self.view.addSubview(backgroundGrayoutView)
+    }
+    */
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
